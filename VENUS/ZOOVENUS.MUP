@@ -1,0 +1,5 @@
+cd d:\tc\venus
+echo going to venus
+echo updating venus
+zoo aunP venus *.prj *.[chs] doc\* *.rs? *.mup
+cp -v venus.zoo ${ARCHIV}\venus.zoo

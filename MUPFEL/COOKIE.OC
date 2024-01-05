@@ -1,0 +1,107 @@
+/*
+ * cookie.c  -  Cookie Jar management
+ * 04.06.90
+ */
+
+#include <string.h>
+
+#include "chario.h"
+#include "cookie.h"
+#include "mupfel.h"
+#include "strsel.h"
+#include "sysvec.h"
+
+static int first;
+
+int legalcookie(void *cj)
+{
+	return cj!=NULL && ((size_t)cj%2)==0 && (long)cj>0;
+}
+
+static char *vdoval(long val)
+{
+	static char *vdotxt[] =
+	{
+		"ST", "STE", "TT"
+	};
+
+	val >>= 16;	
+	if (val>=0 && val<DIM(vdotxt))
+		return vdotxt[val];
+	else
+		return "???";
+}
+
+static char *mchval(long val)
+{
+	static char *mchtxt[] =
+	{
+		"520/1040/Mega ST", "STE", "TT"
+	};
+
+	val >>= 16;
+	if (val >= 0 && val < DIM(mchtxt))
+		return mchtxt[val];
+	else
+		return "???";
+}
+
+static void sndval(long val)
+{
+	int comma = 0;
+	
+	if (val & 01)
+		mprintf("GI/Yamaha"), ++comma;
+	if (val & 02)
+		mprintf("%sDMA",comma ? ", " : "");
+}
+
+static void showcookie(long *cj)
+{
+	char cookie[] = "____";
+	long cookieval;
+	
+	strncpy(cookie,(char *)cj,4);
+	cookieval = *(cj+1);
+	if (first)
+	{
+		mprintf(CO_HEADER "\n");
+		first = FALSE;
+	}
+	mprintf("%s    %08lx",cookie,cookieval);
+	STRSELECT(cookie)
+	WHEN("_CPU")
+		mprintf(" (%ld)\n",68000L+cookieval);
+	WHEN("_VDO")
+		mprintf(" (%s)\n",vdoval(cookieval));
+	WHEN("_SND")
+		mprintf(" (");
+		sndval(cookieval);
+		mprintf(")\n");
+	WHEN("_MCH")
+		mprintf(" (%s)\n",mchval(cookieval));
+	DEFAULT
+		crlf();
+	ENDSEL
+}
+ 
+int m_cookie(void)
+{
+	long *cookiejar;
+	
+	cookiejar = getcookiejar();
+	
+	if (!legalcookie(cookiejar))
+	{
+		eprintf("cookie: " CO_NOCOOKIE "\n");
+		return 1;
+	}
+
+	first = TRUE;	
+	while (*cookiejar != 0)
+	{
+		showcookie(cookiejar);
+		cookiejar += 2;
+	}
+	return 0;
+}

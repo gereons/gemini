@@ -1,0 +1,6 @@
+FILES="*.c *.h *.s *.prj *.mup ..\*.mup doc\*.* c:\gemsys\gemini.fnt"
+cp -d mupfel.lzh mupfel.lzb
+lharc u -x -p -a -t mupfel "$FILES"
+mv f:\archive\mupfel.lzh f:\archive\mupfel.lzb
+cp -vd mupfel.lzh f:\archive\mupfel.lzh
+FILES=

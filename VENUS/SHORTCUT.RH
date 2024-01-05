@@ -1,0 +1,13 @@
+#define SHORTCUT 33	/* form/dialog */
+#define SHORTNO  1	/* STRING in tree SHORTCUT */
+#define SHORT0   2	/* STRING in tree SHORTCUT */
+#define SHORT1   3	/* STRING in tree SHORTCUT */
+#define SHORT2   4	/* STRING in tree SHORTCUT */
+#define SHORT3   5	/* STRING in tree SHORTCUT */
+#define SHORT4   6	/* STRING in tree SHORTCUT */
+#define SHORT5   7	/* STRING in tree SHORTCUT */
+#define SHORT6   8	/* STRING in tree SHORTCUT */
+#define SHORT7   9	/* STRING in tree SHORTCUT */
+#define SHORT8   10	/* STRING in tree SHORTCUT */
+#define SHORT9   11	/* STRING in tree SHORTCUT */
+

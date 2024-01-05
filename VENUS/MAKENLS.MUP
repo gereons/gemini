@@ -1,0 +1,7 @@
+#
+# Erzeuge Nls-Dateien anhand des Åbergebenen Projektes
+#
+# Stefan Eissing, 14. Januar 1991
+#
+pipe getcfile ${1}.prj | nlscat - | nlscomp - ${1}.msg
+cp gemini.msg ..

@@ -1,0 +1,21 @@
+#define INSTBOX  7	/* form/dialog */
+#define INSTBG   3	/* BOX in tree INSTBOX */
+#define INSTB    4	/* BOX in tree INSTBOX */
+#define INSTSPEC 5	/* IBOX in tree INSTBOX */
+#define INSTBGSC 8	/* STRING in tree INSTBOX */
+#define INSTBBOX 9	/* BOX in tree INSTBOX */
+#define INSTBACK 11	/* BUTTON in tree INSTBOX */
+#define INSTBK0  12	/* BOXCHAR in tree INSTBOX */
+#define INSTFGSC 13	/* STRING in tree INSTBOX */
+#define INSTFBOX 14	/* BOX in tree INSTBOX */
+#define INSTFORE 16	/* BUTTON in tree INSTBOX */
+#define INSTFR0  17	/* BOXCHAR in tree INSTBOX */
+#define INSTDRV  18	/* FTEXT in tree INSTBOX */
+#define INSTNAME 19	/* FTEXT in tree INSTBOX */
+#define INSTSCSC 20	/* STRING in tree INSTBOX */
+#define INSTSC   22	/* BUTTON in tree INSTBOX */
+#define INSTSC0  23	/* BOXCHAR in tree INSTBOX */
+#define INSTDEL  24	/* BUTTON in tree INSTBOX */
+#define INSTCANC 25	/* BUTTON in tree INSTBOX */
+#define INSTOK   26	/* BUTTON in tree INSTBOX */
+

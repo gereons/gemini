@@ -1,0 +1,10 @@
+#define FOLDINFO 14	/* form/dialog */
+#define FDINAME  3	/* FTEXT in tree FOLDINFO */
+#define FDITIME  4	/* FTEXT in tree FOLDINFO */
+#define FDIDATE  5	/* FTEXT in tree FOLDINFO */
+#define FDIFILNR 6	/* FTEXT in tree FOLDINFO */
+#define FDIFOLNR 7	/* FTEXT in tree FOLDINFO */
+#define FDISIZE  8	/* FTEXT in tree FOLDINFO */
+#define FDICANC  9	/* BUTTON in tree FOLDINFO */
+#define FDIOK    10	/* BUTTON in tree FOLDINFO */
+

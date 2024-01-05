@@ -1,0 +1,47 @@
+nderungen in GEMINI Version 1.2 gegenber Version 1.1
+------------------------------------------------------
+
+Copyright (C) 1990 by Gereon Steffens & Stefan Eissing
+
+GEMINI ist ein Shareware-Programm von
+
+  Gereon Steffens                     Stefan Eissing
+  <veraltete Adressen wurden entfernt>
+  
+Was gibt's neues? Fr alle Benutzer hier eine kurze Zusammenfassung der
+wichtigsten nderungen von Version 1.2 gegenber 1.1 (Details zu einigen
+Punkten k”nnen Sie der Dokumentation entnehmen):
+
+a) Mupfel
+   - Neue Environment-Variable GEMSUFFIX; bezeichnet Extensionen fr
+     GEM-Programme
+   - Overlay-Startmodus fr speicherhungrige Programme
+   - chmod behandelt "fastload"- und TT-Bits
+   - neue Kommandos prtconf, rsconf, format, kclick und kbrate
+   - History kann gesichert werden
+   - Alle Meldungen von Mupfel sind komplett in deutscher Sprache
+   - verbesserte Behandlung von stderr und Ein-/Ausgabe-Umlenkung
+   - Lange (verst„ndlichere) Optionen bei den Kommandos
+   
+b) Venus
+   - Overlay-Startmodus fr speicherhungrige Programme
+   - Mehrere Dateitypen sind fr eine Applikation anmeldbar
+   - Desktop-Aufr„umen
+   - Formatieren von Diskette m”glich
+   - verschieden groe Icons m”glich
+   - xAcc-Protokoll der Stufe 0
+   - eigenes Protokoll zwischen Venus und Accessories (-> TreeView)
+   - neuer Font-Selektor und bessere Dialoge bei Icon-Regeln und
+     angemeldeten Applikationen
+   - Tastaturkrzel fr Objekte auf dem Hintergrund
+   - Farbige Icons
+   - Textzeile unter Icons ist variabel breit
+   
+c) Gemini
+   - ziehen von Objekten in das Console-Fenster m”glich
+   - Im Console-Fenster ist auch die Maus aktiv
+   - Text im Console-Fenster kann mit der Maus selektiert werden
+   - Fuller fr das Console-Fenster
+   
+d) In allen Programmen wurden Fantastilliarden von Fehlern entfernt
+   (und hoffentlich nur wenige neu eingebaut!).

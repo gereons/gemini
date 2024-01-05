@@ -1,0 +1,5 @@
+#define TOTALINF 36	/* form/dialog */
+#define TIFOLDNR 5	/* FTEXT in tree TOTALINF */
+#define TIFILENR 6	/* FTEXT in tree TOTALINF */
+#define TIBYTES  7	/* FTEXT in tree TOTALINF */
+

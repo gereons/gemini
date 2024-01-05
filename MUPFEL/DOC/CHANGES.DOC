@@ -1,0 +1,58 @@
+nderungen in GEMINI Version 1.1 gegenber Version 1.0
+------------------------------------------------------
+
+Copyright (C) 1989 by Gereon Steffens & Stefan Eissing
+
+GEMINI ist ein Shareware-Programm von
+
+  Gereon Steffens                     Stefan Eissing
+  <veraltete Adressen wurden entfernt>
+  
+Was gibt's neues? Fr alle Benutzer hier eine kurze Zusammenfassung der
+wichtigsten nderungen von Version 1.1 gegenber 1.0 (Details zu einigen
+Punkten k”nnen Sie der Dokumentation entnehmen):
+
+a) Mupfel
+ - Neue Kommandos: more, print, noalias und cookie
+ - Neue Optionen -b und -s fr cp
+ - cd, tree und die Promptanzeige kommen mit sehr tiefen Pfaden klar
+ - Drive-Wechsel mit Grossbuchstaben (also z.B. "D:") wechselt ins Root-
+   Directory dieses Laufwerks.
+ - cp und mv l”schen jetzt bei Fehlern die Zieldatei
+ - Atari's neues ARGV-Verfahren wird untersttzt
+ - mit K:[YN] in $PRGNAME_EXT kann man nach Programmen auf einen Tastendruck
+   warten
+ - Aufrufe per system() sind jetzt reentrant
+ - I/O-Redirection von internen Kommandos erzeugt jetzt immer "richtige" Text-
+   files
+ - In $PS1 kann man auf inverse Darstellung umschalten
+ - Die Alias-Liste, die Funktionstastenbelegung und die Werte der internen
+   Variablen werden an "Baby-Mupfeln" weitervererbt.
+   
+b) Venus
+ - Alle Mens und Dialoge sind auf Deutsch
+ - Handling der Menleiste z.B. beim Icon-Draggen verbessert
+ - Die Directories fr's Clipboard und die Trashcan werden jetzt immer ange-
+   legt wenn sie noch nicht existieren
+ - Kopieren von Directories in sich selber ist jetzt verboten
+ - more bzw. print werden jetzt automatisch fr alle Dateien benutzt fr die
+   keine Applikation angemeldet ist.
+ - Alternate-Doppelklick auf ein Directory im Window ”ffnet ein neues Fenster
+   fr dieses Directory, bei Directory-Icons auf dem Desktop wird ein Fenster
+   fr das darberliegende Directory ge”ffnet
+ - Wenn Desktop-Icons in Fenster gedraggt werden, l”st dies eine Kopier-
+   operation aus
+ - In den Datei-Windows ist jetzt wie im Console-Window der Zeichensatz w„hl-
+   bar
+ - Ins Console-Window k”nnen keine Dateien mehr gedraggt werden
+ 
+c) Gemini
+ - Das Console-Window kann jetzt auch mit Mausklick verlassen werden
+ - TOS-Programme werden jetzt immer mit dem Directory des obersten Windows
+   als aktuellem Directory gestartet
+ - Das Zusammenspiel von W:N in $PRGNAME_EXT mit "Fenster vorher schliessen"
+   in Venus funktioniert besser
+ - Textausgabe von internen Kommandos im Console-Window wesentlich schneller
+ - man kann jetzt die Mupfel-Kommandos cp, mv, init, label, rm, more und
+   print gefahrlos aliasen, da sie von GEMINI immer mit "noalias" benutzt 
+   werden.

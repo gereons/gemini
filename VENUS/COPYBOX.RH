@@ -1,0 +1,12 @@
+#define COPYBOX  9	/* form/dialog */
+#define CPTITLE  2	/* STRING in tree COPYBOX */
+#define MVTITLE  3	/* STRING in tree COPYBOX */
+#define CPFOLDNR 4	/* FTEXT in tree COPYBOX */
+#define CPFILENR 5	/* FTEXT in tree COPYBOX */
+#define CPABORT  6	/* BOXTEXT in tree COPYBOX */
+#define CPBYTES  7	/* FTEXT in tree COPYBOX */
+#define CPCANCEL 8	/* BUTTON in tree COPYBOX */
+#define CPFOLDER 9	/* FTEXT in tree COPYBOX */
+#define CPFILE   10	/* FTEXT in tree COPYBOX */
+#define CPOK     11	/* BUTTON in tree COPYBOX */
+

@@ -1,0 +1,179 @@
+Versionen der Fliegenden Dialoge
+--------------------------------
+
+Vers  Datum     Bemerkung
+
+0.12  05.07.89  Behobene Bugs:
+                - "Verschwinden" von Dialogen bei zu schneller
+                  Bewegung.
+                - "Infinitive Redraw" bei HIDETREE eines letzten
+                  Objekts im Baum.
+                - Buttons mit falscher Schriftgrîûe
+0.13  11.07.89  Generell Bezeichnungen auf FLYDIAL geÑndert. Objc-
+                Draw sollte jetzt wieder laufen; wird aber demnÑchst
+                von Grund auf neu gemacht.
+0.14  11.07.89  ObjcDraw fÅr Buttons nun vîllig zu Fuû. SHADOW und
+                Ñhnlicher Unfug zur Zeit nicht supported.
+0.15  14.07.89  Solange an ObjcDraw gebastelt, bis es wieder mit
+                MvMerge richtig funktioniert hat...
+0.16  26.07.89  Workstation-Handling in ObjcDraw wird wieder Åberar-
+                beitet. Bitte am Anfang des Programms DialInit() und
+                am Ende DialExit() aufrufen!!!
+0.17  18.08.89  Fehler in ObjcDraw beseitigt, der Dialoge mit Tiefe
+                >2 zum HÑngen brachte. Neuer Extended-Type '21', der
+                bei DrÅcken der HELP-Taste selektiert wird.
+      22.08.89  DialInit() darf jetzt auch mehrfach aufgerufen werden.
+                DialExit() darf auch aufgerufen werden, ohne daû ein
+                DialInit() da war.
+                Objc- und Form-Routinen betrachten jetzt '[[' als
+                Schreibweise fÅr '['.
+      11.09.89  Beim Verschieben der Dialoge wird jetzt im MFDB das
+                gerÑtespezifische Format gewÑhlt (sorry, Arnd).
+                DialStart() liefert einen Success-Code zurÅck, mit
+                dem man feststellen kann, ob der Hintergrund
+                tatsÑchlich gebuffert worden ist.
+                Man kann jetzt auch mit TOS 1.0 Edit-Felder mit
+                Validation-Zeichen '9' verwenden, ohne daû bei
+                Eingabe von '_' das System abstÅrzt.
+0.18  23.09.89  Bei DialAlert wird jetzt automatisch die Mausform
+                gesetzt, aber NICHT zurÅckgesetzt (wie auch...)
+      25.09.89  Die Popp-Routinen kennen jetzt auch geCHECKTE
+                Objekte
+      28.09.89  Die Popp-Routinen erkennen jetzt auch Objekte mit
+                gesetztem ext-ob-type richtig.
+0.20  28.09.89  Interne Umstellungen in handle.o (siehe auch
+                flydial.h)
+      15.10.89  Doppelte '[' werden jetzt in Buttons herausgefiltert.
+      14.11.89  Radio-Buttons gehen jetzt auch bei G_IMAGE richtig
+                (énderung in ObjcChange)
+      16.11.89  DialAlert alloziert seine Buffer jetzt dynamisch!
+      18.11.89  Die Alerts Åberleben jetzt auch mehr als 15 Zeilen,
+                alle Ausgaben Åber DialWk erfolgen geclippt auf
+                die Bildschirmgrîûe.
+0.21  22.11.89  Alerts erscheinen nur noch, wenn sie in das
+                Work-Area von Window 0 passen. DialMove fÅr Leute
+                ohne Blitter etwas verschînert.
+      24.11.89  Bitmaps fÅr DialAlert kînnen jetzt dazugelinkt
+                werden (siehe im Header-File)
+0.22  29.11.89  Die Bitmaps sind jetzt Åber Funktionen erreichbar.
+                Neue Routinen fÅr wind_update und graf_mouse einge-
+                baut. Sollten jetzt von jedem Programm benutzt werden,
+                da damit z.B. DialAlert den Mauszeiger 
+                wiederherstellt.
+      05.12.89  PoppUps kînnen jetzt auch durch Anklicken des Parents
+                hervorgeholt werden.
+      15.12.89  Alt-0 geht jetzt auch als Shortcut. Alt-Ziffernblock
+                geht noch immer nicht und wird auch nie gehen, da
+                die Tasten mit und ohne Alt den gleichen Scancode
+                zurÅckliefern.
+      19.12.89  Auf TOS 1.0 kann man jetzt in numerischen Feldern auch
+                mehr als die Zifferntasten drÅcken.
+      14.01.90  Handling bei Popups geÑndert.                    
+                Experimentell: auûerhalb eines Dialogs rechte UND linke
+                Taste drÅcken: Maus wird Åber Mover positioniert.
+      16.01.90  ...: wieder entfernt: DafÅr drin: PoppSet2ThinLine
+                macht aus einer disableten gestrichelten Linie
+                etwas HÅbscheres. 
+                Ausprobieren!
+0.23  19.01.90  PoppSet2ThinLine in das Modul Menu verschoben (heiût
+                jetzt MenuSet2ThinLine). Neu: MenuTune.
+      23.01.90  FormDo und damit auch DialDo skalieren jetzt versuchsweise
+                Radio-Buttons und Check-Boxes auf ihre tatsÑchlichen
+                Ausmaûe.
+      28.01.90  DialAlert macht seinen WindUpdate jetzt 'eher'.
+      11.02.90  DialDo merkt sich jetzt eine mittels FormSetFormKeybd
+                gesetzte Routine. DafÅr neue Funktion: FormGetFormKeybd.
+0.24  23.02.90  Kleine Optimierung an RectInter
+      25.02.90  Radio Buttons jetzt rund. Bitte testen.
+      09.03.90  Bei DialStart wird der Root-Tree auf OUTLINE gepatcht,
+                wenn er das Attribut SHADOWED hat (wg. ABC-GEM).
+                Die Fliegenden Dialoge geben jetzt grundsÑtzlich
+                geclippt aus. Dazu war es nîtig, die neue Funktion
+                ObjcTreeInit() einzufÅhren, die jeweils EINMAL pro
+                Tree aufgerufen werden muû.
+      28.03.90  Mit RastDotRect und RastSetDotStyle kann man jetzt
+                schwarze Linien auf grauem Hintergrund hinbekommen.
+0.25  06.04.90  MenuTune paût jetzt die MenÅleiste an die tatsÑchliche
+                Bildschirmbreite an. Das AES tut's nicht, daher die
+                merkwÅrdigen Effekte mit einigen RCS's und Overscan
+                (malen in den Rand hinein).
+      13.04.90  In Poppup-MenÅs dÅrfen jetzt auch USERDEF-Objekte
+                auftauchen, die Behandlung ist allerdings bislang
+                noch relativ rudimentÑr und nur mit den ThinLines
+                der MenÅs getestet.
+      15.04.90  UNDERLINE geht demnÑchst nur noch mit STRINGS!
+      23.04.90  énderung vom 6.4. wieder rÅckgÑngig gemacht. 
+                Stattdessen sollte man dafÅr sorgen, daû im RSC-File
+                die Breite des MenÅtitelhintergrunds auf 80 (Zeichen)
+                steht. rsrc_obfix() sorgt dann selbst fÅr die
+                Anpassung.
+                Alle Objekte werden jetzt als USERDEFs gemalt. Dazu
+                muû allerdings ObjcTreeInit selbst dynamisch etwas
+                Speicher anfordern, was bei DA's zu Problemen fÅhren
+                kînnte (im Moment wird genug fÅr 100 Userdefs 
+                angefordert -- wenn das nicht reicht, wird ein neuer
+                Malloc gemacht). Durch die Umstellung ist DialDraw
+                deutlich schneller und das Modul Objc deutlich
+                kleiner geworden.
+                ObjcGetObspec liefert jetzt den Obspec eines Objekts
+                (wenn es sich bei dem Objekt um ein in ein Userdef
+                gewandeltes Objekt handelt, wird der Obspec aus
+                ub_parm im USERBLK ermittelt).
+
+0.27  02.06.90  Touchexit-Objekte, die SELECTABLE sind, werden jetzt
+                beim Anklicken noch invertiert (Thanx an Elmar)
+      12.06.90  Versuchsweise neu drin: clip, jazz und fonts.
+                Bei Checkboxes und Radiobuttons werden jetzt nicht
+                mehr nur die Texte disabled dargestellt.
+      30.06.90  Neuer Objekttyp: 22. Auswirkung:
+                Falls NICHT BOXCHAR: Breite des Objekts wird um 1
+                vermindert
+                Sonst: Anstelle des Zeichens wird ein Cycle-Pfeil
+                gemalt.
+      13.08.90  Kleinen Fehler in JazzUp bei der Entprellung entfernt.
+                Popp wird nicht weiter unterstÅtzt.
+0.28  13.08.90  Arnd's defines fÅr MSDOS Åbertragen.
+      28.08.90  Bei JazzUp und SlidClick Updates eingebaut bzw.
+                umgestellt.
+                Die Listen machen jetzt automatisch realtime-scrolling,
+                wenn sie `kurz genug' sind.
+      15.09.90  Ein biûchen in form_ und objc_ aufgerÑumt, selektier-
+                bare Radio-Textfelder tun's jetzt richtig, warum
+                auch immer.
+                Bei DialCenter wird jetzt eine von BigScreen 2.0
+                gesetzte Struktur berÅcksichtigt, Dialogboxen
+                werden auf dem sichtbaren Teil des Bildschirms
+                zentriert.
+                DialCenter snappt nicht mehr auf Byte-Positionen
+      20.09.90  SlidClick beachtet jetzt bei der Entscheidung
+                fÅr Realtimescrolling den accel-Wert
+                Bei schmalen Alerts sollte jetzt die Bitmap nicht
+                mehr in die Icons hineinragen.
+      24.09.90  Beim Testen von Zeichenbreiten wird jetzt ASCII-
+                Zeichen 0 ausgelassen. Mindestens EIN Bug in
+                DialAlert, der zu AbstÅrzen fÅhren konnte, ist
+                gekillt.
+       4.10.90  Mit öberarbeitung von objc_edit angefangen. FormKeyBd-
+                Binding hat sich geÑndert, also Vorsicht (->make all).
+                Erstes Resultat: Clr und Home haben in Dialogboxen
+                jetzt eine Funktion. BackTab (Shift-TAB) geht jetzt
+                auch.
+       6.10.90  DialInit bekommt jetzt Pointer fÅr malloc() und free().
+                Siehe énderung im Prototype (->make all...).
+                formdo kann jetzt shift-cursor (Anfang/Ende der 
+                Zeile), ctrl-cursor (Wort vor/zurÅck)
+       8.10.90  CR wird zu TAB, wenn kein Default-Objekt da ist.
+                Mit FormSetValidate kann man nun experimentell
+                eigene ObjcEdit-Validierungen einbauen (siehe
+                Beispiel)
+                cltr-delete lîscht bis zum Ende des feldes.
+                Was schon immer da war: shift-insert drÅcken,
+                ascii-code eingeben, nochmal shift-insert drÅcken,
+                zeichen erscheint.
+      17.11.90  In der DialCenter-Geschichte (siehe 15.9.) war leider
+                noch ein Bug (die Position wurde ignoriert). Die
+                Font-Routinen benutzen jetzt vqt_width und sollten
+                daher beim prop-Test schneller sein.
+      16.12.90  In Dialogboxen werden ListMan-Slider jetzt beim
+                Anklicken selektiert.
+                

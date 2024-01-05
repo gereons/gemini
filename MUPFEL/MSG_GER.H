@@ -1,0 +1,348 @@
+/*
+ * msg_ger.h  -  german messages for Mupfel
+ * 27.01.91
+ *
+ * 08.01.91 énderungen fÅr ls (jr)
+ * 17.01.91 getopt
+ * 23.01.91 runopts
+ * 25.01.91 error messages for ls
+ */
+ 
+#ifndef _M_MSG_GER
+#define _M_MSG_GER
+
+#define AL_CANTSET	"kann kein alias fÅr '%s' setzen"
+#define AL_UNDEF	"%s ist nicht definiert"
+
+#define BT_ERROR	"Lesefehler in %s"
+#define BT_STARTUP	"Autostart-Datei %s fehlt"
+
+#define BL_STATUS	"der Blitter ist %s"
+#define BL_ON		"an"
+#define BL_OFF		"aus"
+#define BL_NOBLIT	"kein Blitter installiert"
+
+#define CA_CANTOPEN	"kann %s nicht îffnen"
+#define CA_CANTREAD	"kann nicht aus %s lesen"
+#define CA_CANTWRT	"kann nicht ausgeben"
+#define CA_DIRECT	"Ende der Eingabe: UNDO oder CTRL-Z"
+
+#define CD_NOCD		"In MUPFEL.MUP ist 'cd' nicht erlaubt"
+#define CD_TOOBAD	"Schade"
+#define CD_NOHOME	"HOME ist nicht gesetzt"
+#define CD_NOEMPTY	"leerer Verzeichnisname ist nicht erlaubt"
+#define CD_MANYARGS	"mehr als ein Verzeichnisname angegeben"
+#define CD_BADDIR	"%s ist kein Verzeichnis"
+#define CD_MANYPUSH	"zu viele pushd's"
+#define CD_NOPOP	"Stack ist leer"
+#define CD_BADPOP	"%c:%s ist kein Verzeichnis"
+#define CD_NOSTACK	"Stack ist leer"
+#define CD_NODRV	"%s ist kein Laufwerksname"
+
+#define CH_ISDIR	"%s ist ein Verzeichnis"
+#define CH_NOFILE	"kann %s nicht îffnen"
+#define CH_CANTOPEN	"kann %s nicht îffnen"
+#define CH_GETATTR	"kann Attribute von %s nicht lesen"
+#define CH_SETATTR	"kann Attribute von %s nicht setzen"
+#define CH_ILLOPT	"ungÅltige Option %c"
+#define CH_ILLOPTST	"ungÅltige Option %s"
+
+#define CK_DAMAGE	"Das ausgefÅhrte Programm hat %s beschÑdigt. Seien Sie vorsichtig!"
+#define CK_OK		"Weitermachen"
+#define CK_REBOOT	"Neustart"
+
+#define CO_HEADER	"Cookie  Wert"
+#define CO_NOCOOKIE	"Cookie Jar nicht vorhanden"
+
+#define CP_USAGE	"Gebrauch"
+#define CP_INDENT	"        "
+#define CP_CONFCP	"%s: %s existiert. öberschreiben (j/n/a/q)? "
+#define CP_CHOICE	"JNAQ"
+#define CP_ASKCP	"%s: %s nach %s kopieren (j/n/a/q)? "
+#define CP_SHOWCP	"%s %s nach %s ..."
+#define CP_COPYING	"kopiere"
+#define CP_MOVING	"verschiebe"
+#define CP_ENDSEC	" fertig.\n%s wird in %s umbenannt ..."
+#define CP_OVERWRT	"kann %s nicht Åberschreiben"
+#define CP_FULLDISK	"Ziel-Laufwerk ist voll"
+#define CP_WRITEERR	"Schreibfehler in %s"
+#define CP_READERR	"Lesefehler in %s"
+#define CP_DUPFILE	"Doppelter Dateiname %s"
+#define CP_NOMEM	"nicht genÅgend Speicher"
+#define CP_CANTCRT	"kann %s nicht anlegen"
+#define CP_CPDIR	"kann Verzeichnis %s nicht kopieren"
+#define CP_CANTOPEN	"kann %s nicht îffnen"
+#define CP_CPDONE	" fertig."
+#define CP_NOFILE	"%s: Datei existiert nicht"
+#define CP_READONLY	"%s ist schreibgeschÅtzt"
+#define CP_RENAME	"kann %s nicht in %s umbenennen"
+#define CP_RECUR	"Benutzen Sie -r um Verzeichnisse zu kopieren"
+#define CP_NEED14	"Verzeichnisse kînnen nur mit TOS 1.04 umbenannt werden"
+#define CP_ARCHWARN	"ACHTUNG: -a funktioniert erst ab TOS 1.04 richtig"
+#define CP_NODIR	"%s: %s ist kein Verzeichnis"
+#define CP_EXTERR	"ext muû 1-3 Zeichen haben"
+#define CP_RENAMDIR	"kann Verzeichnis %s nicht umbenennen"
+#define CP_EXISTS	"%s existiert bereits"
+#define CP_BACKUP	"kann Verzeichnis %s nicht sichern"
+
+#define CT_ILLBAUD	"ungÅltige Baudrate"
+#define CT_ILLPAR	"Wert fÅr -p muû e, o oder n sein"
+#define CT_ILLCS	"Wert fÅr -c muû 5-8 sein"
+#define CT_ILLSTOP	"Wert fÅr -s muû 1-3 sein"
+#define CT_PRTCONF	"Drucker-Konfiguration:"
+#define CT_PRINTER	"-Drucker"
+#define CT_DAISY	"Typenrad"
+#define CT_DOTMAT	"Matrix"
+#define CT_COLOR	"Farbe"
+#define CT_MONO	"Schwarz/Weiû"
+#define CT_EPSON	"Epson"
+#define CT_ATARI	"Atari"
+#define CT_LQ		"BriefqualitÑt"
+#define CT_DRAFT	"EntwurfsqualitÑt"
+#define CT_RS232	"RS-232"
+#define CT_CENTR	"Centronics"
+#define CT_SINGLE	"Einzelblatt"
+#define CT_FANFOLD	"Endlospapier"
+#define CT_KBRATE	"Einsatzpunkt: %d ms, Wiederholgeschwindigkeit: %d ms"
+#define CT_KBARG	"Argument nicht numerisch oder 0"
+#define CT_KEYCLICK	"Tastatur-Klick ist %s"
+#define CT_KCON	"an"
+#define CT_KCOFF	"aus"
+
+#define DF_NOINFO	"kann Information zu Laufwerk %c: nicht ermitteln"
+#define DF_INFO		"Laufwerk          KBytes benutzt    frei  Anteil    GerÑt"
+#define DF_NODRIVE	"Laufwerk %c: nicht verfÅgbar"
+#define DF_NOLABEL	"kein Label"
+#define DF_BADFILE	"Dateiname `%s' ist fehlerhaft"
+
+#define DT_BADSPEC	"UngÅltige Datumsangabe"
+#define DT_NEWDATE	"Neues Datum: %s"
+#define DT_BADCONV	"UngÅltige Datumsangabe"
+#define DT_ISDIR	"%s ist ein Verzeichnis"
+#define DT_CANTCRT	"kann %s nicht anlegen"
+#define DT_NONEXIST	"%s existiert nicht"
+#define DT_CANTSET	"kann Datum fÅr %s nicht setzen"
+
+#define DU_NOMEM	"nicht genug Speicher"
+#define DU_ILLFILE	"`%s' nicht gefunden"
+
+#define EC_PRESSCR	"DrÅcken Sie RETURN: "
+
+#define EF_CANTCRT	"kann %s nicht anlegen"
+#define EF_ISRO	"%s ist schreibgeschÅtzt"
+#define EF_STATUS	"Fehlerausgabe ist auf %s umgelenkt"
+#define EF_NOFILE	"Fehlerausgabe ist nicht umgelenkt"
+
+#define ET_NOEXIT	"Kein exit. Schlieûen Sie dieses Fenster um die Console zu verlassen."
+
+#define EV_ILLNAME	"UngÅltiger Name %s"
+#define EV_ILLVAR	"UngÅltige Variable %s"
+#define EV_CANTSET	"kann %s nicht setzen"
+#define EV_NOTSET	"%s ist nicht gesetzt"
+
+#define EX_RUNNER	"Wo ist RUNNER.APP?"
+#define EX_CANTRUN	"In MUPFEL.MUP dÅrfen keine Programme gestartet werden."
+#define EX_TOOBAD	"Schade"
+#define EX_BADCD	"Kann nicht ins Verzeichnis %s wechseln!"
+#define EX_OOPS	"Oh!"
+#define EX_USEXARG	"Zu viele Argumente, xArg/ARGV wird benutzt"
+#define EX_PRESSCR	"DrÅcken Sie RETURN..."
+#define EX_CANTEXEC	"kann %s nicht ausfÅhren"
+#define EX_NOMEM	"nicht genug Speicher fÅr %s vorhanden"
+#define EX_NOTTOS	"%s ist keine Programmdatei"
+#define EX_CRASH	"%s ist abgestÅrzt! Weitermachen kann gefÑhrlich sein."
+#define EX_OK		"Weiter"
+#define EX_REBOOT	"Neustart"
+
+#define FB_NOMEM	"%s: nicht genug Speicher fÅr %s"
+#define FB_READERR	"%s: Lesefehler in %s"
+
+#define FK_ILLKEY	"UngÅltige Funktionstaste"
+
+#define FM_NOROOM	"kein Pufferspeicher"
+#define FM_INFO	"Formatiere Spur %02d Seite %d"
+#define FM_FMTERR	"Fehler beim formatieren von Spur %d:"
+#define FM_ABORT	"abgebrochen"
+#define FM_WRTBOOT	"kann Boot-Sektor auf Laufwerk %c: nicht schreiben"
+#define FM_WRTFAT	"kann FAT auf Laufwerk %c: nicht schreiben"
+#define FM_ILLSECS	"nur 9 oder 10 Sektoren erlaubt"
+#define FM_ILLDRV	"kann Laufwerk %c: nicht formatieren"
+#define FM_CONFIRM	"Diskette in Laufwerk %c: wirklich formatieren (j/n)? "
+#define FM_CHOICE	"JN"
+#define FM_WRTLBL	"kann Label von Laufwerk %c nicht schreiben"
+
+#define FR_FRAG	"zu viele Speicherblîcke"
+#define FR_HEADER	"Blk Adresse    Grîûe"
+#define FR_INFO	"%lu Bytes (%luK) in %d Blîcken frei, grîûter Block: %lu Bytes (%luK)"
+
+#define GM_NOVDI	"%s: Kann keine VDI-workstation îffnen, Abbruch"
+#define GM_NOAES	"%s: appl_init() ging schief, Abbruch"
+#define GM_NOAUTO	"%s darf nicht im AUTO-Ordner gestartet werden!"
+
+#define GO_AMBIG	"%s: Option '%s' ist mehrdeutig"
+#define GO_NOARG	"%s: Option '%c%s' darf kein Argument haben"
+#define GO_REQARG	"%s: Option '%s' benîtigt ein Argument"
+#define GO_REQARG2	"%s: Option '-%c' benîtigt ein Argument"
+#define GO_ILLOPT	"%s: Unbekannte Option '%c%s'"
+#define GO_ILLOPT2	"%s: Unbekannte Option, code=0%o"
+#define GO_ILLOPT3	"%s: Unbekannte Option '-%c'"
+#define GO_OOMEMORY	"%s: Nicht genug Speicher"
+
+#define HA_OPTERR	"Kombination von -r und -d ist nicht mîglich"
+#define HA_NODIR	"%s ist kein Verzeichnis"
+#define HA_TITLE	"Anz.  Aufw. Kommando   Voller Pfad"
+
+#define HE_NOCMD	"kein eingebautes Mupfel-Kommando"
+
+#define HI_CRTERR	"Kann History-Datei nicht anlegen!"
+#define HI_WRTERR	"Fehler beim Schreiben der History-Datei!"
+
+#define IN_WRTBOOT	"kann Boot-Sektor auf Laufwerk %c: nicht schreiben"
+#define IN_WRTERR	"Schreibfehler auf Laufwerk %c:"
+#define IN_ILLSECS	"nur 9 oder 10 Sektoren erlaubt"
+#define IN_ILLDRV	"kann Laufwerk %c: nicht initialisieren"
+#define IN_CONFIRM	"Diskette in Laufwerk %c: wirklich initialisieren (j/n)? "
+#define IN_CHOICE	"JN"
+#define IN_READERR	"kann Boot-Sektor von Laufwerk %c: nicht lesen"
+#define IN_NONTOS	"Unbekannter Diskettentyp, bitte Sektoren und Seiten angeben."
+
+#define LB_NODRV	"Laufwerk %c: unbekannt"
+#define LB_VOLNAME	"Diskette in Laufwerk %c: ist %s"
+#define LB_NOLBL	"Diskette in Laufwerk %c: hat kein Label"
+#define LB_ILLLBL	"ungÅltiges Label"
+#define LB_EXISTS	"Datei oder Verzeichnis %s existiert bereits"
+#define LB_RMLBL	"kann altes Label nicht lîschen"
+#define LB_CANTSET	"kann Label auf Laufwerk %c: nicht setzen"
+
+#define LE_CMDHIST	"Kommando-History:"
+
+#define LO_NOMEM	"nicht genug Speicher"
+
+#define LS_NOFILE	"%s existiert nicht"
+#define LS_WRONGW	"falsche Breitenangabe"
+#define LS_NOMEM	"nicht genug Speicher"
+#define LS_NOMEMD	"nicht genug Speicher fÅr %s"
+
+#define MA_TOOLONG	"Argument-Liste zu lang"
+#define MA_ILLREDIR	"UngÅltige (leere) Umlenkung"
+#define MA_EOF		"Unerwartetes Zeilen/Dateiende"
+#define MA_ALOOP	"Endlose Alias-Schleife erkannt"
+#define MA_QUOTE	"%c fehlt"
+
+#define MK_EXISTS	"%s existiert bereits"
+#define MK_CANTCRT	"%s kann nicht angelegt werden"
+
+#define MO_INFO	"%s: Zeile %ld von %ld (%d%%), %lu Bytes"
+#define MO_CANTOPEN	"kann %s nicht îffnen"
+#define MO_NOMEM	"nicht genug Speicher"
+#define MO_ISTTY	"kann nur Dateien lesen"
+			    /*         1         2         3         4         5         6         7         8*/
+			    /*12345678901234567890123456789012345678901234567890123456789012345678901234567890*/
+#define MO_HELP	"Ab:CR, Auf:K,|S.Ab:SP,F S.Auf:BS,B|NÑ:N Vor:P|Ende:ESC,Q|Inf: ^G|Such: /,?,A"
+
+#define MU_WRONGTOS	"%s lÑuft leider nicht mit TOS-Versionen vor 1.02"
+#define MU_TOOBAD	"Schade"
+
+#define MI_IOFMT 	"%s%sI/O-Fehler %d%s%s\n"
+#define MI_IOACC	" beim Zugriff auf "
+#define MI_USAGE	"Gebrauch"
+#define MI_OPTIONS	"Buchstaben-Optionen kînnen durch Worte ersetzt werden:"
+
+#define PA_NOFILE	"%s existiert nicht"
+#define PA_NODRV	"Laufwerk %c: unbekannt"
+#define PA_NOTFOUND	"%s nicht gefunden"
+
+#define PR_NORESP	"Drucker ist nicht bereit"
+#define PR_CANTOPEN	"kann %s nicht îffnen"
+
+#define RD_CANTMOD	"kann %s nicht modifizieren"
+#define RD_CANTCRT	"kann %s nicht anlegen"
+#define RD_ISRO	"%s ist schreibgeschÅtzt"
+#define RD_CANTOPEN	"kann %s nicht îffnen"
+
+#define RM_SHOWRMD	"Lîsche Verzeichnis %s ..."
+#define RM_ISFILE	"%s ist kein Verzeichnis"
+#define RM_NODIR	"Verzeichnis %s existiert nicht"
+#define RM_ILLDIR	"Verzeichnis '%s' kann nicht gelîscht werden"
+#define RM_NOTEMPTY	"%s enthÑlt noch Dateien"
+#define RM_INTRN	"%s: GEMDOS-interner Fehler -65"
+#define RM_DONE		" fertig."
+#define RM_CONFIRM	"%s wirklich lîschen (j/n/a/q)? "
+#define RM_CHOICE	"JNAQ"
+#define RM_SHOWRM	"Lîsche %s ..."
+#define RM_ISDIR	"kann Verzeichnis %s nicht lîschen"
+#define RM_NOFILE	"%s existiert nicht"
+#define RM_CANTRM	"%s kann nicht gelîscht werden (Schreibschutz?)"
+
+#define RN_IOERR	"I/O-Fehler beim Zugriff auf %s"
+#define RN_NOVWK	"[1][Kann keine VDI-|Workstation îffnen][Oh]"
+#define RN_NOARGS	"[1][RUNNER benîtigt Parameter!][OK]"
+#define RN_CANTEXEC "Kann %s nicht starten"
+#define RN_NOMEM	"Nich genug Speicher fÅr %s vorhanden"
+#define RN_NOPGM	"%s ist keine Programmdatei"
+#define RN_LOADERR	"I/O-Fehler beim Laden von %s"
+
+#define RO_NOTEXEC	"%s ist keine Programmdatei"
+#define RO_ISDIR	"%s ist ein Verzeichnis"
+#define RO_NOFILE	"kann %s nicht îffnen"
+#define RO_CANTOPEN	"kann %s nicht îffnen"
+#define RO_READHDR	"kann Dateikopf von %s nicht lesen"
+#define RO_WRITEHDR	"kann Dateikopf von %s nicht schreiben"
+#define RO_ILLOPT	"ungÅltige Option %c"
+#define RO_ILLOPTST	"ungÅltige Option %s"
+#define RO_ILLSIZE	"ungÅltige Grîûenangabe %s"
+#define RO_OUTRANGE	"Angabe %s auûerhalb des erlaubten Bereichs"
+#define RO_NOTPA	"Grîûenangabe fehlt"
+
+#define SC_CANTGET	"kann Scrap-Pfad nicht ermitteln"
+#define SC_CURRSCRP	"aktueller Scrap-Pfad ist %s"
+#define SC_NOSCRP	"Scrap-Pfad nicht gesetzt"
+#define SC_OLDSCRP	"Scrap-Pfad ist auf %s gesetzt"
+#define SC_ABSPATH	"absolute Pfadangabe erforderlich"
+#define SC_NODIR	"Verzeichnis %s existiert nicht"
+#define SC_CANTSET	"kann Scrap-Pfad nicht setzen"
+
+#define SV_NOTSET	"nicht gesetzt"
+#define SV_ILLVAR	"ungÅltige Variable"
+
+#define SK_MFREE	"Fehler bei Mfree()!"
+#define SK_CNTALLOC	"kann %lu Bytes nicht allozieren"
+#define SK_NOSHRINK	"kann nicht um mehr verkleinern als frei ist!"
+#define SK_BUYRAM	"kaufen Sie eine RAM-Erweiterung!"
+#define SK_NOTSHRNK	"Speicher ist nicht verkleinert"
+#define SK_SHRINKBY	"Speicher ist um %lu Bytes (%luK) verkleinert"
+#define SK_FREE	", freier Speicher: %lu Bytes (%luK)"
+#define SK_ILLSIZE	"unerlaubte Grîûenangabe"
+#define SK_BADARG	"Argument nicht numerisch oder Null"
+#define SK_ARGUSE	"nur eins von -b, -t, -f oder -i erlaubt"
+
+#define	TE_ARGEXP	"Argument fehlt"
+#define TE_ARGEXPF	"Argument erwartet, %s gefunden"
+#define TE_INTEXP	"%s wird ein ganzzahliger Ausdruck erwartet"
+#define TE_BEFORE	"vor"
+#define TE_AFTER	"nach"
+#define TE_MISSBR	"`]'-Zeichen fehlt"
+#define TE_TOOMANY	"zu viele Argumente"
+#define TE_NTL		"-l ist zusammen mit -nt nicht erlaubt"
+
+#define TI_TIME	"Abgelaufene Zeit: "
+
+#define TR_DONE	" fertig."
+#define TR_INFO	"%s: %ld Byte(s), %d Datei(en), %d Ordner"
+#define TR_FIND	"%s ist kein Verzeichnis"
+#define TR_HASH	"kann Pfad %s nicht auflîsen"
+
+#define VE_VERSION	"Version"
+#define VE_HARDDISK	"Harddisk-Treiber Version"
+#define VE_NOTACC	"kann nicht ermittelt werden."
+#define VE_NOHARD	"Kein Harddisk-Treiber installiert."
+
+#define WC_CANTOPEN	"kann %s nicht îffnen"
+
+#define WH_HASHED	"%s ist gehasht (%s)"
+#define WH_IS		"%s ist %s"
+#define WH_ALIAS	"%s ist ein Alias fÅr '%s'"
+#define WH_BUILTIN	"%s ist ein eingebautes Kommando"
+#define WH_NOTFOUND	"%s: nicht gefunden"
+
+#endif

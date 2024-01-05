@@ -1,0 +1,15 @@
+# gcopy  -  copy Gemini to disk
+echo "Copying Gemini..."
+rm -rf a:\gemini
+mkdir a:\gemini a:\gemini\doc
+MD=mupfel\doc
+VD=venus\doc
+pushd .
+cd d:\tc
+cp -v $MD\mupfel.doc $MD\mupfel.gen $MD\gboot.doc a:\gemini\doc
+cp -v $VD\venus.doc $VD\venus.gen a:\gemini\doc
+cp -v venus\vaproto.h a:\gemini\doc
+cp -v mupfel.app gemini.app gemini*.rsc runner.app gboot???.app a:\gemini
+cp -v c:\gemsys\fonts\gemini.fnt a:\gemini
+chmod +f a:\gemini\*.app
+popd

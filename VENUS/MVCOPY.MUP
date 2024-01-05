@@ -1,0 +1,7 @@
+cp -v d:\tc\gemini.app a:\
+cp -v d:\tc\gemini.rsc a:\
+cp -v d:\tc\gemini.msg a:\
+cp -v d:\tc\venus\doc\venus.gen a:\
+cp -v d:\tc\runner.app a:\
+cp -v d:\tc\gboot???.app a:\
+cp -v d:\tc\geminiic.rsc a:\newicons.rsc

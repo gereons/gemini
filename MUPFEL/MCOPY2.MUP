@@ -1,0 +1,5 @@
+echo "Copying Mupfel (.ZOO .O) ..."
+mkdir a:\mupfel
+cp ..\mupfel.* doc\* xarg.c system.c shell0.c shell0.prg ..\exit.prg a:\mupfel
+cp m.zoo a:\mupfel\mupfel.zoo
+cp mupfmrg.o a:\mupfel

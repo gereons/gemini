@@ -1,0 +1,12 @@
+; GEMINI Project File (Link Merged Version)
+; 30.03.90
+\tc\gemini.app
+.L[-S=10000]
+=
+tcstart.o
+\tc\venus\venusmrg.o
+\tc\mupfel\mupfmrg.o
+\tc\lib\flydial\flydial.lib
+tcstdlib.lib
+tcgemlib.lib
+tctoslib.lib

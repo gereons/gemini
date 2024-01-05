@@ -1,0 +1,197 @@
+
+                        Venus Genesis
+                        
+Ver.    Datum   
+0.0     -7.12.88
+1.2     27.11.90
+                   Ist in der Datei VENUS12.GEN nachzulesen.
+
+1.21    05.11.90   Bug bei Shortcutauswahl in "Laufwerks-Icons..." ausge-
+                   baut.
+                   Kopieren/L”schen mit Ordnern und Dateien, die gleich
+                   dem Label eines Laufwerkes sind, sollte tun.
+                   Datei- und Ordnernamen wie ".tst" lassen sich jetzt
+                   l”schen!! Wow, nur ein dusseliger Ami hat's gemerkt.
+                   
+        13.11.90   Beim Umbennen mit Control-Verschieben in einem Fenster
+                   wird jetzt nicht mehr die Biene angelassen.
+                   Clipping wird beim Blockmarkieren im Console-Fenster
+                   richtig gestzt.
+                   Es sollte kein Error mehr doppelt ausgegeben werden.
+                   Beim Umbennen von Objekten wird jetzt auch das Icon auf
+                   dem Hintergrund entsprechend ge„ndert.
+                   Die Sekunden beim Dateidatum sind jetzt korrekt.
+                   Der Formatier-Dialog wird nur dann verlassen, wenn kein
+                   Fehler aufgetreten ist (und bei Abbruch natrlich).
+                   
+1.22    26.11.90   Dateien bleiben beim Scrollen selektiert.                   
+
+        01.12.90   Doppelklick auf ".." ”ffnet immer den Ordner darber.
+                   Logik bei angemeldeten Applikationen ge„ndert.
+                   "Fenster schlieen" wurde zu "L„uft im Console-Fenster".
+                   Bug gekillt, der dazu fhrte, da Dateifenster
+                   nach Schlieen des Console-Fensters nicht neu gezeichnet
+                   wurden.
+                   Flicker-Flacker-Fehler beim Ziehen von Icons ber das
+                   Console-Fenster beseitigt.
+                   
+        02.12.90   Wenn eine belegte Funktionstaste gedrckt wird, so wird
+                   immer das Console-Fenster ge”ffnet.
+                   
+        11.12.90   Control-A fr "Alles selektieren" eingebaut. Nur in 
+                   welches Men soll das????
+                   
+        13.11.90   "Alles ausw„hlen" ins Datei-Men gepackt.
+        
+        17.12.90   Beim Programmstart werden jetzt keine Acc-Fenster mehr
+                   geschlossen. Das gab Probleme bei Accessories, die ihre
+                   Fenster ohne AC_OPEN wieder ”ffnen. Fr das Schlieen
+                   ist also immer der Startende verantwortlich.
+                   
+        29.12.90   Die vt52 Routinen k”nnen nun auch Strings ausgeben, die
+                   l„nger als 32 KB sind (dauert nur etwas).
+        
+        03.01.91   Frohes neues Jahr!
+                   Und gleich ein h„licher Bug gefixt. Das ".."-Objekt
+                   wird jetzt beim Draggen immer deselektiert. Also kann
+                   man beim L”schen nicht mehr alle Ordner darber auch
+                   l”schen.
+                   
+       10.01.91    Beim Draggen werden nun auch halb verdeckte Icons
+                   beachtet.
+                   Environment-Variable $TOPWIND eingefhrt. In ihr steht
+                   immer der aktuelle Pfad des obersten GEMINI-
+                   Dateifensters. Ist kein Dateifenster offen, ist der
+                   Wert undefiniert :-)
+                   
+       12.01.91    Bug bei der H”he von Textobjekten im Dateifenster
+                   gefixt. Nach dem Aufruf von "Darstellung" erscheinen
+                   die Dateien wieder in derselben H”he.
+                   
+       14.01.91    Mit dem Einbau von Native Language Support angefangen.
+                   Die Datei GEMINI.MSG wird ben”tigt!
+                   
+       19.01.91    Statt graf_mkstate() wird jetzt evnt_event() beim 
+                   Abfragen der Maus verwendet. Das hat zur Folge, da kein
+                   Buttonevent beim Draggen in das Console-Fenster kleben
+                   bleibt.
+                   Wird bei einem Doppelklick auf einen Ornder/eine Datei
+                   selbige nicht gefunden, kann nun das Objekt gesucht 
+                   oder entfernt werden.
+                   
+       23.01.91    Bug in der Anzeige der selektierten Filegr”en gefixt.
+       
+       28.01.91    Init, Label und Format werden jetzt direkt aufgerufen.
+                   Daher sollte in VENUS ' und " in Filenamen nicht mehr
+                   st”ren. Verhalten von "N„chstes Fenster..." etwas
+                   verbessert, es kommt aber immer noch zu H„ngern in
+                   Verbindung mit TreeView.
+                   
+       29.01.91    Information ber mehrere selektierte Objekte eingebaut.
+                   
+       07.02.91    Bug in vt52-Emulator (Cleol) gekillt. Gnome l„t jetzt
+                   keine Zeichen am Ende einer Zeile mehr stehen.
+                   
+       11.02.91    Bug beim Redraw vom Console-Fenster behoben. Gab es ein
+                   Gemini.Mup, so wurde es zweimal redrawt.
+                   
+       15.02.91    Kleinen Timeout nach Lesen von GEMINI.INF eingebaut. Es
+                   wird den Accessories jetzt etwas Zeit gelassen, damit
+                   sie ihre Fenster ”ffnen k”nnen. Jetzt sollten die Fenster
+                   von Gemini immer oben sein. Das ist zwar auch nicht
+                   optimal, aber immer noch besser als fher.
+
+       04.03.91    Endlich mal wieder ein Eintrag hier!
+                   Die File-Completion (Tab) tuts jetzt wieder richtig.
+                   Es gab Probleme, wenn man zwischendurch Programme 
+                   startete; Mupfel befand sich dann in einem anderen Ordner.
+                   
+       06.03.91    Der Abbruch-Button ist aus den Gesamt-Informationen
+                   verschwunden. Ebenso sollten dort jetzt IO-Errors besser
+                   abgefangen werden. Der Ordner ".." wird nicht mehr
+                   mitgez„hlt.
+                   Der Info-String bei selektierten Objekten wurd ge„ndert.
+                   
+       09.03.91    Bug bei der Auswahl des Zeichens fr einen Ordner gefixt.
+                   MUP-Dateien werden von VENUS nicht mehr als Overlay
+                   gestartet.
+                   
+       17.03.91    Labels mit Endungen werden jetzt richtig behandelt. Es kam
+                   zu Problemen, wenn diese umbenannt wurden; Icons hatten
+                   dann noch das alte Label.
+                   Kleiner Bug beseitigt, der nur auftrat, wenn ohne 
+                   GEMINI.INF, aber mit VA-Protokoll-Accessory-Fenster ein
+                   VENUS-Fenster ge”ffnet wurde. Dieses hatte dann 0 Breite
+                   und H”he...
+                   Control-X wird jetzt an die Mupfel durchgelassen (Wird
+                   vom Zeileneditor benutzt). 
+                   Wird zum Ausfhren eines Programmes das Console-Fenster
+                   nach vorn geholt, blieb es bisher dort. Nun wird das alte
+                   oberste Fenster wieder nach vorn geholt. Dies stellt
+                   zwar die alte Reihenfolge nicht wieder her, ist aber
+                   ein guter Kompromi.
+                   Venus benutzt jetzt Keytbl(), um die Alternate-Shortcuts
+                   umzusetzen. Sollte jetzt also auch mit AZERTY-Tastaturen
+                   funktionieren.
+                   Vor dem Starten eines Programms oder ™ffnen eines Ordners
+                   ber ein Icon auf dem Hintergrund wird jetzt wieder das
+                   Label des Laufwerkes berprft. Erst dann wird geguckt,
+                   ob das Objekt auch wirklich vorhanden ist.
+                   
+       19.03.91    Auch nach dem L”schen/Formatieren einer Diskette und dem
+                   Entfernen von Ordnern in der Mupfel stellt Venus nun den
+                   Inhalt in den Fenstern richtig dar. Pfade werden verkrzt,
+                   bis sie wieder existieren.
+                   
+       03.04.91    Probleme mit `Smart-Redraw' von KAOS sollten nicht mehr
+                   auftreten. Es werden jetzt auch unn”tige Redraws beim
+                   Verkleinern von Fenstern vermieden.
+                   Kleiner Sch”nheitsfehler in der Media-Change-Routine
+                   beseitigt (lieferte fr (fast) alle Laufwerke TRUE).
+                   
+       07.04.91    Den Begrungs-Dialog mit einem Fenster versehen. Wenn
+                   vorher andere Fenster berdeckt wurden, kam das nicht so
+                   gut, aber irgendwie gef„llt mir das alles noch nicht.
+                   
+       11.04.91    Dummy fr neue Message im VA-Protokoll eingebaut, die
+                   zum Kopieren von Objekten dient.
+                   
+       17.04.91    Bug gekillt, der zuschlug, wenn ein Fenster mit langem
+                   Pfad offen ist, und ein Programm gestartet wird. Es
+                   wurden globale Daten berschrieben, weil ein Puffer zu
+                   klein war. Kann nun nicht mehr vorkommen. (ganz b”se,
+                   war schon immer drin!)
+                  
+       17.05.91    Bug in der Anzeige der Laufwerks-Informationen behoben.
+                   Es wurden auf MiNT-Laufwerken -2 Bytes frei angezeigt.
+                   
+       20.05.91    Vor dem Anlegen eines Ordners wird jetzt vorher geprft,
+                   ob schon eine Datei/Ordner selben Namens existiert. Ist
+                   auf TOS 1.02 unbedingt notwendig!
+                   Dabei bleibt jetzt auch der Button selektiert, bis die
+                   Funktion abgeschlossen ist.
+
+       21.05.91    Beim Kopieren wird jetzt auch auf leere Dateinamen
+                   berprft. Zudem wurde die Logik bei vorhandenen Objekten
+                   verbessert. Konnte ein Ordner nicht angelegt werden, weil
+                   das Laufwerk voll ist, so kommt jetzt eine entsprechende
+                   Meldung.
+                   Die Abfrage der Maske beim Finden eines Icons wieder
+                   ausgebaut. Jetzt wird (z.B. beim `Draggen') ein Icon
+                   dann selektiert, wenn sich der Mauszeiger entweder auf
+                   dem Text- oder dem Bildbereich bedindet. Dabei wird das
+                   ganze Bild und nicht nur die sichtbaren Punkte genommen.
+                   
+       22.05.91    Venus konnte schon immer MiNT-MINIX-Dateisysteme lesen
+                   und darstellen, kommt aber jetzt auch mit einem Ordner
+                   ".." im Root-Directory klar.
+                   Auerdem wurde eine unn”tige Wandlung in Grobuchstaben
+                   entfernt, die dazu fhrte, da tieferliegende Ordner
+                   (Wow! tolles Wort) nicht erkannt wurden.
+                   
+                   
+                   
+                   
+                   
+                   
+ciao   Stefan Eissing

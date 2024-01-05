@@ -1,0 +1,17 @@
+#define RULEEDIT 31	/* form/dialog */
+#define REBGBOX  3	/* BOX in tree RULEEDIT */
+#define REBOX    4	/* BOX in tree RULEEDIT */
+#define RESPEC   5	/* IBOX in tree RULEEDIT */
+#define REFOLDER 7	/* BUTTON in tree RULEEDIT */
+#define REBGSC   9	/* STRING in tree RULEEDIT */
+#define RECLBBOX 10	/* BOX in tree RULEEDIT */
+#define RECOLBG  12	/* BUTTON in tree RULEEDIT */
+#define RECOLBG0 13	/* BOXCHAR in tree RULEEDIT */
+#define REFGSC   14	/* STRING in tree RULEEDIT */
+#define RECLFBOX 15	/* BOX in tree RULEEDIT */
+#define RECOLFG  17	/* BUTTON in tree RULEEDIT */
+#define RECOLFG0 18	/* BOXCHAR in tree RULEEDIT */
+#define REWILD   20	/* FTEXT in tree RULEEDIT */
+#define RECANCEL 21	/* BUTTON in tree RULEEDIT */
+#define REOK     22	/* BUTTON in tree RULEEDIT */
+

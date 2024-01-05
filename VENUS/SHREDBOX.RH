@@ -1,0 +1,13 @@
+#define SHREDBOX 19	/* form/dialog */
+#define SHREDNAM 5	/* FTEXT in tree SHREDBOX */
+#define SHRDBGSC 7	/* STRING in tree SHREDBOX */
+#define SHREBBOX 8	/* BOX in tree SHREDBOX */
+#define SHREBACK 10	/* BUTTON in tree SHREDBOX */
+#define SHREBK0  11	/* BOXCHAR in tree SHREDBOX */
+#define SHRDFGSC 12	/* STRING in tree SHREDBOX */
+#define SHREFBOX 13	/* BOX in tree SHREDBOX */
+#define SHREFORE 15	/* BUTTON in tree SHREDBOX */
+#define SHREFR0  16	/* BOXCHAR in tree SHREDBOX */
+#define SHREDCAN 17	/* BUTTON in tree SHREDBOX */
+#define SHREDOK  18	/* BUTTON in tree SHREDBOX */
+

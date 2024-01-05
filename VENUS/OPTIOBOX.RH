@@ -1,0 +1,7 @@
+#define OPTIOBOX 23	/* form/dialog */
+#define CPVERB   4	/* BUTTON in tree OPTIOBOX */
+#define OPTEXIST 5	/* BUTTON in tree OPTIOBOX */
+#define RMVERB   6	/* BUTTON in tree OPTIOBOX */
+#define OPTICANC 7	/* BUTTON in tree OPTIOBOX */
+#define OPTIOK   8	/* BUTTON in tree OPTIOBOX */
+

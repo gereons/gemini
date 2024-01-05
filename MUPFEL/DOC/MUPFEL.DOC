@@ -1,0 +1,1329 @@
+               Letzte énderung: 03.10.1990 fÅr Version 1.19a
+
+
+               Mupfel  -  Yet Another Commandline Shell
+
+               Copyright 1990 by Gereon Steffens.
+                    Alle Rechte vorbehalten.
+
+
+HINWEIS: In dieser Dokumentation werden viele FachausdrÅcke verwendet,
+die dem Laien vielleicht unbekannt sind. Die wichtigsten Begriffe
+werden im Glossar (am Ende dieser Datei) erklÑrt.
+
+                         Start von Mupfel
+
+Beim Start von Mupfel wird versucht, die Datei MUPFEL.MUP im aktuellen
+Verzeichnis als Batchdatei (s.u.) auszufÅhren. Wenn Mupfel mit mindestens
+einem Argument gestartet wurde, wird das erste anstatt MUPFEL.MUP benutzt.
+Wenn das erste Argument "-c" oder "-C" ist, werden die nachfolgenden
+Argumente als Kommandos interpretiert und ausgefÅhrt. Dabei wird vorher
+keine Start-Batchdatei ausgefÅhrt.
+
+
+                         Der Zeileneditor
+
+Der Editor von Mupfel arbeitet zeilenweise mit einer sog. "History".
+Die Grîûe dieser History-Liste ist einstellbar (siehe "Interne Variablen").
+Eine Eingabezeile kann maximal 256 Zeichen lang sein.
+Bei der Eingabe haben folgende Tasten eine Sonderbedeutung:
+     ESC:
+          Lîscht die gesamte Eingabezeile.
+     Return:
+          Schlieût eine Eingabezeile ab. Egal wo der Cursor steht,
+          es wird die gesamte sichtbare Zeile abgeschickt.
+     Backspace:
+          Lîscht das Zeichen links vom Cursor.
+     Delete:
+          Lîscht das Zeichen unter dem Cursor. Am Zeilenende hat Delete die
+          gleiche Wirkung wie Backspace.
+     Control-Delete:
+          Lîscht von der aktuellen Cursorposition bis zum Zeilenende.
+     Insert:
+          Umschalter zwischen EinfÅgen/öberschreiben.
+          Normalerweise ist EinfÅgen eingeschaltet, was am statischen Cursor
+          zu erkennen ist. Beim öberschreiben blinkt der Cursor. (Bei GEMINI
+          blinkt der Cursor allerdings nicht, so daû die optische Unter-
+          scheidung der beiden Modi nicht mîglich ist.)
+     Pfeil links/rechts:
+          Bewegt den Cursor entsprechend, ohne die Eingabezeile
+          zu verÑndern.
+     Shift Pfeil links/rechts:
+          Bewegt den Cursor zum Zeilenanfang bzw. -ende.
+     Control Pfeil links/rechts:
+          Bewegt den Cursor zum Beginn des nÑchsten bzw. vorherigen
+          Wortes.
+     Help:
+          Zeigt die History-Liste an.
+     Pfeil rauf/runter:
+          BlÑttern auf/abwÑrts in der History-Liste.
+     Shift Pfeil rauf/runter:
+          BlÑttern auf/abwÑrts in der History-Liste, wobei nur diejenigen
+          EintrÑge angezeigt werden, die mit den Zeichen aus der aktuellen
+          Zeile beginnen. Wenn die aktuelle Zeile leer ist, kînnen alle
+          EintrÑge angezeigt werden.
+     Control-X:
+          Vertauscht das Zeichen unter dem Cursor mit dem rechts davon
+          stehenden.
+     Control-C:
+          Wandelt Groû- in Kleinbuchstaben und umgekehrt.
+
+WÑhrend der Eingabe einer Zeile kann man gefahrlos in der Kommando-
+History blÑttern. Die Zeile wird intern zwischengespeichert und durch
+AbwÑrtsblÑttern beim jÅngsten Eintrag wiederhergestellt. Wenn wÑhrend
+des BlÑtterns die angezeigte Zeile gelîscht wird (durch Backspace, DEL
+oder ESC) wird der interne Zeiger fÅr den nÑchsten anzuzeigenden History-
+Eintrag auf den jÅngsten zurÅckgesetzt.
+Jede Kommandozeile wird in die Kommando-History aufgenommen, mit den fol-
+genden Ausnahmen:
+  - Wenn das gerade eingegebene Kommando identisch mit dem letzten 
+    (jÅngsten) Eintrag in der History ist, wird es nicht aufgenommen.
+  - Wenn die interne Variable "nohistdouble" gesetzt ist, werden nur
+    Kommandos aufgenommen, die noch nicht in der History existieren, un-
+    abhÑngig von ihrer Position in der Hiscoreliste.
+Auf Wunsch kann beim Verlassen von Mupfel die aktuelle Kommando-History ge-
+speichert werden. Dazu muû die interne Variable "histsave" (s.u.) ge-
+setzt sein. Der Name der History-Datei kann im Environment in der Variablen
+HISTFILE (s.u.) angegeben werden, wenn HISTFILE nicht gesetzt ist, wird
+als Ersatz $HOME\MUPFEL.HST genommen. Beim Start von Mupfel wird die 
+Kommando-History in jedem Fall gelesen, falls die entsprechende Datei
+(aus $HISTFILE oder $HOME\MUPFEL.HST) existiert.
+Mit dem Mupfel-Zeileneditor kînnen alle Zeichen mit den Codes von 1 bis 255
+eingegeben werden. FÅr diejenigen Zeichen, die nicht Åber normale Tasten
+erreicht werden kînnen, kann man bei gedrÅckter Alternate-Taste den ent-
+sprechenden Code auf der 10er-Tastatur eintippen. Sobald Alternate los-
+gelassen wird, wird das entsprechende Zeichen erzeugt.
+
+
+                         Commandline-Parsing
+
+Jede Eingabezeile wird von Mupfel in sog. Tokens zerlegt. Jede Zeichen-
+folge, die durch Blank, Tab, Zeilenanfang oder -ende begrenzt wird
+ist ein Token. Um Blanks oder Tabs in Tokens aufzunehmen, kann ein
+Token mit einfachen oder doppelten AnfÅhrungsstrichen (' oder ") be-
+grenzt werden (Quoting). Diese Begrenzungszeichen werden nicht in den Token
+Åbernommen. Tokens, die eins der Zeichen '*' oder '?' oder eine in
+'[' und ']' eingeschlossene Zeichenkette enthalten, sind sog. Wild-
+cards (siehe unten). Diese Wildcards werden - falls mîglich - expand-
+diert, wobei fÅr jedes Ergebnis ein neuer Token generiert wird. Falls
+keine Dateinamen auf einen Wildcard passen, wird der Original-Token
+ungeÑndert belassen. Die Wildcard-Expansion kann durch Quoting (mit
+' oder ") unterdrÅckt werden. Ein Token, der mit $ beginnt,
+ist eine Referenz auf das Environment. Die lÑngste nachfolgende
+Kette von Buchstaben und Ziffern wird als Name einer Environment-
+variablen interpretiert. Wenn die so enstandene Variable nicht ex-
+istiert, wird der Token ersatzlos gestrichen. Um Konflikte zu ver-
+meiden, kann der Variablenname hinter dem $ in geschweifte Klammern
+({ und }) geschrieben werden, so daû z.B. ${HOME}1 den Inhalt der
+Variablen HOME mit einer nachfolgenden 1 darstellt. Alternativ wÑre
+es auch mîglich, "$HOME"1 zu benutzen. Referenzen auf das Environment
+werden bei gequoteten Tokens nur bei Verwendung von " aufgelîst, bei
+' werden alle Zeichen ungeÑndert Åbernommen. Tokens, die mit >, >> oder <
+beginnen, werden als Aufforderung zur I/O-Redirection interpretiert
+(-> I/O Redirection). FÅr Programme, deren Startup-Modul dies selber in-
+terpretiert, kînnen auch diese Tokens gequotet werden.
+Wenn ein nicht geqouteter Token mit dem Zeichen ~ beginnt, wird dieses durch
+den Namen des aktuellen Directories ersetzt. So kann man ohne viel Tipp-
+arbeit Files aus dem aktuellen Directory an GEM-Programme Åbergeben, die
+woanders liegen.
+Mupfel erlaubt es, mehrere Kommandos auf einer Zeile durch Semikolons ge-
+trennt zu schreiben. Wenn also Semikolons in einen Token aufgenommen werden
+sollen, sind diese zu quoten (Wichtig bei $PATH, $CDPATH und $SUFFIX).
+
+
+                         Alias-Expansion
+
+Sobald bei der Generierung der Tokens aus einer Kommandozeile der erste
+Token komplett ist, wird in der Alias-Liste (s.u. "alias") nach einem Alias
+dieses Namens gesucht. Wenn ein Alias passt, wird dieser erste Token wieder
+entfernt, der evtl. verbleibende Rest der Eingabezeile an den Ersatztext
+dieses Aliases anghÑngt und der Parser neu gestartet. Um endlos rekursive
+Aliase zu vermeiden und bequeme AbkÅrzungen fÅr einige Kommandos zu ermîg-
+lichen wird die Alias-Expansion normalerweise nur ein einziges Mal durch-
+gefÅhrt. Damit mehrstufige Alias-Expansion gemacht wird, muss beim Ersatz-
+text das letzte Zeichen ein Blank (Leerzeichen sein). Mupfel erkennt 
+endlose Schleifen in der Alias-Kette und quittiert solche Eingaben mit
+einer entsprechenden Meldung.
+Beispiele:
+     alias cp 'cp -v'       # Files immer geschwÑtzig kopieren
+     alias locate whereis   # Bloss ein anderer Name...
+     alias b a
+     alias a b              # Eingabe a sucht Kommando b. Keine Schleife!
+     alias l 'ls -cdf'      # Recht nÅtzlich
+     alias use 'pwd;du .'   # Mehrere Kommandos dÅrfen entstehen.
+
+Beispiel fÅr mehrstufige Aliase:
+     alias x "echo x"   # Normales alias
+     alias y "x "       # 2. Stufe: y wird in x Åbersetzt, x wird
+                        # in "echo x" Åbersetzt.
+     alias z "y "       # Das Spielchen kann man endlos weitertreiben..
+
+SO sollte man es NICHT machen:
+     alias a "b "
+     alias b "c "
+     alias c "a "  # Eingabe von a, b oder c fÅhrt zu Fehlermeldung.
+
+
+                         Wildcards
+
+Mupfel unterstÅtzt die von UNIX(tm) her bekannte Wildcardnotation, die an
+die sog. "Regular Expressions" angelehnt ist. Dabei sind folgende "Joker-
+zeichen" mîglich:
+     *     -     Passt auf beliebig viele (auch kein) Zeichen.
+     ?     -     Passt auf genau ein Zeichen.
+ [...]     -     Passt auf die zwischen [ und ] angegebenen Zeichen.
+ [x-y]     -     Passt auf alle Zeichen von x bis y.
+[^...]     -     Passt auf alle *nicht* angegebenen Zeichen (x-y geht auch).
+Diese Einzelkomponenten kînnen beliebig aufeinander folgen, so daû z.B
+"[a-f]??[0-9]*x" jedem Dateinamen entspricht, dessen erstes Zeichen im
+Bereich von a bis f liegt, danach zwei beliebige Zeichen gefolgt von einer
+Ziffer, und der mit einem x aufhîrt.
+ACHTUNG: Der Wildcard "*" passt auf _ALLE_ Dateinamen, nicht (wie unter TOS
+sonst) nur auf diejenigen ohne Extension!
+ACHTUNG #2: Beim Expandieren der Wildcards werden Dateien mit dem Hidden-
+Attribut (siehe chmod und ls) _NICHT_ berÅcksichtigt!
+
+
+                         Das Environment
+
+Mupfel benutzt das sonst auf dem ST so stiefmÅtterlich behandelte Environ-
+ment sehr intensiv. Folgende Variablen werden intern verwendet:
+     ARGV:     Diese Variable ist fÅr das ARGV-Verfahren (s.u.) reser-
+               viert und sollte nicht benutzt werden.
+
+     CDPATH:   Suchpfad fÅr Directories fÅr "cd". Einzelne Komponenten
+               werden durch Semikolon oder Komma getrennt.
+
+     COLUMNS:  Anzahl Zeichen pro Zeile. Wird beim Start durch die VDI-
+               Funktion vq_chcells() ermittelt. Die Kommandos ls und help
+               verwenden diesen Wert.
+
+     CONSOLEDIR:     (nur fÅr GEMINI von Bedeutung)
+               Hier kann festgelegt werden, in welchem Directory man sich
+               beim ersten ôffnen des Console-Windows befinden will. Wenn
+               diese Variable nicht gesetzt ist, befindet man sich in dem
+               Directory, in dem GEMINI gestartet wurde.
+
+     DRIVEMAP: EnthÑlt die Liste der Laufwerksnamen (nur die Buchstaben),
+               fÅr die die Kommandos "df -a", "pwd -a" und "find -a" 
+               Informationen ausgeben sollen.
+
+     EXIT:     In dem hier angegebenen Directory wird nach dem Hilfspro-
+               gramm EXIT.PRG gesucht (s.u. GEM-Programme).
+
+     GEMSUFFIX:
+               Wird zur Erkennung von GEM-Programmen benutzt. Das Format ist
+               wie bei SUFFIX. Alle Programme, deren Extender in dieser
+               Liste steht, werden als GEM-Programme betrachtet. Wenn diese
+               Variable nicht existiert, wird "PRG;APP;ACC" als Default an-
+               genommen. Man kann so einen einfachen, aber wirkungsvollen
+               Schutzmechanismus gegen Linkviren aufbauen: Angenommen, alle
+               GEM-Programme werden von .PRG in .ALF und alle TOS-Programme
+               von .TOS in .UFO umbenannt. Dann kann man in SUFFIX ALF und
+               UFO als legale Suffixe fÅr Programme angeben und in GEMSUFFIX
+               ALF als Extender fÅr GEM-Programme. Wohl kaum ein Virus wird
+               versuchen, sich an Dateien, die nicht auf einen der Standard-
+               Programmextender enden anzuhÑngen.
+
+     HISTFILE: Name der Datei, in der die Kommandohistory gesichert werden
+               soll (falls "histsave" gesetzt ist, s.u.). Wenn HISTFILE
+               nicht gesetzt ist, aber die History trotzdem gespeichert 
+               werden soll, wird als Name fÅr die Datei $HOME\MUPFEL.HST
+               angenommen.
+               
+     HOME:     Name des Default-Directories fÅr cd. Auûerdem wird hier das
+               Hilfsprogramm EXIT.PRG (s.u. "GEM-Programme") gesucht, falls
+               dessen Pfad nicht in den Variablen EXIT definiert ist.
+
+     IMV:      EnthÑlt die Adresse einiger interner Variablen von Mupfel.
+               Wird fÅr's Weitervererben von Aliasen, Fkeys, der Hash-
+               Tabelle und einiger internen Variablen benutzt (nur fÅr eine
+               zweite Mupfel interessant!).
+
+     PATH:     Suchpfad fÅr externe Kommandos. Einzelne Komponenten
+               werden durch Semikolon oder Komma getrennt.
+
+     PS1:      Primary Prompt. Wird vom Zeileneditor fÅr die Ausgabe eines
+               Promptstrings benutzt. Kann folgende Spezialsequenzen ent-
+               halten:
+                    %P     Aktuelles Directory mit Drivename in Groûbuchstaben
+                    %p     Wie %P, aber in Kleinbuchstaben
+                    %D     Aktuelles Datum
+                    %T     Aktuelle Uhrzeit
+                    %N     CR/LF
+                    %%     Ein %-Zeichen
+                    %i     Inverse Textdarstellung einschalten
+                    %I     Inverse Textdarstellung ausschalten
+
+     ROWS:     Anzahl Zeilen auf dem Bildschirm. Wird vom internen Kommando
+               more benutzt.
+
+     SHELL:    Kompletter Pfad zu Mupfel selbst. Wird beim Start durch
+               das aktuelle Laufwerk/Directory und die Funktion shel_read()
+               ermittelt.
+               Sollte nicht geÑndert werden.
+
+	STDERR:	Ist auf den Namen desjenigen Files oder Devices gesetzt, daû
+               mit dem Kommando "errorfile" fÅr die Fehlerausgabe gewÑhlt
+               wurde. Im Normalfall ist das die Konsole (Bildschirm), CON:.
+               
+     SUFFIX:   EnthÑlt eine Liste (durch Semikolons oder Komma getrennt)
+               von Extendern, die fÅr ausfÅhrbare Programme verwendet werden
+               sollen. Die einzelnen Elemente dÅrfen max. 3 Zeichen lang
+               sein.
+               ACHTUNG: Die AusfÅhrbarkeit von Programmen wird nur anhand
+               von $SUFFIX festgestellt. Dies ist fÅr Systeme, die Load-
+               Time-Linking unterstÅtzen wichtig. Allerdings muû beachtet
+               werden, daû bei der Suche in $SUFFIX von links nach rechts
+               vorgegangen wird. Dies bedeutet, daû kurze Extensions (z.B.
+               .O) vor denjenigen angegeben werden mÅssen, die diese Ex-
+               tension enthalten, d.h.: "TOS;O" geht nicht, wohl aber
+               "O;TOS".
+
+     TOSDEFAULT und GEMDEFAULT:
+               Mit diesen beiden Variablen kînnen die Default-Startparameter
+               fÅr TOS- bzw. GEM-Programme global festgelegt werden. Das
+               Format ist wie bei $PRGNAME_EXT.
+
+     xArg:     Wird fÅr die öbergabe von Kommandozeilen nach dem xArg-Ver-
+               fahren benutzt. Siehe "Das xArg-Verfahren".
+
+     PRGNAME_EXT:
+               Mit diesen Variablen kann Mupfel angewiesen werden, ob beim
+               Programmstart die Maus und der Textcursor an oder aus sein
+               sollen und ob ein grauer Hintergrund gezeichnet werden soll.
+               Der Name dieser Variablen entsprich dem Programmnamen mit
+               der Extension in Groûbuchstaben, wobei der trennende Punkt
+               durch den Unterstrich '_' ersetzt wird, also z.B. $TC_PRG
+               oder $GOME_TTP.
+               Der Wert kann aus maximal zehn durch Semikolen oder Komma
+               getrennten Anweisungen bestehen. Jede Anweisung hat das
+               Format [MCBSDWXKO]:[YN]. Dabei bedeuten:
+                    M:  Maus anschalten?
+                    C:  Cursor einschalten?
+                    B:  Hintergrund grau?
+                    S:  Argumente auch mit shel_write Åbergeben?
+                    D:  Vor AusfÅhrung in das Directory im dem das Pro-
+                        gramm liegt wechseln?
+                    W:  (Nur in GEMINI von Bedeutung!) Sollen TOS-Programme
+                        im Console-Window laufen?
+                    X:  Das ARGV-Verfahren benutzen? (s.u.)
+                    K:  Nach Programmende auf Tastendruck warten?
+                    O:  "Overlay": Vor Programmstart Mupfel beenden?
+                        (Siehe dazu den Abschnitt "Overlay")
+                    L:  Cursor-Blinken einschalten? (FÅr TOS-Programme)
+               Mit "Y" hinter dem Doppelpunkt werden die Funktionen
+               aktiviert, mit "N" nicht.
+               Wenn eine solche Variable nicht existiert oder nicht alle
+               Anweisungen angegeben sind, werden folgende Defaults
+               angenommen:
+               - GEM-Programme: M:Y,C:N,B:Y,S:Y,D:Y,W:N,X:Y,K:N,L:N
+               - TOS-Programme: M:N,C:Y,B:N,S:N,D:N,W:Y,X:Y,K:N,L:N
+               
+Die Namen von Environmentvariablen dÅrfen aus Buchstaben, Ziffern und den
+Zeichen _,? und # bestehen. In den Werten darf das Zeichen '=' nicht vor-
+kommen.
+Die Variablen ARGV, IMV und xArg sind normalerweise nicht sichtbar, da sie
+direkt vor Programmstart erzeugt und sofort danach wieder gelîscht werden.
+Zur Verwaltung des Environments dienen die Kommandos "setenv", "env" und
+"show".
+
+
+                         Interne Variablen
+                         
+Mupfel hat neben dem Environment auch noch einige interne Variablen.
+öber diese Variablen werden interne Funktionen gesteuert sowie Argumente
+an Batchfiles Åbergeben. Diese Variablen kînnen wie auch die Environment-
+variablen mit vorangestelltem $-Zeichen referenziert werden. Folgende
+Variablen sind definiert:
+a) vom Benutzer nicht Ñnderbar:
+     0,1,...,9      Die ersten 10 Argumente fÅr ein Batchfile
+                    ($0 enthÑlt den Namen des Batchfiles)
+     *              Alle Argumente eines Batchfiles
+     #              Die Anzahl der Argumente fÅr ein Batchfile
+     ?              Der Returncode des letzten ausgefÅhrten Kommandos
+     cwd            In dieser Variablen steht der Name des aktuellen Ver-
+                    Zeichnisses. (cwd steht fÅr "current working directory")
+     drivelist      In dieser Variablen steht eine Liste aller physi-
+                    kalisch angelossenen Disketten- oder Festplatten-
+                    laufwerke.
+     shellcount     In dieser Variablen wird mitgezÑhlt wie oft Mupfel im
+                    Speicher ist.
+b) vom Benutzer Ñnderbar:
+     history        Diese Variable kann im Autoexec-File (nur dort!) dazu
+                    benutzt werden, die Grîûe der History-Liste zu be-
+                    stimmen. Der Standardwert ist 20.
+
+     histsave       Wenn diese Variable einen Wert hat, wird beim Verlassen
+                    von Mupfel die aktuelle Kommando-History in der Datei
+                    gespeichert, deren Namen in der Environmentvariablen
+                    HISTFILE definiert ist. Wenn HISTFILE nicht gesetzt ist,
+                    wird als Dateiname $HOME\MUPFEL.HST genommen. Wenn HOME
+                    nicht gesetzt ist, wird die History nicht abgespeichert.
+     
+     keepfree       Mit dieser Variablen kann festgelegt werden, wieviel
+                    Speicher die Kommandos cp und mv *NICHT* anfordern
+                    sollen (wichtig, wenn man z.B. Alex Esser's FlexDisk
+                    benutzt!). Wenn keepfree keinen Wert hat, wird 8192
+                    als Default angenommen.
+
+     noclobber      Wenn diese Variable einen Wert hat, wird bei "normaler"
+                    I/O Redirection eine bereits existierende Datei nicht
+                    neuangelegt.
+
+     nohistdouble   Wenn diese Variable einen Wert hat, werden Kommandos nur
+                    dann in die History aufgenommen, wenn sie dort nicht
+                    schon existieren.
+                    
+     slashconv      Wenn diese Variable einen Wert hat, werden in jeder Ko-
+                    mmandozeile (auch aus Batchfiles und bei system()-Auf-
+                    rufen) alle Slashes "/" in ungequoteten Tokens in Back-
+                    slahes "\" umgewandelt. Aus der Kommandozeile
+                    zoo "x//" f:/archive/bla blubb/fasel.txt
+                    wird also
+                    zoo x// f:\archive\bla blubb\fasel.txt
+                    
+     screensave     Wenn diese Variable einen Wert hat, wird vor der Aus-
+                    fÅhrung von GEM-Programmen der aktuelle Textbildschirm
+                    gesichert und nach Programmende wiederhergestellt.
+                    Dazu werden mind. 32 KB Speicher dynamisch alloziert,
+                    die genaue Grîûe wird aus der Anzahl der Pixel und der
+                    Planes auf dem Bildschirm (aus v_opnvwk und vq_extnd) 
+                    ermittelt und mit vro_cpyfm() der gesamte Bildschirm ko-
+                    piert.
+
+Die Namen dieser Variablen sind intern festgelegt. Im Environment
+kînnen keine Variablen mit gleichen Namen existieren.
+
+
+                         I/O Redirection
+                         
+Mupfel fÅhrt selbststÑndig I/O-Umlenkung durch. Durch ">datei" kann die
+Ausgabe eines internen oder externen Programms in datei umgelenkt werden.
+Wenn datei bereits existiert, wird sie neu angelegt. Mit ">>datei" werden
+Ausgaben an das Ende von datei angehÑngt. Mit "<datei" kann der Eingabe-
+kanal auf Datei gelenkt werden. Die datei muû vorher existieren. 
+Um trotz "noclobber" Dateien anzulegen, kann anstatt ">" und ">>" zu Aus-
+gabeumlenkung ">!" und ">>!" benutzt werden.
+FÅr die Umlenkung von Kanal 2 (Serielle Schnittstelle, in einigen Programmen
+als Fehlerausgabe verwendet) kann analog "2>", "2>>" usw. benutzt werden,
+siehe hierzu auch das Kommando "errorfile".
+Wenn beim Aufruf eines Batchfiles Ein- oder Ausgabeumlenkung angegeben wird,
+wird von Mupfel automatisch die entsprechende Umlenkung fÅr jedes Kommando
+in der Batchdatei Åbernommen. FÅr einzelne Kommandos in Batchfiles kann die
+Umlenkung auf andere Files weiterhin angegeben werden.
+Die I/O-Redirection funktioniert nur fÅr Programme, die ihre Ein-/Ausgabe
+Åber die GEMDOS-KanÑle 0,1 und 2 machen. Warnung: Im alten ROM-TOS sind
+einige Fehler, die die Verwendung dieser Funktion unmîglich machen! (TOS-
+Version vor 1.4, GEMDOS-Version vor 00.21)
+
+ACHTUNG: Die Verwendung von sog. Software-Blittern (TurboST oder QuickST)
+macht die Umlenkung der Ausgabe von Programmen unmîglich, da diese Programme
+die Zeichenausgabe-Routinen des TOS durch eigene Routinen ersetzen, die
+nicht auf die Umlenkung der Bildschirmausgabe achten.
+
+
+                         KommandoausfÅhrung
+                         
+Der erste Token jeder Kommandozeile wird als Name eines auszufÅhrenden Pro-
+gramms aufgefasst. Wenn dieser Token keine Pfadkomponenten oder Extensions
+enthÑlt (also mit . oder \ beginnt oder mit .xxx endet), wird zunÑchst in
+der Liste der internen Kommandos gesucht. Falls es sich nicht um ein in-
+ternes Kommando handelt, wird in jeder Komponente von $PATH nach einem
+Programm dieses Namens gesucht. Dazu werden der Reihe nach die Extensions
+aus der Environmentvariablen $SUFFIX probiert. Dateien, deren Name auf .MUP
+endet, sind sog. Batchfiles, die nicht direkt ausgefÅhrt werden, sondern
+Textdateien, die wiederum Mupfel-Kommandos enthalten. Batchdateien kînnen
+beliebig tief verschachtelt werden. Falls Namenskonflikte zwischen internen
+und externen Kommandos auftreten, kann die beschriebene Suchfolge auch
+umgedreht werden, indem der erste Token einer Zeile komplett in Groûbuch-
+staben eingegeben wird.
+Wenn sich sich um ein externes Programm handelt und nach der Expansion der
+restlichen Tokens die Kommandozeile mehr als 124 Zeichen lang ist, werden
+die Argumente nur Åber das xArg-Verfahren Åbergeben (s.u.). Normalerweise
+wird in diesem Fall eine entsprechende Meldung ausgegeben, wenn jedoch
+in $PRGNAME_EXT explizit X:Y angegeben wurde, wird diese Meldung unter-
+drÅckt.
+Interne Kommandos dÅrfen nur mit expandierten Wildcard gestartet werden,
+da sonst unerwÅnschte Effekte oder sogar (wegen Fehlern in GEMDOS) System-
+abstÅrze die Folge sein kînnen. Eine Ausnahme von dieser Regel sind die
+Kommandos "alias", "echo", "tree", "fkey" und "setenv".
+Interne Funktionen und externe TOS- oder TTP-Programme kînnen - sofern
+sie Ausgaben erzeugen - mit Control-C abgebrochen werden.
+An externe Kommandos wird das aktuelle Environment weiterverebt. öber die
+Variable $IMV werden Informationen Åber die Aliase, Funktionstasten, Hash-
+Tabelle und einige interne Variablen weitergegeben. Dies ist fÅr eine nach-
+gestartete zweite (oder dritte oder ...) Mupfel nÅtzlich, da diese Informa-
+tionen sonst nicht verfÅgbar wÑren.
+
+
+                              GEM-Programme
+
+GEM-Programme werden normalerweise an den Extensions .PRG, .APP oder .ACC
+erkannt. Wenn die Environmentvariable GEMSUFFIX (s.o.) gesetzt ist, werden
+nur Programme, deren Extender in diesem Wert auftaucht als GEM-Programme
+erkannt. Normalerweise ist es nicht zu empfehlen, Accessories von Mupfel
+aus zu starten, da dies zum Stillstand des Betriebssystems fÅhrt. Allerdings
+ist es seit einiger Zeit bei vielen Programmieren in Mode gekommen, ihre
+Programme so zu schreiben, daû sie selbstÑtig erkennen, ob sie als
+Accessory beim Booten oder vom Desktop (oder von Mupfel) gestartet wurden.
+Der Start von Programmen, deren Name auf .ACC endet ist also mit Vorsicht
+zu behandeln!
+Vor ihrer AusfÅhrung wird normalerweise das aktuelle Directory auf dasjenige
+geÑndert, in dem das Programm liegt (damit Resource- und andere Files ge-
+laden werden kînnen). Diese Funktion kann Åber den Eintrag "D:N" in der
+Variablen $PRGNAME_EXT (s.o.) ausgeschaltet werden.
+Auûerdem wird, wenn nicht Åber die Environment-Variable $PRGNAME_EXT anders
+angegeben (s.o.) der Textcursor aus- und die Maus eingeschaltet, der normale
+Desktop-Hintergrund hergestellt und die Argumente mit shel_write Åbergeben.
+Einige GEM-Programme informieren das AES mit der Funktion shel_write(), daû
+nach ihrem Ende ein anderes Programm zu starten ist, z.B. GEM-Draw, von dem
+OUTPUT.APP gestartet wird. Dieses Nachstarten wird vom AES nach dem Pterm()-
+Aufruf der aktuellen Applikation erledigt. Da Programme, die per Pexec()
+gestartet wurden, vom AES nicht als separate Applikation behandelt werden,
+wird diese Funktion von Mupfel erledigt. Ein kleines Problem dabei ist, daû
+man dem AES in den TOS-Versionen vor 1.4 nach einem shel_write-Aufruf nicht
+sagen kann, daû kein Programm zu starten ist. Mupfel benutzt dazu einen
+Trick: Vor dem Ende von Mupfel wird dem AES mitgeteilt, daû das Programm
+EXIT.PRG zu starten ist. Dieses Programm wird in dem in $EXIT im Environment
+(s.o.) festgelegten Directory gesucht. Falls $EXIT nicht gesetzt ist, wird
+in $HOME gesucht.
+EXIT.PRG sollte z.B. aus folgendem C-Quellcode entstanden sein: 
+     main()
+     {
+          return 0;
+     }
+Wenn weder $EXIT\EXIT.PRG noch $HOME\EXIT.PRG existieren, wird "$SHELL -q"
+als zu startendes Programm eingetragen. Der Wert von $SHELL ist normaler-
+weise der komplette Pfadname zu Mupfel, und wenn Mupfel mit "-q" auf der
+Kommandozeile aufgerufen wird, beendet sie sich sofort.
+Die Suche und das Starten von EXIT.PRG entfÑllt, wenn ein TOS ab Version 1.4
+installiert ist.
+In der hier angegebenen Form dient EXIT.PRG nur dazu, dem ROM-Desktop ein
+startbares Programm zur AusfÅhrung anzugeben. Wenn die Suche nach EXIT.PRG
+erfolglos ist und $SHELL nicht gesetzt ist oder nicht den Namen eines aus-
+fÅhrbaren Programms enthÑlt, gibt der ROM-Desktop eine Warnmeldung ("Die
+Anwendung kann das angesprochene Objekt nicht finden") aus. Da die Aus-
+fÅhrung von EXIT.PRG vîllig unabhÑngig von Mupfel ist, kann man bei Bedarf
+jedes beliebige andere Programm in EXIT.PRG umbenennen. Dieses wird dann
+automatisch beim Verlassen von Mupfel gestartet.
+
+
+                         Kommando-Hashing
+                         
+FÅr externe Kommandos fÅhrt Mupfel eine sog. Hashtabelle. Kommandos, die
+in $PATH gesucht werden mÅssen, werden in diese Tabelle aufgenommen, damit
+bei nachfolgenden Aufrufen die Suche nicht nochmals erfolgen muû. Wenn ein
+Programm, dessen Pfad bereits in die Hashtabelle aufgenommen wurde in ein
+anderes Directory verschoben, gelîscht oder umbenannt wird, wird der alte
+Hash-Eintrag gelîscht und wieder normal in $PATH gesucht und bei Erfolg 
+wieder in die Hashtabelle eingetragen.
+Wenn die Environmentvariablen PATH oder SUFFIX geÑndert oder gelîscht
+werden, wird die Hashtabelle gelîscht.
+
+
+                              Overlays
+
+Durch Angabe von "O:Y" in $PRGNAME_EXT wird Mupfel mitgeteilt, daû das an-
+gegebene Programm als sog. "Overlay" zu starten ist. Dazu wird das Programm
+RUNNER.APP benîtigt. Mupfel teilt dem Betriebssystem mit, daû RUNNER.APP zu
+starten ist und beendet sich dann. RUNNER erhÑlt als Kommandozeile den Namen
+des eigentlich zu startenden Programms sowie evtl. angegebene Argumente,
+startet das Programm und teilt nach dessen Ende dem Betriebssystem mit, daû
+Mupfel wieder gestartet werden soll. Damit ist natÅrlich ein gewisser Ge-
+schwindigkeitsverlust verbunden, auf der anderen Seite steht so den Pro-
+grammen praktisch der komplette Arbeitsspeicher des Rechners zur VerfÅgung
+(abzÅglich ca. 20K fÅr RUNNER.APP).
+ACHTUNG: RUNNER.APP *MUSS* sich in demjenigen Verzeichnis befinden, in dem
+auch Mupfel bzw. Gemini liegt, da sonst das korrekte Nachstarten von Mupfel
+bzw Gemini nicht garantiert werden kann.
+Zu beachten ist dabei, daû sÑmtliche Environment-Variablen, die Hash-Tabelle
+und die Funktionstastenbelegung beim Start von Overlay-Programmen verloren
+gehen. Beim Neustart von Mupfel werden nur diejenigen Einstellungen, die in
+MUPFEL.MUP vorgenommen wurden wieder ausgefÅhrt. Leider ist es auch nicht
+mîglich, an Overlay-Programm per xArg oder ARGV Åberlange Kommandozeilen zu
+Åbergeben.               
+
+                              
+                         Das xArg-Verfahren
+                         
+Das xArg-Verfahren (von Allan Pratt und Dale Schumacher vorgeschlagen)
+erlaubt die öbergabe von mehr als 124 Zeichen langen Kommandozeilen an
+Programme. Dazu legt das aufrufende Programm eine xArg-Struktur an,
+die so aussieht:
+
+typedef struct
+{
+     char xarg_magic[4];    /* enthÑlt "xArg" */
+     int  xargc;            /* wie argc in main() */
+     char **xargv;          /* wie argv in main() */
+     char *xiovector;       /* unbenutzt */
+     PD   *xparent;         /* Zeiger auf Basepage des Aufrufers */
+} XARG;
+
+In der Environmentvariablen $xArg wird als 8stellige Hexadezimalzahl die
+Adresse dieser Struktur an das aufgerufene Programm Åbergeben. Das auf-
+gerufene Programm muû nun anhand von xarg_magic ÅberprÅfen, ob es sich
+tatsÑchlich um eine xArg-Struktur handelt, und durch Vergleich des parent-
+Zeigers in der eigenen Basepage mit xparent testen, ob die Informationen
+vom eigenen Parent-Prozeû stammen. Ein Beispielprogramm fÅr die Verwen-
+dung des xArg-Verfahrens liegt in der Datei XARG.C bei.
+
+
+                         Das ARGV-Verfahren
+
+Das ARGV-Verfahren (seit einiger Zeit von Atari USA zu Standard erhoben)
+erlaubt wie das xArg-Verfahren die öbergabe von mehr als 124 Zeichen langen
+Kommandozeilen an Programme. ARGV ist eine Erweiterung des von Mark
+Williams engefÅhrten Verfahrens, bei dem die Kommandozeile im Environment
+Åbergeben wird. Die Probleme mit der Mark-Williams-Methode sind mit ARGV
+behoben. Bei ARGV wird am Ende des Environments die Variable ARGV angehÑngt,
+dahinter (jeweils durch '\0' getrennt) die einzelnen Argumente. Um anzu-
+zeigen, daû ARGV verwendet wurde, wird beim Pexec()-Aufruf als LÑngenbyte
+der Kommandozeile der (normalerweise illegale) Wert 127 angegeben. Der
+Kindprozess kann nun aus dem Environment die Argumente extrahieren und
+muss(!) danach ARGV aus dem Environment entfernen (dies geschieht durch
+Åberschreiben des 'A's mit einer 0). Ein Beispiel fÅr die Anwendung des
+ARGV-Verfahrens liegt in der Datei ARGV.C bei, auûerdem ist die offizielle
+Beschreibung von Atari in ARGV.TXT beigefÅgt.
+Dieses Verfahren (so schîn wie es ist, daû Atari einen Standard verkÅndet
+hat) hat auch einen Nachteil: Programme, die mit Mark Williams C Åbersetzt
+wurden, verstehen diese Methode der ParameterÅbergabe nicht. Um diese Pro-
+bleme zumindestens teilweise zu umgehen, wird ARGV nur dann benutzt, wenn
+mindestens ein Argument Åbergeben werden soll. Wenn Argumente an solche
+Programme Åbergeben werden mÅssen, sollte in $PRGNAME_EXT die Anweisung X:N
+angegeben sein.
+
+
+                         Der system()-Aufruf
+                         
+Von Mupfel gestartete Prozesse kînnen Aufgaben an Mupfel "delegieren".
+Dies ist Åber die Systemvariable "_shell_p" (Adresse 0x4F6) mîglich. An
+dieser Adresse wird von Mupfel ein Zeiger auf eine interne Routine in-
+stalliert. Diese Routine erwartet auf dem Stack einen Zeiger auf eine
+Kommandozeile, die ausgefÅhrt wird. Das Ergebnis der AusfÅhrung wird
+im Register D0.W zurÅckgegeben. Ein Beispielprogramm fÅr den Aufruf von
+Mupfel Åber _shell_p liegt in der Datei SYSTEM.C bei. Zum "Verbiegen" des
+_shell_p-Vektors benutzt Mupfel das sog. XBRA-Verfahren, das im Profi-
+buch nÑher erlÑutert ist. Die XBRA-Id von Mupfel ist "MUPF". Beim Aufruf
+Åber _shell_p werden von Mupfel zunÑchst die Register D1-D7 und A0-A7 ge-
+rettet. Danach wird mittels Malloc() ein 8 K grosser Speicherblock ange-
+fordert, der als Stack fÅr die Arbeit in Mupfel benutzt wird. Nach dem
+Ende der gewÅnschten Funktion wird dieser Speicherbereich wieder freige-
+geben und alle Registerinhalte restauriert.
+Ein Problem hierbei ist, daû _shell_p beim Reset nicht neu initialisiert
+wird. Programme, die system() benutzen wollen, werden also nach einem
+Reset in Mupfel in _shell_p noch einen legalen XBRA-Header finden und
+mit erhîhter Wahrscheinlichkeit abstÅrzen. Abhilfe dagegen schafft das
+Programm SHELL0.PRG, das in den AUTO-Ordner zu kopieren ist. SHELL0.PRG und
+der Quellcode dazu (SHELL0.C, fÅr Turbo-C) liegen bei.
+
+
+                         Interne Kommandos
+                         
+Die internen Kommandos von Mupfel sind von den Namen und der Funktion stark
+an UNIX(tm) und die dazugehîrige Bourne-Shell angelehnt. In der folgenden
+Beschreibung sind optionale Angaben in [] geklammert, wiederholbare Argu-
+mente durch nachgestelltes ... gekennzeichnet. Zwei Angaben, die entweder/
+oder erfolgen kînnen, werden durch das Zeichen | getrennt. Generell gilt
+bei der Kommandoeingabe, daû fÅhrende und abschliessende Leerzeichen einer
+Zeile von Mupfel ignoriert werden. Als Trenner zwischen dem Kommandonamen
+und den Argumenten dienen ein oder mehrere Leerzeichen. Wenn Leerzeichen
+Teil eines Arguments sein sollen, muss dieses Argument in " oder ' einge-
+schlossen werden.
+
+     exit [arg]
+          Beendet Mupfel. Wenn arg vorhanden ist und einen Zahlenwert re-
+          prÑsentiert, wird arg als Return-Code an das aufrufende Pro-
+          gramm gemeldet, ansonsten 0. Bei Verwendung in Batchfiles wird 
+          nur dieses beendet und zum aufrufenden Batchfile oder zu Mupfel
+          selbst zurÅckgekehrt.
+          In Gemini wird mit diesem Kommando nur das Console-Window ver-
+          lassen.
+          
+     cd [dir]
+          Wechselt in das Directory dir. Ohne Argumente wird der Wert von
+          $HOME genommen. Dir darf auch eine vorangestellte Driveangabe
+          haben (z.B. C:\BIN). Wenn CDPATH im Environment existiert und
+          ein Wechsel in dir nicht mîglich ist, wird dir der Reihe nach
+          an die einzelnen Werte aus $CDPATH angehÑngt und ein Wechsel
+          dorthin versucht.
+
+     pwd [-a]
+          Pwd (Print Working Directory) ohne Argumente zeigt das aktuelle
+          Directory auf dem aktuellen Drive an. Mit der Option -a (all)
+          werden die die aktuellen Directories aller Laufwerke an, wobei
+          die vorhandenen Laufwerke wie bei "df" (s.u.) ermittelt werden.
+                    
+     x:
+          Wechselt das aktuelle Laufwerk auf Laufwerk x. Wenn der Name des
+          neuen Laufwerks als Kleinbuchstabe angegeben ist, wird in das
+          aktuelle Directory dieses Laufwerks gewechselt. Bei grossgeschrie-
+          benen Laufwerksnamen wird in das Root-Directory auf diesem Lauf-
+          werk gewechselt.
+
+     pushd [dir]
+          Speichert das angegebene Directory dir auf einem Stack.
+          Ohne Argument wird das aktuelle Directory gespeichert.
+          Relative Pfade (die nicht mit \ oder einem Laufwerksnamen be-
+          ginnen) werden zuerst auf absolute Angaben erweitert.
+          
+     popd
+          Holt das letzte gespeicherte Directory vom Stack und fÅhrt
+          "cd" dortin aus.
+          
+     dirs
+          Zeigt den Inhalt des Directorystacks in LIFO-Reihenfolge an,
+          d.h. die erste Zeile der Ausgabe ist das letzte gepushte
+          Directory.
+          
+     help [cmd...]
+          Help alleine zeigt eine Liste aller internen Kommandos an. Diese
+          Liste wird mehrspaltig mit maximal $COLUMNS Zeichen ausgegeben.
+          Mit Argumenten werden kurze Hilfstexte zu diesen Kommandos an-
+          gezeigt.
+          
+     cp [-icdvabsn] file1 file2
+     cp [-icdvabsn] files... dir
+     cp -r [-a] dir1 dir2
+          Cp kopiert Dateien. In der ersten Form wird file1 auf file2 ko-
+          kopiert. Wenn file2 schon existiert, wird es neu angelegt.
+          In der zweiten Form werden alle files in das Directory dir ko-
+          piert. Bei Angabe der Option -c (confirm) wird bei bereits
+          existierenden Zieldateien nachgefragt ob sie Åberschrieben werden
+          soll. Mîgliche Eingabe auf die Frage sind 'y' (kopieren), 'n'
+          (nicht kopieren, bei der nÑchsten weitermachen), 'q' (ganzen
+          Kopiervorgang abbrechen) und 'a' (ab jetzt nicht mehr fragen).
+          Mit der Option -i (interactive) wird bei jeder Datei nachgefragt,
+          ob sie kopiert werden soll oder nicht. Mîgliche Antworten sind 
+          wie bei "cp -c".
+          Mit der Option -d (date) wird das Modifikationsdatum der
+          Kopie auf das entsprechende Datum der Quelldatei gesetzt, an-
+          sonsten hat die Kopie das aktuelle Systemdatum.
+          Mit der Option -r (recursive) wird der komplette Dateibaum
+          unterhalb von dir1 nach dir2 kopiert. Wenn dir2 nicht ex-
+          istiert wird es neu angelegt.
+          Mit der Option -v (verbose) wird jeder Dateiname angezeigt.
+          Cp kopiert die Dateiattribute (siehe chmod) mit, falls die Option
+          -a (Archive) nicht angegeben ist. Wenn -a angegeben wird, werden
+          nur diejenigen Files kopiert, die das Archiv-Bit gesetzt haben.
+          Nach erfolgreicher Kopie wird bei der Ausgangsdatei das Archiv-
+          Bit gelîscht (siehe auch unter chmod).
+          ACHTUNG: In allen TOS-Versionen vor TOS 1.4 vom 6.4.89 wurde das
+          Archiv-Bit falsch behandelt! Die Definition des Archiv-Bits ist
+          in diesem TOS "diese Datei ist verÑndert worden; sie sollte ar-
+          chiviert werden", frÅher war's genau andersherum: "diese Datei
+          wurde archiviert" [d.h., die Backup-Programme muûten es setzen!].
+          Wenn Sie mit alten TOS-Versionen benutzen, gibt cp eine ent-
+          sprechende Warnung aus.
+          Mit der Option -n (nonexistent) wird cp angewiesen, Dateien nur
+          dann zu kopieren, wenn die Zieldatei noch nicht existiert. In Ver-
+          bindung mit den Optionen -a und -r ist es so auf einfache Weise
+          mîglich, z.B. bei meherern Festplatten eine Sicherung von einer
+          Partition auf eine andere durchzufÅhren. Um also alle geÑnderten
+          oder auf D: nicht existierenden Dateien von Laufwerk C: zu ko-
+          pieren, wÅrde das Kommando "cp -anr c:\ d:\" benutzt.
+          Mit der Option -b (brute force) ist es mîglich, schreibgeschÅtzte
+          Dateien zu Åberschreiben.
+          Mit der Option -s (secure) wird die Kopie nicht (wie sonst) direkt
+          auf die angegebene Zieldatei gemacht, sondern auf eine Zwischen-
+          datei. Nur wenn dies fehlerfrei mîglich war, wird die Zieldatei
+          gelîscht und die Zwischendatei umbenannt. Die Zwischendatei hat
+          den gleichen Namen wie die eigentliche Zieldatei, nur wird die
+          Extension durch $$$ ersetzt. Wenn eine Datei dieses Namens bereits
+          existiert, wird sie kommentarlos Åberschrieben.
+          
+     mv [-icvb] file1 file2
+     mv [-icvb] files... dir
+     mv [-icv] dir1 dir2
+          Mv benennt Dateien um. Dies funktioniert nur innerhalb eines
+          logischen Laufwerks mit der GEMDOS-Funktion Frename(), bei
+          unterschiedlichen Laufwerken fÅr Quelle und Ziel wird zuerst
+          (per cp) eine Kopie gemacht und dann die Quelldatei gelîscht.
+          In der ersten Form wird file1 in file2 umbenannt. Wenn file2 schon
+          existiert, wird es neu angelegt.
+          In der zweiten Form werden alle files in das Directory dir
+          "verschoben".
+          In der dritten Form wird das Directory dir1 umbenannt. Dies
+          funktioniert erst bei TOS-Versionen ab 1.4.
+          Die Optionen -c, -i und -v funktionieren analog zu cp.
+          Bei mv wird das Modifikationsdatum nie verÑndert.
+          Innerhalb eines logischen Laufwerks kînnen schreibgeschÅtzte
+          Dateien nicht umbenannt werden, wenn die Option -b (brute force)
+          nicht angegeben ist. Mit -b kann mv sowohl schreibgeschÅtzte
+          Dateien umbenennen, als auch einer Datei einen Namen geben, der
+          bereits fÅr eine schreibgeschÅtzte andere Datei vergeben ist.
+
+     rename [-icv] ext files...
+          Rename benennt alle angegebenen Files um, wobei bei jedem File die
+          Extension auf ext geÑndert wird. Files die keine Extension haben
+          bekommen ext angehÑngt. Ext darf mit einem Punkt beginnen, aber
+          danach nicht mehr als 1 bis 3 Zeichen lang sein.
+          Die Optionen -i, -c und -v wirken wie bei cp.
+          
+     rm [-rivfb] files...
+          Rm lîscht Dateien. Mit der Option -i (interactive) wird fÅr
+          jede Datei nachgefragt, ob sie gelîscht werden soll. Mîgliche
+          Eingaben sind 'y' (Datei lîschen), 'n' (nicht lîschen, bei der
+          nÑchsten weitermachen) oder 'q' (Lîschvorgang abbrechen).
+          Bei der Option -r (recursive) werden DateibÑume komplett gelîscht.
+          Die Option -v ist analog zu cp und mv.
+          Mit die Option -f (failure) wird von rm keine Fehlermeldung
+          ausgegeben, wenn eine der zu lîschenden Dateien nicht ex-
+          istiert, und der Return-Status ist immer 0.
+          Rm kann keine schreibgeschÅtzten Dateien lîschen, wenn die Option
+          -b (brute force) nicht angegeben ist.
+          
+     mkdir [-p] dir...
+     	Mit mkdir (make directory) werden neue Directories angelegt.
+     	Dies geht nur dann, wenn nicht bereits ein anderes Directory
+     	oder eine andere Datei gleichen Namens existiert. Wenn die
+     	Option -p (path) angegeben ist, werden bei einem Kommando
+     	wie "mkdir \test\hans\wurst\neu" alle evtl. fehlenden Directories
+     	im angegebenen Pfad automatisch mit angelegt.
+     	
+     rmdir dir...
+          Rmdir (remove directory) lîscht die angegebenen Directories. Rmdir
+          kann nur Directories lîschen, die keine Dateien oder andere 
+          Directories enthalten.
+
+     chmod [+-][aswhflmct] files...
+          Chmod verÑndert die Attribute von Dateien. Mit + oder - kînnen
+          Attribute gesetzt bzw. gelîscht werden. Die Attribut-Codes be-
+          deuten:
+               a - Das Archive-Bit. Wird von Backup-Programmen und "cp -a"
+                   verwendet. Dummerweise behandeln verschiedene TOS-
+                   Versionen dieses Bit unterschiedlich. Bitte beachten Sie
+                   die Bermerkung dazu im Abschnitt Åber "cp".
+               s - Das System-Bit. Versteckt eine Datei im Desktop.
+               h - Das Hidden-Bit. Versteckt eine Datei im Desktop.
+               w - Das Write-Enable-Bit. Hiermit kann der Schreibschutz
+                   einer Datei verÑndert werden.
+               f - Das Fastload-Bit (wird erst ab TOS 1.4 vom 6.4.89  unter-
+                   stÅtzt. Dieses Bit steht nicht im Directory-Eintrag,
+                   sondern im Fileheader. Durch ein gesetztes Fastload-Bit
+                   wird beim Programmstart nicht der komplette freie 
+                   Speicher auf 0 initialisiert, sondern nur noch der von
+                   dem Programm benîtigte.
+                   ACHTUNG: Einige Programme laufen nicht bzw. nicht
+                   korrekt wenn das Fastload-Bit gesetzt ist. Besonders bei
+                   Accessories ist Vorsicht geboten!
+               l - (nur mit TOS030!) Wenn dieses Bit gesetzt ist, wird das
+                   Programm in das sog. FastRAM geladen.
+               m - (nur mit TOS030!) Wenn dieses Bit gesetzt ist, werden
+                   Malloc()-Aufrufe des Programms aus dem FastRAM befriedigt.
+               c - FÅr alle angegebene Files wird der Zustand des Fastload-
+                   bits ausgegeben.
+               t - FÅr alle angegebene Files wird der Zustand des Fastload-
+                   und der beiden TT-Bits ausgegeben.
+          Das System-Bit wird von GEMDOS nicht benutzt. Mupfel, der Desktop
+          und GEMINI werten das Hidden-Bit aus, so daû man damit verhindern
+          kann, daû Dateien angezeigt werden (siehe "ls").
+                   
+     touch [-c] [-d hhmm|ddmmhhmm[yy]] files...
+          Touch setzt das Modifikationsdatum fÅr alle files auf das aktuelle
+          Datum. Wenn eine der Dateien nicht existiert, wird sie neu an-
+          gelegt. Mit der Option -c (create) kann dieses Neuanlegen unter-
+          drÅckt werden.
+          Mit der Option -d kann das Datum angegeben werden, auf das die
+          Files zu setzen sind. Das Format der Datumsangabe entspricht
+          dem beim Kommando "date".
+          
+     ls [-srtldcufFh] [files...]
+          Ls zeigt Inhalte von Directories an. Normalerweise werden die
+          Dateien in einer Spalte untereinander sortiert angezeigt. Wenn
+          ein Argument ein Directory ist, werden alle Dateien in diesem
+          Directory angezeigt. Dieses Normalverhalten von ls kann mit
+          folgenden Optionen beeinflusst werden:
+               -l (long):      Auûer dem Namen werden noch Attribute,
+                               Grîsse und Modifikationsdatum und -uhrzeit
+                               angezeigt.
+               -d (directory): Directories werden als solche angezeigt.
+               -c (columns):   Die Ausgabe erfolgt spaltenweise mit maximal
+                               $COLUMNS Zeichen pro Zeile.
+               -u (unsorted):  Die Ausgabe wird nicht sortiert sondern er-
+                               folgt in der Reihenfolge, in der die Dateien
+                               auf der Platte bzw. Diskette liegen.
+               -s (size):      Die Ausgabe wird nicht nach Namen, sondern
+                               nach Dateigrîsse sortiert, grîsste Datei zu-
+                               erst.
+               -t (time):      Die Ausgabe wird nach dem Modifikations-
+                               datum sortiert, neueste Datei zuerst.
+               -r (reverse):   Die Sortierordnung wird umgedreht.
+               -f (filetype):  Bei Directories wird hinter dem Namen ein "\"
+                               angehÑngt, bei ausfÅhrbaren Programmen (d.h.
+                               Files, deren Extension in $SUFFIX steht) ein
+                               "*".
+               -F (filetype)   Wirkt wie -f, zusÑtzlich wird bei Programmen,
+                               die das Fastload-Bit gesetzt haben, anstatt
+                               des "*" ein "+" angezeigt.
+               -h (hidden)     Files mit dem Hidden-Attribut (siehe chmod)
+                               werden normalerweise nicht angezeigt, durch
+                               Angabe von -h werden sie mit aufgelistet.
+          Die Option -u hat Vorrang vor -s, -t und -r.
+          Die Option -l hat Vorrang vor -c.
+                               
+     lu
+          Wie ls, -u ist schon gesetzt.
+          
+     lc
+          Wie ls, -c ist schon gesetzt.
+          
+     ll
+          Wie ls, -l ist schon gesetzt.
+          
+     echo [args...]
+          Echo gibt seine Argumente aus. In den Argumenten sind folgende
+          Spezialsequenzen zugelassen:
+               %%   wird zu %
+               %t   wird zu TAB
+               %n   wird zu CR/LF
+               %c   (nur am Ende des letzten Arguments) unterdrÅckt das
+                    folgende CR/LF
+               %0   Lead-In Sequenz fÅr ein beliebiges Zeichen, daû durch
+                    max. 3 Oktal-Ziffern (0-7) dargestellt ist.
+                    Beispielsweise lîscht "echo %033E" den Bildschirm.
+          
+     cat files...
+          Cat gibt den Inhalt der angegebenen Dateien aus. Cat ohne Argu-
+          mente liest von der Tastatur bis das Zeichen Control-D (End-Of-
+          Text im ASCII-Code) eingegeben oder die Taste UNDO gedrÅckt wird.
+
+     more files...
+          More gibt den Inhalt der angegebenen Dateien aus. Dabei wird immer
+          eine Bildschirmseite (abhÑngig von $ROWS) ausgegeben und dann auf
+          eine Eingabe gewartet. Die erlaubten Eingaben und ihre Funktion
+          sind (^X steht fÅr Control-X, Groû/Kleinbuchstaben sind gleich):
+               SPACE,F,^F,Shift-Pfeil runter Eine Seite weiter
+               RETURN,J,+,Pfeil runter       Eine Zeile weiter
+               ^B,B,Shift-Pfeil rauf         Eine Seite zurÅck
+               K,-,Pfeil rauf                Eine Zeile zurÅck
+               0,Clr/Home                    Zum Dateianfang zurÅck
+               $,G,Shift-Clr/Home            Zum Dateiende
+               ESC,UNDO,Q,^C                 more ganz abbrechen
+               N                             zur nÑchsten Datei
+               P                             zur vorherigen Datei
+               HELP,H                        Hilfe anzeigen
+               /,?                           Suche (/=vorwÑrts, ?=rÅckwÑrts)
+               A                             Letze Suche wiederholen
+               ^G                            Information anzeigen
+          Bei den Kommandos / und ? erwartet more auf der untersten Zeile
+          die Eingabe des zu suchenden Strings. Durch eine leere Eingabe
+          wird der letzte Suchstring wieder benutzt (wie bei 'A'). Die Suche 
+          findet immer exakt statt, d.h. Groû- und Kleinschreibung wird be-
+          achtet. More versucht immer, die gefundene Zeile mîglichst weit
+          oben am Bildschirm darzustellen. Wenn bei der Suche der Anfang
+          oder das Ende der Datei erreicht wird, wird die Suchrichtung fÅr
+          'A' automatisch umgedreht.
+          HINWEIS: Die Ausgabe von more sollte nicht umgelenkt werden, da
+          sie Escapesequenzen zur Bildschirmsteuerung enthÑlt.
+          
+     print [-f][-l lines] files...
+          Print gibt die angegebenen Dateien auf dem Drucker aus.
+          Mit der Option -f (formfeed) wird am Dateiende noch ein Seiten-
+          vorschub erzeugt.
+          Mit der Option -l (lines) wird immer nach der angegebenen Zeilen-
+          zahl ein Seitenvorschub erzeugt.
+          
+     whereis cmd
+          Sucht cmd in der Alias-Liste, der internen Kommandoliste, der
+          Hashtabelle und in $PATH.
+          Kleingeschriebene Argumente werden zuerst intern und
+          dann in $PATH gesucht, bei groûgeschriebenen umgekehrt.
+          
+     df [-a|drv:]
+     	Df (disk free) zeigt an, wieviele Kbytes auf einer Diskette
+     	oder Plattenpartition belegt und frei sind, wieviele Kbytes ins-
+     	gesamt zur VerfÅgung stehen und mit welchen Volume-Namen die
+     	Diskette oder Partition versehen ist.
+          Ohne Argumente erfolgt diese Anzeige fÅr das aktuelle Laufwerk.
+          Mit der Option -a (all) geschieht das fÅr alle angeschlossenen
+          oder die in der Environment-Variablen DRIVEMAP angegebenen
+          Drives. Wenn $DRIVEMAP keinen Wert hat, wird mit der Funktion
+          Drvmap() ermittelt, welche Drives angeschlossen sind. Da hierbei
+          aber in jedem Fall die Drives A: und B: angegeben werden, wird
+          noch in der Systemvariablen _nflops (Adresse 0x4A6) nachge-
+          schaut, wieviele Floppylaufwerke wirklich vorhanden sind.
+          Bei Angabe eines Drivenamens (z.B. C:) wird der freie Platz
+          nur fÅr dieses Drive ermittelt.
+
+     label [drv [volumename]]
+          Label alleine zeigt den Volumenamen des aktuellen Laufwerks an.
+          Mit einer Laufwerksangabe wird der Name dieses Laufwerks ange-
+          zeigt. Bei drei Argumenten wird der Volumenamen des angegebenen
+          Laufwerks auf volumename geÑndert, wobei volumename keine Datei
+          oder Directory im Rootdirectory dieses Laufwerks bezeichnen darf.
+          Wenn volumename nur ein Minuszeichen ist wird der Volumename des
+          angegebenen Laufwerks gelîscht.
+          Achtung: Einige Versionen von TOS 1.4 unterstÅtzen die Funktion
+          zum Anlegen eines Volumenamen nicht, bei anderen (z.B. der vom
+          6.4.89) ist es nicht mîglich, einen Volumenamen zu lîschen (man
+          kann einen Namen nur durch einen anderen ersetzen).
+          
+     backup [-icv] files...
+          Kopiert alle angegebenen Files, wobei die Extension auf .BAK
+          geÑndert wird.
+          Die Optionen -i, -c und -v wirken wie bei cp.
+          
+     tree [-di] [-f filespec] [-p path]
+          Zeigt Directory-Hierarchien an, beginnend bei path oder im
+          aktuellen Directory. Wenn "-f filespec" angegeben ist (wobei
+          filespec ein Wildcard-Ausdruck sein kann (s.o.), werden nur
+          Dateien angezeigt, die auf das entsprechende Muster passen.
+          Der Default fÅr filespec ist "*".
+          Achtung: Wenn filespec Wildcards enthÑlt, muû gequotet werden!
+          Bei der Option -d (directory) werden nur Directorynamen
+          angezeigt. Bei -i (indent) wird die Verschachtelungstiefe
+          optisch durch EinrÅckung hervorgehoben.
+          Wenn als einzige Option das Start-Directory angegeben wird,
+          kann "-p" entfallen, d.h. "tree -p xxx" ist Ñquivalent zu
+          "tree xxx".
+
+     find directory patterns...
+          Find sucht ab dem angegebenen Start-Directory nach allen Dateien,
+          deren Namen auf eines der angegebenen Patterns passt, wobei jedes
+          Pattern ein normaler Wildcard-Ausdruck (s.o.) sein kann. Anstatt
+          eines Directory-Namens kann fÅr directory auch "-a" angegeben 
+          werden, dann sucht find auf allen Laufwerken, die in $DRIVEMAP
+          angegeben sind. Wenn $DRIVEMAP nicht gesetzt ist, wird auf allen
+          angeschlossenen Laufwerken gesucht.
+                     
+     hash [-r][-d directory]
+          Ohne Argumente wird die Hashtabelle fÅr externe Kommandos aus-
+          gegeben. Die TabelleneintrÑge bedeuten:
+               Hits:      Anzahl der Aufrufe dieses Programms.
+               Cost:      Benîtigter Suchaufwand beim ersten Aufruf.
+               Cmd:       Name des Kommandos.
+               Full Path: Kompletter Pfadname des aufgerufenen Programms.
+          Mit der Option -r (remove) kann die Hashtabelle gelîscht werden.
+          Bei énderung der Environmentvariablen $PATH oder $SUFFIX wird sie
+          automatisch gelîscht.
+          Wenn die Option -d angegeben ist, werden alle Programme, die im
+          angegebenen Directory oder in einem darunter liegenden Directory
+          liegen und deren Extension in $SUFFIX auftaucht, in die Hash-
+          Tabelle aufgenommen. Dieses Kommando wird man normalerweise in der
+          Autostart-Datei MUPFEL.MUP benutzen. Durch das standardmÑûige
+          hashen vieler Programme kînnen umstÑndliche Angaben in $PATH ein-
+          gespart werden, da dort jedes Directory einzeln aufgefÅhrt werden
+          muû.
+                    
+     setenv [var [value]]
+          Ohne Argumente wird das momentane Environment angezeigt.
+          Mit nur einem Argument wird var aus dem Environment gelîscht.
+          Mit zwei Argumenten wird var mit dem Wert value ins Environment
+          aufgenommen bzw. ein vorher bestehender Wert Åberschrieben.
+          Groû- und Kleinschrift wird nicht als gleich behandelt!
+          Achtung: Bei var wird kein '$'-Zeichen benîtigt, und hinter var
+          ist kein '='-Zeichen nîtig!
+          
+     show [var]
+     env [var]
+          Ohne Argumente wird das ganze Environment angezeigt, ansonsten
+          der Wert von var in der Form var=value. Mit "env var" oder
+          "show var" kînnen auch interne Variablen angezeigt werden.
+
+     set [var [value]]
+          Ohne Argumente werden die momentanen Werte der internen
+          Variablen angezeigt.
+          Bei set var wird der Wert von var gelîscht.
+          Bei set var value wird der Wert von var auf value geÑndert.
+          
+     var=value
+          Setzt die interne bzw. Environmentvariable var auf den Wert
+          value. ACHTUNG: Der Name der Variablen (var) darf nicht mit
+          dem fÅhrenden Dollar-Zeichen angegeben werden, auûerdem dÅrfen
+          um das Gleichheitszeichen herum keine Leerzeichen stehen.
+          Legale Zuweisungen sind z.B:
+               HOME=c:\castle          # my home is my castle
+               PATH="c:\alt,d:\neu"    # Suchpfad
+               DB_PRG="M:Y,D:N"        # Startwerte fÅr DB.PRG
+               keepfree=10240          # 10K beim Kopieren freilassen
+          
+     var=
+          Lîscht die interne bzw. Environmentvariable var. Auch hier darf
+          kein Dollarzeichen angegeben sein und das Gleichheitszeichen muû
+          dem Namen ohne Leerzeichen folgen, also z.B:
+               TEST=        # $TEST im Environment lîschen
+               screensave=  # Ab jetzt Bildschirminhalt nicht mehr retten.
+
+     alias [name [replacement]]
+          Alias verwaltet die interne Alias-Liste. Ohne Argumente wird
+          die aktuelle Alias-Liste ausgegeben. Mit einem Argument wird
+          das Alias mit dem Namen name gelîscht. Bei drei Argumenten
+          wird dem Alias name der Ersatztext replacement zugewiesen.
+          Wenn replacement mehrere Tokens ergeben soll mÅssen bei der
+          Eingabe einfache oder doppelte AnfÅhrungszeichen (Quotes)
+          verwendet werden.
+          Die Alias-Liste ist immer alphabetisch sortiert.
+     
+     noalias command
+          Das Kommando noalias dient dazu, das nachfolgende Kommando
+          ohne alias-Expansion auszufÅhren. Dies kann z.B. sinnvoll sein,
+          wenn man normalerweise ein Alias wie "alias cp 'cp -i'" ver-
+          wendet, aber in Batchfiles den "echten" cp ausfÅhren will. In
+          so einem Fall kann man in der Batchdatei dann "noalias cp ..."
+          aufrufen.
+     
+     fkey [key [text]]
+          Ohne Argumente wird die momentane Belegung der Funktionstasten
+          F1 bis F10 und Shift-F1 bis Shift-F10 angezeigt. Das Argument
+          key kann eine Zahl von 1 bis 20 oder der Name einer Funktions-
+          taste (F1, F2, ... F10, SF1, SF2, ... SF10) sein. Wenn es alleine
+          angegeben wird, wird die Belegung dieser Taste gelîscht. Mit
+          drittem Argument wird die angegebene Funktionstaste damit be-
+          legt. Wenn das letzte Zeichen eines F-Tasten-Strings "|" ist,
+          wird beim DrÅcken automatisch CR ausgelîst.
+          
+     date [hhmm|ddmmhhmm[yy]]
+          Ohne Argumente wird das aktuelle Datum und die Uhrzeit angezeigt.
+          Mit Argument werden die interne Hardware-Uhr und die GEMDOS-Uhr
+          gestellt. Dabei sind drei Formate mîglich:
+               hhmm           Stunde/Minute
+               mmddhhmm       Monat/Tag/Stunde/Minute
+               mmddhhmmyy     Monat/Tag/Stunde/Minute/Jahr
+          Wenn nicht das komplette Datum (also mmddhhmmyy) angegeben wird,
+          werden die fehlenden Angaben aus dem aktuellen Datum ermittelt.
+               
+     wc [-lcw] files...
+          Wc (word count) zÑhlt Zeilen, Worte und Zeichen in files.
+          Wenn eine oder mehrere der Optionen angegeben sind, werden nur
+          die entsprechenden Daten ausgegeben. Dabei bedeuten:
+                -l (lines)          Zeilen zÑhlen
+                -w (words)          Worte ZÑhlen
+                -c (characters)     Zeichen zÑhlen
+          Wenn mehrere Dateien angegeben sind, wird am Schluû
+          eine Zeile mit den entsprechenden Gesamtsummen ausgegeben.
+     
+     du [directories]
+          Du (disk usage) ermittelt den Platzbedarf der angegebenen Direc-
+          tories (oder den von "." wenn nicht angegeben wird). Dabei wird
+          die Gesamtgrîûe aller Files unterhalb des Start-Directories, die
+          Anzahl der Files und die Anzahl der Directories unterhalb des 
+          Start-Directories ausgegeben.
+          
+     file files...
+          File versucht anhand der Extension und dem Inhalt der ersten
+          512 Bytes der files den Typ der Dateien zu ermitteln.
+
+     init [-y][-s 1|2][-c 9|10][-l label] drv:
+          Init Åberschreibt die ersten beiden Tracks einer Diskette
+          in Laufwerk A: oder B: mit Null-Sektoren. Dadurch werden
+          das Rootdirectory und die FAT gelîscht. Ausserdem erhÑlt
+          die Diskette einen neuen Bootsektor mit zufÑlliger Serien-
+          nummer. Mit der Option -s (sides) kann angegeben werden,
+          ob die Diskette 1- oder 2seitig ist. Mit der Option -c kann an-
+          gegeben werden, wieviele Sektoren die Diskette hat. Ohne Angabe
+          von -s oder -c ermittelt init zunÑchst, wie die Diskette forma-
+          tiert ist.
+          Normalerweise fragt init sicherheitshalber noch nach, ob die
+          Diskette wirklich initialisiert werden soll. Wenn die Option
+          -y (yes) angegeben ist, beantwortet sich init die Frage selbst
+          mit 'Y' wie 'Yes'. Mit der Option -l (label) kann direkt ein
+          neuer Volumename fÅr die Diskette vergeben werden. Wenn -l nicht
+          angegeben ist, wird ein evtl. vorhandenes Label beibehalten.
+          Wenn als Argument fÅr -l ein einzelnes Minuszeichen angegeben ist,
+          wird die Diskette ohne Volumename angelegt, auch wenn vorher ein
+          Volumename vorhanden war.
+          
+     format [-yv][-s 1|2][-c 9|10][-l label] drv:
+          Mit format kînnen Disketten auf 80 Tracks formatiert werden. Die
+          Optionen -y, -c und -s wirken wie bei init (s.o.), mit der Option
+          -l (label) kann direkt ein Volumename fÅr die Diskette vergeben
+          werden (s. Kommando "label"). Die Voreinstellung fÅr format sind
+          9 Sektoren pro Track, 2seitig, kein Label. Wenn die Option -v
+          (verbose) angegeben ist, wird der momentan formatmatierte Track
+          angezeigt. Als Sicherheitsmaûname beginnt format bei Track 79 zu
+          formatieren. Durch ESC oder CTRL-C lÑût sich die Formatierung
+          abbrechen.
+          
+     timer [-s]
+          Timer mit der Option -s (start) setzt einen internen Timer
+          auf den aktuellen Wert der Systemvariablen _hz_200 (0x4ba).
+          Ohne Option wird die Differenz dieses Timers zum neuen
+          Wert von _hz_200 in Sekunden umgerechnet ausgegeben. Beim
+          Start von Mupfel wird der Timer automatisch initialisiert,
+          d.h. wenn timer -s nicht benutzt wird, misst timer die Lauf-
+          zeit von Mupfel.
+
+     setscrap [-fq] [dir]
+          Mit setscrap kann der Scrap-Pfad des AES abgefragt oder gesetzt
+          werden. Setscrap ohne Argumente zeigt den momentanen Scrap-Pfad
+          an. Mit einem Directorynamen als Argument wird der Scrap-Pfad auf
+          das angegebene Directory gesetzt. Der Name muû eine absolute Pfad-
+          angabe sein, d.h. mit einem Laufwerksnamen beginnen (also z.B.
+          "C:\CLIPBRD", DR empfiehlt als Scrap-Pfad das Directory CLIPBRD
+          auf dem Bootlaufwerk) und ein tatsÑchlich existierendes Directory be-
+          benennen. Normalerweise erlaubt setscrap das Setzen nur, wenn noch
+          kein Scrap-Pfad gesetzt ist. Dies kann mit der Option -f (force)
+          umgangen werden. Mit der Option -q (quiet) werden keine Fehler-
+          meldungen ausgegeben. Es bietet sich an, diesen Befehl in der
+          Autostart-Datei MUPFEL.MUP auszufÅhren, und zwar so:
+               setenv SCRAPDIR c:\clipbrd
+               setscrap -q $SCRAPDIR
+
+     blitmode [on|off]
+          Blitmode ohne Option zeigt den Status des Blitter-Chips an (nicht
+          installiert, an oder aus) an. Mit Argumenten kann der Blitter an-
+          bzw. ausgeschaltet werden.
+
+     version [-amgdt]
+          Version zeigt relevante Versionsnummern der Systemsoftware und
+          von Mupfel an. Ohne Optionen wird die Versionsnummer von Mupfel
+          angezeigt. Die Optionen bedeuten:
+               -m:  Mupfel-Versionsnummer ausgeben
+               -g:  GEM-Versionsnummer ausgeben
+               -d:  GEMDOS-Versionsnummer ausgeben
+               -t:  TOS-Versionsnummer mit Erstellungsdatum und Landes-
+                    code ausgeben
+               -h:  Die Versionsnummer eines AHDI 3.01-kompatiblen Platten-
+                    treibers ausgeben, falls ein solcher installiert ist.
+                    Andernfalls wird eine entsprechende Meldung ausgeben.
+               -a:  Alle Versionsnummern ausgeben.
+
+     shrink [-b val][-t val][-f][-i]
+          Shrink dient dazu, den zur VerfÅgung stehenden Speicher zu ver-
+          kleinern. Dieses Kommando ist speziell fÅr Programmierer mit
+          "groûen" Rechnern gedacht, die damit testen kînnen, ob Programme
+          auch mit wenig Speicher noch laufen.
+          Mit den Optionen -b (shrink by) und -t (shrink to) wird der
+          Speicher verkleinert. Bei -b wird der angegebene Wert "val" vom
+          momentan freien Speicher abgezogen, bei -t wird der Speicher so
+          verkleinert, daû noch "val" Bytes freibleiben. Der Wert von "val"
+          kann sowohl oktal (wird an einer fÅhrenden Null erkannt), dezimal
+          oder auch hexadezimal (wird am fÅhrenden 0x oder 0X erkannt) an-
+          gegeben werden. Um groûe Werte einfach anzugeben, kann als
+          letztes Zeichen der Suffix "m" oder "k" angegeben werden, um
+          direkt Kilo- bzw. Megabyte-Werte auszudrÅcken. Damit sind also
+          folgende Angaben bedeutungsgleich:
+                20480  050000  20k  0x14k
+          Mit der Option -i (info) wird angezeigt, um wieviel der Speicher
+          im Moment verkleinert ist und wieviel noch freibleibt. Diese 
+          Anzeige erfolgt auch, wenn shrink ohne Optionen aufgerufen wird.
+          Mit der Option -f (free) wird wieder der ganze vorhandene Speicher
+          zur VerfÅgung gestellt.
+          Mehrere aufeinanderfolgende Aufrufe von shrink -b oder shrink -t
+          summieren sich im Ergebnis.
+          HINWEIS: shrink reserviert Speicher mit der GEMDOS-Funktion
+          Malloc(). Damit lÑsst sich die Grîûe der TPA von Kindprozessen
+          zwar nicht haargenau einstellen, aber zum Testen reicht's allemal.
+
+     free [-l]
+          Free zeigt an, wieviel Hauptspeicher (RAM) im Moment noch frei
+          sind. Ohne Optionen wird die Summe der Grîûen aller momentan freien
+          Speicherblîcke angezeigt, mit der Option -l (long) werden zusÑtzlich
+          noch Grîûe und Adresse jedes einzelnen Blocks angezeigt.
+	          
+     pause [args]
+          Mit dem Kommando pause kann (besonders in Batchfiles nÅtzlich)
+          auf einen Tastendruck gewartet werden. Wenn Argumente angegeben
+          sind, werden diese zuerst wie bei echo (s.o.) bearbeitet (aller-
+          dings wird nie CR/LF am Schluss ausgegeben), ansonsten wird der
+          Text "Press RETURN..." ausgegeben. Danach wird auf den Druck
+          einer (fast) beliebigen Taste gewartet (Shift, Ctrl, Alt, Caps-
+          Lock, die Maus- und Joysticktasten sowie der Reset-Taster haben
+          *NICHT* die erwÅnschte Wirkung :-)
+          
+     cookie
+          Mit dem Kommando cookie kann man sich den Inhalt des Cookie-Jars
+          anzeigen lassen, falls eins installiert ist. Das Cookie-Jar ist
+          eine Sammlung von Flags, die ab TOS 1.6 unterstÅtzt wird.
+               
+     kbrate [-i initial][-r repeat]
+          Mit Kbrate kann der Autorepeat der Tastatur eingestellt werden.
+          Die Argumente initial und rate werden als 20-millisekunden-
+          Einheiten interpretiert. Initial legt die Einsatzzeit des Auto-
+          repeat fest, repeat die Wiederholungsrate.
+          Ohne Argumente werden die aktuellen Werte ausgegeben.
+          
+     kclick [on|off]
+          Mit dem Kommando kclick kann der Tastaturclick ein- oder aus-
+          geschaltet werden. Ohne Argumente wird der momentane Zustand
+          ausgegeben.
+     
+     rsconf [-b baudrate][-xrn][-p parity][-s stopbits][-c char. size]
+          Mit rsconf kann die Baudrate und das öbertragungsprotokoll fÅr
+          die serielle Schnittstelle eingestellt werden. FÅr die Option -b
+          wird als Argument eine Zahl erwartet, die die einzustellende
+          Baudrate angibt. Mit -x wird das Xon/Xoff-Protokoll eingeschaltet,
+          mit -r das RTS/CTS-Protokoll. -n schaltet das Protokoll aus.
+          FÅr die Option -p muû eins der Argumente e, o oder n (fÅr even
+          [gerade], odd [ungerade] und none [keine] ParitÑt) angegeben
+          sein. Die Option -s erwartet als Argument eine Zahl von 1 bis
+          3, wobei 1 und 2 je genau soviele Stopbits bedeuten und die 3
+          fÅr 1,5 Stopbits steht. FÅr -c wird als Argument eine Zahl von
+          5 bis 8 erwartet, mit der die Anzahl der Datenbits eingestellt
+          wird.
+     
+     prtconf [-wmcbealdrpsf]
+          Prtconf stellt Parameter fÅr die Druckerschnittstelle ein.
+          Ohne Argumente werden die aktuellen Parameter ausgegeben.
+          Die Optionen im einzelnen:
+          
+          -w (wheel):     Typenraddrucker
+          -m (matrix):    Matrixdrucker
+          
+          -c (color):     Farbdrucker
+          -b (black):     S/W-Drucker
+          
+          -e (epson):     Epson-Drucker
+          -a (atari):     Atari-Drucker
+          
+          -l (letter):    BriefqualitÑt
+          -d (draft):     EntwurfsqualitÑt
+          
+          -r (rs232):     serielle Schnittstelle
+          -p (parallel):  parallele Schnittstelle
+          
+          -s (sheet):     Einzelblatt
+          -f (fanfold):   Endlospapier
+          
+          Die jeweils direkt untereinanderstehenden Optionen widersprechen
+          sich gegenseitig, daher sollte aus jedem Block immer nur eine
+          angegeben sein. Anderfalls wird die jeweils zuletzt angegebene
+          Option eines Blocks wirksam.
+          
+--------------------------------------------------------------------
+UNIX is a Trademark of you-know-who
+
+GLOSSAR:
+
+Directory:engl. fÅr Verzeichnis. In der Atari-Namensgebung ein Ordner.
+
+File:     engl. fÅr Datei.
+
+History:  wîrtl. Vergangenheit. In Mupfel sind dies Ihre letzten eingege-
+          benen Befehle, die Sie durch die Pfeiltasten (rauf/runter) wieder
+          in die aktuelle Kommandozeile holen kînnen.
+          
+Alias:    sozusagen ein "Deckname" oder eine AbkÅrzung fÅr Kommandos. Mit
+          Aliasen kînnen Sie hÑufig benutzte Befehle abkÅrzen, z.B. kînnten
+          Sie den Befehl
+               alias cp "cp -v"
+          verwenden, wenn Sie Kopieroperationen immmer angezeigt bekommen
+          mîchten.
+          
+Batch:    wîrtl. "Stapel". In Batchdateien kînnen Sie immer wiederkehrende
+          Befehlsfolgen speichern. Batchdateien dÅrfen alle legalen Mupfel-
+          Kommandos enthalten, auch solche, die den Start von externen
+          Programmen veranlassen. Batchdateien werden mit normalen ASCII-
+          Texteditoren erfasst (bei WordPlus WP-Modus ausschalten!).
+
+Token:    Jede Kommandozeile, die Sie eingeben, wird in "HÑppchen" zerlegt,
+          die sogenannten Tokens. Z.B. werden aus der Zeile
+               cp -v -d foo bar
+          die Tokens "cp", "-v", "-d", "foo" und "bar". Jeweils der erste
+          Token einer Zeile ist ein Kommandoname oder der Name eines ex-
+          ternen Programms. Alle anderen Token werden an die entsprechende
+          Funktion in Mupfel bzw. das Programm als Parameter Åbergeben.
+
+Quote:    wîrtl. "Zitat". Wie beim Zitieren verwenden Sie auch in Mupfel
+          das AnfÅhrungszeichen (") oder den Apostroph (') um einen Quote
+          zu kennzeichnen. "Gequotete Tokens" dienen dazu, denjenigen
+          Zeichen, die normalerweise eine Sonderbedeutung haben (z.B. * und
+          ?) eben diese Sonderbedeutung zu nehmen.
+          
+Environment:
+          wîrtl. "Umgebung". Im Environment werden sog. Variablen definiert,
+          deren Wert fÅr interne und externe Kommandos von Bedeutung sein
+          kann, z.B. kann man Åber die Environmentvariable TMPDIR dem Pro-
+          gramm ARC.TTP mitteilen, wo es temporÑre Dateien ablegen soll.

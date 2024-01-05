@@ -1,0 +1,3 @@
+zoo aunP m *.[chs] *.prj *.mup ..\*.mup doc\* c:\gemsys\bag*.fnt
+mv g:\archive\mupfel.zoo g:\archive\mupfel.zob
+cp -v m.zoo g:\archive\mupfel.zoo

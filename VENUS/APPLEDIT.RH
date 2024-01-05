@@ -1,0 +1,11 @@
+#define APPLEDIT 16	/* form/dialog */
+#define APPLNAME 3	/* FTEXT in tree APPLEDIT */
+#define APPLSPEX 5	/* FTEXT in tree APPLEDIT */
+#define APPLCLOS 7	/* BUTTON in tree APPLEDIT */
+#define APPLGEM  8	/* BUTTON in tree APPLEDIT */
+#define APPLCOMM 9	/* BUTTON in tree APPLEDIT */
+#define APPLWAIT 10	/* BUTTON in tree APPLEDIT */
+#define APPLOVL  11	/* BUTTON in tree APPLEDIT */
+#define APPLCANC 12	/* BUTTON in tree APPLEDIT */
+#define APPLOK   13	/* BUTTON in tree APPLEDIT */
+

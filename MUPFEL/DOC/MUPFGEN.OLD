@@ -1,0 +1,1118 @@
+              Mupfel Genesis (Versionen 0.00 bis 1.19)
+
+Ver.    Dat.
+0.00 - 0.02   Lost in the mists of time....
+
+0.03 - 12.10. Erste halbwegs vernÅnftige Version
+
+0.04 - 14.10. Speicherfresserfehler in TC's fopen() umgangen.
+       15.10. Bug in access() ausgebaut.
+              Neues Kommando "wc".
+              Kommandozeilen, deren 1. non-blank # ist, sind Kommentare.
+              Hack fuer Ctrl-S/Ctrl-Q in outchar().
+              Internes Namens-Chaos etwas gemildert.
+       16.10. $xArg wird nach ProgrammausfÅhrung ganz gelîscht.
+              Bei .\cmd wird jetzt richtig gesucht
+              Neues Kommando "file" angefangen. Muss verbessert werden.
+       18.10. "cd" erweitert um $CDPATH
+              ParameterÅbergabe bei system()/shellcall() jetzt Åber
+              den Stack
+       22.10. date: Es ist nicht mehr immer Sonntag!!!
+       23.10. Falsche Ausgabe bei z.B. "info x:" ausgebaut
+              Interne Variablen $?, $0..$9, screensave, noclobber etc.
+              Neue Kommandos "set" und "unset" dafÅr.
+              I/O Redirection erweitert um >! und >>! fÅr override von
+              noclobber.
+              FÅr Batchfiles werden $0..$9 und $# auf einem Stack ge-
+              speichert.
+              Retten von Textbildschirm wenn GEM-Programme gestartet
+              werden, wenn screensave einen Wert hat.
+              Bei Start von GEM-Programmen wird wind_set(0,WF_NEWDESK,...)
+              ausgefÅhrt und per menu_bar() der Programmname in die MenÅ-
+              zeile geschrieben.
+              Bei "whereis cmd" wird der Hit-Counter in der Hashtabelle 
+              nicht mehr inkrementiert.
+
+0.05 - 27.10. In $SUFFIX stehen die Extensions von ausfÅhrbaren Programmen,
+              default fÅr $SUFFIX ist "PRG".
+              Namensregeln fÅr Env-Variablen verbessert ($1.c ging nicht).
+              Beim Start von GEM-Programmen wird die Maus als Busy Bee ein-
+              geschaltet (wie beim Desktop).
+       28.10. Fehler bei Batchfiles behoben: Programme konnten daraus nur
+              ein einziges Mal gestartet werden.
+              Default "." fÅr $PATH eingebaut.
+       29.10. fkey f9 ... geht jetzt. f11-f20 anstatt sf1-sf10 auch.
+              mv macht bei unterschiedlichen Laufwerken erst eine Kopie und
+              lîscht dann die Quelle.
+              Kommando "unset" wieder entfernt. "set" funktioniert 
+              jetzt analog zu "setenv", d.h. "set var" lîscht den
+              Wert von var.
+       30.10. "wc" zÑhlt jetzt mit longs anstatt ints.
+              Wenn eine Kommandozeile mit dem letzten History-Eintrag
+              identisch ist, wird sie nicht kopiert.
+              Die momentane Eingabezeile kann beim Durchscrollen der
+              History auch wieder zurÅckgeholt werden.
+              Neues Kommando "label". (NOTE: Geht nicht mit der momentanen
+              Version von TOS 1.4).
+              "date" setzt bei altem ROM-TOS jetzt auch die GEMDOS-Uhr.
+              Mupfel lÑuft wieder auf dem altem TOS.....
+              Neues Kommando "du".
+              I/O Redirection auf AUX:, PRN: etc geht wieder.
+              cp() und savescreen() holen Speicher jetzt direkt mit
+              Malloc()/Mfree() (wegen Problemen bei system()-Aufrufen).
+              Versionsnummer auf 0.06 geÑndert.
+
+0.06 - 31.10. Die Ausgaben der internen Kommandos lassen sich jetzt
+              mit Control-C abbrechen.
+              "du" zeigt wirklich nur noch Directories an, aber das
+              auch beim ersten Versuch.
+       25.11. (Hoffentlich) Bug beim Aufruf per system() beseitigt.
+       26.11. Neue Option -d (datekeep) fÅr cp. Bei mv automatisch an.
+       04.12. system()-Bug endgÅltig gefixt. Puh!
+              malloc() etc. fÅr Debuggingzwecke erweitert.
+
+0.07 - 06.12. Versionsnummer auf 0.07 geÑndert
+              Once again: Mupfel (und Kindprozesse) tut's wieder mit altem
+              TOS!
+              Externe Programme mit mehr als 128 Zeichen Argumenten werden
+              nicht mehr gestartet.
+       09.12. Werte im Environment dÅrfen kein '=' enthalten.
+              $<PRGNAME>_PAR eingebaut (siehe Doku).
+              I/O Redirection von Kanal 2 ist mit "2>" mîglich. Weitere
+              Mîglichkeiten (>>, >>!) wie gehabt.
+              I/O Redirection geht jetzt ganz! Wer hÑtte geglaubt, daû man
+              den bereits ge-Fclose-ten Handle nochmal Fclosen muss!! 8-(
+       10.12. Mit Shift-Leftarrow und Shift-Rightarrow kann man jetzt
+              zum Zeilenende bzw. Zeilenanfang springen.
+              Bei Kommandozeilen > 124 Zeichen werden Programme doch wieder
+              gestartet, die Argumente aber nur per xArg Åbergeben.
+              Die Parametervariable heisst jetzt genauso wie das Programm,
+              nur der Punkt wird durch '_' ersetzt, also z.B. $TC_PRG oder
+              $GOME_TTP.
+              Neue Kommandos "pushd" und "popd".
+       11.12. BSS erheblich verkleinert indem jetzt der Platz fÅr die
+              History, die Funktionstasten und die Batchfileargumente
+              dynamisch angelegt werden.
+              Zillions of Bugs in pushd und popd gekillt.
+              Rangechecks beim Datumsetzen eingebaut.
+       14.12. Neue Option -r (rekursiv) fÅr cp. "cp -r dir1 dir2"
+              kopiert den gesamten Subtree unter dir1 nach dir2.
+       16.12. Nichtbelegte F-Keys kînnen wieder gefahrlos gedrÅckt werden.
+       18.12. Argumentlisten kînnen jetzt 512 anstatt 128 Tokens enthalten.
+              Mit "Control-Delete" wird von der aktuellen Cursorposition
+              bis zum Zeilenende gelîscht.
+       20.12. "cp a:xxx.dat ." tut jetzt was man erwartet.
+              Lesefehler beim Kopieren werden jetzt richtig behandelt.
+              Batchfiles mÅssen jetzt .MUP heissen.
+              Versionsnummer auf 0.08 geÑndert.
+
+0.08 - 21.12. MUPFEL.MUP darf jetzt fehlen ohne daû es spÑter zu Problemen
+              kommt.
+       24.12. ls und Konsorten kînnen mit Ctrl-C abgebrochen werden.
+              Bildschirmausgabe auf RAWCON umgestellt.
+       26.12. RAWCON war nix. Wieder auf "normale" Ausgabe geÑndert.
+              FÅr GEM-Programme: Der Programmname beim Start wird zentriert.
+       28.12. Die Hashtabelle kann jetzt beliebig gross werden.
+              Beim Start von z.B. \T_MAIL.PRG wird jetzt korrekt "cd \"
+              ausgefÅhrt. ›$%&-GullyDOS! Warum ist Dsetpath(""); ok? 8-(
+              Output-Redirection wird jetzt vor Wiedereinschalten des
+              Cursors wieder rÅckgÑngig gemacht.
+       29.12. cd \xxx Åber $CDPATH geht jetzt.
+       30.12. Das Environment wird jetzt immer alphabetisch sortiert.
+              Schon lÑnger drin: Wenn Mupfel mit Argumenten gestartet
+              wird, wird das erste als Name des Autoexec-Files anstatt
+              MUPFEL.MUP genommen.
+              Ebenfalls schon lÑnger: Kommando "dirs" um den pushd/popd-
+              Stack anzuzeigen.
+              Cursorbewegung im Lineeditor geht jetzt richtig am rechten
+              Bildschirmrand.
+              Bug beim Historyscrollen gefixt.
+              Versionsnummer auf 0.09 geÑndert.
+
+0.09 - 31.12. LÑnge der Eingabezeile von 128 auf 256 Zeichen geÑndert.
+              Geschwindigkeitsverbesserung beim EinfÅgen und Lîschen.
+              Cursor-Flackern beseitigt.
+              MUPFEL.DOC ergÑnzt (Zeileneditor, xArg, system()).
+              "du ." tut's jetzt.
+              Bîsen Bock in wc gekillt.
+       04.01. Bug beim ZeicheneinfÅgen in der letzten Zeile gekillt.
+       05.01. Bei cd mit Argument ist nur noch genau eins erlaubt.
+              öberflÅssigen clearscreen() beim Ende von GEM-Programmen, die
+              per system() gestartet wurden entfernt.
+              pushd ohne Argumente pusht ".", mehr als ein Argument ist 
+              nicht erlaubt.
+       06.01. Bug in screensave() gekillt.
+       07.01. Neue Wildcardexpansion eingebaut. Jetzt sind auch Wildcards
+              wie "c:\f*\*.prg" mîglich. Illegale oder unsinnige Wildcards
+              wie z.B. "**.ext" oder "*a?.*t" werden auf sinvolle Angaben
+              (also "*.ext" oder "*.*") reduziert.
+              Interne Kommandos (bis auf tree und echo) dÅrfen nur noch mit
+              expandierten Wildcards gestartet werden.
+              Versionsnummer auf 0.10 geÑndert.
+
+0.10 - 08.01. Typo in cmdhelp() korrigiert.
+              Neue Funktionen im Zeileneditor: Ctrl-X vertauscht das Zeichen
+              unter dem Curor mit dem rechts davon, Ctrl-C wandelt Gross-
+              in Kleinbuchstaben und umgekehrt.
+              Link-Reihenfolge wegen 16-Bit relativen Referenzen auf free()
+              geÑndert.
+       09.01. Workaround fÅr obskuren GEMDOS-Bug in "cd" eingebaut.
+              Die Wildcardexpansion generiert die Tokens jetzt in Klein-
+              buchstaben.
+              cp und mv brechen nach dem ersten Fehler ab.
+              Neue Option -v (verbose) cp, mv und rm: Der aktuelle Datei-
+              name wird angezeigt. Dadurch sind diese Funktionen jetzt auch
+              mit Control-C abbrechbar.
+              Neu fÅr $PS1: "P" zeigt das aktuelle Dir. in Gross-, "p" in
+              Kleinschrift an.
+              Neue interne Variable "history". Kann im Autoexec-File (nur
+              dort!) gesetzt werden um die Anzahl der History-Zeilen fest-
+              zulegen. Default ist 20.
+              Zeileneditor: Ctrl-Rechts/Linkspfeil bewegen den Cursor Wort-
+              weise.
+       10.01. Abfrage "continue" bei "cp -c" auf "overwrite" geÑndert.
+              Bug bei "cp -c" gekillt (Files wurden nicht geschlossen)
+              Versionsnummer auf 0.11 geÑndert.
+
+0.11 - 12.01. Control-S / Control-Q geht wieder.
+              UNIX-mÑûige Wildcards eingebaut. Doku geÑndert.
+              "fkey" und "setenv" gehen auch mit unexpandierten Wild-
+              cards.
+              Mit "|" als letztem Zeichen eines F-Tasten-Strings wird
+              automatisch CR ausgelîst.
+       13.01. Auf Wunsch werden Argumente fÅr Programme jetzt auch mit
+              shel_write Åbergeben. Da shel_write selber nichts startet,
+              sondern dies erst vom AES nach Pterm erledigt wird, wird
+              nach Programmende "mupfel -q" als zu startendes Programm
+              eingetragen. Der Trick: "mupfel -q" macht sofort exit(0);
+              Einstellbar Åber neues Flag in $PRG_EXT: "S:[YN]" schaltet
+              shel_write an und aus. Default fÅr GEM: Y, fÅr TOS: N.
+       14.01. "cp" holt sich zum Kopieren sÑmtlichen freien Speicher (abzgl.
+              dem Wert aus der neuen internen Variable "keepfree". Default
+              fÅr keepfree ist 8K.
+              Ausgabe bei -v geÑndert (cp,mv,rm).
+              Bîsen Bock beim Lîschen der Hashtabelle gekillt.
+              $PATH darf jetzt lÑnger als 64 Zeichen werden.
+       15.01. Nach GEM-Programmen wird jetzt (bei TOS 1.4 und hîher)
+              wind_new() ausgefÅhrt. (Nicht bei system()-Aufruf)
+              cp und mv tun's jetzt auch als CP,cP,Cp,MV,Mv und mV.
+              Neue Option -d fÅr touch. Damit kann im gleichen Format
+              wie bei date das Datum angegeben werden, auf das die
+              Files zu setzen sind.
+       16.01. Wenn GEM-Programme per shel_write andere Programme starten
+              werden diese jetzt von Mupfel gestartet (getestet mit Easy-
+              Draw und Output).
+              Beim Programmende wird zuerst gecheckt, ob $HOME\exit.prg
+              existiert, wenn ja wird das anstatt "$SHELL -q" als auszu-
+              fÅhrendes Programm mit shel_write eingetragen.
+              Die Escape-Sequenzen bei echo tun's jetzt (wie dokumentiert)
+              mit \ als Lead-In.
+              Versionsnummer auf 0.12 geÑndert.
+
+0.12 - 20.01. Fehler bei touch ohne Datumsangabe ausgebaut.
+              Fehler bei shel_write nach system() ausgebaut.
+       21.01. Die Default-Startparameter kînnen mit den Env-Variablen
+              $GEMDEFAULT bzw. $TOSDEFAULT festgelegt werden.
+              Bug beim abwechselnden Start von TOS- und GEM-Programmen
+              gekillt.
+              ACHTUNG: Ab heute wird auf Arnd's Wunsch hin die Versions-
+              nummernvergabe wie folgt geÑndert: Jede Version erhÑlt noch
+              eine Releasekennung, die bei jeder kleineren énderung hoch-
+              gezÑhlt wird. Das macht es mir einfacher, Fehlermeldungen
+              zu bewerten. Begonnen wird mit 0.13a.
+
+0.13a  22.01. Bei nicht gequoteten Tokens die mit ~ beginnen wird dieses
+              Zeichen durch den Namen des aktuellen Directories ersetzt.
+              Damit kann man jetzt ohne groûe MÅhe Files aus dem aktuellen
+              Directory an GEM-Programme Åbergeben, die woanders liegen.
+              Lead-In-Zeichen bei Echo auf % geÑndert. \ war keine gute
+              Idee, weil Filenamen z.B. mit \t beginnen kînnen.....
+
+0.13b  23.01. Schon wieder einen neuen Workaround wegen den Fehlern in
+              Dsetpath() eingebaut. Das sollte es jetzt aber endgÅltig
+              gewesen sein!
+              Neue Option -f (filetype) fÅr ls. Bei Directories wird hinter
+              den Namen ein "\" angehÑngt, bei Programmen (d.h. Files deren
+              Extender in $SUFFIX auftaucht) ein "*".
+       24.01. Das Environment insgesamt und jede einzelne Variable dÅrfen
+              jetzt beliebig groû werden. Das Environment wird beim Start
+              mit 2 K angelegt und bei Platznot um jeweils 1 K vergrîûert.
+              Bug bei rm's Fehlermeldungen ausgebaut.
+              Noch 'nen Bug bei cp -c ausgebaut. Manchmal blieb das Target-
+              File offen, und GEMDOS *HASST* es wenn man offene Files
+              lîscht....
+
+0.13c  25.01. ls und Konsorten dÅrfen nicht mehr mit unexpandierten Wild-
+              cards gestartet werden, da sonst GEMDOS stehenbleiben kann.
+              (Fsfirst mag Argumente wie "x*\*.c" nicht...)
+       26.01. Neues Kommando "init" um 1- oder 2seitige Disketten schnell
+              zu lîschen. Dazu werden die Tracks 0 und 1 mit Nullen Åber-
+              schrieben und ein neuer Bootsektor geschrieben.
+       27.01. "info" rechnet jetzt den freien Platz und die Gesamtkapazi-
+              tÑt korrekt aus Bytes pro Sektor und Clustergrîûe aus. Von
+              der GesamtkapazitÑt werden noch die beiden nie allozierbaren
+              Cluster abgezogen.
+
+0.13d  29.01. Externe Programme dÅrfen system(""); jetzt fehlerlos auf-
+              rufen.
+              Bei system()-Aufrufen wird die Maus nicht mehr an- oder aus-
+              geschaltet.
+              wind_new() wird nur noch bei (TOS 1.4 && GEM 1.3) aufgerufen.
+
+0.13e  31.01. Leider war der empfohlene Weg auf GEM 1.3 zu testen nicht so
+              doll. (In _GemParBlk.global[0] steht 0x104!!!). Abfrage
+              ausgebaut. #include <stdgrumble.julian>
+              Fehler in delaccwindow() ausgebaut.
+
+0.13f  02.02. Fehler im Pattern-Matcher ausgebaut (Patterns durften nicht
+              lÑnger als 13 Zeichen werden).
+              Es ist kein Fehler mehr wenn Programme per shell_write andere
+              Programme ohne Pfadangabe starten wollen.
+       03.02. Signum2 und SPRINT tun's jetzt.
+
+0.13e  04.02. Signum2 tat's unter der Venus nicht. Jetzt aber!
+
+0.13f  05.02. Mupfel berechnet jetzt vor und nach jedem Pexec() eine Check-
+              summe a la TC ("The executed program damaged Mupfel...").
+
+0.13g  11.02. Sonderfall-Test auf GEM 1.04 fÅr wind_new().
+              Der Programmname beim Start von GEM-Prgs wird jetzt zu Fuss
+              mit VDI-Funktionen gemalt.
+              Bei savescreen ist das oberste rechte Zeichen nicht mehr
+              invers.
+
+0.14a  12.02. VernÅnftige Fehlermeldung bei mv wenn die Quelldatei nicht
+              existiert.
+              Neues Kommando "rename".
+
+0.14b  18.02. rm intern umgearbeitet (That code was cursed...)
+              Environment und Interne Variablen kînnen jetzt auch
+              mit VAR=value gesetzt bzw mit VAR= gelîscht werden.
+              Neues Kommando "timer".
+
+0.14c  23.02. ~ funktioniert jetzt tokenweise.
+       24.02. $xArg wird nach ProgrammausfÅhrung wieder aus dem
+              Environment entfernt.
+
+0.15a  26.02. Nachtschicht bis 3:45 h mit Steve. Ergebnis:
+              - system() funktioniert jetzt. FrÅher hat sich kein
+              Mensch um die Register im aufrufenden Prozess gekÅmmert, und
+              auûerdem hat Mupfel den Stack des Aufrufers mitbenutzt.
+              Jetzt werden alle Register bis auf D0 und A7 gerettet und
+              ein neuer Stack von 8K Grîûe angelegt.
+              - Man kann wieder Files mit der Venus kopieren!!!!!!!!!
+              Nach langem Suchen ist uns endlich klar geworden, daû sich
+              die Fehler in Dsetpath() nicht umgehen lassen, und deshalb
+              wird diese blîde Funktion nur noch fÅr Directories auf-
+              gerufen die wirklich existieren. Das kann man mit Fsfirst
+              und einer winzigkleinen Routine feststellen, die Programmierung
+              einer solchen Routine Åberlassen wir dem Leser als öbungsauf-
+              gabe.
+
+0.15b  26.02. "mv a b" lîscht b nicht mehr, wenn a nicht existiert oder
+              read-only ist.
+       27.02. Neues Kommando "alias" angefangen. Die Verwaltung der alias-
+              Liste funktioniert schon, aber benutzt wird's nirgends.
+       28.02. $SHELL wird jetzt auch dann richtig besetzt, wenn Mupfel im
+              Root-Directory liegt.
+
+0.15c  02.03. cp setzt bei der Zieldatei die Attribute auf den Stand der
+              Quelle.
+              $SHELL wird jetzt auf den echten Pfadnamen von Mupfel gesetzt,
+              selbst wenn sie nicht MUPFEL.PRG heisst (shel_read macht's
+              mîglich).
+              
+0.15d  03.03. init liefert jetzt einen korrekten Returncode.
+
+0.16a  04.03. "cd ." tut's jetzt auch im Rootdirectory.
+              Man darf Programme wieder z.b. mit "dir\xy.tos" oder
+              auch nur "dir\xy" starten.
+              String bei shel_read fuer $SHELL vergîssert, hash-Tabelle
+              ging kaputt. Von dem String wird auch nur der Filename-Teil
+              genommen.
+
+0.16b  09.03. Nach system() wird kein unallozierter Speicher mehr freige-
+              geben.
+              "timer" gibt jetzt die Zeit mit zwei Nachkommastellen aus.
+
+0.16c  13.03. mv macht jetzt innerhalb eines Laufwerks keine Kopien mehr.
+              label lîscht jetzt das alte Label nicht mehr wenn unter dem
+              neuen Namen schon ein File oder Directory existiert, auûerdem
+              gibt's jetzt einen vernÅnftigen Returncode zurÅck.
+              Mit "label x: -" kann man jetzt das Label von x: lîschen
+              ohne ein neues zu vergeben.
+
+0.16d  18.03. WÑhrend ein internes Kommando lÑuft ist jetzt Typeahead 
+              mîglich. Der Typeaheadbuffer ist 128 Zeichen gross und wird
+              bei öberlauf stillschweigend weggeworfen. Bei externen Pro-
+              grammen funktionierts leider nicht, wahrscheinlich weil GEM-
+              DOS den eigenen Buffer beim Prozesswechsel lîscht.
+              Zwei Texte geÑndert: Wenn Programme nur mit xArg-Argumenten
+              gestartet werden, wird darauf explizit hingewiesen. Wenn bei
+              internen Kommandos unexpandierte Wildcards Åberbleiben, wird
+              der erste nicht expandierte Token mit angezeigt (So finde
+              ich diese Meldung schon fast ertrÑglich).
+       19.03. Alle Funktionen, die mit verketteten Listen arbeiten (ls,
+              hash und alias) auf einen gemeinsamen Satz Routinen zur
+              Listenverwaltung umgestellt.
+              Batchfiles werden jetzt direkt nach dem ôffnen komplett ein-
+              gelesen und nicht wie bisher mit fgets zeilenweise (Lîsung
+              fÅr Volkmars Autostart-Problem).
+
+0.16e  23.03. Endlich eine Lîsung fÅr die Control-Zeichen im Lineeditor.
+
+0.17a  26.03. alias implementiert, allerdings ohne $-Substitution.
+
+0.17b  27.03. Die alias-Liste wird jetzt alphabetisch sortiert.
+              Alias-Definitionen dÅrfen unexpandierte Wildcards ent-
+              halten.
+              Bug bei rekursiven aliasen ausgebaut.
+
+0.17c  31.03. Alias-Expansion dokumentiert.
+              Mehrfache Redirection eines Kanals (z.B. "ls >x >y") wird
+              jetzt richtig behandelt.
+              Den Namen der Environmentvariablen bei "A=B" und setenv werden
+              jetzt nach den gleichen Kriterien wie im Parser bei $xxx auf
+              LegalitÑt geprÅft.
+       02.04. Neue interne Variable "errorfile". Sollte ein File- oder
+              Devivename sein. Wenn gesetzt, wird fÅr alle Kommandos Kanal
+              2 (StdAux) auf dieses File umgeleitet (wie 2>xx). Wenn der
+              Inhalt mit ">" anfÑngt wird angehÑngt (wie 2>>xx). Achtung:
+              Das muû man beim Setzen quoten! FÅr GNU, MWC usw. bietet
+              sich "set errorfile con:" an.
+
+0.17d  06.04. Neues Kommando "setscrap" um das Scrap-Directory zu setzen.
+              HÑngt "\SCRAP.*" selber an.
+       08.04. Kleinere interne AufrÑumarbeiten.
+       09.04. EXIT.PRG wird nur noch von der ersten Mupfel gestartet.
+              isdir() verÑndert das aktuelle Directory auf anderen als dem
+              aktuellen Laufwerk nicht mehr (betrifft setscrap, cp, mv u.a.)
+              Setscrap weigert sich das Scrap-Directory auf nichtexistente
+              Directories zu setzen.
+
+0.17f  11.04. Zugriff auf Directories auf nichtexistenten Drives fÅhrt nicht
+              mehr zu Division by Zero (Fehler in TOS 1.4: Versucht mal
+              Fsfirst("X:\\TEST",0x10) auszufÅhren...).
+              Neue interne Variable cwd; enthÑlt den Namen des aktuellen
+              Directories.
+
+0.17g  14.04. Mit Ctrl-S angehaltene Kommandos kînnen mit Ctrl-C ab-
+              gebrochen werden.
+              Jede Menge wg. TC 1.10m geÑndert (DTA, DISKINFO etc.).
+              Mupfel benutzt jetzt wind_update(). Beim Start BEG_UPDATE,
+              vor Pexec() END_UPDATE, danach BEG_UPDATE, am Ende wieder
+              END_UPDATE (wegen érger mit RING.ACC).
+       15.04. Bug im Lineeditor gekillt (zu viele DELETEs konnten zu Illegal
+              Instruction fÅhren).
+       16.04. Whereis weiss jetzt was von aliasen.
+              Wenn in der aktuellen Kommandozeile ewas drinsteht und man mit
+              Shift-UpArrow oder Shift-DownArrow scrollt, werden nur noch
+              diejenigen Historyentries angezeigt, die mit den Zeichen aus
+              der aktuellen Zeile beginnen.
+              Probleme mit Venus und gesetztem screensave beseitigt.
+
+0.17h  20.04. Im Lineeditor wird bei Ctrl-C der Cursor jetzt eine Stelle
+              nach rechts bewegt.
+       21.04. Man kann jetzt wieder Programme ohne Extension aus dem Parent
+              Directory starten ("..\xx").
+              Default fÅr $SUFFIX auf "prg;tos;mup" geÑndert.
+              Neue Option -a fÅr pwd: Zeigt die aktuellen Directories auf
+              allen Drives an.
+       22.04. Environmentvariablen werden an eine zweite Mupfel korrekt
+              weitervererbt.
+              $SHELL wird beim Start nur gesetzt, wenn der shel_read-Aufruf
+              ein ausfÅhrbares Programm als Kommandonamen liefert.
+
+0.17i  22.04. Wenn ein Kommando aus der Hashtabelle nicht mehr gefunden
+              werden kann, wird automatisch neu in $PATH gesucht und bei
+              Erfolg der Hasheintrag geÑndert.
+       23.04. Die Checksumme vor und nach Pexec() geht jetzt Åber das Text-
+              und Daten-Segment.
+       26.04. Checksumme Åber's Datensegment wieder ausgebaut (wegen
+              system()).
+              Neue Option -l (linefeed) fÅr cat damit man auch UNIX-Text-
+              files (die nur LF als Zeilentrenner haben) ansehen kann.
+              Die Directorynamen bei pwd, pwd -a, $cwd et al werden jetzt in
+              Kleinbuchstaben ausgegeben.
+       29.04. Externe Programm die im aktuellen Directory liegen und nur
+              wegen dem Eintrag "." in $PATH gefunden werden werden jetzt
+              gehasht (Funktioniert wegen automatischem rehash).
+              Neue interne Variable "shellcount" enthÑlt eine Zahl, die an-
+              gibt, wie oft Mupfel im Speicher ist.
+              Alle Funktionen, die rekursiv durch DirectorybÑume laufen 
+              (cp -r, rm -r, tree, du) geben jetzt einen aussagekrÑftigen
+              Returncode zurÅck.
+
+0.17j  30.04. Die Extension "MUP" muss nicht mehr als letzte in $SUFFIX
+              stehen.
+              Mit Alternate-XXX kînnen jetzt auch die Zeichen eingegeben
+              werden, die sonst eine Sonderbedeutung hÑtten, z.B. Alt-3
+              (sonst wie Control-C) fÅr den Pfeil nach rechts.
+              Environment auf verkettete Listen umgestellt.
+       01.05. "%n" in $PS1 tut's wieder.
+              "setenv" darf unexpandierte Wildcards haben.
+
+0.17k  03.05. Bug gekillt: Wenn per system() andere Programme gestartet
+              wurden, wurde in die xArg-Struktur die Basepage der Mupfel
+              anstatt der des aufrufenden Prozesses eingetragen. Jetzt
+              wird der Wert aus sysbase->_run genommen.
+       05.05. Info kann jetzt von mehreren angegeben Laufwerken den freien
+              Platz anzeigen.
+
+0.18a  07.05. Endlich! Mupfel und Venus sind ein Programm geworden. In der
+              Merged Version gibt's ein neues Kommando "venus", mit dem
+              man nach ALT-M in die Venus zurÅckkommt. "exit" und "quit"
+              haben die gleiche Wirkung.
+       08.05. Einige kleinere Bugs in der Merged Version gefixt.
+              Bei ersten ALT-M gibt's jetzt die Copyright-Meldung der
+              Mupfel.
+       09.05. In Batchfiles werden $1, $2 usw wieder korrekt expandiert.
+
+0.18b  13.05. Alle mit Malloc() angeforderten Blîcke werden am Ende expli-
+              zit mit Mfree() wieder freigegeben.
+       14.05. Neue Option fÅr $PRGNAME_EXT: Mit "D:[YN]" kann festgelegt
+              werden, ob vor Pexec() in das Directory des Programms ge-
+              wechselt werden soll.
+
+0.18c  15.05. "touch -d" kann die Modifkationszeit jetzt auf Mitternacht
+              setzen.
+              Merged Version: Mupfel hat ein von Venus unabhÑngiges
+              "current directory" Åber mehrere ALT-M Aufrufe hinweg.
+
+0.18d  20.05. Die Warnung "using xArg only" kommt nicht mehr bei system()-
+              Aufrufen.
+       22.05. Lîsung fÅr Volkmar's Reset-Problem. Lest bitte den Abschnitt
+              Åber system() im .DOC! (Keine ProgrammÑnderung)
+
+0.18e  25.05. Merged Version: Aus MUPFEL.MUP kînnen keine Programme mehr
+              gestartet werden, da Venus noch nicht initialisiert ist.
+
+0.18f  29.05. Die Abfragen bei {cp|mv} -c und rm -i reagieren jetzt wieder
+              auf Kleinbuchstaben. Bei beiden gibt's ausserdem eine neue
+              Antwortmîglichkeit: A fÅr All lîscht/kopiert alle weiteren
+              Files ohne Abfrage.
+       03.06. Kommentare kînnen jetzt irgendwo auf einer Zeile mit '#' be-
+              gonnen werden.
+
+0.18g  04.06. Bug bei Aliasen, die ";" enthalten gekillt.
+       06.06. Merged Version: Der Start von GEM-Programmen aus der Mupfel
+              sieht jetzt schîn aus, auûerdem kann man wieder Programme
+              aus dem aktuellen Directory starten.
+       10.06. Versionsabfrage fÅr wind_new() umgestellt: Jetzt wird
+              auf GEM == 1.04 || (GEM >= 1.3 && GEM != 2.1) getestet.
+              Optionen fÅr "version" umgestellt: -g zeigt die GEM-Version
+              (aus global[0]) an, -d die GEMDOS-Version. -a zeigt alle
+              relevanten (d.h. TOS, GEM, GEMDOS, Mupfel) Versionsnummern
+              an.
+              öberflÅssiges CR/LF bei "init" rausgeworfen.
+              
+0.18h  15.06. ls, tree und der Wildcardexpander kommen jetzt mit Files ohne
+              Basename (z.B. ".xyz") klar.
+              
+0.81i  17.06. Wenn die Variable HOME im MUPFEL.MUP nicht besetzt wird, wird
+              sie automatisch mit dem Namen des aktuellen Directories beim
+              Start besetzt.
+              Mupfel kann jetzt mit "-c commands" auf der Kommando-
+              zeile gestartet werden. Dabei wird kein Autoexec-File
+              ausgefÅhrt, sondern nur die angegebenen Kommandos.
+       18.06. Merged Version: Man darf aus der Mupfel wieder TOS-Proramme
+              mit grauem Hintergrund starten (PRGNAME_EXT=b:y).
+              
+0.18j  26.06. Mupfel benutzt Line A nicht mehr. Screensave geht jetzt Åber
+              vro_cpyfm(), die Cursorposition wird mit vq_curaddress() er-
+              mittelt.
+
+0.18k  29.06. Neues internes Kommando "blitmode". Siehe Doku.
+              "info" zeigt jetzt auch den belegten Platz, ausserdem passt
+              bei "info -a" alles schîn untereinander.
+              
+0.19a  30.06. I/O-Errors bei File-Operationen sollten jetzt wesentlich
+              besser abgefangen werden, so daû jetzt die Alerts vom Critical
+              Error Handler nur noch einmal kommen dÅrfen. Bitte beobachten!
+              Testausgaben sind noch in dirstat() und setcurdir().
+       01.07. Kosmetische énderungen bei "label" und "init".
+              "blitmode" liefert jetzt als Returncode den Blitterstatus.
+              Neue Option -f (force) fÅr "setscrap". Ohne -f wird der Scrap-
+              Pfad nur gesetzt wenn noch keiner gesetzt war, mit -f wird in
+              jedem Fall umgesetzt.
+              
+0.19b  01.07. Fehler bei I/O Redirection ausgebaut. noclobber tat's nicht
+              richtig, und Redirection auf read-only-Files wurde nicht ver-
+              nÅnnftig behandelt. Bei Redirection von Handle 2 wegen error-
+              file wird noclobber jetzt ignoriert.
+       02.07. Noch mehr Bugs bei I/O Redirection ausgebaut.
+       03.07. Immer up to date! Nach dem neuesten Stand der Erkenntnis wird
+              bei "setscrap" jetzt "\SCRAP.*" nicht mehr angehÑngt.
+       05.07. Die Cursor-Probleme mit TOS-Programmen, die mit B:Y in
+              $PRGNAME_EXT gestartet wurden sollten behoben sein.
+              Neue Option -q (quiet) fÅr setscrap. Dabei wird keine Fehler-
+              meldung ausgegeben, wenn der Scrap-Pfad bereits gesetzt war.
+       07.07. Der Screen-Buffer bei savescreen() wird jetzt auf eine 256er-
+              Grenze ausgerichtet (sieht mit BigScreen 1.2 besser aus).
+              Merged Version: Im MUPFEL.MUP ist "cd" verboten, da sonst die
+              Venus ihre Files nicht findet.
+              
+0.19c  14.07. Neue Env-Variable DRIVEMAP, enthÑlt die Namen der Drives fÅr
+              "info -a" und "pwd -a".
+              
+0.19d  25.07. Beim Start von Programmen wird jetzt nicht mehr ÅberprÅft, ob
+              ein File wirklich ein echtes TOS-Binary ist (anhand der Magic
+              Number im Header), sondern nur noch getestet ob die Extension
+              in $SUFFIX steht (FÅr Load-Time-Linking nÅtzlich).
+              ACHTUNG: Wenn kurze Extensions (z.B. .O) erlaubt sein sollen,
+              *mÅssen* sie vor denjenigen in $SUFFIX stehen, die sie als
+              Teil enthalten. D.h. "TOS;O" geht nicht, "O;TOS" geht.
+              Wenn weder im MUPFEL.MUP noch vom Parent-Prozess PATH und/oder
+              SUFFIX gesetzt werden, werden jetzt Defaults ins Environment
+              geschrieben.
+             
+0.19e  28.07. Terminieren von Mupfel fÅhrt nicht mehr zu AbstÅrzen wenn
+              EXIT.PRG fehlt und $SHELL nicht gesetzt ist.
+              Merged Version: Fehlermeldung wegen fehlendem MUPFEL.MUP
+              als Alert-Box.
+
+0.20a  04.08. Bîsen Design-Fehler gekillt: Die Kommandos auf Zeilen
+              wie "x;y;z" wurden teilweise in der falschen Reihenfolge
+              ausgefÅhrt, speziell in Kombinationen mit Batchfiles. Jetzt
+              geht's brav von links nach rechts und ordentlich geschachtelt.
+              Thanx, Steve.
+              Bei cp und mv wird, wenn die letzte Angabe nur ein Drivename
+              ist, in das aktuelle Directory auf diesem Drive und nicht mehr
+              in Rootdirectory kopiert/verschoben.
+       05.08. Programme werden jetzt immer mit einem nicht-blinkenden Cursor
+              gestartet.
+              $COLUMNS kann jetzt gefahrlos auf unsinnige (d.h. zu kleine)
+              Werte gesetzt werden.
+              Batchfiles kînnen mit Ctrl-C abgebrochen werden.
+              Per system() kînnen jetzt wieder Batchfiles aufgerufen werden.
+              
+0.20b  07.08. I/O-Errors bei der Pfadsuche werden jetzt vernÅnftig abge-
+              fangen.
+              Pwd kann jetzt das aktuelle Directory eines bestimmten Drive
+              anzeigen (mit "pwd c:").
+              
+0.30a  20.08. Mal wieder 'ne Nachtschicht. Die gemergte Version hat jetzt 
+              Window fÅr die Mupfel, in dem auch die von ihr gestarteten
+              TOS-Programme laufen. Bei der Gelegenheit geÑndert:
+              MUPFEL.MUP wird nur noch von der ersten gestarteten Mupfel
+              ausgefÅhrt. $SHELL, $COLUMNS und $ROWS werden nur dann besetzt
+              wenn sie vom Parent nicht geerbt wurden.
+       21.08. Jede Menge Bugs in den Window-Routinen gefixt. Lineeditor im
+              Window deutlich verschnellert.
+
+0.30b  22.08. HÑssliche Verzîgerung nach "Return" in einer Kommandozeile mit
+              vielen Wildcards gekillt.
+              
+0.99   23.08. Ein historisches Datum: Die "Merged Version" hat einen Namen
+              bekommen! "Gemini" ist in die letzte Testphase gegangen, auf
+              der Atari-Messe wird die Freigabe von 1.0 angekÅndigt.
+              Mit Steve bis in die Nacht gehackt. Tonnenweise Bugs in Arnd's
+              VT-52 Emulator gekillt. Lineeditor im Window noch schneller.
+              XBRA-Id fÅr Gemini ist "GMNI". GEMINI.FNT (6*10, ID=97) ge-
+              bastelt. Die "negativen" Line-A-Variablen fÅr die Grîûe des
+              Textbildschirms werden jetzt entsprechend der Windowgrîûe in
+              Gemini gesetzt. Bug beim Lîschen von Zeilen per "ESC" im Line-
+              editor gefixt (war in Mupfel nie aufgetreten).
+              
+0.99a  24.08. Mupfel: Bug beim Historyscrollen gefixt (war Seiteneffekt von
+              énderungen wg. Gemini).
+              "shellcount" zÑhlt jetzt die Mupfel- und Gemini-EintrÑge in
+              _shell_p.
+              Wenn MUPFEL.MUP fehlt, gibt's in Gemini keine Fehlermeldung
+              mehr.
+              Neue Option -i (interactive) fÅr cp und mv.
+              Bock bei rename und backup gekillt: Alte Einstellungen von
+              cp/mv blieben erhalten.
+
+0.99b  25.08. FÅr rename und backup gibt's jetzt analog zu cp die
+              Optionen -i,-v, und -c.
+
+0.99c  28.08. Gemini: I/O Redirection von internen Kommandos geht
+              wieder.
+              GEMINI.FNT um die Zeichen 0-32, fast alle europÑischen
+              Sonderzeichen und um @ erweitert.
+              Backspacen am rechten Bildschirm/Windowrand geht wieder 
+              richtig.
+              
+0.99d  14.09. cat von Tastatur kann jetzt ausser mit Control-D auch 
+              noch mit UNDO abgebrochen werden.
+       16.09. Gemini: Fehler bei Zeichenausgabe von internen Kommandos aus-
+              gebaut.
+              
+0.99e  17.09. Batchfiles werden jetzt auch richtig bearbeitet, wenn die
+              letzte Zeile nicht mit CR/LF aufhîrt. (Editoren die solche
+              Files erzeugen gehîren verboten!)
+              Neue Option -a (archive) fÅr cp: Dabei werden nur Files ko-
+              piert, die das Archiv-Bit gesetzt haben, nach dem Kopieren
+              wird es bei den Source-Files zurÅckgesetzt.
+       20.09. Bug bei "cp -r" ausgebaut: "cp -r x:\ y:\" funktioniert jetzt.
+              "du" ohne Argumente entspricht "du .".
+              Nochmal "cp -r": Funktioniert jetzt auch, wenn die benîtigten
+              Directories bereits existieren.
+       21.09. Neue interne Variable "drivelist": enthÑlt die Namen aller
+              angeschlossenen Drives.
+              Gemini: Neue Option fÅr $PRGNAME_EXT: öber "W:[YN]" kann ge-
+              steuert werden, ob die Programme im Console-Window laufen so-
+              llen oder nicht. Wenn nicht, wird beim Programmende auf einen
+              Tastendruck gewartet. Default fÅr TOS-Programme ist W:Y, bei
+              GEM-Programmen hat der Switch keine Wirkung. (Das ganze gilt
+              logischerweise nur fÅr Programme die aus dem Console-Window
+              gestartet werden!).
+              cp gibt jetzt eine ordentliche Meldung aus, wenn beim Kopieren
+              die Zieldisk voll wird.
+              Neue Option fÅr init: -y (yes). Stellt keine Frage mehr, son-
+              den initialisiert die Disk sofort.
+              Bug bei "version -g" gefixt: Die GEM-Versionsnummer wird trotz
+              des Fehlers in TCGEMLIB (das control-Array ist nur 11 statt 12
+              ints groû) immer richtig angezeigt.
+              "version -t" zeigt jetzt auch das Landeskennzeichen der be-
+              nutzten TOS-Version (USA,FRG,FRA,UK usw.) an.
+
+0.99f  22.09. Neues Kommando "shrink". Damit kann man zu Testzwecken den
+              zur VerfÅgung stehenden Speicher verkleinern.
+       24.09. Interner Kram. /* Kommentare! Wow! */
+       26.09. Neue Option -h fÅr version. Zeigt die Versionsnummer eines
+              AHDI 3.01-kompitablen Treibers an, oder mangels eines solchen
+              einen entsprechenden Kommentar.
+       27.09. Gemini: In $PRGNAME_EXT wird der Paramter C:[yn] wieder korrekt
+              ausgewertet.
+              
+0.99g  28.09. Gemini: TOS-Programme vom Desktop gestartet laufen jetzt
+              im Console-Window.
+              Bug in system() behoben (Batchfiles wurden manchmal nicht
+              korrekt behandelt).
+              Neues Kommando "pause". Wartet auf Tastendruck. Wenn Argumente
+              angegeben sind, werden diese zuerst wie bei echo ausgegeben,
+              allerdings immer ohne cr/lf am Schluss.
+              Die einzelnen Werte in $PATH, $SUFFIX, $CDPATH und
+              $PRGNAME_EXT dÅrfen jetzt wahlweise durch Komma oder Semikolon
+              separiert sein.
+       29.09. Workaround fÅr den Handle-Bug im VDI.
+              Batchfiles beeinflussen jetzt das aktuelle Directory von
+              Mupfel/Gemini nicht mehr (auch wenn sie "cd" enthalten).
+              Die aktuellen Directories auf anderen als dem aktuellen Drive
+              kînnen allerdings sehr wohl beeinflusst werden.
+       30.09. TOS-Progamme, die von Mupfel gestartet werden, haben jetzt
+              einen fast kompitablen Critical-Error-Handler wie im ROM
+              (courtesy Julian). Logisch mit XBRA.
+              Endlich sollte der Handle-Bug endgÅltig umgangen sein: Alle
+              Workstations (6 StÅck! Wer hat mehr?) bleiben jetzt offen
+              wenn Programme gestartet werden.
+              
+0.99h  02.10. Noch 'nen Bug bei "cp -rv" gefixt (War nur Optik).
+              Weder ls noch der Wildcard-Expander betrachten jetzt Hidden
+              Files. Ls kann sie mit der Option -h aber doch anzeigen.
+              Bei cmd1;cmd2 wurde zwischendrin ein ÅberflÅssiges CR/LF aus-
+              gegeben, jetzt nicht mehr.
+       03.10. Interne Umarbeitung der Help-Routinen, dadurch ca. 2K an Code
+              und Daten eingespart.
+              Das Kommando "info" heisst jetzt "df" (disk free).
+              Das Kommando "quit" ist gestorben.
+              Bei tree darf das Filespec-Argument jetzt ebenfalls UNIX-
+              Wildcards enthalten.
+              
+0.99i  04.10. I/O Redirection umgearbeitet, nochmal ca. 1K Code gespart.
+              Die Ausgaben von Batchfiles kînnen jetzt umgelenkt werden!
+              Wenn ein einzelnes Kommando im Batchfile was anderes will,
+              geht das logischerweise auch.
+              Wieso sagt mir eigentlich keiner, daû das noch nie ging?
+              
+0.99j  14.10. Ausgaben bei "rm -rv" geÑndert.
+       15.10. Gemini: GEM-Programme auf anderen Drives als dem des Top-
+              Windows lassen sich wieder starten.
+       16.10. Alerts von Mupfel sind jetzt (in Gemini) fliegend.
+              Bug beim Nachstarten von Programmen per shel_write gefixt.
+              (TURTLE - TTLEXEC ging nicht richtig)
+              GEM-Programme sollten sich jetzt mit beliebigen relativen
+              Pfadangaben starten lassen.
+              Puh! Redirection mit TOS 1.0 geht wieder.
+              
+1.00   17.10. Ein historisches Datum (schon wieder)! GEMINI 1.0 ist ganz
+              offiziell freigegeben!
+              
+1.01   28.10. Sortierung und Speicherfreigabe bei "ls" beschleunigt.
+              Bugfix: "touch -d" mit 8stelliger Datumsangabe benutzt jetzt
+              immer das aktuelle Jahr.
+              
+1.02   30.10. Bugfix: UnvollstÑndige Redirection (z.B. "ls >") wird jetzt
+              vernÅnftig abgefangen.
+              Neues Feature: Drive-Wechsel mit grossgeschriebenem Drive-
+              namen wechselt ins Root-Directory des Drives.
+       31.10. Neues Feature: Neue Option -b (brute force) fÅr cp,mv und rm.
+              Damit kînnen auch Read-Only-Files umbenannt, gelîscht usw.
+              werden. Bei cp ist es mîglich, ein Read-Only-File zu Åber-
+              schreiben.
+              Altes Feature, aber bisher undokumentiert: Option -s (secure)
+              fÅr cp. Siehe Doku.
+       01.11. Bugfix: cd, tree und showprompt() kommen jetzt mit langen 
+              Pfaden klar. 
+              Neu: cp (und mv, falls kopiert wurde) lîschen jetzt bei
+              Fehlern das Target-File.
+              
+1.03   05.11. Neue Kommandos "print" und "more". Siehe Doku.
+       06.11. Bugfix: Zusammenspiel von "W:N" und "Venus will close her
+              Windows" geht jetzt.
+       08.11. Kleinere optische Bugs in more gefixt. More kann jetzt
+              auch suchen!
+              Neu: In Gemini kann man das Console-Window jetzt auch durch
+              Mausclick verlassen.
+       09.11. Neu: Atari's neues EXARG-Verfahren wird jetzt unterstÅtzt,
+              wenn in $PRGNAME_EXT der Parameter X:Y angegeben ist.
+       10.11. Das warten auf einen Tastendruck nach einem Programm kann
+              mit K:[YN] in $PRGNAME_EXT ein/ausgeschaltet werden.
+              Default ist aus.
+              Bei more kann das nochmalige Suchen auch mit 'A' ausgelîst
+              werden. Am Dateiende/anfang dreht sich die Suchrichtung dafÅr
+              automatisch um.
+
+1.04   12.11. Peinliche Panne: fÅr's Console Window gab's eine Optimierung
+              fÅr die Stringausgabe, die leider nie gegriffen hat. Jetzt tut
+              sie's, der Effekt ist nicht schlecht....
+              Bug bei EXARG gekillt.
+              Bugfix: Einige interne Kommandos haben bei Redirection nur \n
+              anstatt \r\n als Zeilentrenner ausgegeben.
+              Bugfix: Kein doppelten Cursor im Console Window mehr.
+       13.11. more kommt jetzt auch mit UNIX-Textfiles klar.
+              EXARG wird nur noch benutzt, wenn es mindestens ein Argument
+              fÅr das Programm gibt.
+              Bugfix: Es konnte Environmentvariablen mit den gleichen Namen
+              wie interne Variablen geben.
+       17.11. Bugfix: shell-calls Åber system sind jetzt reentrant.
+       
+1.05   25.11. Neu: Aliase und Fkeys werden eine neu gestartete Mupfel
+              weitervererbt. éhnlich xArg wird im Environment die Adresse
+              der jeweiligen Strukturen in der startenden Mupfel Åbergeben.
+       26.11. Neu: Die Hash-Tabelle und einige internen Variablen (die frei
+              definierbaren) werden jetzt ebenfalls vererbt.
+              Bugfix: more crashte, wenn man erst lange (>24 Zeilen) Files
+              und dann kurze (<24) uebergab.
+              Bugfix: Mupfel kommt jetzt damit klar, daû in _shell_p schon
+              jemand ohne XBRA hÑngt (i.e. GulÑm).
+              Neu: In der Environmentvariablen CONSOLEDIR kann festgelegt
+              werden, in welchen Directory man sich beim ersten ôffnen des
+              Console-Windows befinden will.
+              Neu: In $PS1 schaltet %i auf inverse, %I auf normale Textdar-
+              stellung.
+              
+1.06   01.12. Steve's Version von print eingebaut. Sollte jetzt tun.
+
+1.07   04.12. alert.c benutzt jetzt die Bitimages aus FLYDIAL.LIB direkt.
+              SHELL0.PRG sollte ÅberflÅssig geworden sein (ausser nach
+              AbstÅrzen): Im Resetvektor hÑngt eine Routine, die _shell_p
+              auf 0 setzt.
+       10.12. Bugfix: xx;yy geht wieder, wenn xx ein alias ist.
+              Neu: Kommando noalias. Alles was danach kommt wird ohne alias-
+              Expansion ausgefÅhrt. Auf "noalias" kann man kein alias legen.
+              Bugfix: Ls kommt mit Files klar, deren Name mit Blank beginnt.
+              Neu: In V_CUR_XY[] (Vdi-Escapes) steht immer die aktuelle Cur-
+              sorposition.
+              Batchfiles dÅrfen jetzt beliebig viele Leerzeilen an beliebiger
+              Stelle haben.
+
+1.08   11.12. Neu: Beim Start von Programmen, die im Window laufen, wird nicht
+              mehr in das Directory der Mupfel gewechselt.
+              Neu: Kommando find. siehe Doc.
+              Bei GEMINI werden jetzt GrafMouse und WindUpdate verwendet.
+       12.12. Neu: Kommando cookie. Zeigt das Cookie Jar an. Mupfel/Gemini
+              tragen beim Start einen Cookie (==XBRA-Id) ein und am Ende
+              wieder aus, falls ein Cookie Jar angelegt ist. Der Cookie-
+              wert ist 0 und bedeutungslos.
+       13.12. Alle Ausgaben von Dateinamen bei cp, mv, rm, tree und find
+              sind jetzt einheitlich in Kleinbuchstaben.
+              More schaltet am Anfang jetzt Wrap aus, hinterher wieder an.
+              I/O-Errors bei Pexec() werden jetzt abgefangen.
+       14.12. Pexec() unterscheidet jetzt zwischen negativen Returncodes
+              von Programmen und negativen Fehlernummern von BIOS/GEMDOS.
+       18.12. Uraltes Relikt aus Zeiten des Dsetpath()-Terrors beseitigt,
+              wobei bei Drives, die noch nie angesprochen wurden, erstmal
+              ins Root gewechselt wurde.
+              
+1.1    29.12. Am Tag der Freigabe noch schnell ein Fix: Die Meldung
+              "can't handle unexpanded wildcards" kommt jetzt als Alert.
+              
+1.11   03.01. Bugfix: Ausgabe von "cp -sv" ist jetzt in Ordnung.
+       13.01. Bugfix: Mupfel sollte jetzt wieder mit TOS 1.0 laufen
+              Neu: In $GEMSUFFIX stehen diejenigen Suffixe, die zur Er-
+              kennung von GEM-Programmen benutzt werden. Format ist wie
+              $SUFFIX, default ist "PRG;APP;ACC". NÅtzlich zur Abwehr von
+              Linkviren, siehe Doku.
+       14.01. Bugfix: Historyscrollen mit Shift-Arrows vertut sich nicht
+              mehr.
+              "cp -ra" und "du" beschleunigt (Fattrib/Fsfirst wird nicht
+              mehr so oft aufgerufen).
+              Bugfix: cp -s ging schief, wenn das Target nicht existierte.
+       24.01. Nach mehreren Tagen erste stabile Version von RUNNER.
+              Bugfix: ARGV[0] im Environment ist jetzt der Path zum Pro-
+              gramm.
+       25.01. RUNNER sollte fertig sein. Easydraw/Output tut's auf jeden
+              Fall...
+
+1.12   01.02. chmod weiss was vom Fastload-Bit. Neue Kommandos "rsconf",
+              "prtconf" und "kbrate". DialInit wird nach appl_init auf-
+              gerufen. Start im Auto-Ordner wird erkannt.
+       02.02. Overlays-Starten geht jetzt auch in GEMINI!
+       
+1.13   04.02. In GEMINI wird jetzt Cursconf() abgefangen.
+       07.02. Das interne dirty-Flag fÅr Drives wird jetzt bei Redirection,
+              rmkdir, mkdir, cp, mv, rename, backup, chmod, touch, label und
+              init gesetzt.
+       08.02. Neue Kommandos format und kclick. Init geÑndert.
+              Bugfix: "ls > x" [Watch the plenks] geht jetzt.
+              Bugfix: History-Scrollen mit Shift-Pfeil crasht nicht mehr,
+              wenn nichts passendes in der History steht.
+       10.02. cd benutzt den CDPATH nur noch, wenn der angegebene Name nicht
+              mit \ oder . anfÑngt.
+       11.02. Neue Option -v fÅr format. Format kann mit ESC oder CTRL-C ab-
+              gebrochen werden.
+              Ca. 2K durch Umarbeitung der usage-Meldungen eingespart.
+              SÑmtlichen stdio-Kram rausgeworfen, dadurch nochmal ca 2K ge-
+              spart.
+       13.02. find zeigt Directorynamen nicht mehr doppelt an.
+              rsconf kann jetzt Parity, Stopbits und Char.Size einstellen.
+              ls -f und file zeigen fastload-Status an (bei ls -f: '+'
+              statt '*' wenn fastload gesetzt ist).
+       14.02. Bugfix: mupfel -c xx.mup tut's jetzt.
+              Bugfix: ${xy}abc ergibt jetzt das gleiche wie "$xy"abc
+       15.02. more kann jetzt von stdin lesen, wenn das kein tty ist.
+              du verzÑhlt sich jezt nicht mehr bei den Files.
+       17.02. Format formatiert (ab TOS 1.2) jetzt mit Spiralisierung (wie
+              Hyperformat-Faktor 3)
+              Neue Option -d fÅr hash.
+              
+1.14   20.02. Bugfix: in $SUFFIX dÅrfen die einzelnen Elemente jetzt tat-
+              sÑchlich durch "," getrennt sein.
+              Beim Kopieren auf eine nicht eingelegte Diskette kommt der
+              "Abbruch/Nochmal"-Alert nur noch einmal.
+              Neue Option -n fÅr cp.
+              Bug beim Directory-Rename ausgebaut (war neu).
+       23.02. Wenn "histsave" gesetzt ist, wird beim Verlassen die History
+              in $HISTFILE (bzw. $HOME\mupfel.hst) gesichert. Beim Start
+              wird die History immer gelesen.
+       25.02. Wenn "nohistdouble" gesetzt ist, werden Kommandos nur dann
+              in die History aufgenommen, wenn sie darin noch nicht exis-
+              tieren.
+
+1.15   27.02. Bug bei "rmdir a:" behoben (Ddelete("A:") crasht...).
+              EXIT.PRG wird jetzt auch im Directory $EXIT gesucht.
+              gbootXXX.prg kann (fÅr Multidesk, Harlekin usw) als Auto-
+              start angemeldet werden. Es wartet XXX Sekunden, bevor GEMINI
+              gestartet wird.
+              Init sollte jetzt auch bei komischen Bootsektoren nicht mehr
+              durch 0 dividieren.
+       02.03. Gemini: more kann jetzt auch durch Mausclick beendet werden.
+              Neues Flag "L" in $PRGNAME_EXT (Cursor-Blinken)
+              GBOOTxxx darf auch MBOOTxxx heiûen, dann wird Mupfel anstatt
+              Gemini gestartet.
+       05.03. Allozierungsbug in cd behoben.
+              RUNNER startet TOS-Programme jetzt mit ausgeschalteter Maus.
+              Bei shel_write() wird jetzt der komplette Kommandoname (incl.
+              Pfad) Åbergeben.
+              FÅr Programme mit dem Suffix .APP ist der Directorywechsel
+              beim Start automatisch aus. Das kann in $APPDEFAULT bzw
+              $PRGNAME_EXT Åberschrieben werden.
+       06.03. Steves Version von CHARIO eingebaut. Gemini ist damit mode-
+              less.
+       07.03. Abort-Meldung von format kommt als Alert.
+              Init behÑlt das alte Label einer Diskette bei, mit -l kann ein
+              neues angegeben werden.
+              Mal wieder wegen den I/O-Errors gebastelt: Bei cp/mv/rm und
+              beim Drive- oder Directorywechsel kommt nur noch ein Alert.
+       11.03. Neue Option -r fÅr mkdir.
+       
+1.16   17.03. Gemini: Man kann jetzt wieder mehr als einmal Programme
+              vom Desktop aus starten (this was a fun one to debug)
+              
+1.17   30.03. mkdir: Option -r in -p umbenannt.
+              Im Console-Window sind jetzt Befehle wie "a;b" mîglich.
+              Mupfel heisst jetzt MUPFEL.APP  ->  énderungen in
+              RUNNER und GBOOTxxx
+              
+1.18   02.04. ls: Option -f arbeitet wieder wie frÅher (also ohne Check auf
+              Fastload). Option -F tut das jetzt.
+              Bugfix: Per system() gestartete Programme werden beim Ende
+              des Childs nicht nochmal gestartet.
+              "init -l -" lîscht eine Disk, aber legt das alte Label nicht
+              wieder an.
+       07.04. Nach "init" und "format" wird jetzt mit der offiziellen
+              Methode der Media-Change erzwungen.
+       08.04. ls erheblich beschleunigt.
+              $ROWS und $COLUMNS werden jetzt bei jedem Start mit den Wer-
+              ten aus vq_chcells() besetzt.
+              Bug beim History-Scrollen sollte gefixt sein.
+              Mehrstufige aliase sind jetzt wie in ksh mîglich: Wenn
+              der Ersatztext als letztes Zeichen einen Blank ent-
+              hÑlt, wird die Expansion nicht abgebrochen. Endlose
+              Alias-Loops werden erkannt.
+       09.04. Turbo-Booster fÅr ls. Es werden praktisch keine mallocs mehr
+              gemacht.
+       12.04. More scrollt nicht mehr unsinnigerweise, wenn ein Suchtext
+              nicht gefunden wird. Auûerdem wird jetzt immer der Prozent-
+              satz des bisher angezeigten Textes angezeigt.
+       21.04. ls lÑsst sich auch bei einspaltiger Ausgabe mit Ctrl-C ab-
+              brechen.
+              Im Console-Window ist man jetzt beim ersten ôffnen tatsÑchlich
+              in $CONSOLEDIR.
+              more zeigt keine ProzentsÑtze Åber 100 mehr an.
+              Bug beim Historyscrollen gefixt (Bei CR wurde der Puffer fÅrs
+              Match-Scrolling nicht gelîscht).
+       22.04. Wg. G++ ist jetzt "+" im Namen von Environmentvariablen er-
+              laubt.
+              More dividiert nicht mehr durch Null.
+              Gemini: Nach TOS-Programmen werden alle angeschlossenen Drives
+              als "dirty" markiert, damit Steve seinen Redraw machen kann.
+       27.04. Redirection a la "ls >$TEST" geht jetzt. Peinlicherweise ging
+              das wegen eines Design-Bugs noch nie.... (andererseits: wieso
+              habt ihr's bis jetzt nicht gemerkt?)
+       29.04. wc gibt seinen Speicher jetzt wieder frei.
+              cp setzt das Filedatum jetzt nachdem die Handles geschlossen
+              wurden.
+       01.05. Bei TOS 1.4 ist EXIT.PRG jetzt unnîtig.
+              Nach Bombenwerfenden Programmen wird ein entsprechender Hin-
+              weis darauf ausgegeben.
+       05.05. ls gibt Speicher jetzt auch dann frei, wenn keine Files ge-
+              funden wurden.
+              more zeigt Zeilen, die lÑnger als $COLUMNS sind, jetzt richtig
+              an.
+       09.05. mkdir -r funktioniert wieder.
+              HÑnger bei ">$xxx" behoben.
+       10.05. Das dirty-Flag wird nicht mehr bei Redirection auf CON:, AUX:
+              oder PRN: gesetzt.
+       14.05. Bug bei Batchfile-Redirection und errorfile gefixt.
+       15.05. init und format erzeugen jetzt MS-DOS kompatible Bootsektoren
+              Das dirty-Flag wird jetzt immer richtig gesetzt.
+              Die verbogenen Vektoren werden jetzt aus den XBRA-Ketten so
+              ausgehÑngt, daû andere Programme trotzdem aktiv bleiben.
+       17.05. rmdir kann jetzt . und .. nicht mehr lîschen.
+       27.05. Bugfix: print gibt Speicher wieder frei.
+              print -t x druckt Files mit x-er Tabs
+              cp kopiert jetzt bis zu 20 Files, bevor Handles wieder ge-
+              schlossen werden. Wenn Steve cp mit mehreren Files aufrufen
+              wÅrde, wÑre Kopieren auch in Gemini schneller...
+              I/O Errors bei mkdir werden besser abgefangen.
+              UngÅltige Filenamen (wie z:\xy.z) bei ls werden abgelehnt.
+              Bugfix bei more: Zeilen, die genau $COLUMNS Zeichen lang sind,
+              werden jetzt ohne nachfolgende Leerzeile angezeigt.
+       02.06. Kommandos in Groû- und Kleinbuchstaben werden jetzt in der
+              Hash-Tabelle als identisch betrachtet.
+              In Gemini stimmt die Anzahl der Hits fÅr GEM-Programme jetzt.
+              In Batchfiles, in denen "cd" gemacht wird, ist man nach GEM-
+              Programmen jetzt wieder im richtigen Directory. Das ging
+              Åbrigens nur dann nicht, wenn diese Dinger per Doppelclick
+              in Gemini gestartet wurden.
+              Gemini benîtigt jetzt nur noch 5 VDI-Workstations.
+              free zeigt jetzt den wirklich insgesamt freien Speicher an,
+              dazu die Anzahl Speicherblîcke und wieviel im grîûten Block
+              frei ist (letzeres war vorher die einzige Ausgabe).
+       03.06. Neue Option -l fÅr free; damit werden alle Speicherblîcke
+              einzeln angezeigt.
+              RUNNER.APP wird jetzt nur noch in demjenigen Verzeichnis
+              gesucht, von dem aus Gemini gestartet wurde. Gemini wird
+              von Runner mit absolutem Pfad neu gestartet.
+              Wenn fÅr einzelne Programme in PRGNAME_EXT explizit X:Y an-
+              gegeben ist, wird die Meldung "..using xArg" nicht mehr
+              ausgegeben.
+       04.06. Mupfel kann jetzt auch Deutsch! Alle Meldungen sind ausge-
+              lagert.
+              Der _MCH-Cookie wird jetzt "korrekt" (d.h. wie er beim STe
+              gesetzt wird) interpretiert.
+              GBOOTxxx startet Gemini nicht, wenn direkt beim Programm-
+              aufruf oder nach Ablauf der Wartezeit Shift oder Alt oder
+              CapsLock oder Ctrl gedrÅckt ist.
+       08.06. cp -a funktioniert wieder richtig, d.h. die Attribute der
+              Zieldatei sind korrekt gesetzt.
+              chmod schreibt die Attribute nur dann zurÅck, wenn sich auch
+              was geÑndert hat.
+       18.06. PRGNAME_EXT=W:N tut's auch beim ersten Mal wieder.
+              savedir()/restoredir() mismatch ist raus.
+              Overlays in Batchfiles tun's jetzt.
+              file weiss jetzt was ACCs sind.
+       26.06. Progess-Indicator beim Formatieren in Gemini
+       06.07. "timer" zeigt in std/min/sec an
+              Alerts enthalten keine Glîckchen mehr
+              Beim Nachstarten von OUTPUT sieht der Titlebar wieder ok aus.
+       07.07. Endlose XBRA-Loops beim Critical Error Handler gefixt.
+              Die History wird nur dann geschrieben, wenn sich auch was
+              geÑndert hat.
+              GBOOTxxx startet Gemini/Mupfel jetzt mit absolutem Pfad.
+       22.07. Fehlermeldung bei format verbessert (Spur A: -> Spur 16)
+              Fehlenden cr/lf bei Batchfile-Start per Doppelclick eingebaut.
+              Die Multi-File-Option von cp muss jetzt explizit mit cp -M
+              eingeschaltet werden (mir hat's eine Partition halb zer-
+              brîselt)
+              cp und mv brechen nicht mehr ab, wenn sich ein File von 
+              mehreren nicht kopieren/moven liess. 
+       25.07. Bei "more <xx" kann man jetzt mit N und P kein Unheil mehr an-
+              richten.
+1.18c  05.08. wc kann jetzt stdin lesen
+              wenn bei rename -c oder -i benutzt wird, kann man existierende
+              Files Åberschreiben.
+              Der "unfreed mem contains CON:" - Bug ist gekillt!
+              [Ein Tusch, Jubelgeschrei, "He's a jolly good fellow..."]
+       22.08. Bug in errorfile gekillt.
+              cat -l erzeugt jetzt richtige Textfiles.
+              ls -l zeigt auch sehr groûe Files richtig an.
+              Fehler bei system()-Aufrufen erzeugen keine Alerts mehr.
+              cp's Fehlermeldung bei identischen Filenamen korrigiert.
+              In Batchfiles kann man jetzt auf $* (fÅr alle Argumente)
+              zugreifen.
+       26.08. Long Options fÅr alle relevanten Kommandos eingebaut.
+              Bitte testen!
+              Directorynamen dÅrfen am Ende einen Backslash haben.
+              Auch bei X:Y in TOSDEFAULT gibt's jetzt keine Meldung mehr.
+       02.09. free -l kann jetzt lÑngere Adressen (TT) anzeigen.
+              Mit chmod +l und +m kînnen die beiden TT-Bits (Load to Fast-
+              RAM und Malloc from FastRAM) eingestellt werden.
+              chmod -c kann diese Bits auch anzeigen.
+       11.09. Es sollte jetzt Åberall mîglich sein, Directory-Namen auch
+              mit anhÑngendem Backslash anzugeben. Bitte testen!
+              $ROWS und $COLUMNS werden jetzt bei W:N-Programmen auf die
+              Werte des TOS-Bildschirms umgesetzt.
+       12.09. Neue interne Variable "slashconv". Wenn sie gesetzt ist,
+              werden in allen nicht gequoteten Tokens alle "/" gegen "\"
+              ausgetauscht.
+1.18e  22.09. zig Bugfixes:
+              - die Usage-Meldung von touch, setscrap stimmt jetzt
+              - pwd crasht nicht mehr
+              - ls +xtype tut's
+              - chmod +c war falsch dokumentiert. FÅr die TT-Flags "chmod
+                +t" benutzen
+              - Typo bei "help lc" behoben
+              - cp, mv, prtconf, rsconf, timer, kbrate mit long options
+                versehen
+              - version +all tut's jetzt
+              - ARGV wird wirklich nur noch bei X:Y benutzt
+              - der "Disk hat xx Bytes frei"-Alert ist raus.
+       23.09. Runner lÑsst den Cursor nicht mehr stehen
+              Runner und GBOOT sollten auch mit TOS 1.2 wieder laufen.
+              Bitte testen!
+              Wenn sich das History-File nicht anlegen lÑsst, gibt's eine
+              Fehlermeldung
+              Der "alias more"-Bug ist behoben.
+       24.09. free zeigt die Speichergrîûen jetzt rechtsbÅndig an.
+       26.09. slashconv wirkt jetzt auch auf Redirection.
+              pipe.ttp funktioniert jetzt auch mit sehr vielen expandierten
+              Wildcards
+       27.09. Batchfiles kînnen wieder Programme starten.
+1.19   01.10. Interne Fehlermeldungen gehen jetzt nach stderr.
+              Wenn in $HOME murks steht gibt eine Fehlermeldung.
+              "system echo x;echo y" wird jetzt richtig ausgegfÅhrt.
+              malloc() wÑhrend system() funktioniert jetzt (actpd wird um-
+              gesetzt).
+              Mupfel/Gemini kann mit ARGV aufgerufen werden.
+       03.10. Typo bei free korrigiert.
+              Laufwerke A-Z sind jetzt erlaubt.
+       05.10. hash -d crasht nicht mehr wenn das angegebene Dir nicht ex-
+              istiert.
+       07.10. Puh! actpd-Umschaltung funktioniert jetzt.
+       12.10. init und format schreiben die komischen DOS-Bytes jetzt in
+              beide FATs
+              Typo bei init korrigiert
+              Fehlermeldungen von "errorfile" gehen jetzt immer auf den
+              Bildschirm
+       14.10. Fehlermeldung von init korrigiert
+              Ausgabe von prtconf komplett eingedeutscht.
+       15.10. Der Cookie-Wert von Gemini ist jetzt die Versionsnummer
+              (0x00000102 fÅr v1.2)
+              Bug beim Start von GEM-Programmen mit a;b;c gefixt.
+              
+Die Fortsetzung steht in MUPFEL.GEN

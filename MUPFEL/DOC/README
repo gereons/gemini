@@ -1,0 +1,116 @@
+README zu GEMINI 1.1
+--------------------
+
+Copyright (C) 1989 by Gereon Steffens & Stefan Eissing
+
+GEMINI ist ein Shareware-Programm von
+
+  Gereon Steffens                     Stefan Eissing
+  <veraltete Adressen wurden entfernt> 
+  
+Unter der Voraussetzung, da immer alle Dateien von dieser Diskette (siehe
+MANIFEST fr eine Liste) unge„ndert kopiert werden, darf GEMINI fr private 
+Anwender frei kopiert und benutzt werden. Kommerzielle Nutzung (Vertrieb,
+Beigabe zu kommerziell vertriebenen Programmen, Weitergabe gegen Gebhren
+etc. in jeder Form (dies schliesst auch den Vertrieb ber Public-Domain-
+Sammeldisketten oder „hnliches ein) ist NICHT GESTATTET.
+
+Fr die Benutzung von GEMINI in Betrieben auf firmeneigenen Rechnern sowie
+die Benutzung in Universit„tsrechenzentren auf uni-eigenen Rechnern sind
+Mehr-Rechner-Lizenzen erforderlich. Die entsprechenden Konditionen k”nnen
+bei den Autoren erfragt werden.
+
+Wem GEMINI gef„llt (und wir hoffen da das eine Menge Leute sind), darf
+es benutzen und weitergeben, auch ber Mailbox-Systeme. Dazu sollten alle
+Dateien auf dieser Diskette in einem Archiv (ARC, LH-ARC oder ZOO) zu-
+sammengefasst werden.
+
+GEMINI ist auch durch Zusendung einer 3.5" Diskette und eines frankierten
+und adressierten Rckumschlages an eine der oben angegebenen Adressen er-
+h„ltlich.
+
+Diese Version 1.1 von GEMINI ist in unseren Augen noch kein endgltig
+fertiges Produkt. Daher werden wir auch in Zukunft st„ndig weiter an GEMINI
+arbeiten. Da dies aber sehr zeitaufwendig ist (und mittlerweile von jedem
+von uns ca. 1,5 Jahre an Arbeit in GEMINI steckt) sehen wir uns nicht in
+der Lage, GEMINI kostenlos (als "PD" oder "Freeware") zu vertreiben. Wir
+haben uns fr das Konzept der Shareware entschieden, wonach GEMINI frei
+kopiert und ausprobiert werden darf, jedoch bei regelm„iger Benutzung ein
+Shareware-Betrag von DM 50,- f„llig wird (Dies gilt fr Privatpersonen: 
+Firmen und Universit„ten wenden sich bitte an die Autoren)
+Unsere Bankverbindungen lauten:
+	Gereon Steffens
+	<entfernt>
+	
+	Stefan Eissing
+	<entfernt>
+Wer uns bei unserer Arbeit an GEMINI untersttzt, bekommt von uns mindestens
+die n„chste Version kostenlos zugeschickt, einen weitergehenden Update-
+Service werden wird von der Anzahl der "ehrlichen" Benutzer abh„ngig machen.
+Hinweis: Bitte notieren Sie bei Bankberweisungen im Kommentarfeld Ihren
+Namen und Ihre Adresse, ansonsten k”nnen wir keinen Kontakt zu Ihnen auf-
+nehmen!
+
+Bei Fragen und Problemen sind die Autoren ber folgende E-Mail-Adressen
+erreichbar:
+MAUS:	Stefan Eissing @ MS            Gereon Steffens @ BN (oder BN2)
+Z-Netz:	Stefan_Eissing!MS@ZERMAUS      Gereon_Steffens!BN@ZERMAUS
+                                       GEREON@MIDI
+uucp:	onm65@dmswwu1a.bitnet          gs@cobull.uucp
+        ..!unido!dmswwu1a.bitnet!onm65 ..!unido!cobull!gs
+BitNet:	ONM65@DMSWWU1A.BITNET
+
+Fr die Zukunft sind folgende Erweiterungen von GEMINI fest geplant:
+- Pipes
+- Eine Script-Sprache „hnlich der Bourne-Shell von UNIX
+- Tastatur-Shortcuts fr den Programmstart
+- Desktop-Aufr„umen wie beim Macintosh-Finder
+Fr weitere Anregungen sind wir natrlich jederzeit aufgeschlossen!
+
+Wir m”chten uns bei den folgenden Leuten fr die Mitarbeit und Untersttzung
+bei der Entwicklung von GEMINI bedanken:
+Julian Reschke fr die fliegenden Dialoge und viel N”rgeln,
+Arnd Beissner fr den VT-52 Emulator und genau soviel N”rgeln,
+Jrgen Arthofer, Martin B”ttcher, Stefan Gerle, Stefan Grefen, Peter
+Matulat, Bene Ostendarp und Volkmar Wieners fr Alpha- und Beta-Testing
+sowie Tips und Ideen,
+unseren Freundinnen (jeder eine!) fr die Zeit die sie uns fr GEMINI
+gelassen haben,
+Atari Corp. fr Atari ST und die verbesserungsf„hige Systemsoftware,
+und last but not least
+Borland in Mnchen fr Turbo-C (ohne TC g„b's GEMINI wohl nicht),
+
+
+                             DISCLAIMER
+
+Die in den Dokumentationsdateien enthaltetenen Informationen sind zum Zeit-
+punkt ihrer Ver”ffentlichung wahrscheinlich einigermaen korrekt, die Pro-
+gramme wahrscheinlich einigermaen fehlerfrei. Die Autoren, ihre Arbeit-
+geber und alle mit ihnen oder ihren Haustieren auch nur entfernt in Verbin-
+dung stehenden Personen sind fr irgendwelche Fehler nicht verantworlich.
+Die Dokumentation und Programme sowie alle darin enthaltenen Hinweise, Bei-
+spiele, Programmfragmente, Seitennummern und was man sich sonst noch vor-
+stellen kann, werden hiermit weitergegeben ohne irgendeine Art von Garantie,
+weder explizit noch implizit, einschlielich der, aber nicht beschr„nkt auf
+sie, gesetzlichen Gew„hrleistungsbestimmungen und des Grundrechtes auf k”r-
+perliche Unversehrtheit. Das gesamte Risiko fr die Benutzung oder Nichtbe-
+nutzung der in der Dokumentation enthalteten Informationen und/oder der Pro-
+gramme, lieber Leser, liegt bei Dir!
+Unter keinen Umst„nden wird irgend jemand, egal ob lebend, tot oder schein-
+tot und/oder irgendeine Gruppe, die der menschlichen Rasse oder sonst einer
+(mehr oder weniger) intelligenten Spezies (einschlielich, aber nicht be-
+schr„nkt auf jenen bisweilen SOL III genannten Planeten) entstammt oder vor-
+gibt zu entstammen, und der diese Dokumentation und/oder Programme oder ein
+anderes, damit in Verbindung stehendes Dokument und/oder Programm oder Teile
+davon modifiziert und/oder weiterverbreitet, egal ob legal oder illegal,
+Dir, lieber Leser, in irgendeiner Art verantwortlich sein fr irgendwelche
+Sch„den, einschlielich entgangener/geschm„lerter/verlorerer Profite, Gel-
+der, Geltung, Gesundheit, Freunde/Freundinnen etc., die implizit oder ex-
+plizit aus der Verwendung oder Nichtverwendung dieser Dokumentation und/oder
+Programme oder Teilen davon, resultieren.
+Was immer auch passiert, lieber Leser: Du bist schuld!
+
+
+Mnster, im Dezember 1989,
+
+      Gereon Steffens  und  Stefan Eissing

@@ -1,0 +1,79 @@
+	               Mupfel Genesis ab Version 1.2
+               
+0.00   Oktober '88
+bis
+1.19   15.10.90:   siehe MUPFGEN.OLD
+       
+1.2    16.10. Typo bei "help shrink" korrigiert.
+       17.10. slashconv wird jetzt an Kind-Mupfeln vererbt.
+       20.10. Bei offenem Console-Window wird jetzt nicht mehr stÑndig ein
+              cd in das Dir gemacht, in dem man sowieso schon ist.
+       26.10. Versionsnummernausgabe auf die neue Atari-Nomenklatur ge-
+              Ñndert. Das Rainbow-TOS heiût jetzt 1.04
+       27.10. Fix vom 20.10. wieder ausgebaut, war nix.
+              1.2 offiziell freigegeben
+
+1.21   31.10. Neuer Versuch, das Problem vom 20.10. zu beheben. Sollte jetzt
+              funktionieren.
+              Eingabe von /<cr> bei more fÅhrt jetzt nicht mehr zu einem
+              Prompt
+       05.11. Bei "abc <xxx" wird xxx jetzt nicht mehr gelîscht, wenn abc nicht
+              ausfÅhrbar ist (Peinlich, peinlich, aber war schon ewig lange
+              drin)
+              .APP ist jetzt im Default fÅr $SUFFIX enthalten.
+       06.11. Peinlichen Bug im Wildcard-Expander ausgebaut: x*.zoo passte 
+              unter merkwÅrdigen UmstÑnden auf "xtest.zoo" und "x". Dieser
+              Bug existierte seit dem 12.01.1989......
+              Beim Nachstarten von z.B. OUTPUT.APP wird jetzt vorher wieder
+              ein wind_set(0,WF_NEWDESK) gemacht.
+       10.11. file erkennt jetzt leere Files.
+              touch: Option +create in +nocreate umbenannt.
+       17.11. nach system()-Aufrufen dÅrfen jetzt keine Alerts fÅr lang vorher
+              passierte Fehler mehr auftreten.
+       22.11. Interner Krimskrams mit Steve. Damit wird fÅr cp, mv und rm der
+              system()-Overhead ÅberflÅssig, und ich kann da demnÑchst einiges
+              optimieren.
+       01.12. Init behÑlt jetzt auch die Trackanzahl bei.
+       03.12. Off-by-One-Bug in der Platzberechnung fÅr's Environment behoben.
+       29.12. (se) Alternate-Sonderbehandlung rausgeworfen (Doc Ñndern!)
+       05.01. Alternate-Sonderbehandlung funktioniert wieder (peinlicher Bug...)
+              Nach "alias which whereis" funktioniert "which which" jetzt.
+              .APP und .GTP sind jetzt in den Defaults fÅr $SUFFIX und $GEM-
+              SUFFIX enthalten.
+              Overlays sollten jetzt unter TOS 1.02 wieder funktionieren.
+1.22   23.01. Falschen Fix vom 6.11. korrigiert. "abc*" passt jetzt auch auf
+              "abc".
+              cp -M ist wieder schneller als cp pur, dafÅr werden dabei aber
+              die Fileattribute nicht kopiert. Das kann auch nicht gehen, da
+              ein Fattrib() auf ein File, das man per Fcreate() geîffnet hat
+              nichts bewirkt (der Fclose() schreibt die Attribute neu). 
+              16K (!) BSS gespart. Weiû der Himmel, wieso in SHELL.S am
+              Schluû ein "trickstack: ds.b 16384" stand... Niemand benutzt
+              dieses Symbol.
+              label, init und format kînnen jetzt Åber den gleichen Mecha-
+              nismus wie cp etc. aufgerufen werden (siehe 22.11.)
+       25.01. Absturz-Alert sollte jetzt wirklich nur nach abstÅrzenden Pro-
+              grammen kommen (proc_lives wird nach dem Test ungÅltig gemacht).
+       28.01. Redirection wird Åber system() richtig vererbt.
+              Fehlermeldung bei "pwd a:\" korrigiert.
+              cd kann jetzt mehrere Argumente bekommen. Wenn nur eins davon
+              ein Directory ist, werden alle anderen ignoriert.
+              Fehlermeldung von rmdir korrigiert.
+       07.02. Bug in print's Tab-Expansion ausgebaut.
+              Programme kînnen jetzt mit vollen Namen gestartet werden, auch
+              wenn ihre Extension nicht in $SUFFIX vorkommt.
+              Df kommt mit mehr als 16 Drives klar.
+              Bei gesetztem "nohistdouble" wird jetzt der alte History-Eintrag
+              mitten aus der Liste gelîscht und der neue hinten angehÑngt.
+       09.02. Noch 'nen Bug bei print's Tabs behoben.
+              Julians df eingebaut.
+              Bugs bei den Fehlercodes von format, init und label behoben.
+       13.02. Bug bei Pexec() behoben (manchmal wurde 127 als LÑnge der
+              Commandline eingetragen, obwohl sie leer sein sollte.
+       20.02. Falschen Fix vom 13.02. gefixt.
+              rename kann jetzt auch Extensions lîschen (mit rename '' *.xxx).
+              Bug bei der verbose-Ausgabe von rename und backup behoben.
+       03.04. Bugs in rsconf und prtconf behoben.
+       06.04. "print" druckt jetzt auf AUX:, wenn das mit prtconf -r oder mit
+              dem Kontrollfeld so eingestellt wurde.
+       10.06. Bug in more gefixt, der zu Speicherfragmentierung fÅhrte.

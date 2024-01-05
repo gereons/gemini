@@ -1,0 +1,5 @@
+#define FOLDBOX  12	/* form/dialog */
+#define FONAME   3	/* FTEXT in tree FOLDBOX */
+#define FOCANCEL 4	/* BUTTON in tree FOLDBOX */
+#define FOOK     5	/* BUTTON in tree FOLDBOX */
+

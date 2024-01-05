@@ -1,0 +1,3 @@
+arc uz m '*.c' '*.h' '*.s' '*.prj' '*.mup' '..\*.mup' doc\* c:\gemsys\gemini.fnt
+# mv e:\archive\mupfel.zoo e:\archive\mupfel.zob
+# cp -v m.zoo e:\archive\mupfel.zoo

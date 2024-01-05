@@ -1,0 +1,9 @@
+#define WILDBOX  5	/* form/dialog */
+#define WILDBG   3	/* BOX in tree WILDBOX */
+#define WILDB    4	/* BOX in tree WILDBOX */
+#define DEF1     5	/* STRING in tree WILDBOX */
+#define DEF2     6	/* STRING in tree WILDBOX */
+#define WILDEDIT 7	/* BUTTON in tree WILDBOX */
+#define WILDCANC 8	/* BUTTON in tree WILDBOX */
+#define WILDQUIT 9	/* BUTTON in tree WILDBOX */
+

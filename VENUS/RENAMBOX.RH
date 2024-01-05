@@ -1,0 +1,6 @@
+#define RENAMBOX 8	/* form/dialog */
+#define ROLDNAME 3	/* FTEXT in tree RENAMBOX */
+#define RNEWNAME 4	/* FTEXT in tree RENAMBOX */
+#define RENCANC  5	/* BUTTON in tree RENAMBOX */
+#define RENOK    6	/* BUTTON in tree RENAMBOX */
+

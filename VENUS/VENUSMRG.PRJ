@@ -1,0 +1,118 @@
+venusmrg.o
+.L[-J]
+.C[-P]
+=
+accwind.c  (vs.h, accwind.h, myalloc.h, venuserr.h, util.h, window.h)
+applmana.c (vs.h, applmana.h, appledit.h, util.h, fileutil.h, 
+			myalloc.h, venuserr.h, wildcard.h, select.h, stand.h, 
+			files.h)
+appledit.c (vs.h, appledit.rh, applbox.rh, appledit.h, util.h, 
+			fileutil.h, myalloc.h, venuserr.h, redraw.h)
+color.c    (vs.h, color.h, util.h)
+conselec.c (vs.h, stand.h, conselec.h, termio.h, wintool.h, 
+			draglogi.h, venuserr.h, conselec.rh, fileutil.h, util.h, 
+			redraw.h)
+copymove.c (copybox.rh, namebox.rh, vs.h, copymove.h, util.h, 
+			fileutil.h, myalloc.h, venuserr.h, undo.h, stand.h)
+dialog.c   (copyinfo.rh, foldbox.rh, opendbox.rh, optiobox.rh, vs.h, 
+			dialog.h, util.h, fileutil.h, redraw.h, venuserr.h, 
+			stand.h, color.h, window.h)
+dispatch.c (ttpbox.rh, message.h, menu.rh, vs.h, dispatch.h, 
+			myalloc.h, util.h, fileutil.h, select.h, venuserr.h, 
+			pexec.h, redraw.h, window.h, applmana.h, undo.h, 
+			icondrag.h, menu.h, getinfo.h, iconinst.h)
+draglogi.c (renambox.rh, vs.h, draglogi.h, redraw.h, util.h, 
+			venuserr.h, copymove.h, erase.h, select.h, fileutil.h, 
+			iconinst.h, myalloc.h, dispatch.h, icondrag.h, menu.h, 
+			stand.h, applmana.h)
+erase.c    (erasebox.rh, vs.h, erase.h, util.h, fileutil.h, select.h, 
+			myalloc.h, venuserr.h, redraw.h, iconinst.h, undo.h, 
+			stand.h)
+filedraw.c (showbox.rh, stdbox.rh, vs.h, filedraw.h, redraw.h, util.h, 
+			venuserr.h, fileutil.h)
+files.c    (menu.rh, stdbox.rh, vs.h, files.h, fileutil.h, util.h, 
+			myalloc.h, sortfile.h, venuserr.h, window.h, iconrule.h, 
+			wildcard.h, filedraw.h)
+filewind.c	(vs.h, filewind.h, wildcard.h)
+fileutil.c (vs.h, fileutil.h, util.h, venuserr.h, myalloc.h, 
+			toserror.h)
+gemtrees.c (vs.h, gemtrees.h, myalloc.h)
+getinfo.c  (iconfile.rh, specinfo.rh, fileinfo.rh, foldinfo.rh, 
+			drivinfo.rh, vs.h, getinfo.h, util.h, fileutil.h, 
+			venuserr.h, select.h, redraw.h, iconinst.h, applmana.h, 
+			scut.h, window.h, iconrule.h, undo.h, files.h, stand.h)
+greeting.c (vs.h, greeting.h, hello.h, stand.h)
+icondrag.c (vs.h, util.h, redraw.h, window.h, select.h, myalloc.h, 
+			venuserr.h, draglogi.h, message.h, wintool.h, stand.h, 
+			mvwindow.h)
+iconhash.c (vs.h, iconhash.h, iconrule.h)
+iconinst.c (instbox.rh, trashbox.rh, scrapbox.rh, shredbox.rh, vs.h, 
+			venuserr.h, iconinst.h, iconrule.h, myalloc.h, util.h, 
+			fileutil.h, redraw.h, select.h, stand.h, gemtrees.h, 
+			scut.h)
+iconrule.c (ruleedit.rh, stdbox.rh, rulebox.rh, vs.h, iconrule.h, 
+			myalloc.h, util.h, venuserr.h, iconhash.h, wildcard.h, 
+			redraw.h, color.h, select.h, fileutil.h, files.h)
+infofile.c (sorttyp.rh, sorticon.rh, menu.rh, vs.h, infofile.h, 
+			myalloc.h, venuserr.h, util.h, redraw.h, window.h, 
+			iconinst.h, fileutil.h, windstak.h, applmana.h, 
+			iconrule.h, iconhash.h, memfile.h, stand.h, mvwindow.h, 
+			filedraw.h, message.h)
+init.c		(vs.h, init.h, venus.h, util.h, fileutil.h, select.h, 
+			redraw.h, pexec.h, iconinst.h, venuserr.h, applmana.h, 
+			gemtrees.h, stand.h, mvwindow.h)
+keylogi.c  (menu.rh, vs.h, scancode.h, keylogi.h, redraw.h, window.h, 
+			util.h, fileutil.h, scroll.h, menu.h, venuserr.h, stand.h, 
+			message.h, scut.h)
+domedia.s
+memfile.c  (vs.h, memfile.h, myalloc.h)
+menu.c     (sorticon.rh, sorttyp.rh, menu.rh, vs.h, menu.h, dialog.h, 
+			dispatch.h, getinfo.h, window.h, redraw.h, undo.h, util.h, 
+			venuserr.h, infofile.h, applmana.h, iconrule.h, select.h, 
+			iconinst.h, pexec.h, fileutil.h, init.h, stand.h, 
+			filedraw.h, order.h)
+message.c  (vs.h, vaproto.h, stand.h, myalloc.h, message.h, util.h, 
+			venuserr.h, select.h, redraw.h, filedraw.h, mvwindow.h, 
+			window.h, menu.h, fileutil.h, scroll.h, dispatch.h, 
+			accwind.h, fileutil.h, draglogi.h)
+mvwindow.c (fontbox.rh, vs.h, window.h, venuserr.h, util.h, 
+			..\mupfel\environ.h, ..\mupfel\gemsubs.h, implimit.h, 
+			mvwindow.h, terminal.h, termio.h, wintool.h, filedraw.h, 
+			redraw.h)
+order.c    (divbox.rh, vs.h, order.h, venuserr.h, gemtrees.h, util.h, 
+			redraw.h, venus.h)
+overlay.c  (vs.h, overlay.h, stand.h, venusErr.h, fileutil.h, 
+			infofile.h, util.h)
+pexec.c    (vs.h, pexec.h, util.h, fileutil.h, init.h, myalloc.h, 
+			window.h, redraw.h, iconrule.h, iconhash.h, undo.h, 
+			infofile.h, applmana.h, stand.h, menu.h, filedraw.h, 
+			message.h)
+redraw.c   (vs.h, redraw.h, venuserr.h, files.h, window.h, stand.h, 
+			mvwindow.h, fileutil.h, util.h, filedraw.h)
+select.c   (menu.rh, vs.h, select.h, venuserr.h, redraw.h, util.h, 
+			scroll.h, myalloc.h, window.h)
+scroll.c   (menu.rh, vs.h, scroll.h, myalloc.h, redraw.h, window.h, 
+			select.h)
+scut.c     (shortcut.rh, vs.h, scut.h, util.h, redraw.h, select.h, 
+			dispatch.h)
+sortfile.c (menu.rh, vs.h, sortfile.h, myalloc.h, venuserr.h)
+terminal.c (vs.h, implimit.h, ascii.h, termio.h, terminal.h)
+termio.c   (vs.h, implimit.h, wintool.h, termio.h, util.h)
+undo.c     (menu.rh, vs.h, undo.h, window.h, redraw.h, windstak.h, 
+			fileutil.h, venuserr.h)
+util.c     (menu.rh, vs.h, util.h, fileutil.h, myalloc.h, redraw.h, 
+			venuserr.h, iconrule.h, stand.h)
+venus.c    (vs.h, venus.h, message.h, menu.h, window.h, fileutil.h, 
+			redraw.h, scroll.h, init.h, venuserr.h, myalloc.h, 
+			keylogi.h, dispatch.h, util.h, infofile.h, erase.h, 
+			iconinst.h, icondrag.h, iconrule.h, stand.h, 
+			windstak.h, greeting.h, conselec.h, filewind.h)
+venuserr.c (changbox.rh, vs.h, toserror.h, util.h, stand.h)
+wildcard.c (wedit.rh, wildbox.rh, vs.h, wildcard.h, util.h, redraw.h, 
+			venuserr.h)
+windstak.c (vs.h, windstak.h, myalloc.h, util.h, fileutil.h)
+window.c   (stdbox.rh, vs.h, window.h, fileutil.h, util.h, myalloc.h, 
+			undo.h, files.h, venuserr.h, windstak.h, select.h, 
+			redraw.h, stand.h, mvwindow.h, accwind.h, message.h)
+wintool.c  (vs.h, wintool.h)
+myalloc.c  (vs.h, venuserr.h, stand.h)

@@ -1,0 +1,30 @@
+
+Du mut dich XBRA-kompatibel wieder aus den BIOS-Vektoren aush„ngen, damit
+andere Programme, die sich zwischendurch eingeh„ngt haben nicht mehr ver-
+lorengehen!
+
+Wenn Du ein mup-File ausfhrst, das statt cr+lf lf+cr drin hat, so erkennst
+Du weder die Enden der Zeilen, noch das Ende der Datei richtig und
+machst auf dem Speicher hinter der Datei rum! Hoffentlich steht da nirgendwo
+"rm Gemini.app". (Das mit den lf+cr ist mir bei cat passiert)
+
+Wenn beim Kopieren was schief geht (write error, oder keine disk), l„t du 
+Handles offen!
+
+Tipp mal "ls '@:'" Die Floppylampe geht an und man soll Disk @ in Laufwerk A
+einlegen. Tippt man dagegen "ls z:", dann stirbt der Rechner.
+
+Tipp mal "cp test venus test2 ordner". Alle Dateien/Ordner existieren und
+test und test2 sind Dateien, venus und ordner sind Ordner. Dann wird test
+kopiert, bei venus wird gemeckert (ok), aber dann h”rt cp einfach auf.
+
+Ich dachte, Du h„ttest es ausgebaut, da beim Verlassen von Gemini noch
+exit.prg nachgeladen werden mu?
+
+Bei mkdir mit kaputter Disk mu man mehrmals Abbruch drcken.
+
+Dein file sollte bei *.ACC etwas anderes als "Data" sagen.
+
+Starte mal ein Overlay-Programm in einer Batch-Datei von Gemini aus...
+
+In der Help zu Kommandos mu es Dateien statt dateien heien.

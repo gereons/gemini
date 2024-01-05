@@ -1,0 +1,12 @@
+#define FILEINFO 13	/* form/dialog */
+#define FLINAME  3	/* FTEXT in tree FILEINFO */
+#define FLIDATE  4	/* FTEXT in tree FILEINFO */
+#define FLITIME  5	/* FTEXT in tree FILEINFO */
+#define FLISIZE  6	/* FTEXT in tree FILEINFO */
+#define FILEREON 8	/* BUTTON in tree FILEINFO */
+#define FILEHIDD 9	/* BUTTON in tree FILEINFO */
+#define FILESYST 10	/* BUTTON in tree FILEINFO */
+#define FILEARCH 11	/* BUTTON in tree FILEINFO */
+#define FLICANC  12	/* BUTTON in tree FILEINFO */
+#define FLIOK    13	/* BUTTON in tree FILEINFO */
+

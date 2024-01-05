@@ -1,0 +1,8 @@
+#define NAMEBOX  10	/* form/dialog */
+#define NOLDNAME 3	/* FTEXT in tree NAMEBOX */
+#define NNEWNAME 4	/* FTEXT in tree NAMEBOX */
+#define NSKIP    7	/* BUTTON in tree NAMEBOX */
+#define NOVER    8	/* BUTTON in tree NAMEBOX */
+#define NABORT   9	/* BUTTON in tree NAMEBOX */
+#define NOK      10	/* BUTTON in tree NAMEBOX */
+

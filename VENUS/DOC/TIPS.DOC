@@ -1,0 +1,145 @@
+Tips zum Gebrauch von GEMINI in der Version 1.2
+---------------------------------------------------------------------------
+
+Copyright (C) 1990 by Gereon Steffens & Stefan Eissing
+
+GEMINI ist ein Shareware-Programm von
+
+  Gereon Steffens                     Stefan Eissing
+  <veraltete Adressen wurden entfernt>
+  
+  
+In diesem Text will ich versuchen einige Antworten auf Fragen zu geben, die
+bei der Benutzung von GEMINI auftreten kînnen. Auûerdem will ich einige
+Tips geben, was man GEMINI alles machen kann, denn nicht alle 
+Mîglichkeiten, die dieses Programm bietet, sind immer gleich 
+offensichtlich. Das Ganze habe ich als ein typisches Frage-Antwort-Spiel
+aufgezogen, wie man es auch schon von anderen Dokumentationen her kennt.
+
+
+>>>>>> "Ich mîchte beim Starten meines Rechners sofort auch GEMINI starten.
+        Wie fange ich das an?"
+        
+       Wenn Sie die Betriebsystemsversion 1.4 oder hîher haben, ist das
+       kein Problem. Befolgen Sie einfach die Anweisungen am Ende von
+       GEMINI.DOC. Bei Ñlteren Versionen ist es nicht so einfach, dazu
+       mÅssen Sie im Besitz eines speziellen Programms sein, das dazu in
+       der Lage ist. Auf der Diskette des TOS-Magazins vom August 1990
+       war z.B. das Programm STARTGEM, das diese Mîglichkeit bietet.
+
+
+>>>>>> "GEMINI und MUPFEL laufen, obwohl ich sie mit der Endung PRG
+        versehen habe, nicht, wenn ich sie in den AUTO-Ordner kopiere.
+        Woran liegt das?"
+       
+       Beide Programme benîtigen den grafischen Teil des Atari-Betriebs-
+       systems. Dieser ist jedoch noch nicht installiert, wenn der
+       AUTO-Ordner ausgefÅhrt wird.
+
+
+>>>>>> "Wenn ich bestimmte Programme von GEMINI aus starte, kommt immer
+        eine Fehlermeldung wie 'GDOS-Error: Invalid Handle!'? Ist das
+        AMCGDOS kaputt? Manchmal habe ich diesen Effekt auch, wenn ich
+        bestimmte Accessories installiert habe."
+        
+       Dies ist kein Fehler des mitgelieferten AMCGDOS, sondern ein Fehler
+       der Programme bzw. Accessories, die Sie benutzen. Sie sollten vom
+       Hersteller dieser Programme eine neue Version verlangen, die diesen
+       Fehler nicht mehr hat. Falls Sie eine solche nicht bekommen kînnen,
+       und auf den Gebrauch dieser Programme nicht verzichten kînnen,
+       sollten Sie einfach AMCGDOS aus dem AUTO-Ordner entfernen. Dann
+       kînnen Sie aber keine anderen ZeichensÑtze mehr benutzen!
+
+
+>>>>>> "Wenn ich TOS-Programme im Console-Fenster in GEMINI starte, so
+        schreiben diese ihre Ausgaben Åber den Fensterrand auf den
+        Bildschirm!"
+       
+       Dieser Fehler kann zwei Ursachen haben: Zum einen kann es sein, daû
+       das Programm direkt auf den Bildschirm ausgibt, dann kann GEMINI
+       diese Ausgaben nicht in das Fenster umlenken. Sie kînnen das
+       Programm aber auch wie unter dem alten Desktop starten; wie das
+       ist in MUPFEL.DOC beschrieben (-> PGMNAME_EXT anschauen).
+       Zum anderen bekommen Sie diesen Effekt, wenn Sie TURBOST oder
+       QUICKST benutzen. In diesem Fall sollten Sie CONSFIX installieren.
+
+
+>>>>>> "GEMINI stÅrzt immer ab, wenn ich es starte!"
+
+       Solch eine Fehlermeldung haben wir schon lange nicht mehr gehîrt.
+       Wenn bei Ihnen dieser Effekt auftritt, sind wir sehr an den
+       nÑheren BegleitumstÑnden insteressiert! Es kann gut sein, das 
+       GEMINI und ein anderes von Ihnen benutztes Programm sich nicht
+       vertragen. Sie sollten einmal alle AUTO-Ordner-Programme und
+       Accessories ausschalten und es dann noch einmal probieren.
+       Vielleicht kînnen Sie so herausfinden, um welches Programm es
+       sich handelt. 
+       Sie sollten uns dann eine ausfÅhrliche Fehlermeldung schicken,
+       wir werden uns dann bemÅhen, dieses Problem schnell zu lîsen.
+       Vergessen Sie bitte auch nicht anzugeben, welchen Rechner,
+       Betriebssystem, Festplatte, Drucker etc. Sie verwenden.
+       Mit einer Fehlermeldung wie oben kînnen wir leider nichts anfangen!
+
+
+>>>>>> "Ich will in GEMINI mehrere Dateitypen fÅr eine Anwendung anmelden.
+        Wie mache ich das?"
+        
+       Selektieren Sie einfach die Anwendung (das Programm) und gehen Sie
+       in den Dialog "Anwendung...". Dort kînnen Sie dann unter dem
+       Wildcard diese Dateitypen durch Kommata getrennt eingeben.
+       Beispiel: Die selektieren WORDPLUS.PRG und tragen die Zeile
+       "*.DOC,*.TXT,*.BAK" ein.
+
+
+>>>>>> "Um ein TOS-PROGRAMM wie ZOO.TTP so anzumelden, daû bei einem
+        Doppelklick auf eine ZOO-Datei deren Inhalt auszugeben, muû
+        man ZOO Parameter Åbergeben. Das geht aber unter "Anwendung..."
+        nicht. Gibt es einen anderen Weg?"
+       
+       NatÅrlich haben wir auch an so etwas gedacht. Sie schreiben sich
+       einfach eine Batchdatei mit einem Editor, die (im Falle von ZOO)
+       nur die Zeile "zoo v $1" enthÑlt und nennen diese Datei dann
+       LOOKZOO.MUP. Diese MUP-Datei kînnen Sie dann fÅr alle ZOO-Dateien
+       anmelden. Voila!
+
+
+>>>>>> "Ich mîchte zum Drucken von Dateien mein eigenes Druckprogramm
+        MYPRINT.TTP benutzen und nicht das print von der Mupfel!"
+       
+       Zum einen kînnen Sie MYPRINT natÅrlich fÅr alle Dateien als
+       Anwendung anmelden, was aber zur Folge hat, daû bei einem
+       Doppelklick auf eine Datei immer gleich gedruckt wird.
+       Sie kînnen aber auch in der Datei MUPFEL.MUP die Zeile
+       "alias print MYPRINT.TTP" einfÅgen. Dann erhalten Sie weiterhin
+       den Dialog "Ansehen, Drucken, Abbruch" bei einem Doppelklick,
+       aber bei dem anschlieûenden print wird Ihr Programm benutzt.
+
+
+>>>>>> "Wie kann ich Icons wieder von Desktop-Hintergrund entfernen?"
+
+       Dazu nehmen Sie einfach das Icons und ziehen es auf den Reiûwolf.
+       Keine Angst, dadurch werden keine Dateien gelîscht! Eine Besonder-
+       heit spielen dabei die Icons fÅr die Ablage (Klemmbrett) und den
+       Papierkorb. Diese Icons lassen sich nicht entfernen. Wenn Sie eins
+       dieser Icons auf den Reiûwolf ziehen, geben Sie bekannt, daû Sie
+       diese Objekte entleeren wollen. Es werden also z.B. alle Objekte,
+       die sich im Papierkorb befinden, fÅr immer gelîscht. NatÅrlich
+       fragt GEMINI vor dem Lîschen noch einmal nach, ob Sie dies auch
+       wirklich wollen.
+
+>>>>>> "Wenn ich das Kommando `find' auf viele/groûe Laufwerke anwende,
+        kommt es zu Falschmeldungen bzw. AbstÅrzen des Programms..."
+        
+       Das Kommando `find' schaut sich auf der Suche nach Dateien viele
+       Ordner an. Nun hat das Betriebssystem teilweise Schwierigkeiten,
+       wenn sehr viele Ordner geîffnet werden. Dies geht bei Ñlteren
+       Versionen des TOS (Blitter-TOS) sogar so weit, daû es abstÅrzt.
+       Man bekommt dann zwei oder drei Bomben auf den Bildschirm. Dieses
+       Problem kann mit dem Programm FOLDRxxx.PRG behoben werden.
+       Plazieren Sie dazu das Programm in Ihren AUTO-Ordner und setzten
+       Sie im Namen statt `xxx' versuchsweise eine `100' ein. Sollte der
+       Effekt immer noch auftreten, so kînnen Sie diese Zahl auch erhîhen.
+       Bedenken Sie aber, daû eine hîhere Zahl auch immer mehr Speicher-
+       platz verbraucht!
+
+Stefan Eissing, Holthausen den 17.03.1991

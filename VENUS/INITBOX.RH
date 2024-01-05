@@ -1,0 +1,13 @@
+#define INITBOX  25	/* form/dialog */
+#define INITSOFT 4	/* BUTTON in tree INITBOX */
+#define INITKEEP 5	/* BUTTON in tree INITBOX */
+#define INITFORM 6	/* BUTTON in tree INITBOX */
+#define INITNINE 8	/* BUTTON in tree INITBOX */
+#define INITTEN  9	/* BUTTON in tree INITBOX */
+#define INITONE  11	/* BUTTON in tree INITBOX */
+#define INITTWO  12	/* BUTTON in tree INITBOX */
+#define INITNAME 13	/* FTEXT in tree INITBOX */
+#define INITESC  14	/* BOXTEXT in tree INITBOX */
+#define INITCANC 15	/* BUTTON in tree INITBOX */
+#define INITOK   16	/* BUTTON in tree INITBOX */
+

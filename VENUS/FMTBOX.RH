@@ -1,0 +1,4 @@
+#define FMTBOX   35	/* form/dialog */
+#define FMTBACK  2	/* BOX in tree FMTBOX */
+#define FMTFORE  3	/* BOX in tree FMTBOX */
+

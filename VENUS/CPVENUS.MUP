@@ -1,0 +1,21 @@
+cd d:\tc\venus
+echo copying all neccessary venus files
+echo venus.prg
+cp venus.prg $1
+echo mvmerge.prg
+cp mvmerge.prg $1
+echo mupfel.mup
+cp mupfel.mup $1
+echo venus.mup
+cp venus.mup $1
+echo venus.rsc
+cp venus.rsc $1
+echo venusicn.rsc
+cp venusicn.rsc $1
+echo venus.inf
+cp venus.inf $1
+echo doc\venus.doc
+cp doc\venus.doc $1
+echo doc\venus.gen
+cp doc\venus.gen $1
+echo "that's all"

@@ -1,0 +1,6 @@
+exarg.tos
+.L[-LGS=2000]
+=
+tcstart.o
+exarg.c
+tcstdlib.lib

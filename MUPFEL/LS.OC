@@ -1,0 +1,402 @@
+/*
+ * ls.c  -  internal "ls", "lc", "lu", "ll" commands
+ * 02.04.90
+ */
+
+#include <ctype.h>
+#include <stdlib.h>
+#include <tos.h>
+
+#include "alloc.h"
+#include "attrib.h"
+#include "chario.h"
+#include "chmod.h"
+#include "date.h"
+#include "environ.h"
+#include "getopt.h"
+#include "mupfel.h"
+#include "parse.h"
+#include "strsel.h"
+#include "toserr.h"
+
+typedef struct finfo
+{
+	struct finfo *next;
+	uint time;
+	uint date;
+	long size;
+	char *name;
+	int num;
+	char attrib;
+} finfo;
+
+#define LL_ENTRY	finfo
+#include "linklist.h"
+
+SCCS(ls);
+
+static int sortflag, colflag, longflag, dirflag, sizesort;
+static int typeflag, xtypeflag;
+static int timesort, maxlen, reversesort;
+static int showhidden;
+static int filenum;
+static finfo *fhead;
+
+static void fappend(DTA *d, char *name)
+{
+	finfo f;
+	int len;
+
+	if (tstbit(d->d_attrib,FA_HIDDEN) && !showhidden)
+		return;
+		
+	f.num = ++filenum;
+	f.time = d->d_time;
+	f.date = d->d_date;
+	f.size = d->d_length;
+	f.attrib = d->d_attrib;
+
+	len = (int)strlen(name);
+	f.name = malloc(len+1);
+	strcpy(f.name,name);
+
+	insert(&f,&fhead,sizeof(finfo));
+
+	if (len>maxlen)
+		maxlen=len;
+}
+
+static int showfile(finfo *f)
+{
+	int l;
+	dosdate fd;
+	dostime ft;
+
+	if (longflag)
+	{
+		int year;
+		
+		fd.d = f->date;
+		ft.t = f->time;
+		year = fd.s.year + 80;
+		mprint("%c%c%c%c%c%8ld %02d.%02d.%02d %02d:%02d:%02d ",
+			tstbit(f->attrib,FA_RDONLY) ? 'r' : '-',
+			tstbit(f->attrib,FA_HIDDEN) ? 'h' : '-',
+			tstbit(f->attrib,FA_SYSTEM) ? 's' : '-',
+			tstbit(f->attrib,FA_DIREC)  ? 'd' : '-',
+			tstbit(f->attrib,FA_ARCH)   ? 'a' : '-',
+			f->size,
+			fd.s.day,fd.s.month,(year > 99) ? (year-100) : year,
+			ft.s.hour,ft.s.min,ft.s.sec*2);
+	}
+
+	l=mprint("%s",strlwr(f->name));
+		
+	if (typeflag)
+	{
+		if (tstbit(f->attrib,FA_DIREC))
+		{
+			mprint("\\");
+			++l;
+		}
+		else
+			if (extinsuffix(f->name))
+			{
+				if (xtypeflag && docheckfast(f->name,"ls",FALSE))
+					mprint("+");
+				else
+					mprint("*");
+				++l;
+			}
+	}
+	
+	if (!colflag)
+		crlf();
+	
+	/* Argh! Filenames with leading blanks have no length!!! */
+	return intr() ? 0 : l+1;
+}
+
+static void outcols(finfo *h)
+{
+	finfo *h1;
+	int scrncols, numcols, i, cols, nelem, height, leftcols, cnt=0;
+	int l;
+	char *ep;
+
+	h1=h;
+	nelem = filenum;
+	maxlen += 2;
+	if ((ep=getenv("COLUMNS"))!=NULL)
+		scrncols = atoi(ep);
+	else
+		scrncols = 80;
+		
+	if (maxlen>scrncols)
+		scrncols = maxlen+1;
+		
+	numcols = scrncols / maxlen;
+	
+	height = nelem / numcols;
+	leftcols = nelem % numcols;
+	
+	h1=h;
+	do
+	{
+		if (cnt >= (height*numcols))
+			break;
+		for (cols=0; cols<numcols && !intr(); ++cols)
+		{
+			l=showfile(h1)-1;
+			if (cols!=numcols-1)
+				rawoutn(' ',maxlen-l);
+			++cnt;
+			for (i=0; i<height && (h1->next!=NULL); ++i)
+				h1 = h1->next;
+			if (cols<leftcols && (h1->next!=NULL))
+				h1 = h1->next;
+		}
+		crlf();
+		h = h->next;
+		h1 = h;
+	} while (cnt < (height*numcols) && !intr());
+	while (cnt < nelem && !intr())
+	{
+		l=showfile(h1)-1;
+		rawoutn(' ',maxlen-l);
+		for (i=0; i<height+1 && (h1->next!=NULL); ++i)
+			h1 = h1->next;
+		++cnt;
+	}
+	if (cnt % numcols != 0)
+		crlf();
+}
+
+static int sortreturn(int cmp)
+{
+	return reversesort ? -cmp : cmp;
+}
+
+static int numcmp(finfo *f1, finfo *f2)
+{
+	return f1->num - f2->num;
+}
+
+static int namecmp(finfo *f1, finfo *f2)
+{
+	return sortreturn(strcmp(f1->name,f2->name));
+}
+
+static int sign(long x)
+{
+	if (x<0)
+		return -1;
+	if (x>0)
+		return 1;
+	return 0;
+}
+
+static int sizecmp(finfo *f1, finfo *f2)
+{
+	if (f1->size == f2->size)
+		return namecmp(f1,f2);
+	else
+		return sortreturn(sign(f1->size - f2->size));
+}
+
+static int timecmp(finfo *f1, finfo *f2)
+{
+	if (f1->date == f2->date)
+	{
+		if (f1->time == f2->time)
+			return namecmp(f1,f2);
+		else
+			return sortreturn(f1->time - f2->time);
+	}
+	else
+		return sortreturn(f1->date - f2->date);
+}
+
+/*
+ * lsdir(char *dir)
+ * list all files in dir
+ */
+static int lsdir(char *dir)
+{
+	DTA dta, *olddta = Fgetdta();
+	int fstat, retcode = 0;
+	char *filespec = malloc(strlen(dir)+5);
+	char *filename = malloc(strlen(dir)+13);
+	
+	Fsetdta(&dta);
+	strcpy(filespec,dir);
+	chrapp(filespec,'\\');
+	strcat(filespec,"*.*");
+
+	fstat = Fsfirst(filespec,FA_ATTRIB);
+	if (bioserror(fstat))
+	{
+		free(filename);
+		free(filespec);
+		return ioerror("ls",dir,olddta,fstat);
+	}
+
+	if (!fstat)
+	{
+		do
+		{
+			if (!strcmp(dta.d_fname,".") || !strcmp(dta.d_fname,".."))
+				continue;
+			if (strcmp(dir,"."))
+			{
+				strcpy(filename,dir);
+				chrapp(filename,'\\');
+			}
+			else
+				*filename = '\0';
+			strcat(filename,dta.d_fname);
+			fappend(&dta,filename);
+		} while (!Fsnext());
+	}
+	else
+		retcode = 1;
+	Fsetdta(olddta);
+	free(filespec);
+	free(filename);
+	return retcode;
+}
+
+/*
+ * lsfile(char *filename)
+ * list filename. if it's a directory, call lsdir()
+ */
+static int lsfile(char *filename)
+{
+	DTA dta, *olddta = Fgetdta();
+	int fstat, retcode = 0;
+	
+	Fsetdta(&dta);
+
+	fstat = Fsfirst(filename,FA_ATTRIB);
+	if (bioserror(fstat))
+		return ioerror("ls",filename,olddta,fstat);
+		
+	if (!fstat)
+	{
+		if (dirflag && tstbit(dta.d_attrib,FA_DIREC))
+			retcode = lsdir(filename);
+		else
+			fappend(&dta,filename);
+	}
+	else
+	{
+		if (isdir(filename))
+			retcode = lsdir(filename);
+		else
+		{
+			mprint("%s: no such file or directory\n",filename);
+			retcode = 1;
+		}
+	}
+	Fsetdta(olddta);
+	return retcode;
+}
+
+static int freeinfo(finfo *f)
+{
+	free(f->name);
+	return TRUE;
+}
+
+int m_ls(ARGCV)
+{
+	int c, retcode = 0;
+	finfo *h;
+	
+	sortflag = dirflag = TRUE;
+	colflag = longflag = sizesort = timesort = reversesort = 
+		typeflag = xtypeflag = showhidden = FALSE;
+	
+	fhead = NULL;
+	filenum = maxlen = 0;
+
+	strlwr(argv[0]);
+	
+	STRSELECT(argv[0])
+	WHEN("lc")
+		colflag=TRUE;
+	WHEN("lu")
+		sortflag=FALSE;
+	WHEN("ll")
+		longflag=TRUE;
+	ENDSEL
+
+	optinit();
+	while ((c=getopt(argc,argv,"clurtdsfFh")) != EOF)
+		switch (c)
+		{
+			case 'c':
+				colflag = TRUE;
+				break;
+			case 'l':
+				longflag = TRUE;
+				break;
+			case 'u':
+				sortflag = FALSE;
+				break;
+			case 'd':
+				dirflag = FALSE;
+				break;
+			case 's':
+				sizesort = TRUE;
+				break;
+			case 't':
+				timesort = TRUE;
+				break;
+			case 'r':
+				reversesort = TRUE;
+				break;
+			case 'F':
+				xtypeflag = TRUE;
+				/* fall thru */
+			case 'f':
+				typeflag = TRUE;
+				break;
+			case 'h':
+				showhidden = TRUE;
+				break;
+			default:
+				return printusage();
+		}
+
+	if (longflag)
+		colflag=FALSE;
+	if (sizesort || timesort)
+		sortflag=TRUE;
+
+	if (optind==argc)
+		retcode = lsdir(".");
+	else
+		for (; optind<argc; ++optind)
+		{
+			if (lsfile(argv[optind])==1)
+				retcode = 1;
+		}
+
+	if (fhead != NULL)
+	{
+		if (sortflag)
+			if (timesort)
+				h = sortlist(fhead,filenum,timecmp);
+			else
+				h = sortlist(fhead,filenum,sizesort ? sizecmp : namecmp);
+		else
+			h = sortlist(fhead,filenum,numcmp);
+		if (colflag)
+			outcols(h);
+		else
+			walklist(h,showfile);
+		freelist(h,freeinfo);
+	}
+	return retcode;
+}

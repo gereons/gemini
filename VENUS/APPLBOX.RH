@@ -1,0 +1,11 @@
+#define APPLBOX  32	/* form/dialog */
+#define APBGBOX  3	/* BOX in tree APPLBOX */
+#define APBOX    4	/* BOX in tree APPLBOX */
+#define APSPEC   5	/* IBOX in tree APPLBOX */
+#define APNEW2   7	/* IMAGE in tree APPLBOX */
+#define APNEW1   8	/* IMAGE in tree APPLBOX */
+#define APDEL    9	/* BUTTON in tree APPLBOX */
+#define APEDIT   10	/* BUTTON in tree APPLBOX */
+#define APCANCEL 11	/* BUTTON in tree APPLBOX */
+#define APOK     12	/* BUTTON in tree APPLBOX */
+

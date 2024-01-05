@@ -1,0 +1,48 @@
+Dokumentation zu GBOOTxxx fÅr GEMINI 1.2
+--------------------------------------------------------------------
+Stand: 08.10.1990
+
+GBOOT ist nur fÅr Benutzer interessant, die GEMINI als Auto-Start-
+Programm im Desktop von Atari angemeldet haben wollen. Damit keine
+Verwirrung aufkommt: Diese Mîglichkeit, Programme schon nach dem
+Hochfahren (Booten) des Rechners zu starten gibt es erst ab 
+TOS 1.4, also in den neueren Versionen des Betriebssystems.
+
+Wie Sie GEMINI als Auto-Start-Programm anmelden steht in GEMINI.DOC.
+
+Sie kînnen statt GEMINI auch GBOOTxxx.APP als solche anmelden. Um
+den Vorteil, den dieses Programm bietet, zu erklÑren muss etwas
+ausgeholt werden.
+
+Mit vielen Accessories gibt es Schwierigkeiten, wenn Sie ein
+Auto-Start-Programm haben und dieses wieder verlassen. Der Effekt,
+der auftritt ist auf den ersten Blick meist unerklÑrlich: Es hagelt
+Bomben! Was ist passiert? 
+
+Viele Accessories brauchen Speicherplatz, den Sie beim Betriebssystem
+des Atari holen, wenn Sie sich installieren. Dies geschieht normaler-
+weise, wenn der Desktop von Atari seinen Bildschirm aufbaut und
+die Fenster îffnet. Nur beim Auto-Start geschieht dies meist, wenn
+das Auto-Start-Programm schon geladen ist, also schon lÑuft.
+Wird dieses Programm wieder verlassen, so gibt TOS sÑmtlichen 
+Speicher, der zur Laufzeit diese Programmes angefordert wurde wieder
+frei. Leider gehîrt dazu auch der Speicher, den sich die Accessories
+geholt haben und davon sind diese nicht begeistert.
+
+GBOOTxxx dagegen bleibt resident im Speicher, das heiût, das der
+Speicher, der unter GBOOTxxx angefordert wurde, nicht wieder
+freigegeben wird. GBOOTxxx wartet also einfach eine gewisse Zeit,
+bleibt resident und startet danach GEMINI. Dazu muû es sich wie
+auch RUNNER.APP in demselben Ordner wie GEMINI.APP befinden.
+
+Die drei x im Namen werden Ihnen vielleicht schon von FOLDRxxx.PRG
+bekannt vorkommen. Hiermit kînnen Sie im Programmnamen festlegen,
+wieviele Sekunden GBOOT den Accessories Zeit lassen soll, bevor es
+GEMINI startet. GBOOT005.APP wÅrde also 5 Sekunden warten.
+
+Sie kînnen auch GBOOTxxx.APP in MBOOTxxx.APP umbenennen. MBOOT
+startet nicht GEMINI, sondern die MUPFEL.
+
+
+
+Stefan Eissing & Gereon Steffens

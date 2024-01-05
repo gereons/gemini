@@ -1,0 +1,11 @@
+#define RULEBOX  6	/* form/dialog */
+#define RUBGBOX  3	/* BOX in tree RULEBOX */
+#define RUBOX    4	/* BOX in tree RULEBOX */
+#define RUSPEC   5	/* IBOX in tree RULEBOX */
+#define RUNEW    7	/* IMAGE in tree RULEBOX */
+#define RUDEL    8	/* BUTTON in tree RULEBOX */
+#define RUINS    9	/* BUTTON in tree RULEBOX */
+#define RUEDIT   10	/* BUTTON in tree RULEBOX */
+#define RUCANCEL 11	/* BUTTON in tree RULEBOX */
+#define RUOK     12	/* BUTTON in tree RULEBOX */
+

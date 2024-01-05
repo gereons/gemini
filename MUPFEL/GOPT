@@ -1,0 +1,37 @@
+Zu viele Argumente, xArg/ARGV wird benutzt
+free.c:	while ((c=getopt_long(argc,argv,"l",long_option,&opt_index))!=EOF)
+cat.c:	while ((c=getopt_long(argc,argv,"l",long_option,&opt_index))!=EOF)
+rm.c:	while ((c=getopt_long(argc,argv,"rfivb",long_option,&opt_index))!=EOF)	
+cpmv.c:	while ((c=getopt_long(argc,argv,iscp ? "cdrviasbnM" : "cvib",long_option,&opt_index)) != EOF)
+cpmv.c:	while ((c=getopt_long(argc,argv,"icv",ren_long_option,&opt_index)) != EOF)
+getopt.c:const struct option *_getopt_long_options;
+getopt.c:int _getopt_long_only = 0;
+getopt.c:		 && (_getopt_long_options == 0
+getopt.c:	  && (_getopt_long_options == 0
+getopt.c:  if (_getopt_long_options != 0
+getopt.c:	  || (_getopt_long_only && argv[optind][0] == '-'))
+getopt.c:      for (p = _getopt_long_options, option_index = 0; p->name; 
+getopt.c:      /* Can't find it as a long option.  If this is getopt_long_only,
+getopt.c:      if (_getopt_long_only == 0 || argv[optind][0] == '+' ||
+getopt.c:	_getopt_long_only = 0;
+getopt.c:	_getopt_long_options = NULL;
+df.c:	while ((c=getopt_long(argc,argv,"a",long_option,&opt_index))!=EOF)
+errfile.c:	while ((c=getopt_long(argc,argv,"ap",long_option,&opt_index))!=EOF)
+format.c:	while ((c=getopt_long(argc,argv,"vys:l:c:",long_option,&opt_index))!=EOF)
+init.c:	while ((c=getopt_long(argc,argv,"ys:c:l:",long_option,&opt_index))!=EOF)
+hash.c:	while ((c=getopt_long(argc,argv,"rd:",long_option,&opt_index))!=EOF)
+date.c:	while ((c=getopt_long(argc,argv,"cd:",long_option,&opt_index))!=EOF)
+mkdir.c:	while ((c=getopt_long(argc,argv,"p",long_option,&opt_index))!=EOF)
+print.c:	while ((c=getopt_long(argc,argv,"fl:t:",long_option,&opt_index))!=EOF)
+scrap.c:	while ((c=getopt_long(argc,argv,"fq",long_option,&opt_index))!=EOF)
+shrink.c:	while ((c=getopt_long(argc,argv,"b:t:fi",long_option,&opt_index))!=EOF)
+tree.c:	while ((c=getopt_long(argc,argv,"dip:f:",long_option,&opt_index))!=EOF)
+ls.c:	while ((c=getopt_long(argc,argv,"clurtdsfFh",long_options,&opt_index)) != EOF)
+wc.c:	while ((c=getopt_long(argc,argv,"lcw",long_option,&opt_index))!=EOF)
+getopt1.c:int getopt_long (int argc, char **argv, const char *options,
+getopt1.c:  _getopt_long_options = long_options;
+getopt1.c:/* Like getopt_long, but '-' as well as '+' can indicate a long option.
+getopt1.c:int getopt_long_only (int argc, char **argv, const char *options,
+getopt1.c:  _getopt_long_options = long_options;
+getopt1.c:  _getopt_long_only = 1;
+getopt1.c:      c = getopt_long (argc, argv, "abc:d:0123456789",

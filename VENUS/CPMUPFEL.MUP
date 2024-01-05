@@ -1,0 +1,4 @@
+cp d:\tc\mupfel.prg $1
+cp d:\tc\mupfel\mupfel.gen $1
+cp d:\tc\mupfel\mupfel.doc $1
+cp d:\tc\mupfel\mupfel.mup $1

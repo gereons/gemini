@@ -1,0 +1,12 @@
+#define COPYINFO 2	/* form/dialog */
+#define INFOBOX  0	/* BOX in tree COPYINFO */
+#define CPITITLE 2	/* STRING in tree COPYINFO */
+#define GEMINAME 3	/* IMAGE in tree COPYINFO */
+#define VENUNAME 4	/* IMAGE in tree COPYINFO */
+#define BANANA   6	/* IMAGE in tree COPYINFO */
+#define ZEILE2   7	/* STRING in tree COPYINFO */
+#define GERENAME 9	/* STRING in tree COPYINFO */
+#define ARNDNAME 12	/* TEXT in tree COPYINFO */
+#define GMNIINFO 15	/* BUTTON in tree COPYINFO */
+#define OK       16	/* BUTTON in tree COPYINFO */
+

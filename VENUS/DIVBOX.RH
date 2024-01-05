@@ -1,0 +1,9 @@
+#define DIVBOX   29	/* form/dialog */
+#define ORDERX   4	/* FTEXT in tree DIVBOX */
+#define ORDERY   5	/* FTEXT in tree DIVBOX */
+#define SHOWHIDD 7	/* BUTTON in tree DIVBOX */
+#define MOVEFREE 8	/* BUTTON in tree DIVBOX */
+#define DIVBLIT  9	/* BUTTON in tree DIVBOX */
+#define DIVCANCE 10	/* BUTTON in tree DIVBOX */
+#define DIVOK    11	/* BUTTON in tree DIVBOX */
+

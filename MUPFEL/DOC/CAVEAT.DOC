@@ -1,0 +1,67 @@
+Bekannte Probleme mit GEMINI Version 1.1
+----------------------------------------
+
+Copyright (C) 1989 by Gereon Steffens & Stefan Eissing
+
+GEMINI ist ein Shareware-Programm von
+
+  Gereon Steffens                     Stefan Eissing
+  <veraltete Adressen wurden entfernt>
+  
+Folgende Probleme (fÅr die wir nicht verantwortlich sind und fÅr die wir 
+teilweise keine vernÅnftige Lîsung kennen) sind uns bei GEMINI 1.1 bekannt:
+
+- GEMINI als Autostart-Programm unter TOS 1.4: Beim Verlassen von GEMINI
+  gibt es manchmal Probleme mit Accessories, auûerdem kommt das VDI
+  manchmal mit seinen Workstations durcheinander (Dies ist ein Bug im VDI!!).
+
+- Einige Accessories (z.B. Multidesk und Harlekin) gehen davon aus, daû sie
+  nach ihrem Start den Bildschirm fÅr sich alleine haben. Diese Annahme
+  trifft nicht mehr zu, wenn GEMINI mit TOS 1.4 als Autostart-Programm
+  benutzt wird. Als Abhilfe liegt das Programm GBOOT010.PRG bei, daû an-
+  stelle von GEMINI als Autostart-Anwendung benutzt werden soll. GBOOT010
+  macht fÅr 10 Sekunden (fast) nichts, danach startet es GEMINI.PRG. Wenn
+  die 10 Sekunden zu lang oder zu kurz sind, kann der Programmname ent-
+  sprechend geÑndert werden, z.B. in GBOOT003.PRG fÅr eine 3-Sekunden Pause.
+  ACHTUNG: GBOOTxxx.PRG muû im gleichen Ordner wie GEMINI.PRG liegen!
+  
+- Einige unsauber programmierte Anwendungen (z.B. Signum! in Ñlteren Ver-
+  sionen) verwenden illegalerweise falsche VDI-Workstation-Handles. Diese
+  Versuche werden von AMCGDOS jeweils mit einer Alert-Box ("Illegal Handle")
+  quittiert. Abhilfen gibt es leider nur zwei: Korrigierte Versionen der
+  betreffenden Programme vom Hersteller besorgen, oder GDOS nicht benutzen.
+  Leider verliert man bei der zweiten Alternative die Mîglichkeit, in GEMINI
+  andere ZeichensÑtze fÅr die Textdarstellung in den Fenstern zu verwenden.
+  
+- Die Verwendung von sog. "Softwareblittern" (Turbo ST und Quick ST) fÅhrt
+  in allen uns bekannten Versionen dieser Programme zu Problemen. ZunÑchst
+  geht die Mîglichkeit der I/O-Redirection verloren, da diese Programme ohne
+  RÅcksicht darauf die Zeichenausgabe von GEMDOS umbiegen. Selbst wenn man
+  damit leben kînnte, wird man in GEMINI noch zusÑtzlich durch falschen
+  Bildschirmaufbau bestraft, besonders wenn man die "Fliegenden Dialoge"
+  tatsÑchlich fliegen lÑsst.
+  Wir sind sehr daran interessiert von énderungen dieses Zustands zu er-
+  fahren!
+
+- Einige wenige Programme laufen aus uns unbekannter Ursache nicht oder 
+  nicht richtig unter GEMINI, dazu gehîren z.B. FOMA, VIP Professional und
+  SBREAK. Wer hierzu Ideen hat, sollte sie uns mitteilen!
+  
+- Alle mit Mark-Williams-C geschriebenen Programme haben Probleme mit
+  Atari's ARGV-Methode, da diese vom MWC-Standard leicht abweicht. Dieses
+  Problem kann fÅr die betroffenen Programme mittels X:N in $PRGNAME_EXT um-
+  gangen werden. Zu diesen Programmen gehîren z.B. Uniterm und Flash.
+  
+- Wenn aus TOS-Programmen (meistens Editoren wie Z oder microEMACS) per
+  Shell-Escape Mupfel gestartet wird, gibt es Probleme mit dem Bildschirm-
+  aufbau, wenn von der Mupfel dann GEM-Programme gestartet werden. Einzige
+  uns bekannte Abhilfe: NICHT MACHEN! Wer darauf absolut nicht verzichten
+  kann, sollte diese Programme so anmelden, daû beim Start alle Windows ge-
+  schlossen werden, aber auch das lîst nicht alle Probleme. Um dieses Pro-
+  blem zu lîsen, mÅûte man aus der Kette aller Parent-Prozesse ermitteln
+  kînnen, ob es sich um TOS- oder GEM-Programme handelt, und dafÅr gibt es
+  unseres Wissens keinen legalen Weg.
+  
+- Hinweis fÅr Benutzer von Turbo-C 2.0: Um die Shell-Funktion nutzen zu
+  kînnen, muû TC von Mupfel oder GEMINI gestartet werden, vorher sollte man
+  ein alias von "sh" auf "mupfel" anlegen.

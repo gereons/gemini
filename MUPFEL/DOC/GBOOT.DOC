@@ -1,0 +1,47 @@
+GBOOTxxx.APP  -  Copyright (c) 1990 by Gereon Steffens
+
+Kurzdoku zu GBOOTxxx.APP
+------------------------
+
+GBOOTxxx ist ein Hilfsprogramm, daû die Zusammenarbeit von Gemini (als Auto-
+Start-Programm unter TOS 1.4) und Accessories wie MultiDesk oder Harlekin er-
+leichtert, wenn nicht erst ermîglicht.
+
+Das Problem mit diesen Accessories ist, daû sie in ihrer Startphase sehr viel 
+Rechenzeit brauchen, aber sich diese beim TOS 1.4-Autostart mit z.B. Gemini
+teilen mÅssen. GBOOTxxx ist ein Programm, das eine bestimmte Zeit gar nichts
+tut (genauer gesagt: xxx Sekunden lang) und dann Gemini im aktuellen Directory
+startet. Der genaue Wert von xxx muss experimentiell ermittelt werden, als
+Basis sollte man es mit GBOOT010 probieren.
+ACHTUNG: Nicht nur Monster-ACCs wie Harlekin oder Multidesk kînnen zu Pro-
+blemen fÅhren, sondern schon 4 "normale" Accessories kînnen so lange fÅr
+ihre Initialisierung brauchen, daû GBOOTxxx (allerdings mit kurzen Zeiten,
+1-3 Sekunden etwa) nîtig wird. Beim Autor ist bei Benutzung von SCSICTRL.ACC,
+QIKMOUSE.ACC, CHMELION.ACC und CLIPBRD.ACC die Verwendung von GBOOT001 
+zwingend nîtig, andernfalls treten nach Ende von GEMINI sehr merkwÅrdige
+Effekte (sprich AbstÅrze) auf.
+
+Die Zeitangabe in GBOOTxxx sollte immer 3 Stellen umfassen (also 005 fÅr 5 
+Sekunden), und immer(!) an der 6. Stelle des Programmnamens beginnen!
+
+GBOOTxxx.APP darf von jedermann frei kopiert werden.
+
+Anwendung:
+- GBOOTxxx.APP in das Directory kopieren, in dem auch GEMINI.APP liegt.
+- Den Wert von xxx im Dateinamen von GBOOTxxx.APP entsprechend Ñndern.
+- GBOOTxxx.APP als AutoStart-Applikation anmelden.
+- Arbeit sichern.
+- Rechner neu booten.
+- Wenn (ausnahmsweise) Gemini mal nicht gestartet werden soll, kann das
+  durch DrÅcken irgendeiner der Sondertasten (Shift/Control/Alternate usw.)
+  verhindert werden. Die PrÅfung auf diese Tasten erfolgt direkt beim Pro-
+  grammstart und nach Ablauf der Verzîgerungszeit.
+  
+Viel Erfolg!
+
+Fehlermeldungen und VorschlÑge bitte an die bekannte Adresse. Jegliche
+Haftung fÅr jedwede Konsequenzen aus der Benutzung (oder Nichtbenutzung) 
+von GBOOTxxx.APP oder der Untauglichkeit von GBOOTxxx.APP fÅr einen be-
+stimmten Zweck ist ausgeschlossen. Vor dem Disassemblieren von GBOOTxxx.APP
+wird gewarnt, die Gefahr eines plîtzlichen Schlafanfalls beim Betrachten
+des Source-Codes ist betrÑchtlich.

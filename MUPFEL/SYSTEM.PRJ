@@ -1,0 +1,6 @@
+system.ttp
+.L[-LG] =
+tcstart.o
+system.c
+tcstdlib.lib
+tctoslib.lib

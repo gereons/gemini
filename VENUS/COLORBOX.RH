@@ -1,0 +1,18 @@
+#define COLORBOX 34	/* form/dialog */
+#define CLWHITE  1	/* STRING in tree COLORBOX */
+#define CLBLACK  2	/* STRING in tree COLORBOX */
+#define CLRED    3	/* STRING in tree COLORBOX */
+#define CLGREEN  4	/* STRING in tree COLORBOX */
+#define CLBLUE   5	/* STRING in tree COLORBOX */
+#define CLCYAN   6	/* STRING in tree COLORBOX */
+#define CLYELLOW 7	/* STRING in tree COLORBOX */
+#define CLMAGENT 8	/* STRING in tree COLORBOX */
+#define CLLWHITE 9	/* STRING in tree COLORBOX */
+#define CLLBLACK 10	/* STRING in tree COLORBOX */
+#define CLLRED   11	/* STRING in tree COLORBOX */
+#define CLLGREEN 12	/* STRING in tree COLORBOX */
+#define CLLBLUE  13	/* STRING in tree COLORBOX */
+#define CLLCYAN  14	/* STRING in tree COLORBOX */
+#define CLLYELLO 15	/* STRING in tree COLORBOX */
+#define CLLMAGEN 16	/* STRING in tree COLORBOX */
+

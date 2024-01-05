@@ -1,0 +1,165 @@
+Dokumentation zu GEMINI Version 1.1
+
+Copyright (C) 1989 by Gereon Steffens & Stefan Eissing
+
+GEMINI ist ein Shareware-Programm von
+
+  Gereon Steffens                     Stefan Eissing
+  <veraltete Adressen wurden entfernt>
+  
+GEMINI ist ein alternativer Desktop fÅr alle Rechner der Atari ST-Serie
+mit mindestens einem Megabyte RAM. FÅr die Benutzung von GEMINI ist es er-
+forderlich, daû der Rechner mit TOS 1.2 (dem "Blitter-TOS") oder neueren
+Versionen, also TOS 1.4 (dem "Rainbow-TOS") oder TOS 1.6 (dem TOS des STe)
+ausgestattet ist.
+Ein eventuell vorhandener Blitter wird unterstÅtzt.
+Ohne Harddisk ist eine Benutzung zwar mîglich, aber nicht sehr sinnvoll,
+da z.B. das Kopieren von Dateien auf einem Diskettenlaufwerk mit zwei
+verschiedenen Disketten nicht sehr komfortabel ist.
+
+GEMINI ist (wie der Name schon sagt) eigentlich nicht ein Programm, sondern
+zwei. Die Grundidee ist folgende: Eine Mausgesteuerte BenutzeroberflÑche
+ist zwar prinzipiell schîn, aber in einigen FÑllen ist eine "herkîmmliche"
+Schnittstelle Åber einen Kommandozeilen-Interpreter einfacher und schneller
+zu bedienen. Ganz davon abgesehen lÑsst der Original-Desktop des Ataris ja
+einiges an Bedienungskomfort zu wÅnschen Åbrig.
+Aus dieser öberlegung heraus wurden zwei zunÑchst unabhÑngige Programme
+entwickelt, nÑmlich MUPFEL, eine "klassische" Shell ohne Maus und Grafik-
+zauber, und VENUS als komfortable und schnelle(!) grafische OberflÑche.
+
+FÅr ST-Benutzer mit TOS 1.0 (dem alten ROM-TOS des 260/520/1040) sind diese
+beiden Einzelprogramme auf der Auslieferungsdiskette beigelegt. Wenn
+Sie GEMINI aus einer Mailbox (als ZOO-Archiv) bekommen haben, kînnen
+Sie uns eine Diskette mit frankiertem RÅckumschlag zusenden, um die
+Standalone-Versionen zu erhalten.
+
+Ein Wort zur Namensgebung: MUPFEL kommt von Ping, dem Pinguin aus "Urmel
+aus dem Eis", der immer Wawa's Schlafmuschel (seine "Shell") benutzt und
+sagt "Ich will auch eine Mupfel!". VENUS lag dann nahe, in Anlehnung an das
+berÅhmte Bild von Boticelli, auf dem die schaumgeborene Venus in einer
+Muschel an den Meeresstrand kommt. GEMINI (die Zwillinge) ist die Kom-
+bination aus beiden.
+
+Auf Anfrage ist bei den Autoren die englischsprachige Version von VENUS
+und GEMINI erhÑltlich.
+
+Wie funktioniert das ganze nun? ZunÑchst ist ja MUPFEL eine Shell, die als
+Basis Funktionen wie Lîschen, Kopiern und Umbenennen von Files, Starten von
+Programmen usw zur VerfÅgung stellt. Alle diese Funktionen werden auch von
+VENUS ausgenutzt, da es ja unvernÅnftig wÑre solche Sachen doppelt zu pro-
+grammieren. Das bedeutet also z.B., daû nach dem Draggen von Files von
+einem Window zum anderen von VENUS eine entsprechene Kommandozeile wie z.B.
+'noalias cp c:\test\otto d:\otto' zusammengebaut wird, die dann Åber die
+Funktion system() und die Systemvariable _shell_p an die MUPFEL weiter-
+gereicht wird. Alle Mupfel-Kommandos, die von VENUS benutzt werden, werden
+mittels "noalias" an Mupfel Åbergeben, so daû keine Konflikte mit vom Be-
+nutzer definierten Aliasen auftreten kînnen.
+Somit ist VENUS also eine Shell im eigentlichen Sinne (nÑmlich ein Programm,
+daû Aktionen des Benutzers in die womîglich kryptischen Befehle der da-
+runterliegenden Ebene Åbersetzt).
+
+Die beiden anderen Dateien in diesem Verzeichnis (VENUS.DOC und MUPFEL.DOC)
+beziehen sich auf die jeweiligen Standalone-Versionen von MUPFEL und VENUS.
+In dieser Datei werden nur die darÅberhinausgehenden Mîglichkeiten der kom-
+binierten Version, also GEMINI, beschrieben.
+
+ZunÑchst fallen zwei MenÅpunkte auf: "Zur Mupfel" unter "Extras" und in
+Extras/Optionen der Eintrag "Console-Fenster". Bei "Zur Mupfel" wird das
+sogenannte "Console Window" geîffnet, in dem die direkte Kommandoeingabe
+fÅr die MUPFEL mîglich ist.
+Dieses Window ist ein ganz normales AES-Window, in dem auch TOS-Programme
+(also Programme, die AES und VDI nicht benutzen) laufen kînnen. Dazu werden
+auf niedrigster Ebene die Vektoren fÅr die BIOS-Zeichenausgabe fÅr die
+Devices CON (2) und RAWCON (5) auf den GEMINI-internen VT-52-Emulator um-
+gebogen.
+
+Nach Anwahl von "Console Fenster..." erscheint eine Dialogbox, in der ver-
+schiedene Parameter fÅr das Console Window eingestellt werden kînnen. Diese
+Parameter sind im einzelnen: Der zu verwendende Zeichensatz (Font), die
+Grîûe (in Points, d.h. 1/72 Inch) des Fonts, sowie die Anzahl der Zeichen
+pro Zeile und der Zeilen im Console Window. Die Einstellung des Fonts er-
+folgt Åber anclickbare Rechts- und Links-Pfeile, wobei der Name des aus-
+gewÑhlten Fonts jeweils angezeigt wird. Allerdings ist diese Auswahl nur
+mîglich, wenn im AUTO-Ordner beim Booten GDOS.PRG oder AMCGDOS.PRG install-
+iert war. AMCGDOS.PRG befindet sich im AUTO-Ordner dieser Diskette. Ohne
+GDOS bzw AMCGDOS ist nur der (fÑlschlicherweise) so genannte Systemzeichen-
+satz "6x6 system font" verfÅgbar. Bei der Auswahl der Fonts werden nur
+Fonts zugelassen, die NICHT Proportional sind, d.h. bei denen alle Zeichen
+die gleiche Breite haben. Die mîglichen Grîûeneinstellungen sind vom ge-
+wÑhlten Font abhÑngig, beim System Font sind die Grîûen 8,9,10,16,18 und 20
+mîglich. Bei den mitgelieferten Fonts (im Ordner GEMSYS) sind die mîglichen
+Grîûen 10 und 20 (GEMINI.FNT) bzw. 9 und 18 (TMAIL*.FNT).
+Die Grîûe des Console Windows ist in weiten Grenzen einstellbar. Die
+aktuelle Grîûe wird von GEMINI auch in den sog. VDI-Escape-Variablen
+eingetragen, allerdings gibt es nur wenige Programme die mit einer
+anderen Grîûe als 80*25 arbeiten kînnen.
+
+Beim Start von GEMINI werden, falls vorhanden, zwei sog. Autostart-
+Files ausgefÅhrt. Dies sind die Dateien MUPFEL.MUP (siehe Beispiel)
+und GEMINI.MUP. Der wichtige Unterschied zwischen diesen Files ist,
+daû in MUPFEL.MUP keine externen Programme gestartet werden kînnen
+und der Befehl "cd" nicht erlaubt ist. In GEMINI.MUP kînnen beliebige
+Befehle stehen. Zu beachten ist, daû sÑmtliche Environment-Variablen
+in MUPFEL.MUP zu setzen sind, da einige schon bei der Initialisierung
+von VENUS benîtigt werden (speziell SCRAPDIR und TRASHDIR).
+
+
+Zur Installation:
+
+Damit GEMINI problemlos laufen kann, mÅssen sich folgende Dateien im
+selben Ordner befinden: GEMINI.PRG, GEMINI.RSC, GEMINIIC.RSC, GEMINI.INF,
+MUPFEL.MUP und EXIT.PRG. Diese Dateien befinden sich im Ordner GEMINI
+auf der Auslieferungsdiskette bzw. in der ausgelieferten ZOO-Datei
+(Falls Sie GEMINI nicht mit der Option "zoo x// gemini" extrahiert
+haben, sollten Sie dies mit diesem Kommando noch einmal wiederholen!).
+ZusÑtzlich ist zu beachten, daû das Programm SHELL0.PRG in den AUTO-Ordner
+Ihres Boot-Laufwerks kopiert werden muû, da sonst das fehlerfreie
+Funktionieren von GEMINI nach einem Warmstart Ihres Rechners nicht mehr
+gewÑhrleistet ist.
+
+Benutzer mit einer Festplatte kînnen sich den Ordner GEMINI an jede
+beliebige Stelle auf ihrem Dateisystem kopieren. 
+Wenn sie schon ein GDOS installiert haben, sollten sie alle Dateien aus
+dem Ordner GEMSYS in Ihren Font-Ordner kopieren. Falls Sie GDOS noch
+nicht benutzen, so ist eine Installation nicht schwer:
+a) Kopieren Sie das Programm AMCGDOS.PRG in IHREN AUTO-Ordner,
+b) Kopieren Sie den Ordner GEMSYS und die Datei ASSIGN.SYS in das
+   Verzeichnis, in dem sich auch IHR AUTO-Ordner befindet (also z.B. bei
+   Festplattenbenutzern ins Wurzelverzeichnis von Laufwerk C:).
+c) éndern Sie den Pfad, der in ASSIGN.SYS steht entsprechend, z.B. auf
+   "path = c:\gemsys\", der letzte '\' ist nîtig!)
+d) Wenn Sie zu den mitgelieferten ZeichensÑtzen (die *.FNT-Dateien) eigene
+   verwenden wollen, kînnen Sie diese ganz einfach zusÑtzlich in ASSIGN.SYS
+   eintragen (nur den Namen jeweils hinter jede Gruppe von bereits vor-
+   handenen Namen schreiben). NatÅrlich mÅssen Sie diese Fonts auch in
+   das entsprechende Verzeichnis kopieren, also z.B. nach C:\GEMSYS.
+   Achten Sie darauf, daû Sie nur GEM-Fonts benutzen! Einige Font-Editoren
+   (z.B. von Degas Elite) erzeugen ebenfalls *.FNT-Dateien, diese sind aber
+   fÅr GDOS ungeeignet!)
+   
+Benutzer, die nur mit einem Diskettenlaufwerk arbeiten, und das ZOO-Archiv
+von GEMINI erhalten haben, sollten sich alle Ordner und Dateien aus dem Ordner
+GDIST1_1 (nicht den Ordner selbst!) auf eine Diskette kopieren und damit den
+Rechner booten.
+
+Wenn Sie TOS 1.4 oder 1.6 in Ihrem Rechner installiert haben, kînnen Sie
+GEMINI automatisch starten lassen, wenn Ihr Rechner bootet. Dazu selektieren
+Sie im normalen Desktop die Datei "GEMINI.PRG" und wÑhlen dann "Anwendung
+anmelden" an. In der Dialogbox Ñndern Sie den "Boot-Status" auf "Auto" und
+klicken auf den "Installieren"-Button. Danach fÅhren Sie bitte "Arbeit
+sichern" aus.
+Auf Rechnern mit TOS 1.0 oder 1.2 ist dieser Autostart leider nicht mîglich.
+Versuchen Sie bitte nicht, GEMINI in den Auto-Ordner zu kopieren, das hat
+aus systembedingten GrÅnden (dort kînnen keine GEM-Programme gestartet
+werden) keinen Sinn und funktioniert auch nicht.
+
+Die Ordner DOC und SAMPLES kînnen Sie aufbewahren, wo es Ihnen beliebt.
+Wir bitten Sie nur sich die Dokumentationen, die sich im Ordner DOC
+befinden, durchzulesen, da nur so eine mîglichst effiziente Benutzung
+von GEMINI mîglich ist und sie sonst viele nÅtzliche Besonderheiten
+Åbersehen kînnten, bzw. sich unnîtig mit Problemen herumquÑlen.
+
+
+Wir wÅnschen viel Spaû!
+
+           Gereon Steffens  &  Stefan Eissing

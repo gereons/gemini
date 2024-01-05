@@ -1,0 +1,36 @@
+Dokumentation zu RUNNER fÅr GEMINI 1.2
+--------------------------------------------------------------------
+Stand: 08.10.1990
+
+
+RUNNER.APP ist ein kleines Programm, das Sie als Anwender niemals
+zu starten brauchen. Es wird nur von GEMINI, MUPFEL und VENUS
+benutzt. Wichtig ist nur, das RUNNER.APP sich im gleichen Ordner
+wie GEMINI.APP, MUPFEL.APP oder VENUS.APP befindet, Sollten sich
+diese Programme in verschiedenen Ordnern befinden, so legen Sie
+in jedem dieser Ordner eine Kopie von RUNNER an.
+
+Wozu ist RUNNER da?
+
+Ab Version 1.2 von GEMINI ist es mîglich Programme als "Overlay"
+zu starten (siehe auch MUPFEL.DOC und VENUS.DOC). Diese Art ein
+Programm zu starten, bedeutet fÅr GEMINI, das es sich selbst beendet
+und damit seinen Speicher freigibt, bevor das Programm gestartet
+wird.
+
+Das Problem an dieser Sache ist nur, das das so gestartete Programm
+gar nicht weiû, das Sie danach wieder mit GEMINI arbeiten wollen,
+daû es also wieder GEMINI starten soll! Was tun?
+Statt nun diese ahnunglose Programm direkt zu starten, startet
+GEMINI stattdessen RUNNER. RUNNER startet das von Ihnen gewÅnschte
+Programm und weiû, das nach dem Ende des Programmes wieder GEMINI
+gestartet werden soll.
+
+Das nur zur ErklÑrung fÅr die Existenz diese kleinen Programmes.
+Wie gesagt: wichtig ist nur, das RUNNER in dem entsprechenden
+Ordner ist. Beim weiteren Gebrauch von GEMINI brauchen Sie sich 
+dann Åber RUNNER nicht weiter den Kopf zu zerbrechen.
+
+
+
+Stefan Eissing & Gereon Steffens

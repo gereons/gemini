@@ -1,0 +1,6 @@
+#define CHANGBOX 18	/* form/dialog */
+#define CHANLABL 4	/* FTEXT in tree CHANGBOX */
+#define CHANDRIV 5	/* FTEXT in tree CHANGBOX */
+#define CHANCANC 6	/* BUTTON in tree CHANGBOX */
+#define CHANOK   7	/* BUTTON in tree CHANGBOX */
+

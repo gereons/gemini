@@ -1,0 +1,21 @@
+# mcopy  -  copy Mupfel/Venus/Gemini to disk
+pushd .
+cd d:\tc\mupfel
+#
+echo "Copying Mupfel..."
+rm -rf a:\mupfel
+mkdir a:\mupfel
+cp ..\mupfel.* doc\* xarg.c system.c shell0.c shell0.prg ..\exit.prg a:\mupfel
+#
+cd ..
+echo "Copying Venus..."
+rm -rf a:\venus
+mkdir a:\venus
+cp venus.prg venus*.rsc venus\doc\* a:\venus
+#
+echo "Copying Gemini..."
+rm -rf a:\gemini
+mkdir a:\gemini
+cp gemini.prg gemini*.rsc c:\gemsys\gemini.fnt a:\gemini
+#
+popd

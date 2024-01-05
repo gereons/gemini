@@ -1,0 +1,212 @@
+Dokumentation zu GEMINI Version 1.2
+
+Copyright (C) 1990 by Gereon Steffens & Stefan Eissing
+
+GEMINI ist ein Shareware-Programm von
+
+  Gereon Steffens                     Stefan Eissing
+  <veraltete Adressen wurden entfernt>
+  
+GEMINI ist ein alternativer Desktop fÅr alle Rechner der Atari ST/TT-Serie
+mit mindestens einem Megabyte RAM. FÅr die Benutzung von GEMINI ist es 
+erforderlich, daû der Rechner mit TOS 1.2 (dem "Blitter-TOS") oder neueren
+Versionen, also TOS 1.4 (dem "Rainbow-TOS"), TOS 1.6 (dem TOS des STe)
+oder TOS 3.1 (dem TOS des TT) ausgestattet ist. 
+
+Sollten Sie GEMINI.APP auf einer zu alten Version des Betriebssystems 
+starten, so wird eine Meldung ausgegeben und das Programm beendet sich 
+wieder. Wenn Sie nicht wissen, welche Version Sie haben, kînnen Sie Gemini also 
+einfach testweise starten.
+
+Sollte GEMINI sich weigern, auf Ihrem Rechner zu laufen, so ist das zwar
+sehr schade fÅr Sie, aber Sie brauchen nicht gleich zu verzweifeln!
+Auf der Diskette, die wir Ihnen geschickt haben, befinden sich auch noch
+die Programme MUPFEL.APP und VENUS.APP. Diese beiden laufen auf allen
+ST-Computern und bieten fast (aber auch nur fast) denselben Komfort wie
+GEMINI.
+
+Ohne Festplatte ist eine Benutzung zwar mîglich, aber nicht sehr sinnvoll,
+da z.B. das Kopieren von Dateien auf einem Diskettenlaufwerk mit zwei
+verschiedenen Disketten in GEMINI nicht sehr komfortabel ist.
+
+GEMINI ist (wie der Name schon sagt) eigentlich nicht ein Programm, sondern
+zwei. Die Grundidee ist folgende: Eine mausgesteuerte BenutzeroberflÑche
+ist zwar prinzipiell schîn, aber in einigen FÑllen ist eine "herkîmmliche"
+Schnittstelle Åber einen Kommandozeilen-Interpreter einfacher und schneller
+zu bedienen. Ganz davon abgesehen lÑsst der Original-Desktop des Ataris ja
+einiges an Bedienungskomfort zu wÅnschen Åbrig.
+Aus dieser öberlegung heraus wurden zwei zunÑchst unabhÑngige Programme
+entwickelt, nÑmlich MUPFEL, eine "klassische" Shell ohne Maus und Grafik-
+zauber, und VENUS als komfortable und schnelle(!) grafische OberflÑche.
+
+Ein Wort zur Namensgebung: MUPFEL kommt von Ping, dem Pinguin aus "Urmel
+aus dem Eis", der immer Wawa's Schlafmuschel (seine "Shell") benutzt und
+sagt "Ich will auch eine Mupfel!". VENUS lag dann nahe, in Anlehnung an das
+berÅhmte Bild von Boticelli, auf dem die schaumgeborene Venus in einer
+Muschel an den Meeresstrand kommt. GEMINI (die Zwillinge) ist die Kom-
+bination aus beiden.
+
+Auf Anfrage ist bei den Autoren die englischsprachige Version von MUPFEL,
+VENUS und GEMINI erhÑltlich.
+
+Wie funktioniert das ganze nun? ZunÑchst ist ja MUPFEL eine Shell, also
+ein Programm, das Eingaben von der Tastatur verarbeitet, die als Basis 
+Funktionen wie Lîschen, Kopieren und Umbenennen von Dateien, Starten von 
+Programmen usw zur VerfÅgung stellt. Alle diese Funktionen werden auch 
+von VENUS ausgenutzt, da es ja unvernÅnftig wÑre solche Sachen doppelt zu 
+programmieren. Das bedeutet also z.B., daû nach dem Verschieben von 
+Dateien von einem Fenster zum anderen von VENUS eine entsprechene 
+Kommandozeile wie z.B. 'noalias cp c:\test\otto d:\otto' zusammengebaut 
+wird, die an die MUPFEL weitergereicht wird (FÅr Experten: Dies geschieht
+Åber die Funktion system() und die Systemvariable _shell_p des Betriebs-
+systems des Atari).
+
+Alle Mupfel-Kommandos, die von VENUS benutzt werden, werden mittels 
+"noalias" an Mupfel Åbergeben (siehe auch MUPFEL.DOC), so daû keine 
+Konflikte mit vom Benutzer definierten Aliasen auftreten kînnen. 
+Ausnahme: Die Kommandos more und print, die Venus zum Anzeigen und 
+Drucken von Dateien verwendet, kînnen durch ein Alias ersetzt werden!
+
+Somit ist VENUS also eine Shell im eigentlichen Sinne (nÑmlich ein 
+Programm, daû Aktionen des Benutzers in die womîglich kryptischen 
+Befehle der darunterliegenden Ebene Åbersetzt).
+
+Die beiden anderen Dateien in diesem Verzeichnis (VENUS.DOC und MUPFEL.DOC)
+beziehen sich auf die jeweiligen Einzel-Versionen von MUPFEL und VENUS.
+In dieser Datei werden nur die darÅberhinausgehenden Mîglichkeiten der 
+kombinierten Version, also GEMINI, beschrieben. Sie sollten sich somit
+erst einmal diese beiden Dateien durchlesen, damit Sie mit der 
+Funktionsweise dieser beiden Programme etwas vertraut sind!
+
+ZunÑchst fallen zwei MenÅpunkte auf: "Console-Fenster" und "Console..."
+im MenÅ "Extras". Bei "Console-Fenster" wird das sogenannte 
+Console-Fenster geîffnet, in dem die direkte Kommandoeingabe fÅr die 
+MUPFEL mîglich ist. Dieses Fenster ist ein ganz normales Fenster, in dem 
+auch TOS-Programme (also Programme, die nur Buchstaben ausgeben) laufen 
+kînnen.
+
+FÅr Experten: Dazu werden auf niedrigster Ebene die Vektoren fÅr die 
+BIOS-Zeichenausgabe fÅr die Devices CON (2) und RAWCON (5) auf den 
+GEMINI-internen VT-52-Emulator umgebogen.
+
+Nach Anwahl von "Console..." erscheint eine Dialogbox, in der ver-
+schiedene Parameter fÅr das Console-Fenster eingestellt werden kînnen. 
+Diese Parameter sind im einzelnen: Der zu verwendende Zeichensatz (Font),
+die Grîûe (in Points, d.h. 1/72 Inch) des Fonts, sowie die Anzahl der 
+Zeichen pro Zeile und der Zeilen im Console Window. 
+
+Die Einstellung des Zeichensatzes erfolgt in der linken Box, die mîglichen
+Grîûen, die Sie auswÑhlen kînnen, stehen in der Box rechts daneben.
+Eine Auswahl ist nur mîglich, wenn im AUTO-Ordner beim Booten GDOS.PRG 
+oder AMCGDOS.PRG installiert war. AMCGDOS.PRG befindet sich im AUTO-Ordner 
+dieser Diskette. Ohne GDOS bzw AMCGDOS ist nur der Systemzeichensatz 
+verfÅgbar. 
+
+Bei der Auswahl der ZeichensÑtze werden nur solche zugelassen, die 
+NICHT Proportional sind, d.h. bei denen alle Zeichen die gleiche Breite 
+haben. 
+
+Zum besseren VerstÑndnis: GDOS ist kein Programm, das speziell zu GEMINI
+gehîrt! Vielmehr handelt es sich um einen wichtigen Teil des Betriebs-
+systems Ihres Rechners. Nur mit GDOS ist es mîglich mehrere ZeichensÑtze
+zu benutzen. Da es zu den Anfangszeiten des ST dieses Programm nicht gab,
+gibt es immer noch Programme, die nicht laufen, wenn GDOS benutzt wird.
+Dies ist allerdings ein Fehler dieser Programme und hat nichts mit
+GEMINI zu tun. Sie sollten sich an die Hersteller dieser Programme wenden
+und eine neue Version fordern. Kînnen Sie auf diese alten Programme nicht
+verzichten, so kînnen Sie auch GDOS aus dem AUTO-Ordner entfernen.
+GEMINI ist nicht auf dieses Programm angewiesen.
+
+Die Grîûe des Console Windows ist in weiten Grenzen einstellbar. Die
+aktuelle Grîûe wird von GEMINI auch in den sog. VDI-Escape-Variablen
+eingetragen, allerdings gibt es nur wenige Programme die mit einer
+anderen Grîûe als 80*25 arbeiten kînnen.
+
+Beim Start von GEMINI werden, falls vorhanden, zwei sog. Autostart-
+Dateien ausgefÅhrt. Dies sind die Dateien MUPFEL.MUP (siehe Beispiel)
+und GEMINI.MUP. Der wichtige Unterschied zwischen diesen Dateien ist,
+daû in MUPFEL.MUP keine Programme gestartet werden kînnen und der Befehl 
+"cd" nicht erlaubt ist. In GEMINI.MUP kînnen beliebige
+Befehle stehen. Zu beachten ist, daû sÑmtliche Environment-Variablen
+(siehe auch MUPFEL.DOC) in MUPFEL.MUP zu setzen sind, da einige schon 
+bei der Initialisierung von VENUS benîtigt werden (speziell SCRAPDIR 
+und TRASHDIR).
+
+Weitere Besonderheiten in GEMINI:
+
+Ab Version 1.2 von GEMINI ist es mîglich mit der Tastatur und der Maus
+gleichzeitig zu arbeiten, wenn Sie das Console-Fenster aktiviert haben.
+Wenn Sie mit der Maus in das Console-Fenster klicken und den Knopf an
+der Maus gedrÅckt halten, so wird der Text, Åber den Sie fahren, 
+selektiert (weiûe Schrift auf schwarzem Grund). Lassen Sie den Knopf
+wieder los, so erscheint eine kleine Box, in der Sie anklicken kînnen, was
+mit dem selektierten Text geschehen soll.
+
+"EinfÅgen" fÅgt den Text an der Position des Cursors ein, so als ob Sie 
+ihn mit der Tastatur eingegeben hÑtten.
+"Kopieren" kopiert diesen Text in das Klemmbrett, genauer in die Datei
+SCRAP.TXT. Wenn Sie nun ein Programm starten, das das Klemmbrett unter-
+stÅtzt (Wordsplus, Edison, Turbo C, SciGraph), so kînnen Sie dort mit
+der Funktion "EinfÅgen" diesen Text weiterbenutzen.
+
+Sollten Sie diese Selektion von Text im Console-Fenster mit einem
+Doppelklick beginnen (ein guter Test fÅr Ihre Fingerfertigkeit), so
+selektiert GEMINI immer nur ganze Wîrter.
+
+Weitere Besonderheit: Sie kînnen Objekte, also alle Icons fÅr Dateien,
+Ordner, Laufwerke, etc., in das Console-Fenster ziehen. Der Name dieser
+Objekte wird dann an der Position des Cursors eingefÅgt. Somit ist es
+ganz einfach ein Kommando der Mupfel auf ein Icon von VENUS wirken zu
+lassen.
+
+
+Zur Installation:
+
+Damit GEMINI problemlos laufen kann, mÅssen sich folgende Dateien im
+selben Ordner befinden: GEMINI.APP, GEMINI.RSC, GEMINIIC.RSC, GEMINI.INF,
+MUPFEL.MUP, RUNNER.APP, GBOOT001.APP und EXIT.PRG (Diese Dateien befinden 
+sich im Ordner GEMINI auf der Auslieferungsdiskette bzw. in der 
+ausgelieferten ZOO-Datei (falls Sie GEMINI nicht mit der Option 
+"zoo x// gemini" extrahiert haben, sollten Sie dies mit diesem Kommando 
+noch einmal wiederholen)). 
+
+Benutzer mit einer Festplatte kînnen sich den Ordner GEMINI an jede
+beliebige Stelle auf ihrem Dateisystem kopieren. 
+Wenn sie schon ein GDOS installiert haben, sollten sie alle Dateien aus
+dem Ordner GEMSYS in Ihren Font-Ordner kopieren. Falls Sie GDOS noch
+nicht benutzen, so ist eine Installation nicht schwer:
+a) Kopieren Sie das Programm AMCGDOS.PRG in IHREN AUTO-Ordner,
+b) Kopieren Sie den Ordner GEMSYS und die Datei ASSIGN.SYS in das
+   Verzeichnis, in dem sich auch IHR AUTO-Ordner befindet,
+c) éndern Sie den Pfad, der in ASSIGN.SYS steht, entsprechend. mit einem
+   Text-Editor (Edison, Wordplus, etc.).
+
+Benutzer, die nur mit einem Diskettenlaufwerk arbeiten, sollten sich
+alle Ordner und Dateien aus dem Ordner GDIST1_1 (nicht den Ordner 
+selbst) auf eine Diskette kopieren und damit den Rechner starten.
+
+Die Ordner DOC und SAMPLES kînnen Sie aufbewahren, wo es Ihnen beliebt.
+Wir bitten Sie nur sich die Dokumentationen, die sich im Ordner DOC
+befinden, durchzulesen, da nur so eine mîglichst effiziente Benutzung
+von GEMINI mîglich ist und sie sonst viele nÅtzliche Besonderheiten
+Åbersehen kînnten, bzw. sich unnîtig mit Problemen herumquÑlen.
+
+
+ACHTUNG: Unter TOS 1.4 (und neueren Versionen) des Betriebsystems kann
+ein Programm im Desktop des Atari als Auto-Start-Programm installiert
+werden. Dann wird es gleich nach dem Laden der Accessories gestartet!
+Dazu klicken Sie einfach GEMINI.APP einmal an, selektierten
+"Anwendung..." im MenÅ "EXTRAS" des Atari-Desktop und klicken auf
+den Button "Auto". Danach verlassen Sie diesen Dialog mit "OK" und
+speichern dies mit "Arbeit sichern" ab. Beim nÑchsten Start ihres
+Rechners wird dann GEMINI automatisch geladen.
+
+WARNUNG: Haben Sie beim Auto-Start von GEMINI Probleme, wenn Sie GEMINI
+wieder verlassen, so sollten Sie besser GBOOTxxx.APP anmelden. Lesen Sie
+dazu bitte auch GBOOT.DOC!
+
+
+
+Wir wÅnschen viel Spaû!
+
+           Stefan Eissing & Gereon Steffens

@@ -1,0 +1,4 @@
+#define CONSELEC 30	/* form/dialog */
+#define CONSPAST 1	/* STRING in tree CONSELEC */
+#define CONSCOPY 2	/* STRING in tree CONSELEC */
+

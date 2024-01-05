@@ -1,0 +1,14 @@
+#define ICONFILE 22	/* form/dialog */
+#define ICONNAME 3	/* FTEXT in tree ICONFILE */
+#define ICONALIA 4	/* TEXT in tree ICONFILE */
+#define ICONFOLD 5	/* TEXT in tree ICONFILE */
+#define ICONPATH 6	/* STRING in tree ICONFILE */
+#define ICONETC  7	/* STRING in tree ICONFILE */
+#define ICONLABL 8	/* FTEXT in tree ICONFILE */
+#define ICONNOLA 9	/* TEXT in tree ICONFILE */
+#define ICONSCSC 10	/* STRING in tree ICONFILE */
+#define ICONSC   12	/* BUTTON in tree ICONFILE */
+#define ICONSC0  13	/* BOXCHAR in tree ICONFILE */
+#define ICONCANC 14	/* BUTTON in tree ICONFILE */
+#define ICONOK   15	/* BUTTON in tree ICONFILE */
+

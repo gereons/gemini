@@ -1,0 +1,17 @@
+Mupfel Manifest
+---------------
+
+Zur Mupfel-Distribution gehîren folgende Files (im Ordner MUPFEL):
+
+MUPFEL.PRG -  Das Programm
+MUPFEL.MUP -  Beispiel fÅr ein Autoexec-File
+
+MUPFEL.DOC -  Die Dokumentation (Achtung: 5er Tabs!)
+MUPFEL.GEN -  Die Genesis (Aktuelle énderungen, gefixte Bugs etc.)
+
+EXIT.PRG   -  Nach $HOME kopieren
+SHELL0.PRG -  In den AUTO-Ordner kopieren (Warum? Steht in MUPFEL.DOC)
+
+XARG.C     -  Beispielsource fÅr das xArg-Verfahren
+SYSTEM.C   -  Beispielsource fÅr system()-Aufrufe
+SHELL0.C   -  Source zu SHELL0.C

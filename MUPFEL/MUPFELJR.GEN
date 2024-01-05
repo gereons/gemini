@@ -1,0 +1,106 @@
+Žnderungen an Mupfel durch jr
+
+
+15.01.91
+
+ls total umgeworfen, ist jetzt weitestgehend identisch zu gnu-ls.
+Žnderungen dazu in cmd_ger.h und command.c
+In curdir die Funktion normalize umgeschrieben.
+
+17.01.91
+
+file gekillt und Arbeit an file.ttp begonnen
+Neue Kommandos: true, false, dirname, basename
+
+19.01.91
+
+Filename completion mit TAB.
+IO-Redirection versuchsweise ber undokumentierte
+variablen in der Basepage.
+
+21.01.91
+
+date fertig, ls -m l„žt sich jetzt abbrechen
+filenamecompletion von leeren Namen in Verzeichnissen mit GENAU
+einer datei tuts jetzt auch.
+Bei date kann man das Datum jetzt auch auf >1999 setzen.
+
+22.01.91
+
+ls -S sortiert jetzt wirklich die gr”žten Dateien nach vorne.
+
+24.01.91
+
+ls -t sortiert jetzt wirklich die neueste Datei nach vorne :-)
+runopts neu, chmod berarbeitet (load-options ge„ndert, neues
+getopt)
+
+25.01.91
+
+runopts kann jetzt auch die Attribute von schreibgeschtzten
+Dateien anzeigen. ls mancht nun unsafe mallocs.
+
+
+27.01.91
+
+ls -X sortiert jetzt Ordner und Files ohne Extensions NICHT mehr
+gleich.
+cat ganz neu. schneller, neue Optionen. bitte testen
+
+
+29.01.91
+
+cat kommt jetzt auch ohne Speicher zurecht, Abbruch der Eingabe
+mit CTRL-Z, denn DAS ist unter GEMDOS eof -- nicht CTRL-D.
+
+
+05.02.91
+
+df berarbeitet.
+
+
+07.02.91
+
+test eingebaut. Deutsche Meldungen fehlen noch; [ ist noch langsam,
+weil es zun„chst als externes Kommando gesucht wird.
+Redirection-Problem in Gemini noch unklar.
+: eingebaut.
+
+09.02.91
+
+du neu.
+test mit internationalisierten Meldungen versehen und Manual-Page
+berarbeitet.
+
+14.02.91
+
+find rausgeworfen; getopt re-entrant gemacht (->Žnderungen bei
+fast allen eingebauten Kommandos)
+
+19.02.91
+
+Fehler bei test gefunden: beim beseitigen von -ef hatten wir leider auch
+-eq gekillt.
+
+Donnerstag,  4. April 1991, 20.35 Uhr
+Feler in getopt_long gekillt, lange Optionen muessten wieder gehen.
+
+
+Donnerstag,  4. April 1991, 20.41 Uhr
+Feler in mediach() (Marke jr) entfernt.
+
+Samstag, 27. April 1991, 20.34 Uhr
+version geaendert (GEMDOS-Versionnumber nun hex)
+
+Mittwoch,  1. Mai 1991, 00.22 Uhr
+Entsprechende Aenderungen in den manual-Pages
+
+Samstag, 11. Mai 1991, 11.21 Uhr
+wc entfernt und durch externes Kommando ersetzt
+
+Donnerstag, 30. Mai 1991, 10.38 Uhr
+Schon neulich: Division-by-Zero bei df unter MiNT eliminiert.
+Heute: Rundungsfehler bei der Prozentanzeige ausgebaut.
+
+Donnerstag,  6. Juni 1991, 19.22 Uhr
+df zu einem standalone gemacht.

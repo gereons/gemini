@@ -1,0 +1,3 @@
+zoo aunP venus '*.prj' '*.[ch]' 'doc\venus*' '*.rs?' '*.mup'
+mv ${ARCHIV}\venus.zoo ${ARCHIV}\venus.zob
+cp -v venus.zoo ${ARCHIV}\venus.zoo

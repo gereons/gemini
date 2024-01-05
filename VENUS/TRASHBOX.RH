@@ -1,0 +1,16 @@
+#define TRASHBOX 20	/* form/dialog */
+#define TRASHNAM 5	/* FTEXT in tree TRASHBOX */
+#define TRSHSCSC 6	/* STRING in tree TRASHBOX */
+#define TRASHSC  8	/* BUTTON in tree TRASHBOX */
+#define TRASHSC0 9	/* BOXCHAR in tree TRASHBOX */
+#define TRSHBGSC 11	/* STRING in tree TRASHBOX */
+#define TRASBBOX 12	/* BOX in tree TRASHBOX */
+#define TRASBACK 14	/* BUTTON in tree TRASHBOX */
+#define TRASBK0  15	/* BOXCHAR in tree TRASHBOX */
+#define TRSHFGSC 16	/* STRING in tree TRASHBOX */
+#define TRASFBOX 17	/* BOX in tree TRASHBOX */
+#define TRASFORE 19	/* BUTTON in tree TRASHBOX */
+#define TRASFR0  20	/* BOXCHAR in tree TRASHBOX */
+#define TRASHCAN 21	/* BUTTON in tree TRASHBOX */
+#define TRASHOK  22	/* BUTTON in tree TRASHBOX */
+

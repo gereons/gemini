@@ -1,0 +1,16 @@
+#define SCRAPBOX 21	/* form/dialog */
+#define SCRAPNAM 6	/* FTEXT in tree SCRAPBOX */
+#define SCRPSCSC 7	/* STRING in tree SCRAPBOX */
+#define SCRAPSC  9	/* BUTTON in tree SCRAPBOX */
+#define SCRAPSC0 10	/* BOXCHAR in tree SCRAPBOX */
+#define SCRPBGSC 12	/* STRING in tree SCRAPBOX */
+#define SCRABBOX 13	/* BOX in tree SCRAPBOX */
+#define SCRABACK 15	/* BUTTON in tree SCRAPBOX */
+#define SCRABK0  16	/* BOXCHAR in tree SCRAPBOX */
+#define SCRPFGSC 17	/* STRING in tree SCRAPBOX */
+#define SCRAFBOX 18	/* BOX in tree SCRAPBOX */
+#define SCRAFORE 20	/* BUTTON in tree SCRAPBOX */
+#define SCRAFR0  21	/* BOXCHAR in tree SCRAPBOX */
+#define SCRAPCAN 22	/* BUTTON in tree SCRAPBOX */
+#define SCRAPOK  23	/* BUTTON in tree SCRAPBOX */
+

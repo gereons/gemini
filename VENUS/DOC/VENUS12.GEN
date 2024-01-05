@@ -1,0 +1,1075 @@
+
+                        Venus Genesis
+                        
+Ver.    Datum   
+0.0     -7.12.  Keine Beschreibung der Genesis vorhanden.
+                Venus wurde ungefÑhr im Sommer 88 begonnen, hieû damals
+                noch einfach "desktop". 
+
+0.1     07.12.  Beim Kopieren die Option "-d" eingebaut, damit das Datum
+                beibehalten wird. Mupfel lÑût sich jetzt gut benutzen.
+
+        08.12.  Beim Starten von Programmen wird jetzt immer der Pfad
+                mit Åbergeben, das Setzen von Pfaden wird der Mupfel
+                Åberlassen.
+                Es lassen sich jetzt Programme starten, indem man Files
+                auf das Desktop-Icon des Programm zieht. Der String fÅr
+                den Systemaufruf wird jetzt dynamisch angelegt.
+                Beim Start von externen Programmen wird jetzt auch die
+                VDI-Workstation geschlossen und wieder geîffnet.
+
+        09.12.  Strings in copymove verlÑngert. Auch bei tiefen Pfaden
+                kann man nun nicht mehr ein File aud sich selbst kopieren.
+                Es gibt jetzt einen Stack von Window-Grîûen (wie beim
+                alten Desktop). Datei-Icons werden jetzt direkt gelîscht,
+                wenn man sie auf den SHREDDER zieht.
+                
+        10-13.12. Neue saugute Icons gemalt. Das File mit den Icons heiût
+                jetzt "VENUSICN.RSC". Desktop-Icons kînnen jetzt auch
+                auf Desktop-Icons gezogen werden, um Programme zu
+                starten.
+
+        14.12.  Fehler in beim Verschieben der Desktop-Icons
+                beseitigt (Schleife wurde einmal zu oft durchlaufen).
+                Icons kînnen nicht mehr jenseits der Area installiert
+                werden.
+                Reihenfolge in der Liste der angemeldeten Applications
+                wird jetzt beim Speichern beibehalten. Die allgemeineren
+                Anwendungen (more fÅr "*.*") mÅssen vor den anderen
+                angemeldet werden, um diese nicht zu Åberschatten.
+                Bei TOS/TTP-Programmen wird jetzt der Bildschirm
+                gesetzt (Cursor an,Maus aus).
+                
+        16.12   UNDO wirft keine zwei Bomben mehr, wenn kein Window
+                geîffnet ist.
+                Bei TTP Programmen wird jetzt eine Box fÅr die 
+                Commandline geîffnet.
+                
+0.2     19.12.  Label in Info Åber Laufwerke debuggt. Labels werden
+                jetzt richtig angezeigt.
+                Beim Starten von Programmen wird, falls ein Label auf
+                der Diskette vorhanden war oder ist, das richtige Label
+                gecheckt und falls notwendig zum Wechsel der Diskette
+                aufgefordert.
+
+        26.12.  Icons bleiben beim Scrollen im Fenster selektiert, sofern
+                sie weiterhin sichtbar sind. Falsches Deselektieren der
+                Objekte beim "FULLEN" eines Windows ausgebaut.
+                Selektieren von Objekten mit gedrÅckter Shift-Taste 
+                funktioniert jetzt wie beim Desktop.
+
+        29.12.  Es gibt jetzt separate Dialogboxen fÅr SHREDDER-,SCRAPDIR-
+                und TRASHDIR-Icons. "Get Info..." funktioniert jetzt auch
+                bei Programmicons auf dem Desktop.
+                Nach Kopieren oder Lîschen von Files werden jetzt alle
+                Keyboard-Events aufgefressen.
+                Beim Kopieren und Lîschen kann man jetzt mittels escape
+                abbrechen. Da Venus die Mupfel benutzt, kann dies jedoch
+                nur vor oder nach einem File geschehen.
+
+        02.01.  Schînes neues Jahr!
+                Man kann jetzt wieder getrost die Cursortasten drÅcken,
+                auch wenn kein Fenster geîffnet ist.
+                Die Anzeige in der MenÅleiste beim Starten eines
+                Programms wird jetzt zentriert.
+
+0.3     03.01.  Das Format der VENUS.INF Datei wurde geÑndert, da jetzt
+                die einzelnen Zeilen mit strtok() untersucht werden, und
+                nicht mehr mit sscanf. Dadurch kînnen jetzt auch in den 
+                Namen der Diskettenicons Blanks vorkommen. Als neuer 
+                Separator wird jetzt '@' benutzt. Die Infozeile eines
+                Fensters ist der deutschen Sprache nicht mehr mÑchtig.
+                Das '..'-Directory wird nicht mehr mitgezÑhlt.
+
+        04.01.  Bei gedrÅckter Shifttaste kann man nun auch mit der
+                Rubberbox zusÑtzlich Icons selektieren.
+
+        05.01.  Die Grîûe der Icons, die auf den Desktop gezogen
+                worden sind, wird jetzt in venus.inf mit
+                abgespeichert.
+                Die Scrap- und Trash-Icons werden gewechselt, je
+                nach Zustand des Directory (leer oder nicht).
+
+        07.01.  Beim Setzen der Pfade fÅr die Directories 'SCRAPDIR' und
+                'TRASHDIR' schaut Venus nach gleichnamigen Environment-
+                variablen. Beim Trashdir wird dieses sofort angenommen,
+                beim Scrapdir nur, wenn der Pfad im AES nicht gesetzt
+                ist. Das Verhalten fÅrs Scrapdir ist wie folgt:
+                (1) Versuche den AES-Pfad zu nehmen.
+                (2) Ansonsten schaue im Environment nach "SCRAPDIR".
+                (3) Ansonsten versuche es im Root des Boot-Devices,
+                    falls dieses kein Diskettenlaufwerk ist.
+                (4) Well, gib auf und lege es im Startpfad der Venus an.
+                (Zufrieden Julian?)
+                Venus kommt jetzt auch mit dem ?=!"=?!!*^| Scrappfad von
+                Wordplus klar.
+                Beim Doppelklick auf ein Icon eines installierten Acc.
+                wird an dieses eine Message mit der Nummer 4711 (Hex)
+                geschickt. Word 3 und 4 der Message enthalten einen
+                Pointer auf einen C-String, in dem die evtl. draufge-
+                draggten Files stehen. 
+
+0.31        17.01.  Nach vielen frustrierenden VorfÑllen und nach dem Killen
+                von Fantastilliarden von Bugs endlich wieder eine, so
+                hoffe ich jedenfalls, brauchbare Version.
+                Das Hashen von Icons sollte jetzt zuverlÑssig funktio-
+                nieren. 'Tschuldigung nochmals fÅr diese Version.
+                Ich habe jetzt nach einigem Hin und Her mit Julian seine
+                genialen "Flying Dialogs" eingebaut (Tja, man sollte
+                sich vielleicht doch Projct-Files anlegen!).
+                Wem die Dialoge nicht gefallen, soll nicht gleich auf-
+                schreien, weil: Ich finde sie auch noch nicht genial,
+                aber, daû man den ganzen Hintergrund zum Draggen nehmen
+                kann, halte ich fÅr keine gute Idee. Das erinnert mich 
+                zu sehr an Smalltalk-80, wo man bei jedem Klick mit
+                PopUp Menus erschreckt wird, nach dem Motto: "Wenn Du
+                jetzt loslÑût, passiert genau das, was Du nicht willst."
+                DrÅckt man jetzt bei einem Window mit Pfad auf Laufwerk
+                A oder B, Escape, so wird ein Media Change ausgelîst.
+                Die DriveInfo sollte jetzt bei leeren Disketten auch
+                "0 Bytes used" anzeigen (lost Clusters abgezogen).
+
+        18.01.  Man kann beim Anmelden einer Applikation angeben, daû
+                Venus die Windows beim Programmstart schlieûen soll.
+                Beim Kopieren kann jetzt auch abgebrochen werden, wenn
+                ein File schon vorhanden ist. Man kann jetzt auch
+                entlang existierender Pfade kopieren/verschieben.
+                Beim Programmstart wird getestet, ob Mupfel anwesend
+                ist.
+
+        21.01.  Nun ist es nicht mehr mîglich den Ordner ".." irgendwohin
+                zu draggen. Somit kann man ihn nicht mitkopieren oder
+                -verschieben. Ein Kopieren in diesen Ordner ist weiterhin
+                mîglich.
+                Neue Shortcuts "HOME" und "Shift HOME" eingebaut. DÅrfte
+                selbsterklÑrend sein.
+                Undo funktioniert jetzt fÅr folgende Aktionen:
+                - Moven von Windows
+                - Sizen von Windows
+                - Fullen von WIndows
+                - Deleten von Windows
+                - Closen von Windows
+                  (und dementsprechend fÅr cd <foldername>)
+
+0.32        22.01.  Die Error Recovery bei Diskoperationen wurde an mehreren
+                Stellen verbessert. Es sollte nur noch ein einziges Mal
+                Abbruch gedrÅckt werden mÅssen.
+                Wird bei Copy/Move/Erase "Cancel" gedrÅckt, so bleiben die
+                gedraggten Objekte weiterhin selektiert. Die Philosphie
+                der Venus sollte an allen anderen Stellen genauso sein:
+                Ein oder mehrere Objekte werden selektiert. Damit bestimmt
+                der Benutzer, daû alle weiteren Aktionen sich jetzt auf 
+                diese beziehen, bis er sie deselektiert oder eine Aktion
+                dies aufgrund ihrer Handlungsweise explizit verlangt.
+                ( ...und auûerdem bin ich der Meinung, daû der Benutzer
+                nie Objekte draggen kînnen sollte, die er nicht sieht.) 
+                Undo fÅr einen "cd" behÑlt jetzt auch die Sliderposition.
+
+0.32a           Bei Files der LÑnge 0 wird dies jetzt auch angezeigt.
+                Das Zeichen, das im Textmodus vor einem Ordner steht, wird
+                ab jetzt aus dem Resource-File genommen, und zwar befindet
+                sich dort eine einfache Box mit einem Teststring darin, in
+                dem am Anfang dieses Zeichen steht.
+                Fehler in Undo fÅr Open/Close Window beseitigt. Es wurde
+                der Stack fÅr Windowgrîûen nicht berÅcksichtigt.
+                
+        24.01.  Venus sollte jetzt beim Lîschen/Verschieben von Files in
+                einem Fenster den Slider immer wieder richtig aufsetzen.
+                Ebenso beim Sizen von Windows.
+
+        25.01.  Die Creme de la creme: DrÅckt man bei offenem Fenster eine
+                alphanumerische Taste, so versucht Venus die Files, die
+                mit so einem Buchstaben anfangen, in das Fenster zu
+                scrollen. Gibt es nur ein solches File, so selektiert
+                Venus dieses. Analoges gilt bei gedrÅckter Shift-Taste
+                fÅr Ordner.
+
+        27.01.  Fehler im redraw bei getinfo/copy/move/erase beseitigt.
+                Windows kann man beim Kopieren nicht mehr "verschieben".
+                Copy/Move/Erase bricht ab, wenn beim ZÑhlen der Files das
+                Laufwerk nicht antwortet. Auûerdem wird dort jetzt
+                !!!ENDLICH!!! die Busy Bee eingeschaltet.
+                Bei der RÅckkehr von einem Programm kommt man jetzt erst
+                wieder ins MenÅ, wenn der Desktop-Hintergrund wieder da
+                ist.
+                Venus sollte in der Drive-Info jetzt mîglichst korrekte
+                Zahlen bei benutzten Bytes angeben. Ist eine der Zahlen
+                negativ, so wird ein Media-Change durchgefÅhrt, bessert
+                es sich nicht, so wird der Benutzer von Venus gewarnt.
+
+0.33a   01.02.  Redraw nach dem Start der Venus verbessert.
+                Probleme mit Keyboard-Repeat abgeschwÑcht. Wie lîscht man 
+                von GEM aus den Keyboard-Buffer?
+                Alle Aufrufe an die Mupfel werden jetzt gequotet. Damit 
+                sollte es mîglich sein auch Files mit '$' im Names zu
+                lîschen.
+                Man kann jetzt wieder eine Regel fÅr Ordner definieren.
+
+        04.02.  Beim Programmstart erscheint jetzt wieder die Busy-Bee.
+                Venus holt sich mittels v_show_c() den Mauszeiger wieder.
+                (Funktioniert wenn man Flash im GEM-Modus verlÑût)
+
+0.33b   20.02.  Bug beim Kopieren mehrere (verschachtelter) Ordner
+                ausgebaut. Gemdos war mal wieder total verwirrt.
+                Ich werde mich bemÅhen, nur noch absolute Pfade zu
+
+0.33b   24.02.  Bug beim Kopieren liegt doch an der Mupfel.
+                Der Bitvektor fÅr die angemeldeten Laufwerke wird jetzt
+                immer vor dem Test geholt (fÅr RAM-Disks).
+
+0.34a   25.02.  General Options funktionieren jetzt und werden
+                abgespeichert.
+
+        26.02.  Der Speicher, der fÅr temporÑre Daten von der Venus ange-
+                fordert wird, wird jetzt vor dem Start eines Programms
+                wieder freigegeben. Dies, wie leicht einzusehen ist, ge-
+                schieht nur, wenn die Fenster geschlossen werden.
+                Leider kann Gemdos nicht gut mit LÅcken in seinem
+                Speicherbereich fertig werden. So kann, z.B. durch das
+                Installieren von mehreren zusÑtzlichen Icons auf dem
+                Desktop, Gemdos verwirrt werden. Damit ich nicht falsch
+                verstanden werde: nicht die Anzahl der Icons fÅhrt dazu,
+                sondern die starke VerÑnderung derselben.
+
+0.34b   27.02.  Die neuen Mallocs entwanzt (hoffentlich...).
+                Dateien und Ordner, die auf dem Desktop liegen, kînnen
+                jetzt im "INFO"-Dialog 'gealiast' werden. Kleines
+                Beispiel: "TC.PRG" in "TURBO C" umbenennen. Der Name
+                der Datei bzw. Ordner bleibt derselbe, nur das Icon
+                trÑgt dann diesen Namen.
+                Dies fÅhrte auch zu einer kleinen énderung im INFO-
+                File. Bei allen "#P..." Regeln muû hinter dem Pfad
+                zusÑtzlich der Name des Programms stehen (nicht bei
+                Ordnern). Also zu Fuû Ñndern, oder alle diese Icons
+                auf dem Desktop wegwerfen und neu draufziehen.
+                "Cycle Window" ist nur dann selektierbar, wenn zwei
+                oder mehr Fenster geîffnet sind.
+                Undo ist jetzt auch mit Control-Z mîglich.
+
+0.35a   03.03.  Neues Kommando "Init Disk..." eingebaut. Benutzt das
+                Mupfel-interne Kommando "init". Die Floppy wird
+                einfach ÅbergeprÅgelt und damit leer gemacht. 
+                Bug beim Entfernen eines Desktop-Icons entfernt.
+                Venus dachte, daû da noch eins wÑr.
+                Graf_Growbox bei Programm- und Accessorystart einge-
+                baut. ENDLICH!
+
+0.35a   18.03.  Fehler beim Setzen eines Pfades ausgebaut. Windows in
+                Venus.inf, deren Laufwerke nicht existieren, werden 
+                nicht mehr geîffnet, wenn nur der Pfad nicht da ist,
+                so macht Venus einen 'cd ..', notfalls bis ins Root.
+
+0.35b   23.03.  Sicherheit beim Einlesen des Info-Files verbessert.
+                Wenn die Nummer eines zu installierenden Icons zu groû
+                ist, so wird ein Defaultwert genommen. Keine AbstÅrze
+                mehr! FÅr negative Nummern (werden nie von VENUS er-
+                zeugt) wird keine Garantie Åbernommen.
+                Man kann jetzt unter "Options->Application" separat
+                bestimmen, ob nach dem Programm auf einen Tastendruck
+                gewartet werden soll.
+                Alle Deklaratonen von "int" auf den define "word"
+                geÑndert, um unabhÑngig vom Compiler zu werden.
+                Beim Abbruch eines Kopiervorgangs erscheint jetzt eine
+                Dialogbox, die noch einmal nachfragt.
+                Endlich die schon lange fÑlligen Shortcuts fÅr das
+                "Options"-MenÅ eingebaut. So!
+
+        25.03.  Wird ein File/Folder in "Get Info..." umbenannt, so wird
+                das Objekt mit dem neuen Namen selektiert, selbst wenn
+                dabei gescrollt werden muû.
+                Wird kein Name eingegeben, so erscheint eine Fehlermeldung.
+
+0.35c   01.04.  Fehler in "Application..." ausgebaut. War zu diesem
+                Zweck ein Icon auf dem Desktop selektiert, so wurde
+                der Name des Programms zweimal abgespeichert (im INF
+                File). Hatte aber nur optische Folgen: der Name erschien
+                zweimal in der MenÅleiste.
+                Der Aufbau der Dialogbox fÅr Icon-Rules wurde verschînert.
+                Bei "*.*" Regeln am Anfang der Liste wird vor dem
+                Akzeptieren (Button "OK") nochmals nachgefragt.
+                Beim Verschieben von Ordnern/Dateien werden die neuen Pfade
+                auch in den Icons auf dem Desktop eingetragen, allerdings
+                muû man dann auch das Inf-File speichern.
+                Wenn Copy/Move abgebrochen wurde, erscheint beim nÑchsten
+                Aufruf nicht mehr der alte Ordnername in der Box.
+
+        03.04.  Accessories kînnen jetzt als Anwendung fÅr einen bestimmten
+                Dateityp angemeldet werden. Dazu muû nur "acc" in der
+                Environment-Variable $SUFFIX hinzugefÅgt werden.
+                Bei "Get Info..." Åber Programm- oder Ordnericons
+                wird kein leerer Labelname, sondern ein entsprechender
+                Text ausgegeben.
+
+0.35d   12.04.  Es war ein Fehler in den Shortcuts unter "Show" in
+                der Version vom 3.4., der jetzt ausgebaut worden ist.
+                Beim HinzufÅgen neuer Regeln hat Venus einmal zuviel
+                nach "OK" Åber eine "*.*"-Regel gemeckert.
+
+0.35e   16.04.  Das File "VENUS.INF" wird jetzt vor der Auswertung komplett
+                in den Speicher gelesen. Somit kînnen Disk-Errors leichter
+                erkannt werden.
+
+0.40a   23.04.  Endlich wieder eine lauffÑhige Version, nachdem das Header-
+                File aufgespalten wurde.
+
+0.40b   02.05.  Neue Dialoglib von Julian eingebaut.
+                Beim Show-Menue gibt es jetzt einen Eintrag fÅr kleine
+                Icons (mit Shortcuts).
+
+0.41a   06.05.  Erste Version, die die Mupfel mit enthalten kann.
+
+0.41b   12.05.  Redraw verbessert. Das Innere des Windows wird nur neu
+                gezeichnet, wenn sich die Files verÑndert haben.
+                Bug im Abspeichern der angemeldeten Applikationen ausgebaut.
+                Wenn eine Applikation im INF-File "@<Label>@" stehen hat,
+                muû dies zu "@ @<Label>" geÑndert werden.
+                Drive-Icons, die man auf den Shredder zieht, werden vom
+                Desktop gelîscht.
+                Drive-Icons lassen sich nur noch mit einem Buchstaben
+                anlegen.
+                Das Moven von Files auf den Desktop behÑlt die Anordnung
+                der Files bei.
+                Das Problem mit dem Zugriff auf Laufwerk A nach dem Ende
+                eines gestarteten Programms hÑngt vom aktuellen Pfad ab und
+                wurde entschÑrft.
+                Wind_new wurde ohne sichtbaren Effekt eingebaut.
+
+0.41b   14.05.  Bug beim Redraw der Wildcard-Box ausgebaut.
+                Icon- und Folderinfo funktionieren jetzt wieder richtig.
+                Eine Applikatio wird nur noch dann eingetragen, wenn die
+                eingestellten Werte von den Defaultwerten abweichen.
+                freeDesk funktioniert.
+
+        17.05.  Abfrage auf falsche X- und Y-Koordinaten im Venus.inf-File
+                eingebaut. Fenster sollten nicht mehr ausserhalb des Bild-
+                schirms liegen kînnen.
+
+        28.05.  Bug bei fehlendem Venus.inf ausgebaut.
+                Redraw der Windows funktioniert endlich richtig, wenn
+                die eingelesenen Files schon angezeigt werden.
+
+0.42    03.06.  Bei fehlendem Venus.inf wird jetzt das erste Fenster
+                richtig geîffnet.
+                Bei Ordnern auf dem Desktop wird jetzt das richtige
+                Icon genommen.
+
+        05.06.  Venus schaut nach dem Initialisieren nach einem File namens
+                VENUS.MUP und lÑût dies gegebenenfalls von der Mupfel
+                ausfÅhren. Startoptionen fÅr dieses File kînnen unter
+                "Application..." eingetragen werden.
+                Wenn die Option "Window schlieûen" beim Start eines 
+                Programms nicht angewÑhlt ist, findet kein Redraw Åber den
+                ganzen Bildschirm mehr statt.
+
+        06.06.  In einer Abendsitzung mit Gereon an der gemergten Version
+                gebastelt. Ergebnis: beim Start von GEM-Programmen aus
+                der Mupfel heraus sieht man von der Venus nichts mehr.
+
+        13.06.  An den Resourcen gebastelt. Hoffe, daû jetzt alle zufrieden
+                sind.
+                Eigenen objcVStretch gebastelt, der fÅr den richtigen
+                Zeilenabstand sorgt. 
+
+0.43    01.07.  Bug beim Anzeigen von Dateinamen in Dialogen ausgebaut.
+                Bestand ein Name nur aus einer Extension, so wurde dies
+                nicht richtig beachtet.
+                Info Åber Files: Man kann jetzt auch bei einem leeren
+                Namensfeld Cancal drÅcken.
+                Anlegen eines neuen Ordners: Bei Cancel wird jetzt kein
+                Redraw mehr gemacht.
+                
+        02.07.  Wird ein Icon, das auf dem Desktop liegt, doppelt
+                angeklickt, wÑhrend die ALTERNATE-Tatste gedrÅckt ist, so
+                wird ein Fenster mit dem Pfad des Programms geîffnet.
+                (sogenannter "Kontext-Open"!)
+
+        10.07.  Wird beim Moven von Dateien ein Icon auf dem Desktop mit
+                betroffen, so wird jetzt auch das Label richtig eingetragen.
+                Die Clipboard-Behandlung sollte jetzt stimmen.
+                Es gibt jetzt ein TeX-Icon!
+
+        25.07.  sccs_id's fÅr `what' eingebaut.
+                Wildcard-handling verbessert, wird demnÑchst auf UNIX-
+                wildcards umgestellt. 
+                Icons werden beim DCLick sofort selektiert.
+
+        14.08.  Auch die Dialoge wurden jetzt auf UNIX-Wildcards
+                umgestellt. Ein '*' steht jetzt also fÅr alle Files.
+                Neuer MenÅpunkt Wildcards, damit ihn auch Leute
+                benutzen.
+
+   bis  31.08.  Jede Menge Sachen wegen Umstellung auf GEMINI.
+
+   (gs) 14.09.  Die Fontgrîûe sollte jetzt immer in Points eingestellt sein,
+                und die Anzeige im Dialog bleibt auch so.
+
+   (gs) 16.09.  Copy/Move/Erase: "Press ESC to Abort" wird nur noch darge-
+                stellt, wenn auch vorher der Dialog angezeigt wurde.
+                Es sollte jetzt unmîglich sein, Window 0 durch Festhalten
+                von Control-D zu lîschen.
+                
+   (gs) 17.09   Beim Font-Selektieren werden jetzt nicht installierte oder
+                proportionale Fonts abgelehnt, ausserdem wird der Name des
+                momentan selektierten Fonts in der Box angezeigt.
+                Die vom VDI eingestellte Fontgrîûe (in Points) bleibt
+                jetzt auch korrekt erhalten.
+
+   (gs) 18.09.  Fontselektor geschrieben. Auswahl jetzt durch Durch-
+                blÑttern der Namen anstatt Eingabe der ID.
+                Leichte kosmetische Korrekturen in einigen Dialogen
+                (Init->Erase, Gross/Kleinschreibung etc.)
+
+0.99a   28.09.  Endlich mal einen Abend programmieren kînnen. Also:
+                Der Wildcard-Dialog wurde geÑndert. Es gibt jetzt kein
+                Edit-Feld mehr. Wer andere Wildcards will muû das Resource-
+                file Ñndern.
+                Der Wildcard-Dialog ist nur anwÑhlbar, wenn ein VENUS-Window
+                Top-Window ist.
+                Der rechte Mausknopf funktioniert wieder.
+                TOS-Programme (und auch *.mup's) werden im Mupfel-Window
+                getstartet, wenn nicht unter "Application..." die Option
+                "Close windows..." angewÑhlt wurde.
+                Das Verwalten der Fensterpositionen funktioniert wieder.
+
+        30.09.  Es findet jetzt kein unnîtiger Redraw der Windows mehr
+                statt, wenn aus der Mupfel GEM-Programme gestartet wurden.
+                
+        02.10.  Off-By-One-Bug im vt52-Fenster ausgebaut. "clear to end
+                of line" funktioniert jetzt richtig.
+                Icons werden jetzt nur noch selektiert, wenn auf einen Teil
+                der Maske des Icons geklickt wird.
+                "Hidden"- und "System"-Dateien werden im Fenster nicht mehr
+                angezeigt.
+                Beim Moven von Icons sollte jetzt der Screen-manager nicht
+                mehr dazwischenfunken.
+                Beim Selektieren von Icons mittels der Rubber-Box wird ein
+                Iconnur noch angewÑhlt, wenn die Box den Text- oder Bitimage-
+                Bereich Åberschneidet.
+                Der Open per Menu oder Tastendruck funktioniert jetzt auch,
+                wenn das selektierte Objekt nicht sichtbar, also von einem
+                Fenster verdeckt ist.
+
+0.99c   11.10.  Wenn die Regeln fÅr die File-Anzeige (Icon rules) geÑndert
+                wurden, so werden jetzt auch die Icons auf dem Desktop,
+                wenn nîtig neu gezeichnet.
+                Der Wildcard-Dialog wurde geÑndert. Die Wildcards sind
+                jetzt editierbar und werden mit abgespeichert.
+                Ich hoffe mit dieser Lîsung sind alle zufrieden.
+                
+0.99d   12.10.  Bug beim Redraw von Windows ausgebaut. Unnîtiges Zeichnen
+                von Windows wird jetzt vermieden. Wo waren da nur meine
+                Beta-Tester???
+                Gemini sucht seine Dateien jetzt mittels shel_find(). Konnte
+                das mit meinem TOS nicht richtig testen, aber da GEMINI noch
+                seine Dateien findet, hat sich zumindest nichts
+                verschlechtert.
+                Selektieren von Icons funktioniert jetzt richtig insofern,
+                daû die Iconmaske jetzt richtig ausgewertet wird.
+                Neues Icon fÅr den Ordner "..".
+
+        14.10.  Die Kommandozeile, die an Accessories mittels dem 0x4711-
+                Call (s.o.) geschickt werden kann, enthÑlt jetzt keine
+                gequoteten Dateinamen mehr, sondern die einzelnen Namen
+                stehen mit absoluten Pfaden durch Spaces getrennt in dem
+                String.
+                Beim aktivieren des Mupfel-Fensters durch Tasten oder
+                Doppelklick, schickt GEMINI eine Nachricht an sich selbst,
+                so daû auch dort der Menu-Titel 'Options' selektiert wird.
+                
+        16.10.  Undo nach dem ôffnen des Console-Windows verwirrt nun den
+                Stack von Fenstergrîûen nicht mehr.
+                Der Wildcard bei angemeldeten Applications erscheint jetzt
+                richtig im Dialog.
+                Es sollte jetzt keine Alert-Boxen von Mupfel und Venus zur
+                selben Sache mehr geben.
+                Beim Warten auf einen Tastendruck nach Beendigung eines
+                Programms kann auch ein Maus-Button gedrÅcjt werden.
+                
+1.01    31.10.  Beim Selektieren mittels Rubberbox klappt das Menu nicht
+                mehr zu frÅh runter.
+                Der Delete-Button in der "Icon rule"-Box wird jetzt richtig
+                disabled.
+                Die Ordner vom Clipboard und Trashdir werden jetzt, falls
+                sie nirgendwo ermittelbar existieren, im Start-Ordner von
+                Gemini neu angelegt.
+                Kopieren/Verschieben von Dateien in nicht vorhandene Ordner
+                wird abgefangen.
+                Es stîrt nicht mehr, wenn sich die Maus nach dem Verlassen
+                eines Programms in der Menuleiste befindet.
+                Das Kopieren/Verschieben von Directories in sich selbst ist
+                nun nicht mehr mîglich.
+                
+        02.11.  Man kann jetzt z.B. Bit36.PRG als Application starten, ohne
+                daû Venus ihre Fenster schlieût. Mit anderen Programmen noch
+                nicht getestet. Bitte ausprobieren!
+                Die bald vorhandenen Kommandos der Mupfel, nÑmlich "more"
+                und "print" werden jetzt von der Venus benutzt, wenn keine
+                passende Applikation fÅr ein File gefunden werden kann.
+                cd in ein Directory, das zu "tief" liegt, sollte nicht mehr
+                mîglich sein.
+                
+        06.11.  Wenn fÅr ein Programm in der Mupfel die Option W:N gesetzt
+                ist, so berÅcksichtigt Venus dies und startet das Programm
+                extern.
+                Bug beim Scrollen ausgebaut, das letzt Objekt in einem
+                Fenster bleibt jetzt richtig selektiert.
+                
+        12.11.  Bei dem Alternate-Doppelklick auf einen Ordner, Trashcan
+                oder Klemmbrett wird jetzt ein Fenster mit dem Pfad, in dem
+                der Ordner liegt, geîffnet.
+                Das Warten auf einen Tastendruck funktioniert jetzt, ohne
+                daû man mehrmals drÅcken muû, oder Keys hÑngen bleiben.
+                
+        13.11.  Das Problem mit dem zu frÅh herunterklappenden MenÅ
+                sollte jetzt weiter entschÑrft sein.
+                
+1.02    17.11.  Objekte kînnen jetzt vom Desktop in ein Window kopiert oder
+                verschoben werden. Das Verschieben der Directories fÅr
+                Papierkorb und Klemmbrett wird jetzt bemerkt.
+                Klappt das Kopieren einer Datei nicht, so wird gefragt, ob
+                man abbrechen will.
+
+        18.11.  Die Rountine zum Lîschen von Files neu geschrieben.
+                Konnte ein Ordner nicht gelîscht werden, so wird bei
+                den darÅberliegenden Ordnern nicht mehr gemeckert.
+                Die Ordner fÅr Klemmbrett und Papierkorb kînnen nicht
+                mehr gelîscht werden.
+                Befinden sich Icons von gelîschten Dateien auf dem
+                Desktop, so werden sie entfernt.
+
+        19.11.  Venus setzt jetzt in Farbe den Hintergrund auf solid
+                und verschiebt das Options-MenÅ so ,daû es auf den
+                Bildschirm paût.
+                Nach Beenden des Shareware-Info-Dialogs gelangt man wieder
+                in den About-Dialog.
+                
+1.03    22.11.  Endlich den Bug in Arnds vt52-Routinen gefunden,der den 
+                Cursor stehen lieû (und natÅrlich ausgebaut).
+                Die Icons auf dem Desktop werden jetzt sortiert.
+                Ein paar Busy-Bee-Sachen...
+                vq_mouse() aus der Drag-Routine leider wieder ausgebaut, da
+                es Probleme mit dem AES gab (nach Julian).
+
+        23.11.  Der vt52-Emulator kann jetzt strings >300 Zeichen
+                ausgeben.
+                Bei Ordnern mit vielen Dateien (>100) sollte Venus vor allen
+                Dingen im Icon-Modus schneller mit dem Aufbau der Fenster 
+                geworden sein.
+                
+        25.11.  Komplette Umstellung der wind_update-Aufrufe.
+                Es sollten keine Probleme mit MenÅs mehr auftreten.
+                Es gibt jetzt keine "illegal handle"-Meldungen mehr, wenn
+                das Resource-File fehlt.
+                Gemini sollte jetzt wieder unter ABC_Gem laufen, da dann
+                keine vq_gdos-Aufrufe mehr getÑtigt werden.
+                
+1.04    27.11.  Nun gibt es eine deutsche Version von Venus.
+                Die Titel der Fenster haben nun einen Space links und 
+                rechts.
+                Bug beim Kopieren eines Laufwerksicons ausgebaut.
+                Alternate-Doppelklick auf einen Ordner im Fenster îffnet
+                nun ein weiteres Fenster.
+                "Neuer Ordner" ist nun nicht mehr anwÑhlbar, wenn das
+                Console-Fenster als erstes geîffnet wird.
+                
+1.05    04.12.  Viel hat sich getan, ohne daû es sich hier nieder-
+                geschlagen hÑtte:
+                Das Umbenennen von Objekten wird jetzt auch auf dem
+                Desktophintergrund mitverfolgt.
+                Es gibt jetzt beliebig wÑhlbare Fonts bei der
+                Textdarstellung von Dateien. Ist der System-Font
+                eingestellt, so versucht GEMINI den korrekten dieser Auf-
+                lîsung einzustellen.
+                Das Optionen-MenÅ wurde umgestellt und Julian's Poppup
+                wurde im MenÅ eingebaut.
+                Beim Starten von GEM-Programmen werden ab TOS 1.4 die
+                Fenster mittels wind_new gelîscht. Das erspart den lÑstigen
+                Redraw.
+                Auûerdem gab es viele interne Kleinigkeiten...
+
+        07.12.  Neue Media-Change-Routine von Julian eingebaut. Damit
+                sollte Media-Change auch mit Wechselplatten laufen.
+                Bei der Font-Auswahl wird jetzt fÅr den System-Font nicht
+                mehr "6x6 system font" angezeigt, sondern "System".
+                Das Aussehen einiger Dialogboxen wurde verschînert (nach
+                dem Geschmack des Autors).
+                Laufwerks-Icons, deren Name leer ist, werden jetzt wieder
+                korrekt eingelesen.
+                
+        09.12.  Das Kopieren von Ordnern funktioniert jetzt wieder richtig.
+                Die Wildcards lassen sich in der Dialogbox auch mit den
+                Curor-Tasten auswÑhlen.
+                Das Zeichen fÅr den Ordner lÑût sich jetzt in der Dialogbox
+                "Darstellung" einstellen.
+                Beim Aufruf der Dialogboxen "Console-Fenster" und
+                "Darstellung" wurde versehentlich die Fontgrîûe verstellt.
+                Das ist gefixt worden.
+                
+        14.12.  BugFix: Der Media-Change funktioniert jetzt richtig.
+                Vorher beschwerte sich die Mupfel, daû ein ausgefÅhrtes
+                Programm sie beschÑdigt hÑtte.
+                Die Busy-Bee wird jetzt rechtzeitig angeschaltet.
+                
+        15.12.  BugFix: Windows, die sich nicht îffnen lassen, werden auf
+                den Window-Stack geworfen, damit das nÑchste Fenster an der
+                richtigen Position aufgeht.
+                Das Datum wird jetzt im richtigen Fromat ausgegeben.
+                
+        19.12.  Der Eintrag "nach Typ" bzw. "nach Icon" im Anzeige-MenÅ
+                wird jetzt beim Hochfahren von Venus richtig eingetragen.
+                Icons lassen sich nicht mehr auf das Mupfel-Fenster ziehen,
+                bzw. es gibt dann eine Fehlermeldung.
+                
+
+1.1     20.01.  Die vt52-Routinen optiomiert. Sichtbarer Erfolg.
+                Bugfix: die Standalone-Version der Venus kann wieder
+                ordentlich TOS-Programme starten.
+                Der System-Font kann wieder in verschiedenen Grîûen
+                angemeldet werden, nur in der 10-Punkt-Grîûe versucht
+                Venus dir "wirkliche" Grîûe einzustellen.
+                Sortieren nach Icons funktioniert wieder.
+                Versteckte Dateien werden korrekt angezeigt und das
+                rekursive kopieren funktioniert wieder bei ALLEN
+                Dateien.
+                Venus beachtet jetzt auch die Env.-Variable GEMSUFFIX.
+                
+1.11    24.01.  Bugfix: Das Objekt ".." wird jetzt korrekt nicht gedraggt.
+                Bei Alternate-Doppelklick auf ".." wird jetzt ein neues
+                Fenser geîffnet.                
+
+        27.01.  Das Anzeigen versteckter Dateien funktioniert jetzt 
+                endlich wieder richtig.
+                Die Dialogbox beim Starten hat jetzt einen Shadow,
+                nachdem Julian mich lange genug bearbeitet hat.
+
+1.12    30.01.  Es gibt jetzt (halb eingerichtet) den Start-Modus
+                "Overlay". Die Venus entfernt sich dabei komplett aus
+                dem Speicher und startet RUNNER.PRG, das ca. 16KB im
+                Speicher belegt. Danach wird wieder Venus gestartet.
+
+        31.01.  Es kann nun keine Info mehr Åber ein nicht existierendes
+                Laufwerk mehr angefordert werden.
+                
+1.13    02.02.  Es ist auch von Gemini aus mîglich Programme als Overlay
+                zu starten.
+                
+1.14    08.02.  Der Wildcard-Dialog funktioniert jetzt wieder richtig.
+                Es kînnen jetzt durch Kommata oder Semikolon getrennt
+                mehrere Wildcards eingegeben werden.
+                Die Maus bleibt jetzt im Console-Fenster aktiv.
+                Man kann beim Laufwerk-Anmelden nur noch Buchstaben von
+                'A' bis 'P' eingeben.
+                Laufwerksbezeichner in Fehlermeldungen haben jetzt einen
+                Doppelpunkt.
+                
+        09.02.  Im console-Fenster funktioniert der Type-Ahead wieder.
+        
+        12.02.  Wenn man Icons auf das Console-Fenster zieht, so werden die
+                vollen Namen der Objekte dort eingefÅgt.
+                Bei Information Åber Dateien kînnen jetzt alle Attribute
+                eingestellt werden.
+
+1.15    14.02.  Desktop-AufrÑumen eingebaut.
+
+        16.02.  Info Åber Objekte gibt es jetzt auch mittels Control-
+                Doppelklick.
+                "Console Fenster" ist jetzt richtig anwÑhlbar.
+                
+        19.02.  Der Typeahead der Mupfel tut's jetzt wieder richtig.
+                Es werden keine Zeichen mehr verschluckt.
+        
+        28.02.  Die LÑnge des Feldes fÅr Wildcards im "Anwendung..."-
+                Dialog ist jetzt korrekt.
+                Wird bei offenem Console-Fenster dessen Grîûe geÑndert, so
+                speichert Gemini dies jetzt auch in den LineA-Variablen.
+                
+        02.03.  Venus malt jetzt definitiv nicht mehr Åber die Bildschirm-
+                grenzen.
+                
+        03.03.  Venus kann jetzt auch formatieren (mit vielen neuen
+                Radio-Buttons).
+                Der Redraw nach Kommandos im Console-Fenster funktioniert
+                jetzt wieder.
+                Beim Desktop-AufrÑumen werden, sofern Objekte selektiert
+                sind, auch nur diese aufgerÑumt.
+                
+        09.03.  Das Console-Fenster wird wieder geschlossen, wenn es fÅr
+                ein Venus-Kommando extra geîffnet werden muû.
+                Beim Umbennen eines Programms wird dies auch in bei den
+                angemeldeten Applikationen vermerkt.
+                
+        11.03.  Das Tippen im Console-Fenster wurde verbessert.
+                Beim ôffnen eines Fensters fÅr Laufwerk A: muû, wenn keine
+                Diskette darin ist, nur einmal Abbruch gedrÅckt werden.
+                Resource-Dateien werden jetzt mit rsplit bearbeitet.
+                AufrÑumen ist jetzt ohne Dialogbox. Statt dessen gibt es
+                jetzt Optionen->Diverses.
+                
+        13.03.  Abfrage auf proportionale Fonts verbessert.
+        
+        15.03.  Console-Fenster ein biûchen beschleunigt, dabei einen
+                Fehler bei der Ausgabe von BELL ausgebaut.
+        
+        16.03.  Venus speichert jetzt den AufrÑum-Abstand ab.
+        
+1.16    17.03.  Die Icons in GEMINIIC.RSC kînnen jetzt verschieden groû
+                sein. Beim Aufbau im Fenster gibt es allerdings dann noch
+                Probleme.
+                
+        01.04.  Neue Linedrawing-Routinen von Julian werden jetzt beim
+                Malen der Ghosts und der Rubberbox verwendet.
+                
+        10.04.  Bei der Folder-Information kann jetzt auch bei leerem
+                Namen mit Abbruch beendet werden.
+                Beim Formatieren und Initialisieren kann man jetz auch
+                ein Label angeben.
+
+1.17    19.04.  Fehlt eine angemeldete Applikation beim Doppelklick
+                auf ein Daten-File, so bietet Venus jetzt an, diese
+                Regel zu lîschen.  
+                Die neuen Flydials eingebaut.
+                Gemini und Venus beherrschen jetzt das xAcc-Protokoll
+                der Stufe Null. (Dokumentation des Protokolls von
+                Konrad Hinsen ist auch in der Maus); Wer kann sollte
+                das testen.
+                Das Warten auf den Tastendruck funktioniert jetzt wieder
+                mit Programmen, die im Console-Fenster laufen.
+                
+        21.04.  Mit der Spezifikation eines Protokolls zwischen Venus
+                und Accessories angefangen. Bitte Kritik und weitere
+                VorschlÑge! Spezifikation ist in dem File vaproto.h.
+                
+        22.04.  Beim Lîschen von Disketten-Icons im Dialog, wird deren
+                Speicher wieder freigegeben.
+                
+1.18    23.04.  Mit einem Protokoll zwischen Venus und Accs begonnen.
+                Alle Nachrichten, auûer dem Starten von Programmen und
+                dem Namen der selektierten Objekte,
+                sind eingebaut, konnten aber aus Mangel an Accs bisher
+                nicht getestet werden.
+        
+        30.04.  Das Icon-Resourcefile wird jetzt bei Programmende wieder
+                freigegeben.
+                
+        07.05.  Das generelle Starten von Programmen als Overlay wird
+                jetzt auch mit abgespeichert.
+                
+1.18b   10.05.  Mit dem Selektieren von Text im Console-Fenster angefangen.
+                Writing mode wird dort jetzt richtig gesetzt.
+                
+1.18c   15.05.  Listman eingebaut! Fonts werden jetzt mit einem richtigen
+                Fontselektor ausgewÑhlt. Wahl der Laufwerksicons wurde auch
+                umgestellt.
+                
+        17.05.  Mit der Umstellung der IconRegeln begonnen.
+        
+        18.05.  Ordner, die aus einem Fenster auf das Console-Fenster
+                gezogen werden haben jetzt einen \ am Namensende.
+        
+1.18d   19.05.  Regeln fÅr Icons lassen sich jetzt komfortabel editieren
+                und auch umordnen.        
+        
+        21.05.  Bug beim AuswÑhlen des Icons fÅr Regeln ausgebaut.
+        22.05.  Die Wildcard-Dialogbox ist jetzt auch auf Listman
+                umgestellt.
+        
+        24.05.  Beim Editieren der Icon-Regeln ist jetzt ein Cut/Copy/Paste
+                mîglich. Das sollte das Ganze verstÑndlicher machen.
+                War bei einer Applikation keine der Optionen angewÑhlt, so
+                klappte die ParameterÅbergabe an das Programm nicht, wenn
+                auf eine zustÑndige Datei geklickt wurde. Dieser Fehler muû
+                irgendwann nach Version 1.1 hineinverbessert worden sein.
+                
+        26.05.  Beim Warten auf einen Tastendruck wird jetzt ein evnt_kbd()
+                durchgefÅhrt. Dadurch kann man zwar nicht mehr den Maus-
+                button drÅcken, aber das Handling ist deutlich besser.
+                
+1.18e   27.05.  Bug im vt52 behoben. Cursorpositionierung funktioniert jetzt
+                auch bei mehr als 96 Spalten.
+                Listman fÅr Editieren der angemeldeten Applikationen
+                eingebaut.
+                Busy-Bee beim Aufbau der Fontlist.
+
+        28.05.  Das Venus-Acc-Protokoll erweitert.
+        
+        01.06.  Bugfix: Wenn ein etwas lÑngerer Wildcard bei einem Fenster
+                eingestellt war, so wurde dieser nicht korrekt 
+                abgespeichert.
+                Die Tastaturereignisse werden jetzt direkt in Gemini
+                weiterverarbeitet, statt wie bisher zu einer AES-Nachricht
+                gemacht zu werden. Dadurch ist z.B. das Scrollen schneller
+                geworden.
+                Beim Selektieren von Dateien mittels der Tastatur wird jetzt
+                das erste File, das mit dem Buchstaben anfÑngt, immer 
+                angewÑhlt, auch wenn es mehrere davon gibt.
+                
+        03.06.  Es ist jetzt mit dem Venus-Accessory-Protokoll mîglich,
+                Programme zu starten.
+                Die bisher beschriebenen Nachrichten des Protkolls sind
+                jetzt alle implementiert.
+                Bei der Rubberbox kriegt man jetzt eine POINT_HAND.
+                
+        05.06.  In der Box, die fÅr die ParameterÅbergabe an ein
+                Programm aufgerufen wird, ist jetzt immer die zuletzt
+                eingegebene Zeile zu sehen.
+                
+1.18f   07.06.  Auf die neuen Font-Routinen in den Flydials umgestellt.
+                Dabei sind die Dateien fonts.c und fontlist.c rausgeflogen.
+                Die Standart-Libraries fÅr fopen, fclose, etc. sind
+                auch drauûen.
+                Der "No-GDOS"-Dialog ist rausgeflogen; wer's jetzt
+                nocht nicht kapiert hat...
+                
+        14.06.  Das EinfÅgen von selektiertem Text aus dem Console-
+                Fenster in das Klemmbrett ist jetzt mîglich.
+                Das Draggen von Objekten auf ein Acc-Window funktioniert
+                jetzt, wenn das Acc das Fenster mittels des
+                Venus<->Acc-Protokolls anmeldet.
+                
+        15.06.  Beim Kopieren von Text aus dem Console-Fenster in das
+                Klemmbrett, werden jetzt die einzelnen Zeilen durch
+                newline getrennt.
+                
+        17.06.  Alt-Control-O ist jetzt mîglich.
+                Die TastaturkÅrzel Alt0-9 wurden eingebaut und kînnen
+                in den Info-Boxen ausgewÑhlt werden.
+                Ist eine Datei schreibgeschÅtzt, so kann der Name in
+                der Info-Box nicht ediert werden.
+        
+        23.06.  "Doppelklick" fÅr die Shortcuts ALT0-9 eingebaut.
+                Die Zeitdauer, wÑhrend der ein Doppelklick erkannt
+                wird, hÑngt vom mittels evnt_dclick eingestellten
+                Wert ab.
+                
+        24.06.  Datei- und Ordnericons kînnen jetzt farbig sein.
+                Wird per Regel ediert.
+                Es kînnen bei Regeln jetzt meherere Namen ohne Wildcard
+                durch Kommata getrennt werden.
+                
+        07.08.  Back from the states...
+                Der Bug, das beim Ansehen einer Datei manchmal die
+                Aufforderung kam, man solle Disk A in Laufwerk M
+                einlegen, sollte jetzt nicht mehr vorkommen.
+                Beim Lîschen einer Datei mit leerem Namen, sowas
+                legt GEMDOS bei touch ' ' an, wird jetzt nicht mehr
+                der darÅberliegende Ordner vom Desktop entfernt.
+                Der Text "Weiter mit Tastendruck..." wird nach dem
+                DrÅcken einer Taste wieder enternt.
+        
+        09.08.  Man kann jetzt keine Ordner in Venus anlegen, die
+                die Zeichen '?*:\' enthalten (Ordner mit ? kann
+                man wirklich nur mit Diskmonitor lîschen!).
+                Beim Umbenennen von Dateien in einer Kopieroperation
+                kann man diese Datei nun nicht mehr versehentlich
+                in einem Ordner kopieren.
+                Beim Warten auf einen Tastendruck kann man jetzt auch
+                die linke Maustaste drÅcken.
+                Wenn in Venus bei einem Laufwerk der Label verÑndert
+                wird, so wird das bei Desktopicons, angemeldeten
+                Applikationen und Fenstern auch geÑndert. Abspeichern
+                des Zustandes ist dann aber erste BÅrgerpflicht.
+        
+        11.08.  Die Listen in den Dialogen wurden auf die neue
+                Draw-Funktion umgestellt. Die Icons in den Listen
+                werden jetzt einfach auf schwarzem Hintergrund gemalt.
+                Sieht viel besser aus.
+                Beim Verschieben von Dialogboxen mit Listen findet jetzt
+                kein Redraw an der alten Position der Box statt.
+                Der Wildcard-Dialog lÑût sich wieder mit den Cursortasten
+                bedienen. Bei einem Doppelklick auf einen Listeneintrag
+                wird nicht mehr wie bisher der Dialog abgeschlossen, 
+                sondern man gelangt wie in den anderen Listen zum 
+                Editieren.
+                Man kann jetzt Laufwerke von 'A' bis 'Z' anmelden. Zum
+                Checken wurde auch schon vorher Drvmap() benutzt, sollte
+                jetzt also mit MetaDOS klappen (ausprobieren!).
+                Die Circle-Elemente in den aufklappenden Listen eingebaut.
+                Das UntermenÅ unter Extras wurde ausgebaut.
+                Kommt man vom Editieren einer Applikation in die Liste der
+                angemeldeten Applikationen zurÅck, so wird bei "lîschen"
+                nun die richtige gelîscht.
+                
+        12.08.  Das Verhalten von Undo wurde verbessert. Undo kommt jetzt
+                auch mit dem Umbenennen, Verschieben und Lîschen von
+                Ordnern klar.
+        
+        16.08.  Wenn ein Font, der in GEMINI.INF eingetragen ist, nicht
+                eingestellt werden kann, so kommt jetzt ein Alert.
+                Wenn man ESC drÅckt, wird das neue Label jetzt auch in
+                den entsprechenden Fenstern eingetragen.
+                
+        17.08.  Beim Umbennenen, Verschieben und Lîschen von Ordnern, 
+                werden die Fenster nachher in einen konsistenten Zustand
+                gebracht, d.h. ist z.B. ein Pfad nicht mehr vorhanden, so
+                wird er verkÅrzt, bis er vorhanden ist.
+                Venus berÅcksichtigt jetzt TOSDEFAULT und GEMDEFAULT bzgl.
+                Console-Fenster und Overlay-Startmodus. 
+                Der Cursor zerbrîselt jetzt nicht mehr, wenn man Text
+                im Console-Fenster selektiert.
+                Das Console-Fenster kann nun nicht mehr mit Control-C
+                geschlossen werden.
+                
+1.19a   18.08.  Die Hîhe der Icon-Fahne (also wo der Text drin steht), 
+                wird jetzt beim Laden von Geminiic.rsc bei allen Icons
+                gleich eingestellt. Es gibt also keinen érger mehr mit
+                RCS, die diese Hîhe unterschiedlich einstellen.
+                WOW!!!! Die Breite dieser Icon-Fahnen wird nun immer
+                der Breite des Textes darin angepaût. Sieht vor allen
+                Dingen mit Icons ohne Rahmen gut aus.
+                
+        20.08.  Beim Zeichnen der Rubberbox wird die Rechteckliste des
+                betroffenen Fensters zum Zeichnen der Box benutzt.
+                
+        27.08.  Wenn sich das Icon des Papierkorbs oder Klemmbretts Ñndert,
+                so wird die Breite der Fahne angepasst.
+                Es sollte jetzt kein: getfinfo failed mehr kommen, wenn
+                man ein Objekt Åber das Console-Fenster zieht.
+                
+        30.08.  Auch beim Starten von Programmen, die nicht im Console-
+                Fenster laufen, funktioniert jetzt das Warten auf einen
+                Tastendruck richtig.
+                Die Fehlermeldungen beim Kopieren etc. kommen jetzt von 
+                Venus.
+                Ist beim Aufruf des Dialoges fÅr die Iconregeln ein 
+                Ordner- oder Dateiicon selektiert, so wird zur 
+                entsprechenden Regel gescrollt.
+                
+1.19b   02.09.  Das Venus-Acc-Protokoll wurde leicht erweitert.
+                Venus berÅcksichtigt bei "Cycle Window" auch angemeldete
+                Accessory-Fenster (harte Arbeit!).
+                Man kann Programme jetzt wieder mit Ctrl+Alt starten.
+                
+        04.09.  RUNNER sollte nun auch auf TOS 1.2 wieder zu starten
+                sein.
+                Das Handling mit angemeldeten Acc-Windows wurde verbessert
+                Man kann z.B. jetzt auch ein TreeView-Fenster mit ^F
+                auf volle Grîûe bringen.
+                
+        06.09.  Wenn in GEMINIIC.RSC verschieden groûe Icons fÅr Dateien
+                installiert werden, so zeigt Venus diese jetzt jeweils
+                zentriert und auf einer Linie im Fenster an (bisher fing
+                jedes Objekt halt links oben in der Box fÅr das grîûte
+                Icon an).
+                
+        09.09.  Ich mîchte alle Beta-Tester, die 4MB Speicher haben, das
+                Scrollen in einem Fenster, das teilweise Åber die untere
+                Bildschirmgrenze herausragt, intensiv zu testen, da jetzt
+                auch beim Malen der Icons diese Grenze beachtet wird (in
+                der Theorie), und Fehler in dieser Routine nur bei 4MB
+                zum Crash fÅhren.
+                Bei Icons, die auf dem Hintergrund liegen, wird jetzt 
+                beim Klicken nach dem obersten Icon gesucht, das unter
+                der Maus liegt. Dies sollte das Selektieren bie
+                Åberlappenden Icons sehr vereinfachen.
+                Beim Lîschen im Regel-Editor kann jetzt auch die zuerst
+                selektierte Regel gelîscht werden.
+                
+1.19c   10.09.  Mit dem AufrÑumen rumgespielt. Die Routine eines X-Window
+                Window-Managers eingebaut. Es gibt beim AufrÑumen jetzt
+                zwei Mîglichkeiten.
+                Gemini.mup wird nach einem Overlay-Start nicht mehr
+                ausgefÅhrt.
+                Das Mupfel-Fenster hat jetzt einen Fuller, der auch mit
+                ^F bedient werden kann.
+                
+        11.09.  Beim Blitten wird jetzt DEFINITIV! gegen die Bildschirm-
+                koordinaten geklippt, so!
+                Handling beim Klicken und sofortigem Verschieben von
+                Icons verbessert.
+                
+        14.09.  Es sollte nun wirklich nicht mehr mîglich sein, leere
+                Ordnernamen anzulegen.
+                Illegale Iconnummern im INF-File werden jetzt abgefangen.
+                
+        21.09.  Das Bildschirmlîschen im vt52-Emulator funktioniert wieder.
+                Der Redraw des Console-Dialoges funktioniert jetzt bei
+                gelîschtem Zeilen- und Spaltenfeld und OK richtig.
+                
+1.19d   22.09.  Das Verteilen der Icons beim AufrÑumen wieder ausgebaut,
+                da unbrauchbar.
+                öberlappende Icons auf dem Hintergrund werden jetzt auch
+                bei einem Doppelklick gefunden.
+                Bei Fehlern kommen jetzt wieder die original 
+                Fehlermeldungen der Mupfel, aber sie werden von Venus
+                ausgegeben.
+                Das Venus<->Accessory-Protokoll ist jetzt vollstÑndig
+                implementiert und wurde noch ein wenig geÑndert. Nun ist
+                es mîglich, daû der Status von Accs mit abgespeichert
+                wird. Leider muû Venus dazu einen TIMER-Event machen, der
+                allerdings auf 5 Sekunden gesetzt ist und nur ausgefÅhrt
+                wird, wenn sonst nichts zu tun ist.
+                
+        23.09.  Wird das Selektieren im Console-Fenster mit einem Doppel-
+                klick gestartet, so wird wortweise markiert.
+                
+        24.09.  Beim ôffnen mit Alternate (Context-Open) wird in dem 
+                Fenster jetzt das jeweilige Objekt schon selektiert.
+                
+        25.09.  Beim Starten von TOS-Programmen im Mupfel-Fenster wird
+                jetzt immer der Pfad des obersten Fensters benutzt.
+                Der war nur falsch, wenn das Fenster erst geîffnet werden
+                muûte.
+                Man kann jetzt unter "Information..." Åber eine Datei
+                auch den Namen Ñndern, wenn diese schreibgeschÅtzt ist.
+                
+        26.09.  Bis auf Schreibfehler sollte jetzt die Datei VENUS.DOC
+                vollstÑndig sein. Wer Zeit hat mîchte Sie bitte Korrektur
+                lesen!
+                
+        28.09.  Das Console-Fenster lÑût sich jetzt beim Fullen nicht mehr
+                zu groû machen.
+                VA-Protokoll hoffentlich zum letzten Mal geÑndert. Venus
+                macht jetzt keinen Timer-Event mehr.
+                Beim Verschieben von Icons wird jetzt bei einem Fehler
+                der Zustand der Desktop-Icons konsitent gehalten.
+                
+        30.09.  Control-U schlieût jetzt das oberste Fenster.
+                Control-X zeigt Dateien unsortiert an.
+                
+        01.10.  Control-Z îffnet jetzt auch das Console-Fenster
+                
+        03.10.  Alle Doppelpunkte im Resource liegen jetzt Åbereinander.
+                Auch beim Wechsel (leer<->voll) von Scrap- und Trashicon
+                wird die eingestellte Farbe beibehalten.
+                
+        07.10.  Das GEMINI.TMP File sollte jetzt auch gelîscht werden, 
+                wenn man Gemini aus einem anderen Verzeichnis heraus 
+                startet.
+                Fenster, die per Acc-Protokoll geîffnet werden (TreeView)
+                haben jetzt einen relativem Pfad im Titel.
+                Die Info-Zeile der Fenster wird jetzt auch nach einem
+                Programmstart ohne Fensterschlieûen aktualisiert.
+                (Formatieren mit Bit3.7)
+                
+        10.10.  Undo funktioniert jetzt auch beim Fullen des 
+                Console-Fensters.
+                Man kann jetzt auch einen Ordner im Wurzelverzeichnis
+                îffnen, der genauso wie das Label des Laufwerkes heiût.
+                
+        14.10.  Wenn ein Accessory-Fenster oben ist und man in einem
+                Listen-Dialog das Klemmbrett verschiebt (im Dialog), dann
+                steht jetzt nicht mehr das ganze System.
+                Das Kopieren/Verschieben von Desktop-Icons, die auf nicht
+                mehr existierende Objekte verweisen, wird jetzt besser
+                abgefangen, bzw. fÅhrt auch zu einer Fehlermeldung.
+                
+        15.10.  Wenn aus dem Console-Fenster ein GEM-Programm gestartet
+                wurde, findet nach dessen RÅckkehr kein doppelter Redraw
+                mehr statt.
+                
+1.19f   19.10.  Der Undo beim Verschieben des Console-Fensters funkioniert
+                jetzt auch, wenn zwischenzeitlich die Grîûe verÑndert
+                wurde.
+                
+        20.10.  Console-Fenster wurde nach Ende eines GEM-Programms, bei
+                dem die Fenster nicht gerschlossen wurden, nicht neu
+                gezeichnet. - Gefixt!
+                Bei ALT-M wird jetzt das Console-Fenster IMMER nach oben
+                geholt (klappte manchmal bei Acc-Windows oben nicht).
+                GBOOT sollte jetzt auch auf dem Blitter-TOS laufen.
+                
+1.2     26.10.  Bug beim Block-Markieren im Console-Fenster gefixt. Der
+                Block wird jetzt immer schwarz gemalt.
+                
+                
+ciao   Stefan Eissing

@@ -1,0 +1,10 @@
+#define ERASEBOX 11	/* form/dialog */
+#define ERFOLDNR 3	/* FTEXT in tree ERASEBOX */
+#define ERFILENR 4	/* FTEXT in tree ERASEBOX */
+#define ERBYTES  5	/* FTEXT in tree ERASEBOX */
+#define ERFOLDER 6	/* FTEXT in tree ERASEBOX */
+#define ERFILE   7	/* FTEXT in tree ERASEBOX */
+#define ERABORT  8	/* BOXTEXT in tree ERASEBOX */
+#define ERCANCEL 9	/* BUTTON in tree ERASEBOX */
+#define EROK     10	/* BUTTON in tree ERASEBOX */
+

@@ -1,0 +1,1143 @@
+
+    VENUS                                                  Version 1.25
+    
+    oder: "Na also, es geht doch..."
+
+
+
+    Copyright 1990 by Stefan Eissing
+    Alle Rechte vorbehalten.
+
+
+
+Eine kleine Dokumentation                              Stand: 29.01.1991
+------------------------------------------------------------------------
+
+    Venus ist ein Desktop, der zusammen mit dem Programm Mupfel von
+    Gereon Steffens den Umgang mit dem Atari ST einfacher und komfortabler
+    machen soll.
+    Zum Gebrauch der Venus ben”tigen Sie folgende Dateien:
+    - VENUS.APP         (das eigentliche Programm)
+    - VENUS.RSC         (die Resource-Datei mit den Dialogen)
+    - VENUSIC.RSC       (die Resource-Datei mit den Icons)
+    - VENUS.INF         (Datei mit Informationen ber offene Fenster etc.)
+    - VENUS.DOC         (diese Dokumentation)
+    - RUNNER.APP		(kleines Nachstarteprogramm)
+    Auerdem mssen Sie im Besitz der Mupfel und s„mtlicher zu diesem
+    Programm geh”renden Dateien sein.
+    (Im Falle von GEMINI, das aus Mupfel und Venus besteht, ersetzen Sie
+     einfach VENUS durch GEMINI. Sie brauchen also GEMINI.APP, GEMINI.RSC,
+     GEMINIIC.RSC, etc.)
+
+
+    Installation
+    --------------------------------------------------------------------
+    
+    In welchem Ordner auf Ihrer Diskette oder Festplatte Sie die Venus
+    installieren, bleibt allein Ihnen berlassen. Es mssen sich nur
+    alle oben genannten Dateien - auer VENUS.DOC - in demselben Ordner
+    befinden, damit Venus diese Dateien beim Start auch findet.
+    Zur Installation selbst brauchen Sie nur diese Dateien in den Ordner
+    zu kopieren. Alle anderen Anpassungen an Ihre Umgebung k”nnen Sie
+    von der Venus aus vornehmen.
+
+
+    Start der Venus
+    -------------------------------------------------------------------
+
+    Ein Start der Venus ist nur von der Mupfel aus sinnvoll, da sie
+    starken Gebrauch von diesem Programm macht.
+    Starten Sie also erst die Mupfel, um dann von dort aus die Venus zu
+    laden. Das Starten von Programmen in der Mupfel k”nnen Sie in der
+    Dokumentation der Mupfel nachlesen (Im Fall von Gemini k”nnen 
+    Sie das Programm GEMINI.APP natrlich direkt vom normalen Desktop
+    aus starten).
+
+    Wie Sie mit der Venus arbeiten k”nnen, entnehmen Sie bitte der
+    folgenden Beschreibung. Es wird davon ausgegangen, da Sie sich
+    schon etwas mit dem Desktop von Atari auskennen und Ihnen Begriffe
+    wie "Doppelklick", "Men" und "Dialog" nicht unbekannt sind.
+    
+    Mit Objekten sind alle Dateien, Ordner und Laufwerke gemeint, also
+    alles, was im Fenster steht oder sich auf dem Hintergrund befindet.
+    Fr VENUS besteht die Welt aus Objekten und Funktionen, die auf diesen
+    Objekten arbeiten. Funktionen werden ber das Men oder mit der
+    Maus ausgel”st. Manche Funktionen sind immer verfgbar, manche 
+    arbeiten nur mit einem Objekt. Damit klar ist, welches Objekt Sie
+    beeinflussen wollen, mssen Sie dieses selektieren, sprich: Sie klicken
+    mit der Maus einmal auf das Objekt. 
+
+    Fr Fortgeschrittene: Nach der Initialisierung der Venus schaut diese
+    nach einer Datei namens VENUS.MUP und fhrt sie, falls vorhanden, aus
+    (Zum Aufbau von ".MUP"-Dateien siehe mupfel.doc). Im Fall von GEMINI
+    heit diese Datei natrlich GEMINI.MUP. 
+
+
+
+Das Men der Venus
+----------------------------------------------------------------------
+
+    Das Men ist in folgende Punkte unterteilt:
+    - VENUS   Hier k”nnen Sie die Accessories aktivieren und unter
+              dem Eintrag "šber Venus..." eine Dialogbox mit
+              Informationen ber Venus bekommen. Lesen Sie bitte
+              die INFO in diesem Dialog!
+    - Datei   Dieses Untermen besch„ftigt sich mit Dateien und
+              Fenstern
+    - Anzeige Die Anzeige der Dateien in den Fenstern
+    - Extras  Verschieden Einstellungen fr verschiedene Sachen
+
+
+    Es sind nicht alle unten aufgefhrten Meneintr„ge zu jeder Zeit
+    anw„hlbar. Wenn Sie z.B. kein Fenster ge”ffnet haben, so sind alle
+    Eintr„ge, die sich auf Fenster beziehen, inaktiv und werden in heller
+    Schrift dargestellt.
+    
+    Eintr„ge, hinter denen drei Punkte stehen "...", fhren nicht direkt
+    eine Funktion aus, sondern zeigen erst einmal eine Dialogbox.
+    
+    Die Buchstaben hinter den Eintr„gen der Mens sind Tastaturkrzel, 
+    mit denen Sie diese Eintr„ge auch anw„hlen k”nnen.
+    Dabei steht das Htchen '^' fr die Control- und die Raute fr die
+    Alternate-Taste. Um z.B. Venus zu verlassen, k”nnen sie auch bei
+    gedrckter Control-Taste einmal auf die Taste 'Q' drcken.
+    
+    
+    Das Untermen "Datei"
+    ------------------------------------------------------------------
+
+    >™ffnen<
+    Dieser Punkt ist nur anw„hlbar, wenn ein Objekt selektiert ist,
+    und entspricht einem Doppelklick auf das Objekt. Je nach Art
+    dieses Objektes werden verschiedene Aktionen ausgefhrt:
+    - Ordner:   Der Ordner wird ge”ffnet und in einem Fenster wird
+                der Inhalt dieses Ordners angezeigt.
+    - Datei:    Venus versucht die Datei zu ”ffnen. Wenn es sich um
+                ein Programm handelt, startet sie dieses. Ansonsten
+                versucht sie ein Programm zu starten, das fr diese
+                Datei zust„ndig ist. Siehe auch "Applikation...".
+    - Laufwerk: Ein Fenster mit dem "Wurzelverzeichnis" (besser
+                Root Directory) wird ge”ffnet.
+
+    >Information...<
+    Zeigt Informationen ber ein selektiertes Objekt an. Wie bei 
+    "™ffnen" richtet sich die Anzeige nach der Art des Objektes. Bei
+    allen Objekten k”nnen Sie in diesem Dialog auch deren Namen
+    „ndern. Diesen Eintrag k”nnen Sie auch mit einem Doppelklick
+    auf das Objekt anw„hlen, wenn Sie gleichzeitig die Control-Taste
+    gedrckt halten. Die Taste "Tab" aktiviert brigens auch diesen
+    Eintrag.
+
+    >Neuer Ordner...<
+    Dient zum Anlegen neuer Ordner. Ein neuer Ordner wird immer im
+    aktiven Fenster angelegt.
+
+    >Schlieen<
+    Entspricht dem Klicken auf die Close-Box des aktiven Fensters in
+    dessen linker oberer Ecke. Wenn im Titel des Fensters mehr als ein
+    Backslash '\' (umgekehrter Schr„gstrich) vorkommt, zeigt Venus das
+    Verzeichnis darber an, ansonsten wird das Fenster geschlossen. 
+    Dies kann auch mit der Backspace-Taste ausgel”st werden.
+
+    >Schliee Fenster<
+    Schliet das aktive Fenster ganz. Dies kann auch mit der Delete-Taste
+    vorgenommen werden (Ausnahme: das Console-Fenster in GEMINI k”nnen Sie
+    mit Delete nicht schlieen (natrlich funktioniert Control-D)).
+
+    >N„chstes Fenster<
+    Ist nur bei zwei und mehr offenen Fenstern aktiv. Mit "N„chstes
+    Fenster" wird ein Fenster nach dem anderen aktiviert und nach
+    vorn gebracht.
+
+    >Formtatieren...<
+    Dieser Menpunkt ist nur anw„hlbar, wenn Sie ein Laufwerks-Icon
+    selektiert haben. In dem folgenden Dialog k”nnen Sie einstellen,
+    ob Sie eine Diskette l”schen oder formatierten wollen. 
+    
+    >Beenden<
+    Dient zum Verlassen der Venus. Unter "Programmende..." (s.u.)
+    k”nnen Sie einstellen, ob Sie noch einmal gefragt werden wollen, etc.
+
+
+    Das Untermen "Anzeige"
+    ------------------------------------------------------------------
+
+    >groer Icons<
+    >kleiner Icons<
+    >von Text<
+    Legt fest, ob die Dateien in einem Fenster als Icon oder als Text
+    angezeigt werden, bzw. welche Icon-Gr”e verwendet werden soll.
+
+    >nach Name<
+	Die Dateien werden alphabetisch sortiert angezeigt.
+
+    >nach Datum<
+    Die Dateien werden nach Datum sortiert. Die neusten Dateien werden
+    zuoberst angezeigt.
+
+    >nach Gr”e<
+    Sortieren nach Gr”e. Die gr”ten zuerst. Dabei ist die Gr”e der
+    Dateien auf dem Medium (Diskette) gemeint.
+
+    >nach Typ< / >nach Icon<
+    hnlich dem Sortieren nach Namen, aber nur die Endung des Namens
+    wird bercksichtigt. Ist "nach Icon" angew„hlt, so werden die
+    Dateien nach Icons sortiert angezeigt.
+
+    >Unsortiert<
+    Die Dateien werden nicht sortiert, d.h. die Reihenfolge, in der
+    sie auf der Diskette/Festplatte stehen, wird verwendet. Das ist
+    besonders im AUTO-Ordner des Boot-Laufwerks interessant, da die
+    Programme dort in dieser Reihenfolge vom Betriebssystem beim Booten 
+    (Starten) des Rechners ausgefhrt werden.
+    
+    >Aufr„umen<
+    Wenn Sie diesen Menpunkt anw„hlen, versucht Venus die Icons, die
+    auf dem Hintergrund liegen, auszurichten, d.h. alle Icons
+    m”glichst bersichtlich nebeneinander anzuordnen. Dies funktioniert
+    am besten, wenn alle Icons gleich gro sind. Wenn kein Objekt
+    selektiert ist, werden alle Objekte ausgerichtet, ansonsten
+    bercksichtigt Venus nur die von Ihnen angew„hlten Objekte.
+    Die besten Ergebnisse erreichen Sie, wenn Sie alle Objekte einer
+    Gr”e selektieren und dann aufr„umen. Da das Aufr„umen keine
+    einfache Sache ist, kann es schon einmal passieren, das eng
+    nebeneinander liegende Icons bereinander gelegt werden.
+    
+    >Wildcards...<
+    Legt fr das momentan aktive Fenster fest, welchen Filter Venus
+    fr die anzuzeigenden Dateien benutzen soll. Zur Syntax von
+    Wildcards siehe auch MUPFEL.DOC, da Venus nicht die GEMDOS-Wildcards,
+    sondern die wesentlich m„chtigeren UNIX-Wildcards untersttzt.
+
+
+    Das Untermen "Extras"
+    ------------------------------------------------------------------
+
+    >Laufwerks-Icon...<
+    Wenn Sie ein Laufwerksicon selektiert haben, so k”nnen Sie dies in
+    diesem Dialog edieren. War kein Laufwerk angew„hlt, so k”nnen Sie
+    neue installieren (n„here Erkl„rung siehe unten).
+
+    >Applikation...<
+    Dieser Menpunkt ist nur anw„hlbar, wenn Sie ein ausfhrbares Programm
+    (siehe auch "SUFFIX" in MUPFEL.DOC) selektiert haben. Hier k”nnen Sie
+    verschiedene Parameter, die Venus beim Start des Programms beachten
+    soll, einstellen und wie im Atari-Desktop dem Programm einen bestimmten
+    Typ von Dateien zuordnen.
+
+    >Datei-Icons...<
+    Mittels diesem Eintrag gelangen Sie in einen Dialog, in dem Sie 
+    die Regeln festlegen k”nnen, nach denen Venus einer Datei als Icon
+    darstellt.
+
+    >zur Mupfel< (>Console-Fenster<)
+    Sie gelangen in die Mupfel. Dazu versucht Venus das Programm, das in
+    der Environment-Variable "SHELL" (siehe auch MUPFEL.DOC) steht, zu
+    starten. In Gemini wird dagegen das Console-Fenster ge”ffnet, in dem
+    sie mit der Mupfel arbeiten k”nnen.
+    
+    >Darstellung...<
+    Besch„ftigt sich mit der Darstellung von Dateien in Fenstern.
+
+    >Console...<
+    Dieser Eintrag steht nur im Programm GEMINI, das aus der Mupfel und
+    der Venus besteht, zur Verfgung. N„here Erl„uterungen finden Sie
+    in GEMINI.DOC.
+
+    >Programmende...<
+    Verschiedene Optionen beim Programmende von Venus bzw. von
+    gestarteten Applikationen.
+
+    >Gespr„chigkeit...<
+    Schaltet Dialoge beim Kopieren und L”schen ein bzw. aus.
+
+    >Diverses...<
+    Hier k”nnen verschiedene allgemeine Sachen einstellen und z.B.
+    den Blitter, sofern Ihr Rechner einen hat, einschalten.
+    
+    >Status sichern...<
+    Speichert den momentanen Zustand der Venus ab, als da w„ren:
+    Fensterpositionen und Gr”en, Icons, Regeln und alle anderen 
+    Einstellungen, die Sie vornehemen k”nnen. All diese Informationen
+    werden in der Datei VENUS.INF (GEMINI.INF) abgelegt.
+
+
+
+M„use und Tasten in der Venus
+----------------------------------------------------------------------
+    Sie k”nnen nahezu alles in der Venus ber die Tastatur erreichen.
+    In den Mens stehen die Tastaturabkrzungen (Shortcuts) wie gewohnt
+    hinter den Eintr„gen. In den Dialogen sind Buchstaben, die fr einen
+    Shortcut stehen, unterstrichen und bewirken zusammen mit der 
+    Alternate-Taste dasselbe wie das Klicken mit der Maus auf das Objekt
+    (meistens ein Button). 
+    
+    Daneben gibt es auch noch einige Tastaturkommandos, die nicht zu 
+    sehen sind: 
+
+    - Die Undo-Taste bewirkt dasselbe wie Control-Z.
+
+    - Selbiges gilt fr das Paar Delete <-> Control-D und Backspace <->
+      Control-C. 
+
+    - Control-F bringt das aktuelle Fenster auf die volle Gr”e.
+
+    - Mit den Cursor-Tasten k”nnen Sie in einem Fenster zeilenweise 
+      bl„ttern. Halten Sie dabei die Shift-Taste gedrckt geschieht 
+      selbiges seitenweise. Home positioniert den Rollbalken (Slider) 
+      eines Fensters nach oben, Shift-Home nach unten.
+    
+    Ist ein Fenster mit Dateien aktiv, so k”nnen Sie auch mit den 
+    Buchstaben auf Ihrer Tastatur scrollen (bl„ttern). Ein Drcken auf
+    die Taste "E" z.B. veranlat Venus im Fenster so zu scrollen, da 
+    m”glichst viele Dateien, die mit E anfangen sichtbar sind. Die erste
+    Datei, die mit E beginnt wird selekiert. Dasselbe gilt bei 
+    gedrckter Shift-Taste fr Ordner.
+
+    Ebenso k”nnen Sie mittels der "Escape"-Taste Venus dazu veranlassen,
+    den Inhalt der Fenster neu einzulesen. Sollte der Pfad des Fensters
+    nicht mehr vorhanden sein (Diskettenwechsel), so versucht Venus solange
+    den Pfad zu verkrzen, bis er wieder existiert. 
+    
+    Wie Sie es auch in dem Desktop von Atari gew”hnt sind, k”nnen Sie
+    auch in der Venus mit der Maus hantieren. Ein Klick auf ein Objekt
+    selektiert nur dieses. Bei gedrckter Shift-Taste wird selbiges
+    zus„tzlich selektiert.
+    Folgendes ist auch m”glich:
+
+    - Haben Sie bei der Rubberbox, also dem flexiblen Gummiband, die
+      Shift-Taste gedrckt, so werden die eingerahmten Icons zus„tzlich
+      selektiert. Icons die vorher selektiert waren werden deselektiert.
+      Das Gummiband l„t sich brigens von ihrem Startpunkt auch nach
+      oben und/oder links aufziehen! Das Gummiband erscheint brigens, 
+      wenn Sie dorthin, wo kein Objekt ist, klicken und die
+      Maus-Taste gedrckt halten.
+
+    - Machen Sie einen Doppelklick auf ein Icon, das auf dem Hintergrund
+      liegt, so wird es gestartet. Halten Sie allerdings dabei die 
+      Alternate-Taste gedrckt, so wird ein Fenster mit dem Pfad dieser
+      Datei ge”ffnet. Bei Ordnern, dem Papierkorb oder dem Klemmbrett liegt
+      selbiger/s im Pfad des ge”ffneten Fensters. Dies ist das ™ffnen der
+      Umgebung, in der sich das Objekt befindet.
+
+    - Halten sie beim Doppelklick auf einen Ordner in einem Fenster die
+      Alternate-Taste gedrckt, so wird ein weiteres Fenster ge”ffnet.
+
+    - Um es richtig kompliziert zu machen, erhalten Sie bei einem Doppel-
+      klick mit gleichzeitig gedrckter Control-Taste Informationen ber
+      das Objekt.
+      
+    Diese ganzen Sonderf„lle brauchen Sie sich nicht (sofort) zu merken,
+    da sie fr das Arbeiten mit VENUS nicht notwendig sind. Sie stellen
+    nur fr den erfahreneren Benutzer eine M”glichkeit dar, bestimmte
+    Sachen schneller zu erreichen.
+
+
+Verschieben von Dateien
+----------------------------------------------------------------------
+
+    Wenn Sie selektierte Objekte anklicken und die linke Maus-Taste
+    dabei gedrckt halten, so wird ein Umri dieser Objekte gemalt, den
+    Sie mit der Maus verschieben k”nnen, bis sie die Taste wieder
+    loslassen.
+
+    Verschieben Sie so Objekte von einem Fenster in ein anders, so geben
+    Sie Venus damit bekannt, da Sie diese Objekte dorthin kopieren
+    wollen. Halten Sie beim Loslassen die Control-Taste gedrckt, so 
+    werden die Objekte nicht kopiert, sondern verschoben, d.h in das
+    andere Fenster kopiert und aus dem Fenster, aus dem sie kommen
+    entfernt.
+
+    Eine Besonderheit spielt dabei das Objekt mit dem Namen "..".
+    Dieses Objekt kann nicht verschoben werden, da es fest zu dem im
+    Fenster dargestellten Verzeichnis geh”rt. Sie k”nnen allerdings 
+    Objekte in das bergeordnete Verzeichnis kopieren, indem Sie sie auf 
+    dieses Objekt ziehen (".." ist in jedem Ordner ein Verweis auf den 
+    Ordner darber. Wenn Sie in der Ordnerstruktur immer tiefer gehen, 
+    dann zeigt Ihnen ".." den Weg zurck).
+    
+    Im Gegensatz zum normalen Desktop erlaubt es Venus, Objekte aus dem
+    Fenster auf dem Hintergrund abzulegen. Ziehen Sie dazu die Objekte
+    auf die Stelle im Hintergrund und lassen Sie die Maus-Taste los.
+    Oft verwendete Programme sind so leichter zug„nglich; Sie mssen
+    nicht immer erst ein Fenster ”ffnen und sich durch mehrere Ordner
+    klicken, um ein Programm zu starten.
+
+    Ab Version 1.1 von Venus ist es auch m”glich Programme und Ordner,
+    die auf den Hintergrund liegen, zu kopieren/verschieben. So k”nnen
+    sie z.B. Dateien und Ordner, die sich an verschiedenen Orten befinden
+    auf den Hintergrund ziehen, und von dort auf eine Diskette kopieren.
+    
+    Wenn Sie ein Programm auf dem Hintergrund abgelegt haben, so k”nnen
+    Sie auch Objekte auf das Icon dieses Programms ziehen. Das Programm
+    wird dann mit diesen Objekten als Parameter gestartet. Dateien, die
+    Sie editieren wollen k”nnen Sie so einfach auf Ihre Textverarbeitung
+    ziehen.
+
+    Natrlich ist dies auch mit den Batch-Dateien der Mupfel (das sind
+    Textdateien mit der Endung "MUP", in die sie Befehle schreiben
+    k”nnen) und selbst mit manchen Accessories m”glich (zu diesen geh”rt
+    z.B. das CLIPBOARD.ACC von den Brdern Gei, das CHMELION.ACC von
+    Karsten Isakovic und TREEVIEW.ACC von Stephan Gerle). Wenn Sie zu
+    den Leuten geh”ren, die eigene Programme schreiben, so sollten Sie
+    sich einmal die Datei VAPROTO.H anschauen. Dort wird genau 
+    beschrieben, wie ein Accessory mit VENUS und GEMINI kommunizieren kann.
+    
+    Objekte, die auf dem Hintergrund liegen, lassen sich entfernen, indem
+    Sie sie auf den Reiwolf (Shredder) ziehen. Keine Angst, sie zerst”ren
+    damit keine Dateien. Objekte auf dem Hintergrund werden als
+    Repr„sentanten von wirklich existierenden Objekten angesehen.
+    Operationen wie Kopieren, Verschieben und ”ffnen beziehen sich dabei
+    auf das Objekt, das repr„sentiert wird, w„hrend die Operation L”schen
+    nur auf den Repr„sentanten wirkt und das reale Objekt unangetastet
+    bleibt.
+
+    Was w„re das Leben ohne Ausnahmen! Es gibt zwei Objekte, die in diesem
+    Zusammenhang besonders behandelt werden: das Klemmbrett und der 
+    Papierkorb. Durch das Ziehen dieser Objekte auf den Reiwolf, geben
+    Sie bekannt, da Sie den Inhalt dieser Objekte l”schen wollen.
+
+
+Zum Starten von Programmen
+----------------------------------------------------------------------
+
+    Beim Starten von GEM-Programmen schreibt Venus den Namen des Programms
+    in die Menzeile. Wurde das Programm aus einem Fenster gestartet, so
+    steht dort nur der Name. Bei einem Start vom Desktop-Hintergrund zeigt
+    Venus allerdings den kompletten Pfad des Programms an, damit Sie sehen
+    k”nnen, was Sie eigentlich gestartet haben (Besonderheit in GEMINI:
+    Wenn Sie GEM-Programme aus der Mupfel heraus starten, so schreibt Venus
+    die Zeile so wie Sie sie eingegeben haben auf den Bildschirm, da Venus
+    nicht wei, was die Mupfel mit dieser Zeile alles gemacht hat.).
+    Beim Starten von TOS-Programmen l”scht Venus den Bildschirm, schaltet
+    die Maus aus und den Text-Cursor an, so wie Sie es vom normalen
+    Desktop gewohnt sind. In Gemini wird statt dessen das Console-Fenster
+    nach vorne gebracht und alle Ausgaben des Programms werden in diesem
+    Fenster dargestellt. Dies l„t sich allerdings auch abschalten.
+    
+    HINWEIS: Bei manchen Programmen, die nicht sauber programmiert sind,
+    funktioniert der Start im Console-Fenster nicht. Damit Sie nicht auf
+    diese Programme verzichten mssen, k”nnen Sie dies auch abschalten.
+    Lesen Sie dazu bitte unter "Applikation..." und in MUPFEL.DOC unter
+    PRGNAME_EXT die M”glichkeiten nach. 
+    Sollten Sie einen sogenannten Software-Blitter, wie Turbo-ST 
+    installiert und Probleme mit dem Console-Fenster haben, so schalten 
+    Sie diesen testweise aus und probieren es dann nochmal.
+    
+
+Besondere Icons auf dem Desktop
+----------------------------------------------------------------------
+
+    Neben den "normalen" Icons fr die Laufwerke und Programme befinden
+    sich auf dem Desktop noch drei spezielle Icons: Das Klemmbrett (Clip-
+    board), der Papierkorb (Trashcan) und der Reiwolf (Shredder). Der
+    Reiwolf entspricht dem vom Atari-Desktop bekannten Mlleimer. Dateien,
+    die sie auf dieses Icon schieben, werden unwiederbringlich gel”scht,
+    falls Sie die entsprechende Nachfrage mit OK beantworten.
+
+    Die Trashcan entspricht eher dem vom Macintosh bekannten Papierkorb.
+    D.h. Dateien, die sie hierhauf schieben, werden zwar von ihrem alten
+    Platz entfernt, sind aber notfalls noch wiederherstellbar. Dazu werden
+    die Dateien von Venus in einen besonderen Ordner kopiert, in das so-
+    genannte Trashdir. Dieses Trashdir liegt normalerweise in dem Ordner,
+    aus dem Sie Venus gestartet haben und wird n”tigenfalls auch neu an-
+    gelegt. šber die Environmentvariable (siehe MUPFEL.DOC) TRASHDIR k”nnen
+    Sie jedoch selbst bestimmen, wo dieser Ordner seinen Platz haben soll.
+    Wenn Sie allerdings eine andere als die Standard-Einstellung vornehmen,
+    mssen Sie den entsprechende Ordner auch selbst anlegen!
+
+    šber das dargestellte Icon k”nnen Sie jederzeit sehen, ob sich Dateien
+    im Papierkorb befinden oder nicht. šber eine Einstellung in dem
+    "Programmende..."-Dialog (s.u.) k”nnen Sie w„hlen, ob beim Verlassen 
+    von Venus evtl. zurckgebliebene Dateien im Papierkorb automatisch 
+    (endgltig!) gel”scht werden sollen.
+    
+    Das Clipboard ist derjenige Ordner, ber den Programme wie z.B. 
+    Wordplus Dateien in bestimmten Formaten mit anderen Programmen 
+    austauschen k”nnen, eben eine Zwischenablage. 
+    Dieser Ordner befindet sich wie das Trashdir ebenfalls normalerweise 
+    im Start-Ordner von Venus. Auch seinen Platz k”nnen sie selbst w„hlen,
+    und zwar ber die Environment-Variable CLIPBRD . Wie beim Papierkorb 
+    sehen Sie auch beim Klemmbrett am Icon, ob sich dort Dateien befinden
+    oder nicht. Allerdings ist CLIPBRD nur ein Hinweis fr VENUS. Stellt
+    Venus n„mlich fest, da ein Klemmbrett bereits eingerichtet ist, so
+    ver„ndert sie dieses nicht. Manche Accessories setzen auch den Pfad
+    des Klemmbretts und dann hat CLIPBRD keinen Effekt!
+    
+
+Die Dialoge der Venus
+----------------------------------------------------------------------
+
+    Generell: Alle Dialoge (und auch Warnungen, Hinweise) in Venus sind 
+    sogenannte "Fliegende Dialoge" (programmiert von Julian F. Reschke).
+    "Fliegend" bedeutet, da Sie sie „hnlich wie Fenster auf dem 
+    Bildschirm herumschieben k”nnen. 
+    Dazu halten sie den Mausbutton ber der rechten oberen Ecke des 
+    Dialogs oder Hinweises (dem "Eselsohr") fest und bewegen den Dialog. 
+    Wenn Sie einen Blitter haben und dieser eingeschaltet ist, wird der 
+    komplette Dialog, so wie er ist, verschoben, ansonsten wird wie bei 
+    den Fenstern eine Umrilinie gezeichnet.
+
+    Zus„tzlich gibt es in diesen Dialogen Elemente, die Sie vielleicht
+    von anderen Programmen noch nicht kennen:
+
+    - Sachen, die Sie ein- und ausschalten k”nnen, haben eine viereckige
+      Box, die angekreuzt wird.
+
+    - Wenn Sie von mehreren Sachen nur eine ausw„hlen k”nnen, so stehen
+      runde Kn”pfe vor dem Text. Der aktive Knopf ist schwarz.
+
+    - Manche Dinge wie z.B. Farben k”nnen Sie aus einer Liste ausw„hlen.
+      Da die Liste zu gro fr die Dialogbox sein kann, wird immer das
+      gerade aktive (die gew„hlte Farbe) angezeigt. Um diese Anzeige ist
+      ein kleiner Schatten, der Ihnen anzeigt, das sich dort eine Liste
+      verbirgt, die aufklappt, wenn Sie auf den Eintrag klicken. Diese
+      Listen funktionieren „hnlich wie ein Men, nur mssen Sie ein
+      Men nicht erst durch Knopfdruck aktivieren.
+      Zus„tzlich steht hinter dem Eintrag noch ein Kreis aus zwei kleinen
+      Pfeilen. Klicken Sie auf diesen Kreis, so wird der n„chste Eintrag
+      in der Liste (die n„chste Farbe) ausgew„hlt.
+
+    - Es gibt auch richtige Listen, die immer sichtbar sind und Rollbalken
+      wie Fenster besitzen. Diese treffen Sie z.B. bei der Auswahl
+      eines Zeichensatzes und den Icon-Regeln an. Im Prinzip lassen sich
+      diese Listen wie ein Fenster bedienen, Sie mssen also nichts neu
+      lernen! Besonders ist aber, da bei der Bewegung des Rollbalkens
+      der Inhalt der Liste gleich mitbewegt wird, da man bei einem 
+      Doppelklick auf einen Pfeil gleich an den Anfang/Ende der Liste
+      gelangt und da man in der List mit gedrckter Maus-Taste 
+      selektieren und scrollen kann.
+    
+    Warnung: Die fliegenden Dialoge arbeiten nicht einwandfrei mit den
+    „lteren Versionen sogenannter Software-Blitter wie z.B. TURBO_ST 
+    zusammen. Das liegt nicht an den fliegenden Dialogen; Beschwerden 
+    darber stossen bei uns daher auf taube Ohren! Neuere Versionen
+    dieser Programme k”nnen inzwischen allerdings auch mit diesen Dialogen
+    klarkommen. 
+    
+
+    Die "ber Venus"-Box
+    ------------------------------------------------------------------
+
+    Dies ist ein rein informativer Dialog, wie Sie ihn in jedem GEM-Programm
+    vorfinden, und gibt ihnen ein paar Informationen ber Venus und die
+    Konditionen, unter denen Sie dieses Programm benutzen und kopieren
+    k”nnen. Die Informationen in diesem Dialog sollten Sie sich gut
+    durchlesen!
+	
+    Die "Information..."-Dialoge
+    ------------------------------------------------------------------
+
+    Unter dem Meneintrag "Information..." bekommen Sie verschiedene 
+    Dialoge, je nach Art des selektierten Objektes. Zus„tzlich k”nnen
+    Sie bei allen Objekten, die auf dem Hintergrund liegen, auch eins
+    von zehn Tastaturkrzeln vergeben. In Venus sind die Tasten "0" bis
+    "9" zusammen mit der Alternate-Taste fr diese Krzel vorgesehen.
+    Beispiel: Sie holen sich die Information ber das Laufwerk A: und
+    geben diesem Icon das Krzel Alternate-0. Nun wird, wenn Sie Alt-0
+    drcken, das Icon von A: selektiert. Drcken Sie zweimal kurz 
+    hintereinander Alt-0, so wird das Laufwerk ge”ffnet. Natrlich
+    wird hierbei auch die eingestellte Doppelklick-Geschwindigkeit
+    bercksichtigt.
+    
+    Bei Laufwerken:
+        Laufwerks-Information
+        --------------------------------------------------------------
+        Folgende Informationen werden ihnen hier angezeigt:
+        - Buchstabe des Laufwerkes
+        - Name des zugeh”rigen Icons auf dem Hintergrund
+        - Label der Diskette/Platte
+        - Anzahl der Ordner auf diesem Laufwerk
+        - Anzahl der Dateien
+        - Benutzter und freier Speicherplatz dieses Laufwerks
+        - Tastaturkrzel
+        Name und Label k”nnen von ihnen ver„ndert werden, und werden beim
+        Verlassen des Dialogs mit dem "OK"-Button bernommen.
+        
+    Bei Ordnern
+        Ordner-Information
+        --------------------------------------------------------------
+        Angezeigte Informationen:
+        - Name des Ordners
+        - Dessen Gr”e (mitsamt der darin enthaltenen Dateien)
+        - Datum und Uhrzeit zu der der Ordner angelegt wurde
+        - Anzahl der darin enthaltenen Dateien und Ordner
+        Wenn Sie TOS in der Version 1.4 oder h”her benutzen, so k”nnen
+        Sie den Namen des Ordners hier ver„ndern.
+        
+    Bei Dateien
+        Datei-Information
+        --------------------------------------------------------------
+        Angezeigte Informationen:
+        - Name der Datei
+        - deren Gr”e
+        - Datum und Uhrzeit der letzten Ver„nderung
+        - Beschreibbarkeit der Datei
+        - Die Attribute der Datei
+        Neben dem Namen der Datei k”nnen Sie in diesem Dialog auch die
+        Attribute der Datei „ndern.
+        Wenn Sie fr eine Datei das "versteckt"-Attribut anw„hlen, so
+        zeigt Venus die Datei normalerweise nicht mehr im Fenster an
+        (siehe auch "Darstellung...").
+        "System" bezeichnet eine Datei, die vom Betriebssystem Ihres 
+        Rechners benutzt wird. Meistens ist dort auch "versteckt" gesetzt.
+        Das Attribut "Archiv" wird von Programmen, die Sicherheitskopien
+        anlegen, benutzt. Jedesmal, wenn die Datei ver„ndert wird, setzt
+        das Betriebssystem dieses Attribut.
+        
+    Bei Datei-Icons, die auf dem Hintergrund liegen
+        Icon-Information
+        --------------------------------------------------------------
+        Angezeigte Informationen:
+        - Name des Icons
+        - kompletter Pfad der Datei/des Ordners
+        - Label der Diskette/Platte, von der die Datei kommt
+        - Tastaturkrzel
+        Den Namen, den Sie dem Icon geben, k”nnen Sie frei w„hlen, da
+        Venus immer ber den kompletten Pfad die Datei sucht. Somit
+        sind wesentlich aussagekr„ftigere Namen als z.B. "NRSC.PRG"
+        m”glich.
+        
+    Beim Reiwolf
+        Reiwolf
+        --------------------------------------------------------------
+        Auer einer Kurzbeschreibung wird hier nur der Name des Icons
+        angezeigt. Natrlich ist der Name „nderbar.
+        
+    Beim Papierkorb/Klemmbrett
+        Spezielle Icon-Information
+        --------------------------------------------------------------
+        Angezeigte Informationen:
+        - Name des Icons
+        - Gr”e der in diesen Ordnern enthaltenen Dateien
+        - Anzahl der Dateien und Ordner
+        - Tastaturkrzel
+        Name des Icons ist frei w„hlbar.
+    
+    Bei mehreren Objekten
+    ------------------------------------------------------------------    
+        Sind mehrere Objekte selektiert, so bekommen Sie die Gesamtzahl
+        von Dateien, Ordnern und belegten Bytes angezeigt.
+    
+
+    Der Dialog "Neuer Ordner" (Datei -> Neuer Ordner...)
+    ------------------------------------------------------------------
+
+    Dieser Dialog besteht nur aus einem Eingabefeld und zwei Buttons.
+    Im Eingabefeld k”nnen Sie den Namen eines neuen Ordners eingeben.
+    Beim Anw„hlen des "OK"-Buttons versucht Venus in dem momentan aktiven
+    Fenster einen neuen Ordner dieses Namens anzulegen. Sie k”nnen den
+    Dialog mit "OK" nur verlassen, wenn Sie auch einen Namen eingegeben
+    haben.
+    
+    WARNUNG: Es ist m”glich Ordner und Dateien anzulegen, die deutsche
+    Umlaute und Sonderzeichen im Namen haben. Venus kann mit diesen
+    Dateien arbeiten, aber es gibt (vor allem amerikanische) Programme,
+    die noch nie etwas von Umlauten geh”rt haben und mit solchen Dateien
+    nicht arbeiten k”nnen. Der Effekt geht von Abstrzen bis hin zu
+    Datenverlusten. Es ist also besser, keine Umlaute in Dateinamen zu
+    verwenden! In den Dialogen der Venus wird deshalb extra die Eingabe
+    solcher Zeichen abgefangen, damit Ihnen nicht versehentlich so etwas
+    passiert.
+    
+    
+    
+    Der Dialog "Diskette l”schen" (Datei -> Formatieren...)
+    ------------------------------------------------------------------
+    Dieser Dialog ist nur erreichbar, wenn Sie ein Laufwerksicon, das
+    zu einem Diskettenlaufwerk geh”rt, selektiert haben. Im wesentlichen
+    wird beim Anw„hlen des "L”schen"-Buttons das Mupfel-Kommando "init"
+    oder "format" ausgefhrt (siehe auch MUPFEL.DOC).
+	Eine Diskette kann hier auf drei verschiedene Weisen gel”scht werden:
+
+	- "Formatieren" ist die einzige M”glichkeit eine unformatierte
+	  (neu gekaufte) Diskette zu l”schen und dauert am l„ngsten. Mit
+	  "Seiten" und "Sektoren" k”nnen Sie das Format und bei "Label"
+	  den Namen der Diskette festlegen.
+	  
+    - "L”schen" l”scht eine bereits formatierte Diskette. Dies geht sehr
+      schnell, da nur ein kleiner Teil der Diskette beschrieben werden
+      mu. Wie beim Formatieren k”nnen Sie festlegen, welches Format und
+      Namen die diese erhalten soll. ACHTUNG: Wenn eine Diskette nur
+      einseitig formatiert ist, funkioniert die Einstellung von 2 Seiten
+      natrlich nicht. Dazu mu die Diskette schon einmal doppelseitig
+      formatiert worden sein.
+      
+    - "L”schen ohne nderung" bewirkt das gleiche wie "L”schen", nur
+      das Format und Label der Diskette wird beibehalten. 
+
+    Der Dialog "Wildcards" (Anzeige -> Wildcards...)
+    -----------------------------------------------------------------
+    Es werden sechs Wildcards angeboten, mit denen Sie die Art der in
+    dem aktiven Fenster darzustellenden Dateien festlegen k”nnen.
+    Einzelne Wildcards k”nnen durch Semikolon oder Kommata getrennt
+    eingegeben werden ("*.PRG;*.APP;*.TTP;*.TOS").
+    Durch Auswahl von "*.[CO]" zeigt Venus in diesem Fenster z.B. nur
+    Dateien, die vom Typ "C" oder "O" sind. Die Ordner werden immer
+    angezeigt, damit Sie weiterhin durch die Verzeichnisse in diesem
+    Laufwerk wandern k”nnen.
+    Die ersten fnf angebotenen Wildcards k”nnen Sie mittels des
+    "ndern"-Buttons editieren. Der sechste ist immer "*" und zeigt alle
+    Dateien an. Er kann nicht ver„ndert werden. In dieser Liste k”nnen
+    Sie auch die Cursortasten benutzten.
+
+
+    Der Dialog "Icons fr Laufwerke" (Extras -> Laufwerks-Icon...)
+    -----------------------------------------------------------------
+    Dieser Dialog erfllt eine doppelte Funktion. Hatten Sie bei der
+    Anwahl von "Laufwerks-Icon..." im "Extras"-Men ein Laufwerk
+    selektiert, so k”nnen Sie hier dieses Icon editieren. War dagegen
+    kein solches Icon selektiert, so wird beim Verlassen des Dialoges
+    mit "OK" ein neues Laufwerksicon angemeldet.
+
+    Links oben sehen Sie eine Liste mit den zur Verfgung stehenden
+    Laufwerks-Icons. Das Icon, das verwendet wird, ist selektiert.
+    Darunter befinden sich Eingabefelder fr den Laufwerksbuchstaben 
+    und den Namen des Icons.
+
+    Der "L”schen"-Button ist nur anw„hlbar, wenn Sie ein bereits
+    vorhandenes Icon editieren und dient zum Entfernen desselben vom
+    Hintergrund.
+
+    Sollte beim Aufruf dieser Funktion der Papierkorb, das Klemmbrett
+    oder der Reiwolf selektiert sein, so erscheint eine Dialogbox, die
+    es Ihnen erlaubt genauere Einstellungen, die die Farbe des Icons
+    und das Tastaturkrzel betreffen, vorzunehemen.
+
+    Der Dialog "Applikation anmelden" (Extras -> Applikation...)
+    ----------------------------------------------------------------
+    Wenn Sie kein Programm selektiert haben, so erhalten Sie eine
+    Liste der angemeldeten Applikationen. Rechts neben den Programm-
+    namen stehen die Wildcards, fr die die jeweilige Applikation
+    zust„ndig ist. Wenn Sie eine Datei ”ffnen, wird diese Liste von
+    oben nach unten durchsucht und das zust„ndige Programm gestartet.
+    Sollte kein Programm gefunden werden, so bekommen Sie die vom
+    Atari-Desktop her bekannte Ansehen-Drucken-Abbruch-Dialogbox.
+    
+    Mit "L”schen" k”nnen Sie die gerade selektierte Regel entfernen.
+    Sie l”schen damit nicht die Applikation, sondern die Anmeldung
+    derselben. Diese Regel wird in dem Klemmbrett des Dialoges (oben
+    rechts) abgelegt. Wenn Sie sie an einer anderen Stelle der Liste
+    wieder einfgen wollen, so ziehen Sie einfach das Klemmbrett auf
+    die Liste.
+    
+    Mittels "ndern..." k”nnen Sie die Einstellungen fr die gerade
+    selektierte Applikation „ndern. Dazu wird eine neue Dialogbox
+    ge”ffnet. 
+
+    Unter dem Namen des Programms in dieser Box befindet sich ein 
+    Eingabefeld und vier weitere Auswahlfelder:
+    
+    Im Eingabefeld k”nnen Sie mehrere Wildcards fr die Dateien
+    angeben, fr die dieses Programm zust„ndig sein soll (z.B. "*.c"
+    fr einen C-Compiler (natrlich TC.PRG)). Die einzelnen Wildcards
+    mssen durch Kommata oder Semikolon getrennt werden. Wenn Sie nachher
+    eine Datei mit der Endung ".C" ”ffnen, so startet Venus den C-Compiler
+    mit dem Namen der Datei auf der Kommandozeile.
+    
+    Zu den Auswahlfeldern:
+    Das Erste bestimmt, ob Venus beim Start des Programms seine Fenster
+    schlieen soll, und sollte bei GEM-Programmen, die eigene Fenster
+    ”ffnen immer angew„hlt sein. (Besonderheit in GEMINI.PRG: Ist bei
+    einem TOS-Programm dieser Punkt angew„hlt, so wird das Programm
+    extern gestartet; ansonsten l„uft unter GEMINI ein TOS-Programm
+    im Console-Window, also im Fenster der Mupfel (siehe auch GEMINI.DOC))
+
+    Der zweite Punkt bestimmt, ob das zu startende Programm wie ein
+    GEM-Programm behandelt werden soll. Davon sind der Maus- und
+    Textcursor, sowie der Hintergrund betroffen.
+
+    Drittens k”nnen Sie festlegen, ob Sie beim Start des Programms nach
+    einer Kommandozeile gefragt werden wollen und viertens k”nnen Sie
+    Venus dazu veranlassen, nach Beendigung des Programms auf einen
+    Tastendruck zu warten.
+
+    Viertens k”nnen Sie einstellen, ob Sie das Programm als Overlay
+    starten wollen. Diese Option ist vor allen Dingen fr Programme
+    gedacht, die sehr viel Speicherplatz gebrauchen. Starten Sie ein
+    Overlay-Programm, so speichert Venus den aktuellen Status in der
+    Datei "VENUS.TMP" (bzw. "GEMINI.TMP") ab und beendet sich selbst.
+    Danach wird das Programm RUNNER.PRG gestartet, welches wiederum
+    das Overlay-Programm startet. Runner belegt nur etwa 20 Kilobyte
+    im Speicher; somit steht dem Overlay-Programm fast soviel Speicher
+    wie sonst zur Verfgung. Wenn Sie dann das Overlay-Programm wieder
+    verlassen, startet Runner wieder Venus (oder Gemini).
+    Das Ganze dauert natrlich etwas lange und ist fr Benutzer ohne
+    Festplatte bestimmt unertr„glich langsam, drfte dagegen fr
+    Besitzer eines 1040ST mit Festplatte sehr interessant sein.
+
+	Wenn Sie diesen Dialog mit "Abbruch" oder "OK" beenden, so wird
+	Ihnen wieder die Liste der Applikationen gezeigt. Sonderfall: Wenn
+	Sie ein Programm vor dem Aufruf von "Applikation..." selekiert
+	hatten, so kommt gleich die "nderung..."-Dialogbox fr dieses
+	Programm.
+
+    Der Dialog "Datei-Icons" (Extras -> Datei-Icon...)
+    ----------------------------------------------------------------
+
+    In der Venus k”nnen Sie Dateitypen Icons zuordnen, um den Zweck einer
+    Datei schneller erfabar zu machen (Zum Beispiel gibt es einen
+    Stift fr Textverarbeitungsprogramme). Dazu ben”tigt Venus
+    Regeln, damit sie diese Zuordnung vornehmen kann. Diese Regeln sind
+    nicht starr festgelegt, sonder k”nnen ver„ndert werden. Daher dieser
+    Dialog.
+
+    In der Dialogbox sehen Sie links die Liste der vorhandenen Regeln.
+    Rechts oben ist ein kleines Klemmbrett (das Bildchen mit dem Text
+    "Regel" darin) und rechts unten sind fnf Kn”pfe. 
+    Die obersten drei arbeiten auf der selektierten Regel und die unteren 
+    zwei beenden den Dialog.
+    Zu einer Regel geh”rt ein Icon (klein und gro), das Ordnersymbol,
+    das festlegt, ob diese Regel fr Ordner oder Dateien gilt (Regeltyp),
+    und ein Wildcard.
+    Pat nun ein Dateiname auf diesen Wildcard und hat die Regel den 
+    entsprechenden Typ, so bekommt die Datei das zugeh”rige Icon.
+    Die Liste wird dazu von oben nach unten durchsucht. Daher sollten
+    die spezielleren Regeln, die z.B. nur fr ein Programm zust„ndig
+    sind, weiter oben in der Liste stehen. Ganz unten sehen Sie 
+    normalerweise die allgemeinsten Regeln mit dem Wildcard "*", die
+    auf alle Dateien und Ordner zutreffen.
+    
+    Ein kleines Beispiel:
+    Es sind drei Regeln in der Liste vorhanden. Diese stehen in folgender
+    Reihenfolge in der Liste:
+    
+            1.    []   *.APP
+            2.    []   *.TOS,*.TTP
+            3.    []   *
+            
+    Wenn Venus nun die Datei "GEMINI.APP" darstellen soll, so schaut sie
+    sich zuerst die Regel 1 an und stellt fest, da sie pat. (Zur 
+    Erinnerung: "*" steht fr irgendwelche Zeichen, in diesem Fall 
+    "GEMINI". Ersetzt man "*" durch "GEMINI", so kommt der Name GEMINI.APP
+    heraus.)
+    Wenn nun Venus nach einem Icon fr "ZOO.TTP" sucht, so trifft die erste
+    Regel nicht zu ("ZOO.TTP" endet nicht mit ".APP"). Venus schaut sich
+    also die zweite Regel an. Leider trifft auch "*.TOS" nicht auf 
+    "ZOO.TTP" zu. Die zweite Regel hat aber noch ein weiters Muster und
+    dies trifft auch zu (Ersetze "*" durch "ZOO"). Also wird das Bild
+    der zweiten Regel fr die Datei benutzt.
+    Sucht Venus aber zum Beispiel nach "GEMINI.INF", so trifft weder die
+    erste, noch die zweite Regel zu. In diesem Fall greift die dritte
+    Regel. "*" pat n„mlich auf alle Dateien, man ersetzte einfach "*"
+    durch den Dateinamen!
+    
+    Neue Regeln k”nnen Sie erzeugen, indem Sie das Klemmbrett des
+    Dialogs in die Liste ziehen. Es wird dann eine neue Regel an der
+    Stelle eingefgt, auf die Sie das Klemmbrett gezogen haben. 
+    Wenn Sie das Klemmbrett auf die dritte Regel ziehen, wird nach der 
+    dritten Regel eine Vierte eingefgt. 
+    
+    Wenn Sie die selektierte Regel l”schen, so wird diese in dem
+    Klemmbrett des Dialoges abgelegt. Ziehen Sie danach das Klemmbrett
+    in die Liste, so wird die gel”schte Regel eingefgt. So k”nnen Sie
+    die Regeln umsortieren.
+    
+    Jede Regel, die in der Dialogbox angezeigt wird kann von ihnen
+    ver„ndert werden. Klicken Sie dazu auf den Knopf "ndern...".
+    Es erscheint eine Dialogbox, in der Sie diese Regel ver„ndern k”nnen.
+    In dieser Box sehen Sie eine Liste mit allen zur Verfgung stehenden
+    Icons, einen Knopf, der anzeigt, ob die Regel fr Ordner ist, und
+    den Wildcard der Regel. Natrlich k”nnen Sie hier auch mehrere
+    Wildcards durch Semikolon oder Kommata getrennt eingeben.
+
+    Zus„tzlich l„t sich hier die Farbe, in der das Icon gezeichnet
+    werden soll, einstellen. Beachten Sie, nur Dateien, auf die diese
+    Regel pat, bekommen ein Icon in dieser Farbe. Mit verschiedenen
+    Regeln l„t sich so ein Icon in verschiedenen Farben verwenden.
+    Sorgf„ltig eingesetzt kann Farbe zur šbersichtlichkeit sehr stark
+    beitragen, zu bunt ist allerdings immer schnell verwirrend. Am
+    sinnvollsten ist es sicher alle Dateien, die auch logisch 
+    zusammengeh”ren (obwohl sie verschiedene Typen haben) mit einer
+    Farbe zu versehen.
+    
+    HINWEIS: Sollte eine eingestellte Farbe nicht zur Verfgung stehen,
+    so wird fr den Hintergrund immer wei und fr den Vordergrund
+    immer schwarz verwendet.
+    
+    Verlassen Sie den Dialog mit dem "OK"-Button, so werden alle nderungen,
+    die Sie vorgenommen haben, bernommen; mit dem "Abbruch"-Button werden
+    aber alle Ihre nderungen ignoriert. Sie k”nnen also in aller Ruhe in
+    dem Dialog herumspielen, ohne Gefahr zu laufen, Ihr sorgsam aufgebautes
+    Regelwerk zu zerst”ren.
+    
+    
+    An obigem Beispiel soll nun erkl„rt werden, wie Sie Ihre Liste von
+    Regeln erweitern k”nnen. 
+    
+    1. Sie wollen, da fr alle Dateien mit der Endung ".PRG" dasgleiche
+       Icon wie fr Dateien mit der Endung ".APP" benutzt werden soll.
+       Klicken Sie dazu einfach auf die erste Regel (Sie wird schwarz) und
+       dann auf den Knopf "ndern...". ndern Sie in der nun folgenden
+       Dialogbox das Muster (Wildcard) von "*.APP" auf "*.APP,*.PRG" und
+       drcken Sie "OK".
+       Die Liste sieht nun so aus:
+    
+            1.    []   *.APP,*.PRG
+            2.    []   *.TOS,*.TTP
+            3.    []   *
+            
+    2. Sie wollen fr Dateien mit der Endung ".INF" ein besonderes Icon
+       benutzen. Ziehen Sie dazu das Klemmbrett in die Liste und lassen
+       Sie den Mausknopf los. An der Stelle, auf die Sie das Klemmbrett
+       gezogen haben, wird eine neue Regel eingefgt. War das z.B. die
+       dritte Regel, so die Liste jetzt so aus:
+    
+            1.    []   *.APP,*.PRG
+            2.    []   *.TOS,*.TTP
+            3.    []   *
+            4.    []   *
+            
+       Klicken Sie jetzt auf die vierte Regel und dann auf "ndern...".
+       W„hlen Sie das gewnschte Icon und geben Sie den Wildcard "*.INF"
+       ein. Drcken Sie auf "OK". Die Liste danach:
+    
+            1.    []   *.APP,*.PRG
+            2.    []   *.TOS,*.TTP
+            3.    []   *
+            4.    []   *.INF
+            
+       Leider haben wir jetzt einen kleinen Fehler gemacht! Venus wird
+       sich n„mlich niemals die vierte Regel anschauen. Daher wird auch
+       keine Datei mit der Endung ".INF" das von Ihnen gew„hlte Icon
+       erhalten. Was ist passiert? Wir haben die Regel an der falschen
+       Stelle eingefgt. Wie oben schon beschrieben wurde, pat die dritte
+       Regel ja auf alle Dateien. Daher wird Venus auf der Suche nach einem
+       Icon sp„testens bei der dritten Regel aufh”ren.
+       Was tun? Wir mssen die Regeln umsortierten; die vierte Regel mu
+       weiter nach oben. Dazu klicken Sie einfach auf die vierte Regel.
+       Nun ist die vierte Regel invertiert (schwarz) und Sie k”nnen auf
+       den Knopf "L”schen" klicken. Die vierte Regel wird entfernt und
+       wandert auf das Klemmbrett. Nun ziehen Sie das Klemmbrett erneut
+       in die Liste z.B. zwischen die erste und zweite Regel. Die Liste:
+    
+            1.    []   *.APP,*.PRG
+            2.    []   *.INF
+            3.    []   *.TOS,*.TTP
+            4.    []   *
+            
+       Nun werden alle Dateien mit der Endung ".INF" das richtige Icon
+       erhalten.
+       
+    3. Sie wollen "GEMINI.INF" ein spezielles Icon zuordnen. Da schon
+       eine Regel fr Dateien mit der Endung ".INF" vorhanden ist, mu
+       die neue Regel vor der zweiten Regel eingefgt werden.
+       Ziehen Sie dazu das Klemmbrett zwischen die erste und die zweite
+       Regel. Klicken Sie die neue Regel an und „ndern Sie mittels
+       "ndern..." Icon und Muster (Wildcard). Die Regelliste mte jetzt
+       so aussehen:
+    
+            1.    []   *.APP,*.PRG
+            2.    []   GEMINI.INF
+            3.    []   *.INF
+            4.    []   *.TOS,*.TTP
+            5.    []   *
+            
+       Nun wird die Datei GEMINI.INF das Icon aus Regel zwei erhalten,
+       w„hrend z.B. VENUS.INF das Icon der dritten Regel erh„lt.
+       
+    Allgemein sollte man darauf achten, da Regeln, die nur fr eine
+    bestimmte Datei gedacht sind, immer am Anfang der Liste stehen. Vor
+    einer Regel fr eine einzige Datei sollten keine Regeln stehen, die
+    einen Stern "*" oder ein Fragezeichen "?" enthalten. Ist dies Ihnen
+    doch einmal passiert, so sortieren Sie die Regeln bitte wie oben
+    beschrieben um.
+
+
+    Der Dialog "Darstellung" (Extras -> Darstellung...)
+    ----------------------------------------------------------------
+    Dieser Dialog betrifft die Textdarstellung in Fenstern und die
+    Positionierung derselben.
+    Mit den oberen drei Buttons legen Sie fest, welche Informationen
+    ber eine Datei im Textmodus angezeigt werden sollen. Geh”ren Sie
+    zu denjenigen, die sich auer fr den Namen nur fr die Gr”e
+    einer Datei interessieren, so sollten Sie Datum und Uhrzeit nicht
+    selektieren. Der Aufbau eines Fensters ist dann wesentlich
+    schneller.
+    Ab Version 1.1 von Venus k”nnen Sie hier zus„tzlich einstellen, 
+    welcher Zeichensatz in welcher Gr”e bei der Textdarstellung 
+    verwendet werden soll. Es k”nnen nur nicht-proportionale Zeichens„tze 
+    benutzt werden; proportionale Zeichens„tze werden in der Liste
+    nicht mit angezeigt.
+    Das Zeichen, das in der Textdarstellung fr Ordner verwendet wird,
+    l„t sich hier zus„tzlich einstellen.
+
+
+    Der Dialog "Programmende" (Extras -> Programmende...)
+    -----------------------------------------------------------------
+    Vier verschiedene Einstellungen k”nnen Sie hier vornehemen:
+    - Soll Venus nach TOS-Programmen generell auf einen Tastendruck 
+      warten?
+    - Soll Venus beim Verlassen des Programms den Papierkorb leeren?
+      (Darin enthaltene Dateien werden dann erbarmungslos gel”scht.)
+    - Soll Venus nach der Anwahl von "Beenden" noch einmal zur Sicherheit
+      nachfragen?
+    - Soll beim Verlassen von Venus immer der Zustand (Aussehen) abge-
+      speichert werden?
+    - Soll beim Starten von Programmen immer der Overlay-Modus (s.o.)
+      benutzt werden?
+      
+
+    Der Dialog "Gespr„chigkeit" (Extras -> Gespr„chigkeit...)
+    -----------------------------------------------------------------
+    - Wollen Sie beim Kopieren/Verschieben von Dateien eine
+      Dialogbox bekommen?
+    - Wollen Sie beim L”schen von Dateien eine Dialogbox bekommen?
+    - Soll Venus Sie warnen, falls durch das Kopieren/Verschieben bereits
+      vorhandene Dateien berschrieben werden?
+    
+
+    Der Dialog "Parameter fr das Console-Fenster" (nur in GEMINI.PRG)
+    -----------------------------------------------------------------
+    In diesem Dialog lassen sich verschiedene Parameter fr das Console-
+    Fenster, in dem auch die Mupfel l„uft, einstellen. Darunter f„llt der
+    Font, in dem der Text in diesem Fenster erscheint, dessen Gr”e, die
+    Gr”e des Fensters in Zeilen und Spalten, sowie das fr inverse Schrift
+    zu verwendende Textattribut. Anregung: Benutzen Sie die Fettschrift
+    fr invertierte Zeichen und schalten Sie in Ihrem Mupfel-Prompt auf
+    invertierte Schrift um (siehe auch mupfel.doc bzgl. "PS1").
+
+    
+    Der Dialog "Diverses" (Extras -> Diverses...)
+    -----------------------------------------------------------------
+    Hier k”nnen Sie einstellen, welchen Abstand zwischen des Icons
+    Venus beim Aufr„umen einhalten soll und den Blitter ein- bzw.
+    ausschalten.
+    	
+    Zudem k”nnen Sie bestimmen, ob Sie Dateien, bei denen das "versteckt"-
+    Attribut gesetzt ist, im Fenster angezeigt bekommen wollen.
+
+    Wenn Sie "Fenster frei beweglich" ausgeschaltet haben, dann l„t
+    Venus in horizontaler Richtung nur noch ein Positionieren der
+    Fenster auf bestimmten Punkten zu. Bei diesen Punkten ist die
+    Koordinate durch die Zeichenbreite teilbar und das Betriebssystem
+    des Atari kann somit den Text im Fenster mit g”erer Geschwindigkeit
+    ausgeben.
+
+	Die Dialoge zum Kopieren/Verschieben/L”schen von Dateien
+	-----------------------------------------------------------------
+	In diesen Dialogen bekommen Sie die Anzahl der Dateien, sowie
+	deren Gesamtgr”e angezeigt, die von dieser Aktion betroffen sind.
+	Durch das Anklicken des "OK"-Buttons wird das Kopieren/Verschieben/
+	L”schen fortgefhrt. Dies kann jederzeit durch das Drcken der
+	Escape-Taste wieder abgebrochen werden.
+	Besteht die Gefahr, das eine bestehende Datei berschrieben wird,
+	so fragt Venus nach, wie Sie nun weiter vorgehen wollen. Die Buttons
+	haben folgende Bedeutung:
+
+	- "OK" Die Datei wird mit dem im Dialog angegebenen Namen kopiert.
+
+	- "Abbruch" Der gesamte Vorgang wird abgebrochen.
+
+	- "Auslassen" Diese Datei wird bersprungen.
+
+	- "Ersetzen" Dasselbe wie "OK", nur werden alle weiteren Dateien
+	   ohne Nachfrage berschrieben. Es wird also nicht nur die gerade
+	   angezeigte Datei ersetzt, wie man auf den ersten Blick annehmen
+	   k”nnte!
+	
+	    
+Der Aufbau der VENUS.INF-Datei (bzw. GEMINI.INF-Datei)
+---------------------------------------------------------------------
+    ist zu kryptisch und betrifft oft die interne Darstellung von Dingen
+    zu stark, um hier vollst„ndig beschrieben zu werden. Die Zeile, die
+    mit "#I" beginnt, k”nnen Sie z.B. sofort wieder vergessen, da dort
+    nur interne Variablen der Venus abgespeichert werden.
+    Trotzdem soll kurz beschrieben werden, wofr die Anfangsbuchstaben
+    stehen:
+    - "#R" Icondarstellung (Icon Rule)
+    - "#A" angemeldete Applikation
+    - "#W" zu ”ffnendes Fenster (Window)
+    - "#B" Rechteck fr die n„chsten Fenster, die ge”ffnet werden.
+    - "#E" Position und Name des Reiwolf (Shredder oder Eraser)
+    - "#T" selbiges fr den Papierkorb (Trashcan)
+    - "#S" dito Klemmbrett (Scrap)
+    - "#D" dito Laufwerk (Drive)
+    - "#P" Beschreibung eines auf dem Hintergrund abgelegten Icons
+    - "#M" Beschreibung der Wildcards
+    - "#F" Font in Textdarstellung
+    Dazu sei noch gesagt, da alle Koordinaten in Promille abgespeichert
+    werden, und beim Laden der Datei an die aktuelle Bildschirmaufl”sung
+    angepat werden. Dies ist dem šbereinanderpacken von Laufwerkicons
+    im Atari-Desktop vorzuziehen.
+    WARNUNG: Sie k”nnen natrlich mit einem Texteditor die Datei leicht
+    selbst „ndern, aber es wird dann keine Garantie bernommen, das Venus
+    danach noch richtig funktioniert! Wenn sich jemand beschwert, da nach
+    dem Entfernen einer Zeile Venus abstrtzt, so sehe ich das nicht als
+    meinen sondern als seinen Fehler an.
+    
+Der Aufbau der VENUSIC.RSC-Datei (bzw. GEMINIIC.RSC-Datei)
+---------------------------------------------------------------------
+    Diese Datei ist eine Standard-Resource-Datei, wie sie von Resource-
+    Editoren wie NRSC.PRG von Kuma oder RCS.PRG von Digital Research
+    erzeugt und ver„ndert werden kann. Nur wenn Sie ein solches 
+    Programm besitzen, k”nnen Sie neue Icons fr die Venus 
+    herstellen, bzw. bestehende entfernen. Aus Zeitgrnden war es leider
+    nicht m”glich ein extra Programm zu diesem Zweck herzustellen.
+    Allerdings l„t sich mit dem Programm Icon_Patch von Gerd Knops
+    und einem Malprogramm auch arbeiten. (Das Programm Icon_Patch erlaubt
+    es Degas-Elite-Bilder in eine GEMINIIC.RSC-Datei zu konvertieren
+    und ist in vielen Mailboxen wie z.B. MAUS Mnster erh„ltlich. Es
+    l„uft allerdings nur in der hohen Aufl”sung des ST, leider!)
+    
+    Die Datei besteht aus drei Objektb„umen. Der erste enth„lt die Icons
+    fr die Spezial- und Laufwerks-Icons. Venus erwartet, da die Icons in
+    folgender Reihenfolge dort stehen: zuerst ein Reiwolf-Icon, dann die
+    Icons fr den leeren und vollen Papierkorb, danach die fr das leere
+    und volle Klemmbrett, und schlielich beliebig viele Laufwerkicons.
+    Die zusammengeh”renden Icons (leer <-> voll) mssen gleich gro sein;
+    ansonsten k”nnen ab Version 1.2 alle Icons verschieden gro sein.
+    Die Icon-Fahne, in der der Text steht mu Platz fr 13 Buchstaben
+    haben.
+    
+    Der zweite und dritte Baum enth„lt die Dateiicons in normaler und 
+    kleiner Ausfhrung. Diese mssen jeweils mindestens zwei Icons 
+    enthalten, wobei das erste das Standard-Dateiicon und das zweite das
+    Icon fr die Ordner ist. Damit Venus ein Icon benutzen kann, mu dieses
+    sowohl in normaler, wie auch in kleiner Gr”e vorliegen.
+    
+    Wenn man auch ber funktionale Elemente eines Programmes streiten kann,
+    so betritt man bei den Icons doch das endlose Land der verschiedenen
+    Geschm„cker. Kommentare wie "Zu klein!", "Zu gro!", "Der Rand st”rt!"
+    oder "Ich kann die Schreibmaschine auf meinen Overscan-Monitor nicht
+    erkennen!" helfen dem Autor dieses Programms (und stolzem Designer der
+    kleinen Bildchen) nicht weiter. Mein kreativer rechter Zeigefinger
+    hungert geradezu nach ein bichen freier Zeit, um weitere Icons„tze zu
+    Pixeln zu bringen, und es wird bestimmt in nicht allzu ferner Zukunft
+    weitere VENUSIC.RSC-Dateien aus dieser Quelle geben. Wenn Sie selbst
+    neue sch”ne Bildchen entworfen haben, so verteilen Sie sie doch an die
+    anderen Benutzer.
+    
+    ACHTUNG: Wenn Sie weitere Icons dort hinzufgen wollen, mssen Sie
+    nach dem Einfgen der Icons den Objektbaum neu sortieren. Die ver-
+    wendete Sortierordnung ist erst die Y-, dann die X-Richtung. Ansonsten
+    kommen die Regeln, die Sie in der Venus definiert haben durcheinander.
+    Achten Sie auch darauf, da Sie fr jedes groe Icon auch ein kleines
+    Icon installieren; das groe wird sonst nicht angenommen.
+    
+
+Bug Reports (Fehlermeldungen an mich oder Gereon)
+------------------------------------------------------------------------
+Wir versuchen natrlich die Programme so fehlerfrei wie m”glich zu halten
+und haben inzwischen ganze Heerscharen von Beta-Testern (die uns auch mit
+gefundenen Fehlern berh„ufen). Allerdings sind diese gefundenen Fehler
+inzwischen immer abstruser geworden (ziehen Sie bitte NICHT 437 Dateien
+gleichzeitig auf ein Programm-Icon!), so da wir glauben diese Version
+ruhigen Gewissens ver”ffentlichen zu k”nnen. Das heit natrlich nicht,
+da Gemini keine Fehler mehr hat! Wir hoffen nur, da keine gravierenden
+Fehler mehr drin sind, die ein Benutzen des Programms unm”glich machen.
+
+Sollten Sie glauben, einen Fehler gefunden zu haben, so versuchen Sie ihn
+bitte wiederholbar zu machen. Wenn wir den Fehler nicht nachvollziehen
+k”nnen, k”nnen wir ihn auch schlecht beseitigen. Entfernen Sie bitte
+auch einmal alle Accessories und AUTO-Ordner Programme, damit sie
+entscheiden k”nnen, ob es wirklich an Venus/Gemini liegt. 
+
+Haben Sie den Fehler, soweit es Ihnen m”glich ist, eingekreist, dann
+schreiben Sie uns bitte. Geben Sie auch die von Ihnen verwendete
+Hardware mit an. Danke.
+
+
+M”ge der Atari mit Ihnen sein, immer!
+
+Stefan Eissing

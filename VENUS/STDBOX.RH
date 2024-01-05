@@ -1,0 +1,5 @@
+#define STDBOX   3	/* form/dialog */
+#define BOX      0	/* BOX in tree STDBOX */
+#define FISTRING 1	/* STRING in tree STDBOX */
+#define STDICON  2	/* ICON in tree STDBOX */
+

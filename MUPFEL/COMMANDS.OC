@@ -1,0 +1,123 @@
+/*
+ * commands.c  -  list of internal commands
+ * 03.06.90
+ */
+
+#include "commands.h"
+#include "mupfel.h"
+
+SCCS(commands);
+
+typedef int command(ARGCV);
+
+command m_exit;	/* exit.c */
+command m_echo;	/* echo.c */
+command m_whereis;	/* whereis.c */
+command m_cd;		/* curdir.c */
+command m_pwd;		/* curdir.c */
+command m_date;	/* date.c */
+command m_cat;		/* cat.c */
+command m_ls;		/* ls.c */
+command m_setenv;	/* environ.c */
+command m_printenv;	/* environ.c */
+command m_help;	/* help.c */
+command m_fkey;	/* fkey.c */
+command m_mkdir;	/* mkdir.c */
+command m_rmdir;	/* rm.c */
+command m_touch;	/* date.c */
+command m_rm;		/* rm.c */
+command m_chmod;	/* chmod.c */
+command m_cpmv;	/* cpmv.c */
+command m_free;	/* free.c */
+command m_df;		/* df.c */
+command m_backup;	/* cpmv.c */
+command m_tree;	/* tree.c */
+command m_version;	/* version.c */
+command m_hash;	/* hash.c */
+command m_wc;		/* wc.c */
+command m_file;	/* file.c */
+command m_set;		/* shellvar.c */
+command m_label;	/* label.c */
+command m_du;		/* tree.c */
+command m_pushd;	/* curdir.c */
+command m_popd;	/* curdir.c */
+command m_dirs;	/* curdir.c */
+command m_init;	/* init.c */
+command m_rename;	/* cpmv.c */
+command m_timer;	/* timer.c */
+command m_alias;	/* alias.c */
+command m_setscrap;	/* scrap.c */
+command m_blitmode;	/* blitter.c */
+command m_shrink;	/* shrink.c */
+command m_pause;	/* echo.c */
+command m_print;	/* print.c */
+command m_more;	/* more.c */
+command m_noalias;	/* alias.c */
+command m_find;	/* tree.c */
+command m_cookie;	/* cookie.c */
+command m_rsconf;	/* control.c */
+command m_prtconf;	/* control.c */
+command m_kbrate;	/* control.c */
+command m_kclick;	/* control.c */
+command m_format;	/* format.c */
+
+struct cmds interncmd[] =
+{
+	{"alias",		FALSE,	m_alias,	"[name [replacement]]","show, set or unset alias",NULL},
+	{"backup",	TRUE,	m_backup,	"[-icv] files","copy files, dest extension is .bak",NULL},
+	{"blitmode",	TRUE,	m_blitmode,	"[on|off]","show or set blitter status",NULL},
+	{"cat",		TRUE,	m_cat,	"[-l] files","print files on stdout",NULL},
+	{"cd",		TRUE,	m_cd,	"[dir]","change directory to dir or $HOME",NULL},
+	{"chmod",		TRUE,	m_chmod,	"[+-][ahswfc] files","set/clear attributes",NULL},
+	{"cookie",	TRUE,	m_cookie,	"","display cookie jar contents",NULL},
+	{"cp",		TRUE,	m_cpmv,	"[-cvdriasbn] f1 f2 or cp f1..fn dir","copy files",NULL},
+	{"date",		TRUE,	m_date,	"[hhmm|mmddhhmm[yy]]","display or set system date and time",NULL},
+	{"df",		TRUE,	m_df,	"[-a|drv:]","display free disk space",NULL},
+	{"dirs",		TRUE,	m_dirs,	"","display directory stack",NULL},
+	{"du",		TRUE,	m_du,	"[dirnames...]","show disk usage for directories",NULL},
+	{"echo",		FALSE,	m_echo,	"[args]","print args on stdout",NULL},
+	{"env",		TRUE,	m_printenv,	"var","display environment variable",NULL},
+	{"exit",		TRUE,	m_exit,	"[val]","terminate mupfel, return val or 0 to caller",NULL},
+	{"file",		TRUE,	m_file,	"files","guess type of files",NULL},
+	{"find",		FALSE,	m_find,	"dir files...","find files starting at dir",NULL},
+	{"fkey",		FALSE,	m_fkey,	"[key [str]]","display or define function keys",NULL},
+	{"format",	TRUE,	m_format,	"[-yv][-s sides][-c sectors][-l label] drv:","format disk",NULL},
+	{"free",		TRUE,	m_free,	"[-l]","display free main memory",NULL},
+	{"hash",		TRUE,	m_hash,	"[-r][-d dir]","display, remove or enter programs in dir into hash table",NULL},
+	{"help",		TRUE,	m_help,	"[cmd]","print list of commands or help for cmd" },
+	{"init",		TRUE,	m_init,	"[-y][-s sides][-c sectors][-l label] drv:","fast disk erase",NULL},
+	{"kbrate",	TRUE,	m_kbrate,	"[-i initial][-r repeat]","set keyboard options",NULL},
+	{"kclick",	TRUE,	m_kclick,	"[on|off]","set key click",NULL},
+	{"label",		TRUE,	m_label,	"[drive [label]]","show or change label on drive",NULL},
+	{"lc",		TRUE,	m_ls,	"[-clusdrtfFh]","list files (sorted multicolumn)",NULL},
+	{"ll",		TRUE,	m_ls,	"[-clusdrtfFh]","list files (sorted long format)",NULL},
+	{"ls",		TRUE,	m_ls,	"[-clusdrtfFh]","list files (sorted single column)",NULL},
+	{"lu",		TRUE,	m_ls,	"[-clusdrtfFh]","list files (unsorted single column)",NULL},
+	{"mkdir",		TRUE,	m_mkdir,	"[-p] dirs","create directories",NULL},
+	{"more",		TRUE,	m_more,	"files","page through files",NULL},
+	{"mv",		TRUE,	m_cpmv,	"[-cvib] f1 f2 or mv f1..fn dir or mv dir1 dir2","rename/move files",NULL},
+	{"noalias",	FALSE,	m_noalias,"command","execute command verbatim",NULL},
+	{"pause",		FALSE,	m_pause,	"[args]","echo args if any, wait for keypress",NULL},
+	{"popd",		TRUE,	m_popd,	"","change dir to last pushed directory",NULL},
+	{"print",		TRUE,	m_print,	"[-f][-l lines][-t tabsize] files","print the given files",NULL},
+	{"prtconf",	TRUE,	m_prtconf,"[-wmcbealdrbsf]","set parallel interface",NULL},
+	{"pushd",		TRUE,	m_pushd,	"[dir]","save dir or . on directory stack",NULL},
+	{"pwd",		TRUE,	m_pwd,	"[-a|drv:]","print working directory",NULL},
+	{"rename",	TRUE,	m_rename,	"[-icv] ext files","bulk file rename",NULL},
+	{"rm",		TRUE,	m_rm,	"[-rvfib] files","remove files",NULL},
+	{"rmdir",		TRUE,	m_rmdir,	"dirs","remove directories (must be empty)",NULL},
+	{"rsconf",	TRUE,	m_rsconf,	"[-b baudrate][-xrn][-p parity][-s stopbits][-c char. size]","set serial interface",NULL},
+	{"set",		TRUE,	m_set,	"[var [value]]","show, set or unset internal variables",NULL},
+	{"setenv",	FALSE,	m_setenv,	"[var [value]]","set or unset environment variable",NULL},
+	{"setscrap",	TRUE,	m_setscrap,	"[-fq] [dir]","show or set AES scrap path",NULL},
+	{"show",		TRUE,	m_printenv,	"var","display environment variable",NULL},
+	{"shrink",	TRUE,	m_shrink,	"[-b val][-t val][-f][-i]","shrink/free memory",NULL},
+	{"timer",		TRUE,	m_timer,	"[-s]","start/display timer",NULL},
+	{"touch",		TRUE,	m_touch,	"[-c][-d hhmm|mmddhhmm[yy]] files","set file modification time",NULL},
+	{"tree",		FALSE,	m_tree,	"[-di][-f filespec][-p path]","display file hierarchy",NULL},
+	{"version",	TRUE,	m_version,"[-amgdth]","display version numbers",NULL},
+	{"wc",		TRUE,	m_wc,	"[-lcw] files","count lines, words and chars",NULL},
+	{"whereis",	TRUE,	m_whereis,"cmd","locate cmd in $PATH",NULL},
+};
+
+long interncount = DIM(interncmd);

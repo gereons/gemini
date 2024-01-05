@@ -1,0 +1,3 @@
+zoo aunP m '*.[chs]' '*.prj' '*.mup' '..\*.mup' 'doc\*' c:\gemsys\gemini.fnt
+mv e:\flash\archieve\mupfel.zoo e:\flash\archieve\mupfel.zob
+cp -v m.zoo e:\flash\archieve\mupfel.zoo

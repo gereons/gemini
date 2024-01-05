@@ -1,0 +1,11 @@
+; RUNNER.PRJ  -  Make RUNNER.PRG
+; 30.03.90
+;
+\tc\runner.app
+=
+tcstart.o
+alert.c (alert.h,stand.h) [-DRUNNER]
+runner.c (alert.h,attrib.h,handle.h,toserr.h)
+tcstdlib.lib
+tctoslib.lib
+tcgemlib.lib

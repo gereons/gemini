@@ -1,0 +1,91 @@
+Bekannte Probleme mit GEMINI Version 1.2
+----------------------------------------
+
+Copyright (C) 1990 by Gereon Steffens & Stefan Eissing
+
+GEMINI ist ein Shareware-Programm von
+
+  Gereon Steffens                     Stefan Eissing
+  <veraltete Adressen wurden entfernt>
+  
+Folgende Probleme (fÅr die wir nicht verantwortlich sind und fÅr die wir 
+teilweise keine vernÅnftige Lîsung kennen) sind uns bei GEMINI 1.2 bekannt:
+
+- Einige Accessories (z.B. Multidesk und Harlekin) gehen davon aus, daû sie
+  nach ihrem Start den Bildschirm fÅr sich alleine haben. Diese Annahme
+  trifft nicht mehr zu, wenn GEMINI mit TOS 1.4 als Autostart-Programm
+  benutzt wird. Als Abhilfe liegt das Programm GBOOT010.APP bei, daû an-
+  stelle von GEMINI als Autostart-Anwendung benutzt werden soll. GBOOT010
+  macht fÅr 10 Sekunden (fast) nichts, danach startet es GEMINI.APP. Wenn
+  die 10 Sekunden zu lang oder zu kurz sind, kann der Programmname ent-
+  sprechend geÑndert werden, z.B. in GBOOT003.APP fÅr eine 3-Sekunden Pause.
+  ACHTUNG: GBOOTxxx.APP muû im gleichen Ordner wie GEMINI.APP liegen!
+  
+- Einige unsauber programmierte Anwendungen (z.B. Signum! in Ñlteren Ver-
+  sionen) verwenden illegalerweise falsche VDI-Workstation-Handles. Diese
+  Versuche werden von AMCGDOS jeweils mit einer Alert-Box ("Illegal Handle")
+  quittiert. Abhilfen gibt es leider nur zwei: Korrigierte Versionen der
+  betreffenden Programme vom Hersteller besorgen, oder GDOS nicht benutzen.
+  Leider verliert man bei der zweiten Alternative die Mîglichkeit, in GEMINI
+  andere ZeichensÑtze fÅr die Textdarstellung in den Fenstern zu verwenden.
+  
+- Die Verwendung von sog. "Softwareblittern" (Turbo ST und Quick ST) fÅhrt
+  in allen uns bekannten Versionen dieser Programme zu Problemen. ZunÑchst
+  geht die Mîglichkeit der I/O-Redirection verloren, da diese Programme ohne
+  RÅcksicht darauf die Zeichenausgabe von GEMDOS umbiegen. Selbst wenn man
+  damit leben kînnte, wird man in GEMINI noch zusÑtzlich durch falschen
+  Bildschirmaufbau bestraft, besonders wenn man die "Fliegenden Dialoge"
+  tatsÑchlich fliegen lÑsst.
+  Neuere Versionen der Software-Blitter machen bei den Dialogen keine 
+  Probleme mehr, allerdings funktiniert die Umlenkung immer noch nicht.
+  Als Abhilfe liegt das Programm CONSFIX.PRG von Karsten Isakovic bei.
+
+- Einige wenige Programme laufen aus uns unbekannter Ursache nicht oder 
+  nicht richtig unter GEMINI, dazu gehîren z.B. FOMA, VIP Professional und
+  SBREAK. Wer hierzu Ideen hat, sollte sie uns mitteilen!
+  
+- Alle mit Mark-Williams-C geschriebenen Programme haben Probleme mit
+  Atari's ARGV-Methode, da diese vom MWC-Standard leicht abweicht. Dieses
+  Problem kann fÅr die betroffenen Programme mittels X:N in $PRGNAME_EXT um-
+  gangen werden. Zu diesen Programmen gehîren z.B. Uniterm und Flash.
+  Die Zeile "setenv FLASH_PRG X:N" in MUPFEL.MUP behebt dies Problem z.B.
+  fÅr Flash.
+
+- Der Public-Domain C-Compiler Sozobon hat einen Fehler, der im Zusammen-
+  hang mit den Methoden zur erweiterten ParameterÅbergabe zum Absturz
+  fÅhrt. Dieser Fehler befindet sich im Startup-Code von Sozobon und
+  betrifft somit auch alle mit Sozobon compilierten Programme. Wer selbst
+  Programme mit Sozobon compiliert kann diesen Bug leicht fixen.
+  Folgende énderung an den Sourcen ist nîtig:
+
+17a18,27
+>     move.l    a0,d0
+>     btst    #0,d0        ; odd alignment? sorry, it has to be move.b
+>     beq    lmcp0_c
+>     bra    lmcp0_b
+> lmcp0_a:            ; O.K., this loop is not very efficient,
+>     move.b    (a0)+,(a1)+    ; but at least it works
+> lmcp0_b:
+>     dbra    d1,lmcp0_a
+>     bra    lmemcpy7
+> lmcp0_c:
+24c34
+<     move.w    (a0)+,(a1)+    ; extra bytes copy loop
+---
+>     move.w    (a0)+,(a1)+    ; extra words copy loop
+
+  Dann muû man alles, was zu Sozobon gehîrt, neu Åbersetzen.
+  
+- Wenn aus TOS-Programmen (meistens Editoren wie Z oder microEMACS) per
+  Shell-Escape Mupfel gestartet wird, gibt es Probleme mit dem Bildschirm-
+  aufbau, wenn von der Mupfel dann GEM-Programme gestartet werden. Einzige
+  uns bekannte Abhilfe: NICHT MACHEN! Wer darauf absolut nicht verzichten
+  kann, sollte diese Programme so anmelden, daû beim Start alle Windows ge-
+  schlossen werden, aber auch das lîst nicht alle Probleme. Um dieses Pro-
+  blem zu lîsen, mÅûte man aus der Kette aller Parent-Prozesse ermitteln
+  kînnen, ob es sich um TOS- oder GEM-Programme handelt, und dafÅr gibt es
+  unseres Wissens keinen legalen Weg.
+  
+- Hinweis fÅr Benutzer von Turbo-C 2.0: Um die Shell-Funktion nutzen zu
+  kînnen, muû TC von Mupfel oder GEMINI gestartet werden, vorher sollte man
+  ein alias von "sh" auf "mupfel" anlegen.

@@ -1,0 +1,15 @@
+#define SHOWBOX  4	/* form/dialog */
+#define SHOWFBG  3	/* BOX in tree SHOWBOX */
+#define SHOWFB   4	/* BOX in tree SHOWBOX */
+#define SHOWPBG  7	/* BOX in tree SHOWBOX */
+#define SHOWPB   8	/* BOX in tree SHOWBOX */
+#define SHOWFONT 11	/* BOX in tree SHOWBOX */
+#define SOPTSIZE 13	/* BUTTON in tree SHOWBOX */
+#define SOPTDATE 14	/* BUTTON in tree SHOWBOX */
+#define SOPTTIME 15	/* BUTTON in tree SHOWBOX */
+#define DIRCHAR  17	/* FTEXT in tree SHOWBOX */
+#define DIRNEXT  19	/* BOXCHAR in tree SHOWBOX */
+#define DIRPREV  20	/* BOXCHAR in tree SHOWBOX */
+#define SHOWCANC 21	/* BUTTON in tree SHOWBOX */
+#define SHOWOK   22	/* BUTTON in tree SHOWBOX */
+
