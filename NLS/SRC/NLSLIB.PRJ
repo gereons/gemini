@@ -1,0 +1,6 @@
+\tc\lib\nls\nlslib.lib
+.L[ -J ]
+.C[ -P -G -Y]
+=              ; list of modules follows...
+nlsutil.c	(nlsdef.h, nls.h, nlsfix.h)
+nlsfix.c    (nlsdef.h, nls.h, nlsfix.h)

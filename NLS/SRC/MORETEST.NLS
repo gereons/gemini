@@ -1,0 +1,14 @@
+/*
+ * Eine kleine test-Datei fÅr de National Language Support
+ *
+ * von Stefan Eissing 29. Dezember 1990
+ */
+
+#define NlsLocalSection "tests.moretest"
+
+enum NlsLocalText{
+MT_1,	/*Was fÅr ein schînes Programm\n!*/
+MT_2,	/*Das %s ist nicht zum %s geeignet!\n*/
+MT_4,   /**/
+MT_3	/*[ja, [Nein, [Abbruch*/
+};
