@@ -19,3 +19,5 @@ Zum Schluss: Der Gemini-Disclaimer von damals gilt weiterhin
 > Unter keinen Umständen wird irgend jemand, egal ob lebend, tot oder scheintot und/oder irgendeine Gruppe, die der menschlichen Rasse oder sonst einer (mehr oder weniger) intelligenten Spezies (einschließlich, aber nicht beschränkt auf jenen bisweilen SOL III genannten Planeten) entstammt oder vorgibt zu entstammen, und der diese Dokumentation und/oder Programme oder ein anderes, damit in Verbindung stehendes Dokument und/oder Programm oder Teile davon modifiziert und/oder weiterverbreitet, egal ob legal oder illegal, Dir, lieber Leser, in irgendeiner Art verantwortlich sein für irgendwelche Schäden, einschließlich entgangener/geschmälerter/verlorerer Profite, Gelder, Geltung, Gesundheit, Freunde/Freundinnen etc., die implizit oder explizit aus der Verwendung oder Nichtverwendung dieser Dokumentation und/oderProgramme oder Teilen davon, resultieren.
 
 > Was immer auch passiert, lieber Leser: Du bist schuld!
+
+NACHTRAG vom April 2025: Der Sourcecode von Gemini 2 konnte ebenfalls gerettet werden und ist unter https://github.com/gereons/gemini2 zu finden.
